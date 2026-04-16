@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HourSpend — Your Money, Measured in Hours of Your Life</title>
+  <meta name="description" content="Free calculator: Convert any expense into the hours of work it really cost you. Coffee, rent, subscriptions — see what your spending costs in time.">
+
+  <meta property="og:title" content="Your $5 coffee = 23 minutes of your life">
+  <meta property="og:description" content="Free calculator. See every expense as hours of work.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://hourspend.app/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your $5 coffee = 23 minutes of your life">
+  <meta name="twitter:description" content="Free calculator. See every expense as hours of work.">
+
+  <link rel="canonical" href="https://hourspend.app">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HourSpend",
+    "description": "Convert any expense into hours of work",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "iOS, Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #1A0B2E;
+      --surface: #2D1B4E;
+      --gold: #D4A846;
+      --soft-gold: #E8C86E;
+      --text: #F5F5F5;
+      --muted: #B0A0C8;
+      --accent: #1ABC9C;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      background: radial-gradient(ellipse at top, #2D1B4E 0%, #1A0B2E 70%);
+    }
+
+    /* Animated mesh background */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(212, 168, 70, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(108, 63, 160, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(26, 188, 156, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+      animation: float 20s ease-in-out infinite alternate;
+    }
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, -20px) scale(1.05); }
+    }
+
+    .container { max-width: 580px; width: 100%; position: relative; z-index: 1; }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(212, 168, 70, 0.12);
+      border: 1px solid rgba(212, 168, 70, 0.3);
+      border-radius: 100px;
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(36px, 7vw, 56px);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      letter-spacing: -1.5px;
+    }
+    h1 span { color: var(--gold); }
+    .subtitle {
+      color: var(--muted);
+      font-size: clamp(16px, 2.5vw, 19px);
+      line-height: 1.5;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: rgba(45, 27, 78, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 18px 22px;
+      font-size: 26px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      color: var(--text);
+      margin-bottom: 18px;
+      font-weight: 700;
+      -webkit-appearance: none;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    input:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(212, 168, 70, 0.05);
+    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .result {
+      margin-top: 28px;
+      padding: 32px 24px;
+      background: linear-gradient(135deg, rgba(212,168,70,0.18), rgba(26,188,156,0.08));
+      border-radius: 20px;
+      border: 1px solid rgba(212,168,70,0.3);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .result::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .result-amount {
+      font-size: clamp(48px, 10vw, 64px);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 10px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -2px;
+    }
+    .result-label {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .share-btn, .cta-btn {
+      width: 100%;
+      margin-top: 16px;
+      padding: 18px;
+      border: none;
+      border-radius: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .share-btn {
+      background: var(--gold);
+      color: var(--bg);
+    }
+    .cta-btn {
+      background: #000;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.15);
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .share-btn:active, .cta-btn:active { transform: scale(0.97); }
+    .cta-btn:hover { background: #1a1a1a; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* Examples */
+    .examples {
+      margin-top: 24px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .example-chip {
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 100px;
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .example-chip:hover {
+      border-color: var(--gold);
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <div class="badge">Free Calculator</div>
+      <h1>How much of <span>your life</span><br>did that cost?</h1>
+      <p class="subtitle">Convert any expense into the hours of work it really cost you.</p>
+
+      <div class="card">
+        <label for="salary">Monthly Salary (after tax)</label>
+        <input type="number" id="salary" placeholder="3000" value="3000" inputmode="numeric">
+
+        <div class="row">
+          <div>
+            <label for="hours">Hours/Week</label>
+            <input type="number" id="hours" placeholder="40" value="40" inputmode="numeric">
+          </div>
+          <div>
+            <label for="expense">Expense ($)</label>
+            <input type="number" id="expense" placeholder="5" value="5" inputmode="decimal" step="0.01">
+          </div>
+        </div>
+
+        <div class="result" id="result">
+          <div class="result-amount" id="amount">23 min</div>
+          <div class="result-label" id="label">for $5</div>
+        </div>
+
+        <button class="share-btn" id="shareBtn">Share This Math</button>
+
+        <div class="examples">
+          <div class="example-chip" data-amount="5">☕ Coffee $5</div>
+          <div class="example-chip" data-amount="35">🍔 Lunch $35</div>
+          <div class="example-chip" data-amount="100">🛒 Groceries $100</div>
+          <div class="example-chip" data-amount="1500">🏠 Rent $1500</div>
+        </div>
+      </div>
+
+      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957"
+         class="cta-btn" target="_blank" rel="noopener">
+        See every expense this way →
+      </a>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p>Made by <a href="/">HourSpend</a> — Budget Tracker that shows expenses as hours of your life.</p>
+    <p style="margin-top: 8px;">
+      <a href="/buying">Browse 100+ products</a> · <a href="/about">About</a> · iOS app
+    </p>
+  </div>
+
+  <script>
+    const salaryInput = document.getElementById('salary');
+    const hoursInput = document.getElementById('hours');
+    const expenseInput = document.getElementById('expense');
+    const amountEl = document.getElementById('amount');
+    const labelEl = document.getElementById('label');
+    const shareBtn = document.getElementById('shareBtn');
+
+    function formatTime(minutes, expense) {
+      let timeStr;
+      if (minutes < 60) timeStr = `${Math.round(minutes)} min`;
+      else if (minutes / 60 < 8) timeStr = `${(minutes / 60).toFixed(1)} hours`;
+      else if (minutes / 480 < 5) timeStr = `${(minutes / 480).toFixed(1)} workdays`;
+      else if (minutes / 2400 < 4) timeStr = `${(minutes / 2400).toFixed(1)} workweeks`;
+      else timeStr = `${(minutes / 10400).toFixed(1)} months`;
+      return timeStr;
+    }
+
+    function calculate() {
+      const salary = parseFloat(salaryInput.value) || 0;
+      const hours = parseFloat(hoursInput.value) || 0;
+      const expense = parseFloat(expenseInput.value) || 0;
+
+      if (salary <= 0 || hours <= 0 || expense <= 0) {
+        amountEl.textContent = '—';
+        labelEl.textContent = 'enter values above';
+        return;
+      }
+
+      const monthlyHours = hours * 4.33;
+      const hourlyRate = salary / monthlyHours;
+      const minutesNeeded = (expense / hourlyRate) * 60;
+
+      amountEl.textContent = formatTime(minutesNeeded);
+      labelEl.textContent = `for $${expense}`;
+    }
+
+    [salaryInput, hoursInput, expenseInput].forEach(el => el.addEventListener('input', calculate));
+
+    document.querySelectorAll('.example-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        expenseInput.value = chip.dataset.amount;
+        calculate();
+      });
+    });
+
+    shareBtn.addEventListener('click', async () => {
+      const text = `$${expenseInput.value} = ${amountEl.textContent} of my life. Calculate yours: hourspend.app`;
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: 'HourSpend', text, url: 'https://hourspend.app' });
+        } catch (e) {}
+      } else {
+        navigator.clipboard.writeText(text);
+        shareBtn.textContent = '✓ Copied!';
+        setTimeout(() => shareBtn.textContent = 'Share This Math', 2000);
+      }
+    });
+
+    calculate();
+  </script>
+</body>
+</html>

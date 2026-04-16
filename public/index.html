@@ -1,362 +1,807 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HourSpend — Your Money, Measured in Hours of Your Life</title>
-  <meta name="description" content="Free calculator: Convert any expense into the hours of work it really cost you. Coffee, rent, subscriptions — see what your spending costs in time.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HourSpend — Your money, in hours of your life.</title>
+<meta name="description" content="Free calculator. Convert any expense into the hours of work it really cost you. iOS app — see every dollar as time.">
 
-  <meta property="og:title" content="Your $5 coffee = 23 minutes of your life">
-  <meta property="og:description" content="Free calculator. See every expense as hours of work.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://hourspend.app/og-image.png">
+<meta property="og:title" content="HourSpend — Your $5 coffee = 23 minutes of your life">
+<meta property="og:description" content="Free calculator. iOS app converts every expense to hours of work.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hourspend.one">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Your $5 coffee = 23 minutes of your life">
-  <meta name="twitter:description" content="Free calculator. See every expense as hours of work.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HourSpend — Money is just time">
+<meta name="twitter:description" content="See what your spending really costs you. In hours of your life.">
 
-  <link rel="canonical" href="https://hourspend.app">
+<link rel="canonical" href="https://hourspend.one">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "HourSpend",
-    "description": "Convert any expense into hours of work",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "iOS, Web",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #1A0B2E;
-      --surface: #2D1B4E;
-      --gold: #D4A846;
-      --soft-gold: #E8C86E;
-      --text: #F5F5F5;
-      --muted: #B0A0C8;
-      --accent: #1ABC9C;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100dvh;
-      overflow-x: hidden;
-    }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HourSpend",
+  "description": "Convert any expense into hours of work",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "iOS",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
 
-    /* Hero */
-    .hero {
-      min-height: 100dvh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      position: relative;
-      background: radial-gradient(ellipse at top, #2D1B4E 0%, #1A0B2E 70%);
-    }
+<style>
+:root {
+  --bg: #0a0710;
+  --surface: #16101f;
+  --surface-2: #1c1429;
+  --gold: #e8c86e;
+  --gold-deep: #d4a846;
+  --gold-soft: #f5e6c8;
+  --teal: #1abc9c;
+  --text: #f5f0e6;
+  --text-muted: #a89cb8;
+  --text-dim: #6e6379;
+  --line: rgba(255,255,255,0.08);
+  --serif: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'Geist Mono', 'SF Mono', monospace;
+}
 
-    /* Animated mesh background */
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(212, 168, 70, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(108, 63, 160, 0.2) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(26, 188, 156, 0.05) 0%, transparent 60%);
-      pointer-events: none;
-      animation: float 20s ease-in-out infinite alternate;
-    }
-    @keyframes float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, -20px) scale(1.05); }
-    }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--serif);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
 
-    .container { max-width: 580px; width: 100%; position: relative; z-index: 1; }
+/* === NAV === */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 24px;
+  background: rgba(10,7,16,0.6);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-weight: 800; font-size: 17px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
+.logo .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+.nav-actions { display: flex; align-items: center; gap: 22px; }
+.nav-actions a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+.nav-actions a:hover { color: var(--text); }
+.cta-pill {
+  background: var(--text) !important;
+  color: var(--bg) !important;
+  padding: 9px 16px;
+  border-radius: 100px;
+  font-weight: 700 !important;
+  transition: transform .2s, box-shadow .2s;
+}
+.cta-pill:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(245,240,230,.15); }
 
-    .badge {
-      display: inline-block;
-      padding: 6px 14px;
-      background: rgba(212, 168, 70, 0.12);
-      border: 1px solid rgba(212, 168, 70, 0.3);
-      border-radius: 100px;
-      font-size: 12px;
-      color: var(--gold);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-    h1 {
-      font-size: clamp(36px, 7vw, 56px);
-      font-weight: 800;
-      line-height: 1.05;
-      margin-bottom: 16px;
-      letter-spacing: -1.5px;
-    }
-    h1 span { color: var(--gold); }
-    .subtitle {
-      color: var(--muted);
-      font-size: clamp(16px, 2.5vw, 19px);
-      line-height: 1.5;
-      margin-bottom: 40px;
-    }
+/* === HERO === */
+.hero { position: relative; min-height: 100dvh; padding: 120px 24px 80px; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mesh { position: absolute; border-radius: 50%; filter: blur(60px); }
+.mesh-1 { top: -10%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(232,200,110,.18), transparent 60%); animation: drift 20s ease-in-out infinite alternate; }
+.mesh-2 { top: 20%; right: -15%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(108,63,160,.25), transparent 60%); animation: drift 26s ease-in-out infinite alternate-reverse; }
+.mesh-3 { bottom: -20%; left: 30%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(26,188,156,.12), transparent 60%); animation: drift 22s ease-in-out infinite alternate; }
+@keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(80px,-60px) scale(1.1); } }
 
-    .card {
-      background: rgba(45, 27, 78, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 28px;
-      padding: 32px;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
-    }
-    label {
-      display: block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      font-weight: 600;
-    }
-    input {
-      width: 100%;
-      padding: 18px 22px;
-      font-size: 26px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      color: var(--text);
-      margin-bottom: 18px;
-      font-weight: 700;
-      -webkit-appearance: none;
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-    input:focus {
-      outline: none;
-      border-color: var(--gold);
-      background: rgba(212, 168, 70, 0.05);
-    }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hero-grid {
+  position: relative; z-index: 1;
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 60px; align-items: center;
+}
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
 
-    .result {
-      margin-top: 28px;
-      padding: 32px 24px;
-      background: linear-gradient(135deg, rgba(212,168,70,0.18), rgba(26,188,156,0.08));
-      border-radius: 20px;
-      border: 1px solid rgba(212,168,70,0.3);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .result::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
-      animation: shimmer 3s infinite;
-    }
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-    .result-amount {
-      font-size: clamp(48px, 10vw, 64px);
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 10px;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: -2px;
-    }
-    .result-label {
-      color: var(--muted);
-      font-size: 16px;
-    }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 7px 16px 7px 10px;
+  border-radius: 100px;
+  background: rgba(232,200,110,.08);
+  border: 1px solid rgba(232,200,110,.22);
+  font-size: 12px;
+  color: var(--gold-soft);
+  font-weight: 600;
+  letter-spacing: .3px;
+  margin-bottom: 28px;
+  width: fit-content;
+}
+.hero-badge .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); position: relative; }
+.hero-badge .pulse::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; background: var(--gold); opacity: .4; animation: pulse 2s ease-out infinite; }
+@keyframes pulse { 0% { transform: scale(1); opacity: .4; } 100% { transform: scale(2.5); opacity: 0; } }
 
-    .share-btn, .cta-btn {
-      width: 100%;
-      margin-top: 16px;
-      padding: 18px;
-      border: none;
-      border-radius: 16px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-    .share-btn {
-      background: var(--gold);
-      color: var(--bg);
-    }
-    .cta-btn {
-      background: #000;
-      color: white;
-      border: 1px solid rgba(255,255,255,0.15);
-      margin-top: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    .share-btn:active, .cta-btn:active { transform: scale(0.97); }
-    .cta-btn:hover { background: #1a1a1a; }
+h1 {
+  font-size: clamp(46px, 7.5vw, 92px);
+  line-height: .95;
+  letter-spacing: -2.8px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+h1 .accent {
+  background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 50%, var(--gold-deep) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+  font-weight: 700;
+}
+.hero-sub { color: var(--text-muted); font-size: clamp(17px, 2vw, 21px); line-height: 1.55; margin-bottom: 36px; max-width: 540px; }
 
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 40px 24px;
-      color: var(--muted);
-      font-size: 13px;
-      max-width: 580px;
-      margin: 0 auto;
-    }
-    .footer a {
-      color: var(--gold);
-      text-decoration: none;
-    }
+.hero-stats { display: flex; gap: 40px; margin-top: 48px; flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-num { font-family: var(--mono); font-size: 22px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
 
-    /* Examples */
-    .examples {
-      margin-top: 24px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .example-chip {
-      padding: 8px 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 100px;
-      font-size: 13px;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .example-chip:hover {
-      border-color: var(--gold);
-      color: var(--text);
-    }
-  </style>
+/* === CALCULATOR === */
+.calc {
+  position: relative;
+  background: linear-gradient(180deg, rgba(28,20,41,.7) 0%, rgba(22,16,31,.7) 100%);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 32px;
+  padding: 32px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.1),
+    0 30px 80px rgba(0,0,0,.5),
+    0 1px 0 rgba(232,200,110,.1);
+}
+
+.calc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.calc-title { font-size: 11px; color: var(--text-dim); letter-spacing: 1.2px; text-transform: uppercase; font-weight: 700; }
+.calc-live { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--teal); font-family: var(--mono); font-weight: 500; letter-spacing: .8px; }
+.calc-live .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); animation: blink 1.5s ease-in-out infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+.calc-inputs { display: flex; flex-direction: column; gap: 14px; }
+.input-group label { display: block; font-size: 10px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+input {
+  width: 100%; padding: 16px 20px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 22px; font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  transition: all .2s cubic-bezier(0.16,1,0.3,1);
+  -webkit-appearance: none;
+}
+input:focus { outline: none; border-color: var(--gold); background: rgba(232,200,110,.04); box-shadow: 0 0 0 4px rgba(232,200,110,.08); }
+
+.calc-result {
+  margin-top: 28px; padding: 32px 28px;
+  background: radial-gradient(circle at top right, rgba(232,200,110,.12), transparent 60%), rgba(255,255,255,.02);
+  border: 1px solid rgba(232,200,110,.15);
+  border-radius: 22px;
+  position: relative; overflow: hidden;
+}
+.calc-result::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.05) 50%, transparent 70%);
+  animation: shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer { 0%,100% { transform: translateX(-100%); } 50% { transform: translateX(100%); } }
+
+.result-label { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+.result-value {
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 900; letter-spacing: -2px; line-height: 1;
+  background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--mono);
+  margin-bottom: 8px;
+  position: relative; z-index: 1;
+}
+.result-context { color: var(--text-muted); font-size: 14px; position: relative; z-index: 1; }
+
+.calc-share {
+  margin-top: 16px; width: 100%; padding: 16px;
+  background: var(--text); color: var(--bg); border: none;
+  border-radius: 14px;
+  font-family: var(--serif);
+  font-weight: 700; font-size: 14px; letter-spacing: .3px;
+  cursor: pointer;
+  transition: all .15s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.calc-share:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(245,240,230,.15); }
+
+.examples-row { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.chip {
+  padding: 8px 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 100px;
+  font-size: 12px; color: var(--text-muted);
+  cursor: pointer; transition: all .2s;
+  font-family: var(--serif); font-weight: 500;
+}
+.chip:hover { border-color: var(--gold); color: var(--text); }
+
+/* === BENTO === */
+.bento-section { padding: 120px 24px 80px; position: relative; }
+.section-head { max-width: 800px; margin: 0 auto 64px; text-align: center; }
+.eyebrow { font-size: 11px; color: var(--gold); letter-spacing: 2.4px; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
+h2 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -1.5px; font-weight: 800; margin-bottom: 16px; }
+.section-sub { color: var(--text-muted); font-size: clamp(16px, 2vw, 19px); line-height: 1.5; max-width: 540px; margin: 0 auto; }
+
+.bento {
+  max-width: 1280px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-auto-rows: 320px;
+  gap: 16px;
+}
+@media (max-width: 900px) { .bento { grid-template-columns: 1fr; } .bento-cell.large { grid-column: auto !important; grid-row: auto !important; } }
+.bento-cell {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 32px;
+  position: relative; overflow: hidden;
+  transition: all .4s cubic-bezier(0.16,1,0.3,1);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.bento-cell:hover { border-color: rgba(232,200,110,.2); transform: translateY(-2px); }
+.bento-cell.large {
+  grid-column: 1 / 2; grid-row: 1 / 3;
+  background: radial-gradient(ellipse at bottom right, rgba(232,200,110,.18) 0%, transparent 50%), var(--surface);
+}
+.bento-cell .meta { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; font-weight: 700; }
+.bento-cell h3 {
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.05; font-weight: 700;
+  letter-spacing: -.8px; margin-top: 16px;
+  color: var(--text);
+}
+.bento-cell .equation {
+  font-family: var(--mono);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: -2px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1; margin-top: 16px;
+}
+.bento-cell .price { font-family: var(--mono); font-size: 13px; color: var(--text-dim); margin-top: 8px; }
+.bento-cell .glyph { font-size: 56px; position: absolute; top: 28px; right: 28px; opacity: .5; }
+.bento-cell.large .glyph { font-size: 96px; top: auto; bottom: -20px; right: -10px; opacity: .15; }
+
+/* === EXPLAINER === */
+.explainer { padding: 100px 24px; background: var(--bg); }
+.explainer-grid {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+@media (max-width: 900px) { .explainer-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+.explainer-text h2 { margin-bottom: 24px; }
+.explainer-text p { color: var(--text-muted); font-size: 17px; line-height: 1.65; margin-bottom: 16px; }
+.explainer-text strong { color: var(--text); font-weight: 600; }
+
+.transform-demo {
+  position: relative; height: 380px;
+  background: radial-gradient(circle at center, rgba(232,200,110,.1), transparent 70%), var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.transform-state {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  gap: 12px;
+  transition: opacity .8s cubic-bezier(0.16,1,0.3,1), transform .8s cubic-bezier(0.16,1,0.3,1);
+}
+.transform-state .label { font-size: 11px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+.transform-state .value { font-family: var(--mono); font-size: 96px; font-weight: 900; letter-spacing: -3px; line-height: 1; }
+.transform-state.dollars .value { color: var(--text-muted); }
+.transform-state.hours { opacity: 0; transform: translateY(20px); }
+.transform-state.hours .value {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.transform-demo.flipped .dollars { opacity: 0; transform: translateY(-20px); }
+.transform-demo.flipped .hours { opacity: 1; transform: translateY(0); }
+
+/* === MARQUEE === */
+.marquee-section { padding: 80px 0; overflow: hidden; }
+.marquee-head { padding: 0 24px; max-width: 1280px; margin: 0 auto 48px; text-align: center; }
+.marquee-wrap { mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
+.marquee {
+  display: flex; gap: 16px;
+  animation: scroll 60s linear infinite;
+  width: max-content;
+}
+.marquee:hover { animation-play-state: paused; }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-card {
+  flex-shrink: 0; width: 260px;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  display: flex; flex-direction: column; gap: 6px;
+  transition: all .25s;
+  text-decoration: none;
+  color: var(--text);
+}
+.marquee-card:hover { border-color: rgba(232,200,110,.3); transform: translateY(-3px); background: var(--surface-2); }
+.marquee-card .glyph { font-size: 32px; margin-bottom: 4px; }
+.marquee-card .name { font-size: 14px; font-weight: 600; color: var(--text); }
+.marquee-card .price-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; }
+.marquee-card .price { font-family: var(--mono); font-size: 13px; color: var(--text-dim); }
+.marquee-card .hours { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--gold); letter-spacing: -.5px; }
+
+.browse-all { text-align: center; margin-top: 48px; }
+.browse-all a {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  color: var(--text); text-decoration: none;
+  font-weight: 600; font-size: 15px;
+  transition: all .2s;
+}
+.browse-all a:hover { border-color: var(--gold); }
+.browse-all a span { transition: transform .2s; }
+.browse-all a:hover span { transform: translateX(4px); }
+
+/* === DOWNLOAD === */
+.download {
+  padding: 120px 24px;
+  background: radial-gradient(ellipse at top, rgba(108,63,160,.12), transparent 60%), var(--bg);
+}
+.download-card {
+  max-width: 1100px; margin: 0 auto;
+  background: linear-gradient(135deg, rgba(232,200,110,.06), rgba(108,63,160,.08));
+  border: 1px solid rgba(232,200,110,.18);
+  border-radius: 40px;
+  padding: 80px 60px;
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 60px; align-items: center;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 900px) { .download-card { grid-template-columns: 1fr; padding: 60px 32px; gap: 40px; } }
+.download-card::before {
+  content: ''; position: absolute;
+  top: -50%; right: -20%; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(232,200,110,.18), transparent 70%);
+  pointer-events: none;
+}
+.download-content { position: relative; z-index: 1; }
+.download h2 { margin-bottom: 20px; }
+.download p { color: var(--text-muted); font-size: 18px; line-height: 1.55; margin-bottom: 32px; }
+.download-features { list-style: none; margin: 24px 0 32px; }
+.download-features li {
+  display: flex; align-items: center; gap: 12px;
+  padding: 8px 0; color: var(--text); font-size: 15px;
+}
+.download-features li::before {
+  content: ''; width: 16px; height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  box-shadow: 0 0 0 4px rgba(232,200,110,.1);
+  flex-shrink: 0;
+}
+.appstore-badge {
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 14px 28px;
+  background: var(--text); color: var(--bg);
+  border-radius: 16px; text-decoration: none;
+  font-weight: 700; font-size: 16px;
+  transition: all .2s;
+}
+.appstore-badge:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+.appstore-badge .apple { font-size: 22px; }
+
+/* === PHONE MOCKUP === */
+.phone-mockup {
+  position: relative;
+  width: 100%; max-width: 280px; margin: 0 auto;
+  aspect-ratio: 280 / 580;
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  border-radius: 50px; padding: 12px;
+  box-shadow:
+    0 0 0 2px #0a0a0a,
+    0 30px 80px rgba(0,0,0,.5),
+    0 10px 30px rgba(232,200,110,.1);
+  transform: rotate(-3deg);
+  transition: transform .5s cubic-bezier(0.16,1,0.3,1);
+}
+.phone-mockup:hover { transform: rotate(0deg) translateY(-8px); }
+.phone-screen {
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, #1A0B2E, #0A0418);
+  border-radius: 38px;
+  padding: 40px 24px 24px;
+  position: relative; overflow: hidden;
+}
+.phone-screen::before {
+  content: ''; position: absolute;
+  top: 8px; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 26px;
+  background: #0a0a0a; border-radius: 100px;
+}
+.phone-content { padding-top: 30px; text-align: center; }
+.phone-greet { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; letter-spacing: .5px; }
+.phone-balance {
+  font-family: var(--mono); font-size: 32px; font-weight: 800;
+  color: var(--gold); letter-spacing: -1px; margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.phone-conv { font-size: 11px; color: var(--text-dim); margin-bottom: 24px; font-family: var(--mono); }
+.phone-cards { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.phone-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.05);
+  padding: 12px 14px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.phone-card .item { font-size: 12px; color: var(--text); font-weight: 600; }
+.phone-card .time { font-family: var(--mono); font-size: 12px; color: var(--gold); font-weight: 600; }
+
+/* === FOOTER === */
+footer { padding: 60px 24px 40px; border-top: 1px solid var(--line); text-align: center; }
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+.footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 24px; flex-wrap: wrap; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-credit { color: var(--text-dim); font-size: 12px; font-family: var(--mono); }
+
+/* === REVEAL === */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(0.16,1,0.3,1), transform .8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+
+/* === SHARE TOAST === */
+.share-success {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--text); color: var(--bg);
+  padding: 14px 24px; border-radius: 100px;
+  font-weight: 600; font-size: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.3);
+  transition: transform .4s cubic-bezier(0.16,1,0.3,1);
+  z-index: 200;
+}
+.share-success.show { transform: translateX(-50%) translateY(0); }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(232,200,110,.2); border-radius: 100px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(232,200,110,.4); }
+</style>
 </head>
 <body>
-  <section class="hero">
-    <div class="container">
-      <div class="badge">Free Calculator</div>
-      <h1>How much of <span>your life</span><br>did that cost?</h1>
-      <p class="subtitle">Convert any expense into the hours of work it really cost you.</p>
 
-      <div class="card">
-        <label for="salary">Monthly Salary (after tax)</label>
-        <input type="number" id="salary" placeholder="3000" value="3000" inputmode="numeric">
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <span class="dot"></span>
+      <span>HourSpend</span>
+    </div>
+    <div class="nav-actions">
+      <a href="/buying">Calculator</a>
+      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="cta-pill">Get the App</a>
+    </div>
+  </div>
+</nav>
 
-        <div class="row">
-          <div>
-            <label for="hours">Hours/Week</label>
-            <input type="number" id="hours" placeholder="40" value="40" inputmode="numeric">
-          </div>
-          <div>
-            <label for="expense">Expense ($)</label>
-            <input type="number" id="expense" placeholder="5" value="5" inputmode="decimal" step="0.01">
-          </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="mesh mesh-1"></div>
+    <div class="mesh mesh-2"></div>
+    <div class="mesh mesh-3"></div>
+  </div>
+
+  <div class="hero-grid">
+    <div class="hero-text reveal">
+      <div class="hero-badge">
+        <span class="pulse"></span>
+        <span>Live calculator · iOS app available</span>
+      </div>
+      <h1>
+        Your money,<br>
+        in <span class="accent">hours</span><br>
+        of your life.
+      </h1>
+      <p class="hero-sub">
+        Convert any expense into the work hours it really cost you. Coffee. Rent. That subscription you forgot. See what you trade. Decide differently.
+      </p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">52+</span><span class="stat-label">Items priced</span></div>
+        <div class="stat"><span class="stat-num">14</span><span class="stat-label">Languages</span></div>
+        <div class="stat"><span class="stat-num">iOS</span><span class="stat-label">Native</span></div>
+      </div>
+    </div>
+
+    <div class="calc reveal reveal-d1">
+      <div class="calc-header">
+        <span class="calc-title">Calculator</span>
+        <span class="calc-live"><span class="dot"></span>REAL-TIME</span>
+      </div>
+      <div class="calc-inputs">
+        <div class="input-group">
+          <label>Monthly salary</label>
+          <input type="number" id="salary" value="3000" inputmode="numeric">
         </div>
-
-        <div class="result" id="result">
-          <div class="result-amount" id="amount">23 min</div>
-          <div class="result-label" id="label">for $5</div>
-        </div>
-
-        <button class="share-btn" id="shareBtn">Share This Math</button>
-
-        <div class="examples">
-          <div class="example-chip" data-amount="5">☕ Coffee $5</div>
-          <div class="example-chip" data-amount="35">🍔 Lunch $35</div>
-          <div class="example-chip" data-amount="100">🛒 Groceries $100</div>
-          <div class="example-chip" data-amount="1500">🏠 Rent $1500</div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Hrs / week</label>
+            <input type="number" id="hours" value="40" inputmode="numeric">
+          </div>
+          <div class="input-group">
+            <label>Expense $</label>
+            <input type="number" id="expense" value="5" inputmode="decimal" step="0.01">
+          </div>
         </div>
       </div>
 
-      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957"
-         class="cta-btn" target="_blank" rel="noopener">
-        See every expense this way →
-      </a>
-    </div>
-  </section>
+      <div class="calc-result">
+        <div class="result-label">That cost you</div>
+        <div class="result-value" id="amount">23 min</div>
+        <div class="result-context" id="label">for $5</div>
+      </div>
 
-  <div class="footer">
-    <p>Made by <a href="/">HourSpend</a> — Budget Tracker that shows expenses as hours of your life.</p>
-    <p style="margin-top: 8px;">
-      <a href="/buying">Browse 100+ products</a> · <a href="/about">About</a> · iOS app
-    </p>
+      <button class="calc-share" id="shareBtn">
+        Share this math
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+      <div class="examples-row">
+        <div class="chip" data-amount="5">Coffee · $5</div>
+        <div class="chip" data-amount="35">Lunch · $35</div>
+        <div class="chip" data-amount="100">Groceries · $100</div>
+        <div class="chip" data-amount="1500">Rent · $1500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO -->
+<section class="bento-section">
+  <div class="section-head reveal">
+    <div class="eyebrow">The truth in numbers</div>
+    <h2>What everyday spending really costs.</h2>
+    <p class="section-sub">At a $25/hour wage. Drag the calculator above to see your numbers.</p>
   </div>
 
-  <script>
-    const salaryInput = document.getElementById('salary');
-    const hoursInput = document.getElementById('hours');
-    const expenseInput = document.getElementById('expense');
-    const amountEl = document.getElementById('amount');
-    const labelEl = document.getElementById('label');
-    const shareBtn = document.getElementById('shareBtn');
+  <div class="bento">
+    <div class="bento-cell large reveal">
+      <span class="glyph">☕</span>
+      <div>
+        <div class="meta">Daily latte habit</div>
+        <h3>Your morning coffee for a year =</h3>
+      </div>
+      <div>
+        <div class="equation">14 work days</div>
+        <div class="price">$5/day × 365 = $1,825 · 73 hours of work</div>
+      </div>
+    </div>
 
-    function formatTime(minutes, expense) {
-      let timeStr;
-      if (minutes < 60) timeStr = `${Math.round(minutes)} min`;
-      else if (minutes / 60 < 8) timeStr = `${(minutes / 60).toFixed(1)} hours`;
-      else if (minutes / 480 < 5) timeStr = `${(minutes / 480).toFixed(1)} workdays`;
-      else if (minutes / 2400 < 4) timeStr = `${(minutes / 2400).toFixed(1)} workweeks`;
-      else timeStr = `${(minutes / 10400).toFixed(1)} months`;
-      return timeStr;
-    }
+    <div class="bento-cell reveal reveal-d1">
+      <span class="glyph">📱</span>
+      <div>
+        <div class="meta">iPhone 16 Pro</div>
+        <h3>$1,199</h3>
+      </div>
+      <div class="equation" style="font-size:32px">6 weeks</div>
+    </div>
 
-    function calculate() {
-      const salary = parseFloat(salaryInput.value) || 0;
-      const hours = parseFloat(hoursInput.value) || 0;
-      const expense = parseFloat(expenseInput.value) || 0;
+    <div class="bento-cell reveal reveal-d2">
+      <span class="glyph">🏠</span>
+      <div>
+        <div class="meta">NYC 1-bed rent</div>
+        <h3>$4,500/mo</h3>
+      </div>
+      <div class="equation" style="font-size:32px">22.5 days</div>
+    </div>
 
-      if (salary <= 0 || hours <= 0 || expense <= 0) {
-        amountEl.textContent = '—';
-        labelEl.textContent = 'enter values above';
-        return;
-      }
+    <div class="bento-cell reveal reveal-d1">
+      <span class="glyph">🛵</span>
+      <div>
+        <div class="meta">DoorDash dinner</div>
+        <h3>$32</h3>
+      </div>
+      <div class="equation" style="font-size:32px">1.3 hrs</div>
+    </div>
 
-      const monthlyHours = hours * 4.33;
-      const hourlyRate = salary / monthlyHours;
-      const minutesNeeded = (expense / hourlyRate) * 60;
+    <div class="bento-cell reveal reveal-d2">
+      <span class="glyph">📺</span>
+      <div>
+        <div class="meta">Netflix yearly</div>
+        <h3>$276</h3>
+      </div>
+      <div class="equation" style="font-size:32px">11 hrs</div>
+    </div>
+  </div>
+</section>
 
-      amountEl.textContent = formatTime(minutesNeeded);
-      labelEl.textContent = `for $${expense}`;
-    }
+<!-- EXPLAINER -->
+<section class="explainer">
+  <div class="explainer-grid">
+    <div class="explainer-text reveal">
+      <div class="eyebrow">The reframe</div>
+      <h2>Counting in dollars hides the truth.</h2>
+      <p>$5 feels like nothing. <strong>23 minutes of your morning at the office</strong> feels different.</p>
+      <p>Your money is your time, converted. Every receipt is hours of your life you'll never get back. HourSpend makes that math instant — on every transaction, every subscription, every "is it worth it?"</p>
+      <p style="margin-top:28px;font-size:19px;color:var(--text)"><strong>The reframe is impossible to unsee.</strong></p>
+    </div>
 
-    [salaryInput, hoursInput, expenseInput].forEach(el => el.addEventListener('input', calculate));
+    <div class="transform-demo reveal reveal-d1" id="transformDemo">
+      <div class="transform-state dollars">
+        <span class="label">Coffee</span>
+        <span class="value">$5</span>
+      </div>
+      <div class="transform-state hours">
+        <span class="label">Coffee</span>
+        <span class="value">23m</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    document.querySelectorAll('.example-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        expenseInput.value = chip.dataset.amount;
-        calculate();
-      });
-    });
+<!-- MARQUEE -->
+<section class="marquee-section">
+  <div class="marquee-head reveal">
+    <div class="eyebrow">Browse the catalog</div>
+    <h2>52+ purchases, priced in life.</h2>
+  </div>
 
-    shareBtn.addEventListener('click', async () => {
-      const text = `$${expenseInput.value} = ${amountEl.textContent} of my life. Calculate yours: hourspend.app`;
-      if (navigator.share) {
-        try {
-          await navigator.share({ title: 'HourSpend', text, url: 'https://hourspend.app' });
-        } catch (e) {}
-      } else {
-        navigator.clipboard.writeText(text);
-        shareBtn.textContent = '✓ Copied!';
-        setTimeout(() => shareBtn.textContent = 'Share This Math', 2000);
-      }
-    });
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <a href="/buying/iphone-16-pro" class="marquee-card"><span class="glyph">📱</span><span class="name">iPhone 16 Pro</span><div class="price-row"><span class="price">$1,199</span><span class="hours">48 hrs</span></div></a>
+      <a href="/buying/macbook-air-m3" class="marquee-card"><span class="glyph">💻</span><span class="name">MacBook Air M3</span><div class="price-row"><span class="price">$1,099</span><span class="hours">44 hrs</span></div></a>
+      <a href="/buying/tesla-model-3" class="marquee-card"><span class="glyph">🚗</span><span class="name">Tesla Model 3</span><div class="price-row"><span class="price">$38,990</span><span class="hours">8 mo</span></div></a>
+      <a href="/buying/starbucks-venti-latte" class="marquee-card"><span class="glyph">☕</span><span class="name">Venti Latte</span><div class="price-row"><span class="price">$6.15</span><span class="hours">15 min</span></div></a>
+      <a href="/buying/playstation-5" class="marquee-card"><span class="glyph">🎮</span><span class="name">PlayStation 5</span><div class="price-row"><span class="price">$499</span><span class="hours">20 hrs</span></div></a>
+      <a href="/buying/airpods-pro-2" class="marquee-card"><span class="glyph">🎧</span><span class="name">AirPods Pro 2</span><div class="price-row"><span class="price">$249</span><span class="hours">10 hrs</span></div></a>
+      <a href="/buying/netflix-monthly" class="marquee-card"><span class="glyph">📺</span><span class="name">Netflix / month</span><div class="price-row"><span class="price">$22.99</span><span class="hours">55 min</span></div></a>
+      <a href="/buying/chatgpt-plus-monthly" class="marquee-card"><span class="glyph">🤖</span><span class="name">ChatGPT Plus</span><div class="price-row"><span class="price">$20</span><span class="hours">48 min</span></div></a>
+      <a href="/buying/wedding-average-cost" class="marquee-card"><span class="glyph">💒</span><span class="name">Wedding (avg)</span><div class="price-row"><span class="price">$35,000</span><span class="hours">7 mo</span></div></a>
+      <!-- duplicate for seamless loop -->
+      <a href="/buying/iphone-16-pro" class="marquee-card"><span class="glyph">📱</span><span class="name">iPhone 16 Pro</span><div class="price-row"><span class="price">$1,199</span><span class="hours">48 hrs</span></div></a>
+      <a href="/buying/macbook-air-m3" class="marquee-card"><span class="glyph">💻</span><span class="name">MacBook Air M3</span><div class="price-row"><span class="price">$1,099</span><span class="hours">44 hrs</span></div></a>
+      <a href="/buying/tesla-model-3" class="marquee-card"><span class="glyph">🚗</span><span class="name">Tesla Model 3</span><div class="price-row"><span class="price">$38,990</span><span class="hours">8 mo</span></div></a>
+      <a href="/buying/starbucks-venti-latte" class="marquee-card"><span class="glyph">☕</span><span class="name">Venti Latte</span><div class="price-row"><span class="price">$6.15</span><span class="hours">15 min</span></div></a>
+      <a href="/buying/playstation-5" class="marquee-card"><span class="glyph">🎮</span><span class="name">PlayStation 5</span><div class="price-row"><span class="price">$499</span><span class="hours">20 hrs</span></div></a>
+      <a href="/buying/airpods-pro-2" class="marquee-card"><span class="glyph">🎧</span><span class="name">AirPods Pro 2</span><div class="price-row"><span class="price">$249</span><span class="hours">10 hrs</span></div></a>
+    </div>
+  </div>
 
-    calculate();
-  </script>
+  <div class="browse-all reveal">
+    <a href="/buying">Browse all 52 items <span>→</span></a>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="download">
+  <div class="download-card reveal">
+    <div class="download-content">
+      <div class="eyebrow">Get the iOS app</div>
+      <h2>Track every dollar<br>in hours of life.</h2>
+      <p>The free calculator is a taste. The iOS app does it for every expense, automatically.</p>
+      <ul class="download-features">
+        <li>Add expenses by voice, text, or receipt scan</li>
+        <li>See your monthly burn in work-hours</li>
+        <li>Set savings goals as "hours back"</li>
+        <li>14 languages · multi-currency · private by default</li>
+      </ul>
+      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="appstore-badge">
+        <span class="apple">⌬</span> Download on App Store
+      </a>
+    </div>
+
+    <div class="phone-mockup">
+      <div class="phone-screen">
+        <div class="phone-content">
+          <div class="phone-greet">THIS WEEK</div>
+          <div class="phone-balance">14h 32m</div>
+          <div class="phone-conv">≈ $363 spent</div>
+          <div class="phone-cards">
+            <div class="phone-card"><span class="item">☕ Coffee</span><span class="time">23m</span></div>
+            <div class="phone-card"><span class="item">🍔 Lunch</span><span class="time">1h 12m</span></div>
+            <div class="phone-card"><span class="item">🛒 Groceries</span><span class="time">3h 40m</span></div>
+            <div class="phone-card"><span class="item">⛽ Gas</span><span class="time">2h 25m</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/buying">All items</a>
+      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957">iOS App</a>
+      <a href="https://violencia19.github.io/app-legal/vantag/privacy-en.html">Privacy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms</a>
+    </div>
+    <div class="footer-credit">© HourSpend · Money is just time, exchanged.</div>
+  </div>
+</footer>
+
+<div class="share-success" id="shareSuccess">✓ Copied — paste anywhere</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const salary = $('salary'), hours = $('hours'), expense = $('expense');
+const amountEl = $('amount'), labelEl = $('label');
+const shareBtn = $('shareBtn'), shareSuccess = $('shareSuccess');
+const transformDemo = $('transformDemo');
+
+function formatTime(min) {
+  if (min < 60) return Math.round(min) + ' min';
+  if (min < 480) return (min/60).toFixed(1) + ' hrs';
+  if (min < 2400) return (min/480).toFixed(1) + ' days';
+  if (min < 10400) return (min/2400).toFixed(1) + ' weeks';
+  return (min/10400).toFixed(1) + ' months';
+}
+function calc() {
+  const s = parseFloat(salary.value) || 0;
+  const h = parseFloat(hours.value) || 0;
+  const e = parseFloat(expense.value) || 0;
+  if (s <= 0 || h <= 0 || e <= 0) {
+    amountEl.textContent = '—';
+    labelEl.textContent = 'enter values';
+    return;
+  }
+  const monthlyHours = h * 4.33;
+  const hourlyRate = s / monthlyHours;
+  const minutes = (e / hourlyRate) * 60;
+  amountEl.textContent = formatTime(minutes);
+  labelEl.textContent = 'for $' + e;
+}
+[salary, hours, expense].forEach(el => el.addEventListener('input', calc));
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => { expense.value = chip.dataset.amount; calc(); });
+});
+shareBtn.addEventListener('click', async () => {
+  const text = `$${expense.value} = ${amountEl.textContent} of my life. Calculate yours: hourspend.one`;
+  if (navigator.share) {
+    try { await navigator.share({ title: 'HourSpend', text, url: 'https://hourspend.one' }); } catch(e) {}
+  } else {
+    navigator.clipboard.writeText(text);
+    shareSuccess.classList.add('show');
+    setTimeout(() => shareSuccess.classList.remove('show'), 2200);
+  }
+});
+calc();
+
+// Transform demo flip
+let flipped = false;
+setInterval(() => { flipped = !flipped; transformDemo.classList.toggle('flipped', flipped); }, 2200);
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 </body>
 </html>

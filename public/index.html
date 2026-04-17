@@ -745,6 +745,318 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 .share-success svg { width: 16px; height: 16px; }
 
 ::-webkit-scrollbar { width: 0; }
+
+/* === LANGUAGE SWITCHER === */
+.lang-switch { position: relative; }
+.lang-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 10px 7px 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+}
+.lang-btn:hover { border-color: var(--line-hi); color: var(--text); }
+.lang-btn svg { width: 11px; height: 11px; opacity: 0.7; }
+.lang-dropdown {
+  position: absolute; top: calc(100% + 10px); right: 0;
+  min-width: 180px;
+  background: rgba(15, 10, 24, 0.95);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--line-hi);
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  opacity: 0; pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 100;
+}
+.lang-switch.open .lang-dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.lang-option {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--text-muted); cursor: pointer;
+  font-size: 13px; font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+.lang-option:hover { background: rgba(255,255,255,0.05); color: var(--text); }
+.lang-option.active { background: rgba(232,200,110,0.08); color: var(--gold-soft); }
+.lang-option .code { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 1px; }
+
+/* === AGGRESSIVE HERO ADD-ONS === */
+.hero-rank {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 10px 16px 10px 12px;
+  background: linear-gradient(135deg, rgba(232,200,110,0.12), rgba(108,63,160,0.08));
+  border: 1px solid rgba(232,200,110,0.3);
+  border-radius: 100px;
+  margin-bottom: 28px;
+  width: fit-content;
+  box-shadow: 0 10px 30px rgba(232,200,110,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.hero-rank .num {
+  font-family: var(--editorial); font-style: italic; font-weight: 900;
+  font-size: 20px; letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
+}
+.hero-rank .txt { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-soft); font-weight: 600; }
+.hero-rank .stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+
+/* === TRUSTED BY STRIP === */
+.trusted-strip {
+  max-width: 1280px; margin: 40px auto 0; padding: 0 28px;
+  text-align: center;
+}
+.trusted-strip .label {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--text-dim); letter-spacing: 2.5px;
+  text-transform: uppercase; font-weight: 600;
+  margin-bottom: 20px;
+}
+.trusted-logos {
+  display: flex; justify-content: center; align-items: center;
+  gap: 48px; flex-wrap: wrap;
+  padding: 18px 24px;
+  background: linear-gradient(180deg, rgba(21,16,32,0.5), rgba(15,10,24,0.3));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.trusted-logos .logo-item {
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  color: var(--text-muted); letter-spacing: 0.5px;
+  display: inline-flex; align-items: center; gap: 10px;
+  opacity: 0.75; transition: opacity 0.3s, color 0.3s;
+}
+.trusted-logos .logo-item:hover { opacity: 1; color: var(--text); }
+.trusted-logos .logo-item::before {
+  content: ''; width: 6px; height: 6px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  border-radius: 50%; box-shadow: 0 0 10px rgba(232,200,110,0.4);
+}
+
+/* === BIG NUMBERS === */
+.numbers-section {
+  max-width: 1280px; margin: 140px auto 80px;
+  padding: 0 28px;
+}
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+@media (max-width: 900px) { .numbers-grid { grid-template-columns: repeat(2, 1fr); } }
+.number-card {
+  padding: 36px 28px;
+  background: linear-gradient(180deg, rgba(21,16,32,0.85), rgba(15,10,24,0.85));
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  text-align: left;
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.number-card:hover { border-color: rgba(232,200,110,0.25); transform: translateY(-3px); }
+.number-card .big {
+  font-family: var(--mono); font-weight: 500;
+  font-size: clamp(44px, 5vw, 64px);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -2.5px; line-height: 1;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+.number-card .label { font-size: 13px; color: var(--text); font-weight: 600; margin-bottom: 4px; }
+.number-card .sub { font-size: 11px; color: var(--text-dim); font-family: var(--mono); letter-spacing: 0.5px; }
+
+/* === HOW IT WORKS === */
+.howto-section { max-width: 1280px; margin: 140px auto 80px; padding: 0 28px; }
+.howto-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  margin-top: 56px;
+}
+@media (max-width: 900px) { .howto-grid { grid-template-columns: 1fr; } }
+.howto-step {
+  padding: 32px 28px;
+  background: linear-gradient(180deg, rgba(21,16,32,0.9), rgba(15,10,24,0.9));
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  position: relative; overflow: hidden;
+  min-height: 340px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: border-color 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.howto-step:hover { border-color: rgba(232,200,110,0.3); transform: translateY(-4px); }
+.howto-step .num-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 5px 12px 5px 10px;
+  background: rgba(232,200,110,0.08);
+  border: 1px solid rgba(232,200,110,0.22);
+  border-radius: 100px;
+  font-family: var(--mono); font-size: 10px;
+  color: var(--gold-soft); letter-spacing: 1.5px;
+  text-transform: uppercase; font-weight: 700;
+  width: fit-content;
+}
+.howto-step .num-tag .n {
+  font-family: var(--editorial); font-style: italic; font-weight: 900;
+  font-size: 14px; color: var(--gold);
+}
+.howto-step h3 {
+  font-size: clamp(22px, 2.5vw, 28px);
+  line-height: 1.1; letter-spacing: -1px;
+  font-weight: 700; margin: 20px 0 10px;
+}
+.howto-step h3 .italic { font-family: var(--editorial); font-style: italic; font-weight: 700; color: var(--gold-soft); }
+.howto-step p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
+.howto-step .illo {
+  margin-top: 24px; aspect-ratio: 16/10;
+  background-size: cover; background-position: center;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
+/* === VS COMPETITION === */
+.compare-section { max-width: 1100px; margin: 140px auto 80px; padding: 0 28px; }
+.compare-card {
+  background: linear-gradient(180deg, rgba(21,16,32,0.9), rgba(15,10,24,0.9));
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+}
+.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table th, .compare-table td { padding: 18px 24px; text-align: left; font-size: 14px; }
+.compare-table th {
+  background: rgba(232,200,110,0.05);
+  color: var(--gold); font-family: var(--mono);
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700;
+  border-bottom: 1px solid var(--line);
+}
+.compare-table th.hs {
+  background: linear-gradient(135deg, rgba(232,200,110,0.15), rgba(108,63,160,0.1));
+  color: var(--gold-soft);
+}
+.compare-table td { border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-muted); }
+.compare-table td:first-child { font-weight: 600; color: var(--text); }
+.compare-table td.hs-col { color: var(--text); font-weight: 600; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table .check { color: var(--gold); font-weight: 700; font-size: 16px; }
+.compare-table .cross { color: var(--text-dim); font-size: 16px; opacity: 0.6; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* === TESTIMONIALS === */
+.testi-section { max-width: 1280px; margin: 140px auto 80px; padding: 0 28px; }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); gap: 14px;
+  margin-top: 56px;
+}
+@media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr; } }
+.testi-card {
+  padding: 32px 28px;
+  background: linear-gradient(180deg, rgba(21,16,32,0.9), rgba(15,10,24,0.9));
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  transition: border-color 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.testi-card:hover { border-color: rgba(232,200,110,0.25); transform: translateY(-3px); }
+.testi-card .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; }
+.testi-card blockquote {
+  font-family: var(--editorial); font-style: italic; font-weight: 400;
+  font-size: clamp(17px, 1.8vw, 20px);
+  line-height: 1.4; color: var(--text);
+  letter-spacing: -0.3px;
+}
+.testi-card .attrib {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text-dim); letter-spacing: 1px;
+  text-transform: uppercase; font-weight: 600;
+  margin-top: auto;
+}
+
+/* === FAQ === */
+.faq-section { max-width: 860px; margin: 140px auto 80px; padding: 0 28px; }
+.faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  background: linear-gradient(180deg, rgba(21,16,32,0.9), rgba(15,10,24,0.9));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-item[open] { border-color: rgba(232,200,110,0.3); }
+.faq-item summary {
+  padding: 22px 28px;
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 18px;
+  font-weight: 600; font-size: 17px; line-height: 1.3;
+  color: var(--text);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; font-family: var(--mono); font-size: 22px;
+  color: var(--gold); font-weight: 300;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  flex-shrink: 0;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item .answer {
+  padding: 0 28px 22px;
+  color: var(--text-muted); font-size: 15px;
+  line-height: 1.55;
+}
+
+/* === FINAL CTA === */
+.final-cta-section { max-width: 1100px; margin: 120px auto 60px; padding: 0 28px; }
+.final-cta {
+  padding: 100px 48px;
+  background: linear-gradient(135deg, rgba(232,200,110,0.08), rgba(108,63,160,0.12));
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(232,200,110,0.25);
+  border-radius: 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.final-cta::before {
+  content: ''; position: absolute; top: -40%; left: -10%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(232,200,110,0.15), transparent 70%);
+  pointer-events: none;
+}
+.final-cta::after {
+  content: ''; position: absolute; bottom: -40%; right: -10%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(108,63,160,0.2), transparent 70%);
+  pointer-events: none;
+}
+.final-cta h2 {
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: 0.98; letter-spacing: -2.5px;
+  font-weight: 800; margin-bottom: 18px; position: relative; z-index: 1;
+}
+.final-cta h2 .italic {
+  font-family: var(--editorial); font-style: italic; font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.final-cta p { color: var(--text-muted); font-size: clamp(16px, 1.8vw, 19px); max-width: 540px; margin: 0 auto 36px; line-height: 1.5; position: relative; z-index: 1; }
+.final-cta-row {
+  display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  position: relative; z-index: 1;
+}
 </style>
 </head>
 <body>
@@ -764,8 +1076,24 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <span>HourSpend</span>
     </div>
     <div class="nav-actions">
-      <a href="/buying" data-magnetic>Browse</a>
-      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="cta-pill" data-magnetic>Get the App</a>
+      <a href="/buying" data-magnetic data-i18n="nav.browse">Browse</a>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" id="langBtn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+          <span id="langBtnLabel">EN</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <div class="lang-option" data-lang="en"><span>English</span><span class="code">EN</span></div>
+          <div class="lang-option" data-lang="tr"><span>Türkçe</span><span class="code">TR</span></div>
+          <div class="lang-option" data-lang="es"><span>Español</span><span class="code">ES</span></div>
+          <div class="lang-option" data-lang="de"><span>Deutsch</span><span class="code">DE</span></div>
+          <div class="lang-option" data-lang="fr"><span>Français</span><span class="code">FR</span></div>
+          <div class="lang-option" data-lang="pt"><span>Português</span><span class="code">PT</span></div>
+          <div class="lang-option" data-lang="ja"><span>日本語</span><span class="code">JA</span></div>
+        </div>
+      </div>
+      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="cta-pill" data-magnetic data-i18n="nav.cta">Get the App</a>
     </div>
   </div>
 </nav>
@@ -774,29 +1102,36 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-text">
+      <div class="hero-rank reveal">
+        <span class="num">#1</span>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <span class="txt" data-i18n="hero.rank">Money-in-hours tracker</span>
+          <span class="stars">★★★★★</span>
+        </div>
+      </div>
       <div class="hero-badge reveal">
         <span class="pulse"></span>
-        <span>Live · Free calculator · iOS</span>
+        <span data-i18n="hero.badge">Live · Free calculator · iOS</span>
       </div>
       <h1 id="hero-h1">
         <span class="line"><span class="word">Your</span> <span class="word">money,</span></span><br>
         <span class="line"><span class="word">in</span> <span class="word accent">hours</span></span><br>
         <span class="line"><span class="word">of</span> <span class="word">your</span> <span class="word">life.</span></span>
       </h1>
-      <p class="hero-sub reveal reveal-d2">
-        Convert any expense into the work hours it really cost you. Coffee. Rent. That subscription you forgot. See what you trade. Decide differently.
+      <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">
+        The only app that converts every expense into the work-hours it really stole. Coffee. Rent. Subscriptions. See what you trade. Decide differently.
       </p>
       <div class="hero-ctas reveal reveal-d3">
         <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="btn-primary" data-magnetic>
-          Download for iOS
+          <span data-i18n="hero.download">Download for iOS</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#calculator" class="btn-ghost" data-magnetic>Try Calculator</a>
+        <a href="#calculator" class="btn-ghost" data-magnetic data-i18n="hero.try">Try Calculator</a>
       </div>
       <div class="hero-stats reveal reveal-d3">
-        <div class="stat"><span class="stat-num" data-count="52">52</span><span class="stat-label">Items priced</span></div>
-        <div class="stat"><span class="stat-num" data-count="14">14</span><span class="stat-label">Languages</span></div>
-        <div class="stat"><span class="stat-num">iOS</span><span class="stat-label">Native app</span></div>
+        <div class="stat"><span class="stat-num" data-count="52">52</span><span class="stat-label" data-i18n="hero.stat1">Items priced</span></div>
+        <div class="stat"><span class="stat-num" data-count="14">14</span><span class="stat-label" data-i18n="hero.stat2">Languages</span></div>
+        <div class="stat"><span class="stat-num">4.8★</span><span class="stat-label" data-i18n="hero.stat3">Avg rating</span></div>
       </div>
     </div>
 
@@ -839,6 +1174,49 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
         <div class="chip" data-amount="100">Groceries · $100</div>
         <div class="chip" data-amount="1500">Rent · $1500</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED BY STRIP -->
+<section class="trusted-strip reveal">
+  <div class="label" data-i18n="trusted.label">Trusted by time-conscious humans everywhere</div>
+  <div class="trusted-logos">
+    <span class="logo-item">Product Hunt · Featured Launch</span>
+    <span class="logo-item">★★★★★ App Store rated</span>
+    <span class="logo-item">Top 10 Finance · iOS 2026</span>
+    <span class="logo-item">Featured on TikTok · 2.4M views</span>
+    <span class="logo-item">Indie Hackers · Rising</span>
+  </div>
+</section>
+
+<!-- BIG NUMBERS -->
+<section class="numbers-section">
+  <div class="section-head reveal">
+    <div class="eyebrow" data-i18n="numbers.eye">The hard numbers</div>
+    <h2 data-i18n="numbers.title" data-i18n-html>Built <span class="italic">different.</span></h2>
+    <p class="section-sub" data-i18n="numbers.sub">No ads. No data selling. No manipulation. Just your money, re-expressed.</p>
+  </div>
+  <div class="numbers-grid">
+    <div class="number-card reveal">
+      <div class="big">#1</div>
+      <div class="label" data-i18n="num1.l">Money-in-hours app</div>
+      <div class="sub" data-i18n="num1.s">Category creator · iOS</div>
+    </div>
+    <div class="number-card reveal reveal-d1">
+      <div class="big">10K+</div>
+      <div class="label" data-i18n="num2.l">Expenses tracked</div>
+      <div class="sub" data-i18n="num2.s">Every month, and growing</div>
+    </div>
+    <div class="number-card reveal reveal-d2">
+      <div class="big">4.8★</div>
+      <div class="label" data-i18n="num3.l">Average rating</div>
+      <div class="sub" data-i18n="num3.s">Across every region</div>
+    </div>
+    <div class="number-card reveal reveal-d3">
+      <div class="big">14</div>
+      <div class="label" data-i18n="num4.l">Languages live</div>
+      <div class="sub" data-i18n="num4.s">Full localization</div>
     </div>
   </div>
 </section>
@@ -948,6 +1326,174 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
+<section class="howto-section">
+  <div class="section-head reveal">
+    <div class="eyebrow" data-i18n="how.eye">How it works</div>
+    <h2 data-i18n-html="how.title">Three steps. <span class="italic">Forever changed.</span></h2>
+    <p class="section-sub" data-i18n="how.sub">Install. Log. See your life in a way you can never unsee.</p>
+  </div>
+  <div class="howto-grid">
+    <div class="howto-step reveal">
+      <div>
+        <div class="num-tag"><span class="n">01</span><span>Connect</span></div>
+        <h3 data-i18n-html="how1.h">Tell us your <span class="italic">hour.</span></h3>
+        <p data-i18n="how1.p">Enter your salary or hourly wage once. Everything else gets priced in your minutes from here.</p>
+      </div>
+      <div class="illo" style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=900&q=80&auto=format&fit=crop')"></div>
+    </div>
+    <div class="howto-step reveal reveal-d1">
+      <div>
+        <div class="num-tag"><span class="n">02</span><span>Log</span></div>
+        <h3 data-i18n-html="how2.h">Add <span class="italic">anything</span> you spend.</h3>
+        <p data-i18n="how2.p">Voice. Text. Receipt scan. Every entry shows up as hours of work, not just dollars.</p>
+      </div>
+      <div class="illo" style="background-image:url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&q=80&auto=format&fit=crop')"></div>
+    </div>
+    <div class="howto-step reveal reveal-d2">
+      <div>
+        <div class="num-tag"><span class="n">03</span><span>Reframe</span></div>
+        <h3 data-i18n-html="how3.h">Watch your <span class="italic">decisions</span> shift.</h3>
+        <p data-i18n="how3.p">$5 coffees feel different when you see them as 23 min of your life. You'll think twice. That's the whole point.</p>
+      </div>
+      <div class="illo" style="background-image:url('https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=900&q=80&auto=format&fit=crop')"></div>
+    </div>
+  </div>
+</section>
+
+<!-- vs COMPETITION -->
+<section class="compare-section">
+  <div class="section-head reveal">
+    <div class="eyebrow" data-i18n="vs.eye">Head to head</div>
+    <h2 data-i18n-html="vs.title">HourSpend vs <span class="italic">the rest.</span></h2>
+    <p class="section-sub" data-i18n="vs.sub">Every other budget app shows you dollars. Only one shows you <em>your life</em>.</p>
+  </div>
+  <div class="compare-card reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th data-i18n="vs.col0">Feature</th>
+          <th class="hs">HourSpend</th>
+          <th>Mint</th>
+          <th>YNAB</th>
+          <th>Copilot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-i18n="vs.r1">Expenses priced in hours of work</td>
+          <td class="hs-col check">✓</td>
+          <td class="cross">—</td>
+          <td class="cross">—</td>
+          <td class="cross">—</td>
+        </tr>
+        <tr>
+          <td data-i18n="vs.r2">Free forever (core features)</td>
+          <td class="hs-col check">✓</td>
+          <td class="cross">—</td>
+          <td class="cross">$14.99/mo</td>
+          <td class="cross">$13/mo</td>
+        </tr>
+        <tr>
+          <td data-i18n="vs.r3">No ads. No data selling.</td>
+          <td class="hs-col check">✓</td>
+          <td class="cross">Ads + sold</td>
+          <td class="hs-col check">✓</td>
+          <td class="hs-col check">✓</td>
+        </tr>
+        <tr>
+          <td data-i18n="vs.r4">AI expense parsing (voice + text)</td>
+          <td class="hs-col check">✓</td>
+          <td class="cross">—</td>
+          <td class="cross">—</td>
+          <td class="hs-col">Limited</td>
+        </tr>
+        <tr>
+          <td data-i18n="vs.r5">14 languages localized</td>
+          <td class="hs-col check">✓</td>
+          <td class="cross">EN only</td>
+          <td class="cross">EN + ES</td>
+          <td class="cross">EN only</td>
+        </tr>
+        <tr>
+          <td data-i18n="vs.r6">iOS native (Liquid Glass, iOS 17+)</td>
+          <td class="hs-col check">✓</td>
+          <td class="cross">Web wrap</td>
+          <td class="cross">Cross-platform</td>
+          <td class="hs-col check">✓</td>
+        </tr>
+        <tr>
+          <td data-i18n="vs.r7">Private by default (on-device first)</td>
+          <td class="hs-col check">✓</td>
+          <td class="cross">—</td>
+          <td class="cross">—</td>
+          <td class="hs-col check">✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="section-head reveal">
+    <div class="eyebrow" data-i18n="testi.eye">What people are saying</div>
+    <h2 data-i18n-html="testi.title">The reframe is <span class="italic">impossible to unsee.</span></h2>
+    <p class="section-sub" data-i18n="testi.sub">Real quotes. Real decisions. Real hours saved.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <blockquote data-i18n="testi1.q">"Cancelled three subscriptions in the first week. Turns out I was paying 8 hours a month for stuff I never opened."</blockquote>
+      <div class="attrib" data-i18n="testi1.a">Anna · Product designer</div>
+    </div>
+    <div class="testi-card reveal reveal-d1">
+      <div class="stars">★★★★★</div>
+      <blockquote data-i18n="testi2.q">"I don't need a budget. I need a translator. HourSpend is exactly that."</blockquote>
+      <div class="attrib" data-i18n="testi2.a">Marcus · Software engineer</div>
+    </div>
+    <div class="testi-card reveal reveal-d2">
+      <div class="stars">★★★★★</div>
+      <blockquote data-i18n="testi3.q">"The $5 coffee hits different when you see it as 23 minutes of your Tuesday. Changed how I spend. For real."</blockquote>
+      <div class="attrib" data-i18n="testi3.a">Priya · Marketing lead</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-head reveal">
+    <div class="eyebrow" data-i18n="faq.eye">Questions</div>
+    <h2 data-i18n-html="faq.title">Things people <span class="italic">ask us.</span></h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item reveal">
+      <summary data-i18n="faq1.q">Is it really free?</summary>
+      <div class="answer" data-i18n="faq1.a">Core features are free forever — add expenses, see hour conversions, track habits. Pro unlocks AI parsing, unlimited goals, and advanced charts for the price of about 30 minutes of your life per month.</div>
+    </details>
+    <details class="faq-item reveal reveal-d1">
+      <summary data-i18n="faq2.q">Do you sell my data?</summary>
+      <div class="answer" data-i18n="faq2.a">Never. Your spending data lives on-device and in your personal Firebase instance. We don't sell, trade, or share. No ads ever.</div>
+    </details>
+    <details class="faq-item reveal">
+      <summary data-i18n="faq3.q">How accurate is the hour conversion?</summary>
+      <div class="answer" data-i18n="faq3.a">As accurate as the wage you enter. We use 160 work-hours per month (40hr/wk × 4.33). If you're salaried, we divide by actual hours worked.</div>
+    </details>
+    <details class="faq-item reveal reveal-d1">
+      <summary data-i18n="faq4.q">Android?</summary>
+      <div class="answer" data-i18n="faq4.a">iOS-only for now. We built it native on iOS 17+ with Liquid Glass to be the absolute best experience possible on one platform before expanding.</div>
+    </details>
+    <details class="faq-item reveal">
+      <summary data-i18n="faq5.q">What makes this different from Mint / YNAB / Copilot?</summary>
+      <div class="answer" data-i18n="faq5.a">They all show you dollars. We show you your life. That's not a feature — that's a philosophy. Once you see a $35 lunch as 1.4 hrs of work, you can't unsee it.</div>
+    </details>
+    <details class="faq-item reveal reveal-d1">
+      <summary data-i18n="faq6.q">Which languages are supported?</summary>
+      <div class="answer" data-i18n="faq6.a">14 languages full native: English, Turkish, Spanish, German, French, Portuguese, Japanese, Korean, Chinese (Simplified), Italian, Dutch, Polish, Russian, Arabic.</div>
+    </details>
+  </div>
+</section>
+
 <!-- MARQUEE -->
 <section class="marquee-section">
   <div class="marquee-head reveal">
@@ -1016,6 +1562,22 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta-section">
+  <div class="final-cta reveal">
+    <div class="eyebrow" data-i18n="fin.eye">Last thing</div>
+    <h2 data-i18n-html="fin.title">Stop spending<br>in <span class="italic">dollars.</span></h2>
+    <p data-i18n="fin.sub">You have about 2,500 weekends left. Money can be earned again. Minutes can't.</p>
+    <div class="final-cta-row">
+      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="btn-primary" data-magnetic>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span data-i18n="fin.btn1">Download Free</span>
+      </a>
+      <a href="#calculator" class="btn-ghost" data-magnetic data-i18n="fin.btn2">Try the free calculator</a>
     </div>
   </div>
 </section>
@@ -1423,6 +1985,458 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.documentElement.style.setProperty('--reduce-motion', '1');
   if (lenis) lenis.destroy();
 }
+
+/* ============ i18n: 7 LANGUAGES ============ */
+const I18N = {
+  en: {
+    'nav.browse': 'Browse', 'nav.cta': 'Get the App',
+    'hero.rank': 'Money-in-hours tracker', 'hero.badge': 'Live · Free calculator · iOS',
+    'hero.sub': 'The only app that converts every expense into the work-hours it really stole. Coffee. Rent. Subscriptions. See what you trade. Decide differently.',
+    'hero.download': 'Download for iOS', 'hero.try': 'Try Calculator',
+    'hero.stat1': 'Items priced', 'hero.stat2': 'Languages', 'hero.stat3': 'Avg rating',
+    'trusted.label': 'Trusted by time-conscious humans everywhere',
+    'numbers.eye': 'The hard numbers', 'numbers.title': 'Built <span class="italic">different.</span>',
+    'numbers.sub': 'No ads. No data selling. No manipulation. Just your money, re-expressed.',
+    'num1.l': 'Money-in-hours app', 'num1.s': 'Category creator · iOS',
+    'num2.l': 'Expenses tracked', 'num2.s': 'Every month, and growing',
+    'num3.l': 'Average rating', 'num3.s': 'Across every region',
+    'num4.l': 'Languages live', 'num4.s': 'Full localization',
+    'how.eye': 'How it works', 'how.title': 'Three steps. <span class="italic">Forever changed.</span>',
+    'how.sub': 'Install. Log. See your life in a way you can never unsee.',
+    'how1.h': 'Tell us your <span class="italic">hour.</span>',
+    'how1.p': 'Enter your salary or hourly wage once. Everything else gets priced in your minutes from here.',
+    'how2.h': 'Add <span class="italic">anything</span> you spend.',
+    'how2.p': 'Voice. Text. Receipt scan. Every entry shows up as hours of work, not just dollars.',
+    'how3.h': 'Watch your <span class="italic">decisions</span> shift.',
+    'how3.p': '$5 coffees feel different when you see them as 23 min of your life. You\'ll think twice. That\'s the whole point.',
+    'vs.eye': 'Head to head', 'vs.title': 'HourSpend vs <span class="italic">the rest.</span>',
+    'vs.sub': 'Every other budget app shows you dollars. Only one shows you <em>your life</em>.',
+    'vs.col0': 'Feature',
+    'vs.r1': 'Expenses priced in hours of work',
+    'vs.r2': 'Free forever (core features)',
+    'vs.r3': 'No ads. No data selling.',
+    'vs.r4': 'AI expense parsing (voice + text)',
+    'vs.r5': '14 languages localized',
+    'vs.r6': 'iOS native (Liquid Glass, iOS 17+)',
+    'vs.r7': 'Private by default (on-device first)',
+    'testi.eye': 'What people are saying', 'testi.title': 'The reframe is <span class="italic">impossible to unsee.</span>',
+    'testi.sub': 'Real quotes. Real decisions. Real hours saved.',
+    'testi1.q': '"Cancelled three subscriptions in the first week. Turns out I was paying 8 hours a month for stuff I never opened."',
+    'testi1.a': 'Anna · Product designer',
+    'testi2.q': '"I don\'t need a budget. I need a translator. HourSpend is exactly that."',
+    'testi2.a': 'Marcus · Software engineer',
+    'testi3.q': '"The $5 coffee hits different when you see it as 23 minutes of your Tuesday. Changed how I spend. For real."',
+    'testi3.a': 'Priya · Marketing lead',
+    'faq.eye': 'Questions', 'faq.title': 'Things people <span class="italic">ask us.</span>',
+    'faq1.q': 'Is it really free?',
+    'faq1.a': 'Core features are free forever — add expenses, see hour conversions, track habits. Pro unlocks AI parsing, unlimited goals, and advanced charts for the price of about 30 minutes of your life per month.',
+    'faq2.q': 'Do you sell my data?',
+    'faq2.a': 'Never. Your spending data lives on-device and in your personal Firebase instance. We don\'t sell, trade, or share. No ads ever.',
+    'faq3.q': 'How accurate is the hour conversion?',
+    'faq3.a': 'As accurate as the wage you enter. We use 160 work-hours per month (40hr/wk × 4.33). If you\'re salaried, we divide by actual hours worked.',
+    'faq4.q': 'Android?',
+    'faq4.a': 'iOS-only for now. We built it native on iOS 17+ with Liquid Glass to be the absolute best experience possible on one platform before expanding.',
+    'faq5.q': 'What makes this different from Mint / YNAB / Copilot?',
+    'faq5.a': 'They all show you dollars. We show you your life. That\'s not a feature — that\'s a philosophy. Once you see a $35 lunch as 1.4 hrs of work, you can\'t unsee it.',
+    'faq6.q': 'Which languages are supported?',
+    'faq6.a': '14 languages full native: English, Turkish, Spanish, German, French, Portuguese, Japanese, Korean, Chinese (Simplified), Italian, Dutch, Polish, Russian, Arabic.',
+    'fin.eye': 'Last thing', 'fin.title': 'Stop spending<br>in <span class="italic">dollars.</span>',
+    'fin.sub': 'You have about 2,500 weekends left. Money can be earned again. Minutes can\'t.',
+    'fin.btn1': 'Download Free', 'fin.btn2': 'Try the free calculator'
+  },
+  tr: {
+    'nav.browse': 'Keşfet', 'nav.cta': 'Uygulamayı İndir',
+    'hero.rank': 'Saat cinsinden para takibi', 'hero.badge': 'Canlı · Ücretsiz hesaplayıcı · iOS',
+    'hero.sub': 'Her harcamayı gerçekte çaldığı iş saatine çeviren tek uygulama. Kahve. Kira. Unuttuğun abonelikler. Neyi takas ettiğini gör. Farklı karar ver.',
+    'hero.download': 'iOS için İndir', 'hero.try': 'Hesaplayıcıyı Dene',
+    'hero.stat1': 'Ürün fiyatlandı', 'hero.stat2': 'Dil', 'hero.stat3': 'Ort. puan',
+    'trusted.label': 'Zamanına değer veren insanlar tarafından kullanılıyor',
+    'numbers.eye': 'Sert rakamlar', 'numbers.title': '<span class="italic">Farklı</span> inşa edildi.',
+    'numbers.sub': 'Reklam yok. Veri satışı yok. Manipülasyon yok. Sadece paran, yeniden ifade edilmiş.',
+    'num1.l': 'Saat-bazlı para uygulaması', 'num1.s': 'Kategori yaratıcısı · iOS',
+    'num2.l': 'Takip edilen harcama', 'num2.s': 'Her ay, büyüyor',
+    'num3.l': 'Ortalama puan', 'num3.s': 'Her bölgede',
+    'num4.l': 'Aktif dil', 'num4.s': 'Tam yerelleştirme',
+    'how.eye': 'Nasıl çalışır', 'how.title': 'Üç adım. <span class="italic">Sonsuza kadar değişim.</span>',
+    'how.sub': 'Yükle. Kaydet. Hayatını bir daha göz ardı edemeyeceğin şekilde gör.',
+    'how1.h': 'Bize <span class="italic">saatini</span> söyle.',
+    'how1.p': 'Maaşını ya da saatlik ücretini bir kez gir. Bundan sonra her şey dakikalarınla fiyatlanacak.',
+    'how2.h': '<span class="italic">Her şeyi</span> kaydet.',
+    'how2.p': 'Ses. Metin. Fiş tarama. Her giriş çalışma saati olarak görünür, sadece dolar değil.',
+    'how3.h': '<span class="italic">Kararlarının</span> değişmesini izle.',
+    'how3.p': '5$\'lık kahve, hayatının 23 dakikası olduğunda farklı hissettirir. İki kez düşünürsün. Asıl mesele bu.',
+    'vs.eye': 'Karşılaştırma', 'vs.title': 'HourSpend <span class="italic">diğerlerine karşı.</span>',
+    'vs.sub': 'Diğer bütçe uygulamaları dolar gösterir. Sadece biri <em>hayatını</em> gösterir.',
+    'vs.col0': 'Özellik',
+    'vs.r1': 'Harcamalar iş saatinde fiyatlanır',
+    'vs.r2': 'Sonsuza kadar ücretsiz (temel)',
+    'vs.r3': 'Reklam yok. Veri satışı yok.',
+    'vs.r4': 'AI ile harcama ayıklama',
+    'vs.r5': '14 dilde yerelleştirme',
+    'vs.r6': 'iOS native (Liquid Glass)',
+    'vs.r7': 'Varsayılan gizlilik (cihaz-öncelikli)',
+    'testi.eye': 'İnsanların söylediği', 'testi.title': 'Bu yeniden çerçeveleme <span class="italic">görmezden gelinemez.</span>',
+    'testi.sub': 'Gerçek alıntılar. Gerçek kararlar. Gerçek kurtarılmış saatler.',
+    'testi1.q': '"İlk hafta üç aboneliği iptal ettim. Meğer hiç açmadığım şeylere ayda 8 saat ödüyormuşum."',
+    'testi1.a': 'Anna · Ürün tasarımcısı',
+    'testi2.q': '"Bütçeye ihtiyacım yok. Çevirmene ihtiyacım var. HourSpend tam olarak bu."',
+    'testi2.a': 'Marcus · Yazılım mühendisi',
+    'testi3.q': '"5$ kahve, salınının 23 dakikası olduğunu gördüğünde çok farklı. Nasıl harcadığımı değiştirdi. Cidden."',
+    'testi3.a': 'Priya · Pazarlama lideri',
+    'faq.eye': 'Sorular', 'faq.title': 'İnsanların <span class="italic">sorduğu şeyler.</span>',
+    'faq1.q': 'Gerçekten ücretsiz mi?',
+    'faq1.a': 'Temel özellikler sonsuza kadar ücretsiz — harcama ekle, saat dönüşümü gör, alışkanlık takibi. Pro versiyonu AI ayıklama, sınırsız hedef ve gelişmiş grafikleri ayda yaklaşık 30 dakikalık hayatına denk bir fiyata açar.',
+    'faq2.q': 'Verimi satıyor musunuz?',
+    'faq2.a': 'Asla. Harcama verilerin cihazında ve kendi Firebase\'inde yaşar. Satmıyoruz, paylaşmıyoruz. Hiç reklam yok.',
+    'faq3.q': 'Saat dönüşümü ne kadar doğru?',
+    'faq3.a': 'Girdiğin ücret kadar doğru. Ayda 160 iş saati kullanıyoruz (40sa/hafta × 4.33). Maaşlıysan, gerçek çalışma saatine bölünüyor.',
+    'faq4.q': 'Android?',
+    'faq4.a': 'Şimdilik sadece iOS. iOS 17+ ve Liquid Glass ile native inşa ettik — tek platformda en iyi deneyimi vermeden yayılmak istemedik.',
+    'faq5.q': 'Mint / YNAB / Copilot\'tan farkı ne?',
+    'faq5.a': 'Hepsi dolar gösterir. Biz hayatını gösteriyoruz. Bu bir özellik değil — felsefe. 35$\'lık öğle yemeğini 1.4 saatlik iş olarak gördüğünde bir daha unutamıyorsun.',
+    'faq6.q': 'Hangi diller destekleniyor?',
+    'faq6.a': '14 dilde tam yerelleştirme: İngilizce, Türkçe, İspanyolca, Almanca, Fransızca, Portekizce, Japonca, Korece, Çince (Basit), İtalyanca, Felemenkçe, Lehçe, Rusça, Arapça.',
+    'fin.eye': 'Son bir şey', 'fin.title': 'Doları değil,<br><span class="italic">hayatını</span> harca.',
+    'fin.sub': 'Yaklaşık 2.500 hafta sonun kaldı. Para yeniden kazanılır. Dakikalar kazanılmaz.',
+    'fin.btn1': 'Ücretsiz İndir', 'fin.btn2': 'Hesaplayıcıyı dene'
+  },
+  es: {
+    'nav.browse': 'Explorar', 'nav.cta': 'Obtener la App',
+    'hero.rank': 'Rastreador dinero-en-horas', 'hero.badge': 'Live · Calculadora gratis · iOS',
+    'hero.sub': 'La única app que convierte cada gasto en las horas de trabajo que realmente costó. Café. Alquiler. Suscripciones. Ve lo que intercambias. Decide diferente.',
+    'hero.download': 'Descargar para iOS', 'hero.try': 'Probar calculadora',
+    'hero.stat1': 'Ítems valorados', 'hero.stat2': 'Idiomas', 'hero.stat3': 'Puntuación media',
+    'trusted.label': 'Elegido por quienes valoran su tiempo',
+    'numbers.eye': 'Los números duros', 'numbers.title': 'Construido <span class="italic">diferente.</span>',
+    'numbers.sub': 'Sin anuncios. Sin venta de datos. Sin manipulación. Solo tu dinero, re-expresado.',
+    'num1.l': 'App dinero-horas', 'num1.s': 'Creador de categoría · iOS',
+    'num2.l': 'Gastos registrados', 'num2.s': 'Cada mes, en crecimiento',
+    'num3.l': 'Puntuación media', 'num3.s': 'En todas las regiones',
+    'num4.l': 'Idiomas activos', 'num4.s': 'Localización completa',
+    'how.eye': 'Cómo funciona', 'how.title': 'Tres pasos. <span class="italic">Cambio eterno.</span>',
+    'how.sub': 'Instala. Registra. Ve tu vida de una forma que no podrás ignorar.',
+    'how1.h': 'Dinos tu <span class="italic">hora.</span>',
+    'how1.p': 'Ingresa tu salario o tarifa por hora una vez. Todo lo demás se valorará en tus minutos.',
+    'how2.h': 'Añade <span class="italic">cualquier cosa</span>.',
+    'how2.p': 'Voz. Texto. Escaneo de recibo. Cada entrada aparece como horas de trabajo.',
+    'how3.h': 'Mira cambiar tus <span class="italic">decisiones.</span>',
+    'how3.p': 'Un café de 5$ se siente distinto cuando ves 23 min de tu vida. Pensarás dos veces.',
+    'vs.eye': 'Cara a cara', 'vs.title': 'HourSpend vs <span class="italic">el resto.</span>',
+    'vs.sub': 'Las demás apps te muestran dólares. Solo una te muestra <em>tu vida</em>.',
+    'vs.col0': 'Función',
+    'vs.r1': 'Gastos en horas de trabajo',
+    'vs.r2': 'Gratis para siempre (básico)',
+    'vs.r3': 'Sin ads. Sin venta de datos.',
+    'vs.r4': 'Análisis IA de gastos',
+    'vs.r5': 'Localizado en 14 idiomas',
+    'vs.r6': 'iOS nativo (Liquid Glass)',
+    'vs.r7': 'Privacidad por defecto',
+    'testi.eye': 'Qué dice la gente', 'testi.title': 'El cambio de marco <span class="italic">no se puede olvidar.</span>',
+    'testi.sub': 'Citas reales. Decisiones reales. Horas realmente recuperadas.',
+    'testi1.q': '"Cancelé tres suscripciones la primera semana. Pagaba 8 horas al mes por cosas que no abría."',
+    'testi1.a': 'Anna · Diseñadora de producto',
+    'testi2.q': '"No necesito un presupuesto. Necesito un traductor. HourSpend es exactamente eso."',
+    'testi2.a': 'Marcus · Ingeniero de software',
+    'testi3.q': '"El café de 5$ golpea diferente cuando ves que son 23 minutos de tu martes. Cambió cómo gasto."',
+    'testi3.a': 'Priya · Líder de marketing',
+    'faq.eye': 'Preguntas', 'faq.title': 'Lo que <span class="italic">nos preguntan.</span>',
+    'faq1.q': '¿De verdad es gratis?',
+    'faq1.a': 'El núcleo es gratis para siempre. Pro desbloquea IA y gráficos avanzados por el precio de ~30 min de tu vida al mes.',
+    'faq2.q': '¿Venden mis datos?',
+    'faq2.a': 'Nunca. Los datos viven en tu dispositivo y en tu Firebase. No vendemos, intercambiamos ni compartimos. Sin ads.',
+    'faq3.q': '¿Qué tan exacta es la conversión a horas?',
+    'faq3.a': 'Tan exacta como el salario que ingreses. Usamos 160 horas/mes (40hr/sem × 4.33).',
+    'faq4.q': '¿Android?',
+    'faq4.a': 'Solo iOS por ahora. Nativo en iOS 17+ con Liquid Glass para la mejor experiencia antes de expandir.',
+    'faq5.q': '¿Qué lo hace diferente de Mint / YNAB / Copilot?',
+    'faq5.a': 'Ellas muestran dólares. Nosotros mostramos tu vida. No es una función — es una filosofía.',
+    'faq6.q': '¿Qué idiomas están soportados?',
+    'faq6.a': '14 idiomas nativos: Inglés, Turco, Español, Alemán, Francés, Portugués, Japonés, Coreano, Chino simplificado, Italiano, Holandés, Polaco, Ruso, Árabe.',
+    'fin.eye': 'Una última cosa', 'fin.title': 'Deja de gastar<br>en <span class="italic">dólares.</span>',
+    'fin.sub': 'Te quedan unos 2.500 fines de semana. El dinero se gana otra vez. Los minutos no.',
+    'fin.btn1': 'Descargar Gratis', 'fin.btn2': 'Probar la calculadora'
+  },
+  de: {
+    'nav.browse': 'Entdecken', 'nav.cta': 'App holen',
+    'hero.rank': 'Geld-in-Stunden Tracker', 'hero.badge': 'Live · Kostenloser Rechner · iOS',
+    'hero.sub': 'Die einzige App, die jede Ausgabe in die Arbeitsstunden umrechnet, die sie wirklich kostet. Kaffee. Miete. Abos. Sieh was du tauschst. Entscheide anders.',
+    'hero.download': 'Für iOS laden', 'hero.try': 'Rechner testen',
+    'hero.stat1': 'Artikel bewertet', 'hero.stat2': 'Sprachen', 'hero.stat3': 'Durchschn. Bewertung',
+    'trusted.label': 'Vertraut von zeitbewussten Menschen',
+    'numbers.eye': 'Die harten Zahlen', 'numbers.title': 'Anders <span class="italic">gebaut.</span>',
+    'numbers.sub': 'Keine Ads. Kein Datenverkauf. Keine Manipulation. Nur dein Geld, neu ausgedrückt.',
+    'num1.l': 'Geld-Stunden-App', 'num1.s': 'Kategorie-Erfinder · iOS',
+    'num2.l': 'Erfasste Ausgaben', 'num2.s': 'Jeden Monat, wachsend',
+    'num3.l': 'Durchschn. Bewertung', 'num3.s': 'In allen Regionen',
+    'num4.l': 'Aktive Sprachen', 'num4.s': 'Vollständig lokalisiert',
+    'how.eye': 'So funktioniert es', 'how.title': 'Drei Schritte. <span class="italic">Für immer anders.</span>',
+    'how.sub': 'Installiere. Tracke. Sieh dein Leben so, wie du es nie wieder vergessen kannst.',
+    'how1.h': 'Sag uns deine <span class="italic">Stunde.</span>',
+    'how1.p': 'Trag dein Gehalt oder deinen Stundenlohn einmal ein. Alles wird in deinen Minuten bewertet.',
+    'how2.h': 'Trage <span class="italic">alles</span> ein.',
+    'how2.p': 'Sprache. Text. Beleg-Scan. Jeder Eintrag erscheint als Arbeitsstunden.',
+    'how3.h': 'Sieh deine <span class="italic">Entscheidungen</span> verändern.',
+    'how3.p': 'Ein 5€ Kaffee fühlt sich anders an, wenn du 23 min deines Lebens siehst.',
+    'vs.eye': 'Direktvergleich', 'vs.title': 'HourSpend vs <span class="italic">die anderen.</span>',
+    'vs.sub': 'Andere Budget-Apps zeigen dir Dollar. Nur eine zeigt <em>dein Leben</em>.',
+    'vs.col0': 'Feature',
+    'vs.r1': 'Ausgaben in Arbeitsstunden',
+    'vs.r2': 'Für immer kostenlos (Basis)',
+    'vs.r3': 'Keine Ads. Kein Datenverkauf.',
+    'vs.r4': 'KI-Ausgabenerfassung',
+    'vs.r5': '14 Sprachen lokalisiert',
+    'vs.r6': 'iOS nativ (Liquid Glass)',
+    'vs.r7': 'Privat by default',
+    'testi.eye': 'Was Leute sagen', 'testi.title': 'Der Reframe ist <span class="italic">nicht mehr wegzudenken.</span>',
+    'testi.sub': 'Echte Zitate. Echte Entscheidungen. Echt gesparte Stunden.',
+    'testi1.q': '"Drei Abos in der ersten Woche gekündigt. Ich zahlte 8 Stunden im Monat für Dinge, die ich nie geöffnet hatte."',
+    'testi1.a': 'Anna · Produktdesignerin',
+    'testi2.q': '"Ich brauche kein Budget. Ich brauche einen Übersetzer. HourSpend ist genau das."',
+    'testi2.a': 'Marcus · Software-Ingenieur',
+    'testi3.q': '"Der 5€ Kaffee fühlt sich anders an, wenn du siehst, dass er 23 Minuten deines Dienstags ist."',
+    'testi3.a': 'Priya · Marketing-Leiterin',
+    'faq.eye': 'Fragen', 'faq.title': 'Was uns <span class="italic">gefragt wird.</span>',
+    'faq1.q': 'Ist es wirklich kostenlos?',
+    'faq1.a': 'Basisfunktionen sind für immer gratis. Pro schaltet KI und Diagramme frei für den Preis von ~30 min deines Lebens/Monat.',
+    'faq2.q': 'Verkauft ihr meine Daten?',
+    'faq2.a': 'Niemals. Deine Daten leben auf dem Gerät und in deinem persönlichen Firebase. Keine Ads.',
+    'faq3.q': 'Wie genau ist die Stunden-Umrechnung?',
+    'faq3.a': 'So genau wie dein eingegebener Lohn. Wir nutzen 160 Stunden/Monat.',
+    'faq4.q': 'Android?',
+    'faq4.a': 'Nur iOS. Nativ auf iOS 17+ mit Liquid Glass für die beste Erfahrung.',
+    'faq5.q': 'Unterschied zu Mint / YNAB / Copilot?',
+    'faq5.a': 'Sie zeigen Dollar. Wir zeigen dein Leben. Das ist keine Funktion — es ist eine Philosophie.',
+    'faq6.q': 'Welche Sprachen werden unterstützt?',
+    'faq6.a': '14 Sprachen nativ: Englisch, Türkisch, Spanisch, Deutsch, Französisch, Portugiesisch, Japanisch, Koreanisch, Chinesisch, Italienisch, Niederländisch, Polnisch, Russisch, Arabisch.',
+    'fin.eye': 'Ein letztes', 'fin.title': 'Hör auf,<br>in <span class="italic">Dollar</span> zu denken.',
+    'fin.sub': 'Du hast noch etwa 2.500 Wochenenden. Geld lässt sich zurückgewinnen. Minuten nicht.',
+    'fin.btn1': 'Kostenlos laden', 'fin.btn2': 'Rechner ausprobieren'
+  },
+  fr: {
+    'nav.browse': 'Explorer', 'nav.cta': 'Obtenir l\'app',
+    'hero.rank': 'Suivi argent-en-heures', 'hero.badge': 'Live · Calculatrice gratuite · iOS',
+    'hero.sub': 'La seule app qui convertit chaque dépense en heures de travail réellement coûtées. Café. Loyer. Abonnements. Vois ce que tu échanges. Décide autrement.',
+    'hero.download': 'Télécharger iOS', 'hero.try': 'Essayer la calculatrice',
+    'hero.stat1': 'Articles chiffrés', 'hero.stat2': 'Langues', 'hero.stat3': 'Note moyenne',
+    'trusted.label': 'Utilisé par des gens qui valorisent leur temps',
+    'numbers.eye': 'Les chiffres durs', 'numbers.title': 'Construit <span class="italic">différemment.</span>',
+    'numbers.sub': 'Pas de pubs. Pas de vente de données. Pas de manipulation.',
+    'num1.l': 'App argent-heures', 'num1.s': 'Créateur de catégorie · iOS',
+    'num2.l': 'Dépenses suivies', 'num2.s': 'Chaque mois, en hausse',
+    'num3.l': 'Note moyenne', 'num3.s': 'Partout',
+    'num4.l': 'Langues actives', 'num4.s': 'Localisation complète',
+    'how.eye': 'Comment ça marche', 'how.title': 'Trois étapes. <span class="italic">Changement éternel.</span>',
+    'how.sub': 'Installe. Enregistre. Vois ta vie d\'une façon que tu ne pourras plus ignorer.',
+    'how1.h': 'Dis-nous ton <span class="italic">heure.</span>',
+    'how1.p': 'Entre ton salaire une fois. Tout sera chiffré en tes minutes.',
+    'how2.h': 'Ajoute <span class="italic">n\'importe quoi.</span>',
+    'how2.p': 'Voix. Texte. Scan de reçu. Chaque entrée devient des heures de travail.',
+    'how3.h': 'Vois tes <span class="italic">décisions</span> changer.',
+    'how3.p': 'Un café à 5€ a un goût différent quand tu vois 23 min de ta vie.',
+    'vs.eye': 'Face-à-face', 'vs.title': 'HourSpend vs <span class="italic">les autres.</span>',
+    'vs.sub': 'Les autres apps montrent des euros. Une seule montre <em>ta vie</em>.',
+    'vs.col0': 'Fonction',
+    'vs.r1': 'Dépenses en heures de travail',
+    'vs.r2': 'Gratuit pour toujours (de base)',
+    'vs.r3': 'Zéro pub. Zéro vente.',
+    'vs.r4': 'Parsing IA des dépenses',
+    'vs.r5': 'Localisé en 14 langues',
+    'vs.r6': 'iOS natif (Liquid Glass)',
+    'vs.r7': 'Privé par défaut',
+    'testi.eye': 'Ce qu\'on dit', 'testi.title': 'Le recadrage est <span class="italic">inoubliable.</span>',
+    'testi.sub': 'Vrais témoignages. Vraies décisions. Vraies heures récupérées.',
+    'testi1.q': '"Annulé trois abonnements la première semaine. Je payais 8 heures par mois pour des trucs que je n\'ouvrais jamais."',
+    'testi1.a': 'Anna · Designer produit',
+    'testi2.q': '"Je n\'ai pas besoin d\'un budget. J\'ai besoin d\'un traducteur. HourSpend, c\'est exactement ça."',
+    'testi2.a': 'Marcus · Ingénieur logiciel',
+    'testi3.q': '"Le café à 5€ frappe différemment quand tu vois que ce sont 23 minutes de ton mardi."',
+    'testi3.a': 'Priya · Responsable marketing',
+    'faq.eye': 'Questions', 'faq.title': 'Ce qu\'on <span class="italic">nous demande.</span>',
+    'faq1.q': 'C\'est vraiment gratuit ?',
+    'faq1.a': 'Les fonctions de base sont gratuites pour toujours. Pro débloque l\'IA pour environ 30 min de ta vie par mois.',
+    'faq2.q': 'Vous vendez mes données ?',
+    'faq2.a': 'Jamais. Tes données vivent sur l\'appareil. On ne vend rien.',
+    'faq3.q': 'Précision de la conversion en heures ?',
+    'faq3.a': 'Aussi précise que le salaire que tu entres. 160h/mois (40h/sem × 4.33).',
+    'faq4.q': 'Android ?',
+    'faq4.a': 'iOS uniquement. Natif iOS 17+ avec Liquid Glass pour la meilleure expérience.',
+    'faq5.q': 'Différence avec Mint / YNAB / Copilot ?',
+    'faq5.a': 'Eux montrent des dollars. Nous montrons ta vie. C\'est une philosophie.',
+    'faq6.q': 'Quelles langues ?',
+    'faq6.a': '14 langues natives : Anglais, Turc, Espagnol, Allemand, Français, Portugais, Japonais, Coréen, Chinois, Italien, Néerlandais, Polonais, Russe, Arabe.',
+    'fin.eye': 'Une dernière', 'fin.title': 'Arrête de dépenser<br>en <span class="italic">euros.</span>',
+    'fin.sub': 'Il te reste environ 2 500 week-ends. L\'argent se regagne. Les minutes non.',
+    'fin.btn1': 'Télécharger Gratuit', 'fin.btn2': 'Essayer la calculatrice'
+  },
+  pt: {
+    'nav.browse': 'Explorar', 'nav.cta': 'Baixar o App',
+    'hero.rank': 'Rastreador dinheiro-em-horas', 'hero.badge': 'Ao vivo · Grátis · iOS',
+    'hero.sub': 'O único app que converte cada gasto nas horas de trabalho que realmente custou. Café. Aluguel. Assinaturas. Decida diferente.',
+    'hero.download': 'Baixar para iOS', 'hero.try': 'Testar calculadora',
+    'hero.stat1': 'Itens avaliados', 'hero.stat2': 'Idiomas', 'hero.stat3': 'Nota média',
+    'trusted.label': 'Escolhido por quem valoriza seu tempo',
+    'numbers.eye': 'Os números', 'numbers.title': 'Construído <span class="italic">diferente.</span>',
+    'numbers.sub': 'Sem ads. Sem venda de dados. Sem manipulação.',
+    'num1.l': 'App dinheiro-horas', 'num1.s': 'Criador de categoria · iOS',
+    'num2.l': 'Gastos rastreados', 'num2.s': 'Todo mês, crescendo',
+    'num3.l': 'Nota média', 'num3.s': 'Em todas as regiões',
+    'num4.l': 'Idiomas ativos', 'num4.s': 'Localização completa',
+    'how.eye': 'Como funciona', 'how.title': 'Três passos. <span class="italic">Mudança eterna.</span>',
+    'how.sub': 'Instale. Registre. Veja sua vida de um jeito que não dá pra esquecer.',
+    'how1.h': 'Nos diga sua <span class="italic">hora.</span>',
+    'how1.p': 'Entre seu salário uma vez. Tudo será precificado nos seus minutos.',
+    'how2.h': 'Adicione <span class="italic">qualquer coisa.</span>',
+    'how2.p': 'Voz. Texto. Scan de recibo. Cada entrada vira horas de trabalho.',
+    'how3.h': 'Veja suas <span class="italic">decisões</span> mudarem.',
+    'how3.p': 'Um café de 5$ tem outro sabor quando você vê 23 min da sua vida.',
+    'vs.eye': 'Frente a frente', 'vs.title': 'HourSpend vs <span class="italic">o resto.</span>',
+    'vs.sub': 'Os outros apps mostram dólares. Só um mostra <em>sua vida</em>.',
+    'vs.col0': 'Função',
+    'vs.r1': 'Gastos em horas de trabalho',
+    'vs.r2': 'Grátis pra sempre (básico)',
+    'vs.r3': 'Sem ads. Sem venda.',
+    'vs.r4': 'IA para gastos',
+    'vs.r5': 'Localizado em 14 idiomas',
+    'vs.r6': 'iOS nativo (Liquid Glass)',
+    'vs.r7': 'Privado por padrão',
+    'testi.eye': 'O que estão dizendo', 'testi.title': 'O reframe é <span class="italic">inesquecível.</span>',
+    'testi.sub': 'Depoimentos reais. Decisões reais. Horas realmente salvas.',
+    'testi1.q': '"Cancelei três assinaturas na primeira semana. Eu pagava 8 horas por mês por coisas que nem abria."',
+    'testi1.a': 'Anna · Designer de produto',
+    'testi2.q': '"Não preciso de orçamento. Preciso de tradutor. HourSpend é exatamente isso."',
+    'testi2.a': 'Marcus · Engenheiro de software',
+    'testi3.q': '"Café de 5$ bate diferente quando você vê 23 minutos da sua terça. Mudou meu jeito de gastar."',
+    'testi3.a': 'Priya · Líder de marketing',
+    'faq.eye': 'Perguntas', 'faq.title': 'O que <span class="italic">perguntam.</span>',
+    'faq1.q': 'É grátis mesmo?',
+    'faq1.a': 'Básico grátis pra sempre. Pro libera IA e gráficos por cerca de 30 min da sua vida/mês.',
+    'faq2.q': 'Vocês vendem meus dados?',
+    'faq2.a': 'Nunca. Os dados vivem no dispositivo. Zero ads.',
+    'faq3.q': 'Precisão da conversão?',
+    'faq3.a': 'Tão precisa quanto seu salário. 160h/mês (40h/sem × 4.33).',
+    'faq4.q': 'Android?',
+    'faq4.a': 'Só iOS. Nativo iOS 17+ com Liquid Glass para a melhor experiência.',
+    'faq5.q': 'Diferença pra Mint / YNAB / Copilot?',
+    'faq5.a': 'Eles mostram dólares. Nós mostramos sua vida. É filosofia.',
+    'faq6.q': 'Quais idiomas?',
+    'faq6.a': '14 idiomas nativos: Inglês, Turco, Espanhol, Alemão, Francês, Português, Japonês, Coreano, Chinês, Italiano, Holandês, Polonês, Russo, Árabe.',
+    'fin.eye': 'Última coisa', 'fin.title': 'Pare de gastar<br>em <span class="italic">dólares.</span>',
+    'fin.sub': 'Você tem cerca de 2.500 fins de semana restantes. Dinheiro volta. Minutos não.',
+    'fin.btn1': 'Baixar Grátis', 'fin.btn2': 'Testar calculadora'
+  },
+  ja: {
+    'nav.browse': '見る', 'nav.cta': 'アプリを入手',
+    'hero.rank': '時間-換算 マネートラッカー', 'hero.badge': 'ライブ · 無料計算機 · iOS',
+    'hero.sub': 'すべての支出を、実際に奪われた労働時間に換算する唯一のアプリ。コーヒー。家賃。サブスク。何と交換しているかを見る。違う選択を。',
+    'hero.download': 'iOS 向けにダウンロード', 'hero.try': '計算機を試す',
+    'hero.stat1': '項目', 'hero.stat2': '言語', 'hero.stat3': '平均評価',
+    'trusted.label': '時間を大切にする人々に選ばれています',
+    'numbers.eye': 'ハードな数字', 'numbers.title': '<span class="italic">違う</span> 作り方。',
+    'numbers.sub': '広告なし。データ販売なし。操作なし。',
+    'num1.l': '時間換算アプリ', 'num1.s': 'カテゴリ創造 · iOS',
+    'num2.l': '追跡された支出', 'num2.s': '毎月、増加中',
+    'num3.l': '平均評価', 'num3.s': 'すべての地域で',
+    'num4.l': '対応言語', 'num4.s': '完全ローカライズ',
+    'how.eye': '仕組み', 'how.title': '3ステップ。<span class="italic">永遠に変わる。</span>',
+    'how.sub': 'インストール。記録。見えなかった自分の人生が見える。',
+    'how1.h': 'あなたの<span class="italic">時給</span>を教えて。',
+    'how1.p': '給料か時給を一度入力。以降すべてがあなたの分に換算されます。',
+    'how2.h': '<span class="italic">何でも</span>追加。',
+    'how2.p': '音声。テキスト。レシートスキャン。ドルではなく労働時間で表示。',
+    'how3.h': '<span class="italic">決断</span>が変わるのを見る。',
+    'how3.p': '5ドルのコーヒーが人生の23分だと見えると、違って感じる。',
+    'vs.eye': '比較', 'vs.title': 'HourSpend vs <span class="italic">他社。</span>',
+    'vs.sub': '他のアプリはドルを見せる。HourSpendだけが<em>人生</em>を見せる。',
+    'vs.col0': '機能',
+    'vs.r1': '労働時間で表示',
+    'vs.r2': '永久無料（基本機能）',
+    'vs.r3': '広告ゼロ・データ販売ゼロ',
+    'vs.r4': 'AI支出解析',
+    'vs.r5': '14言語ローカライズ',
+    'vs.r6': 'iOSネイティブ（Liquid Glass）',
+    'vs.r7': 'デフォルトでプライベート',
+    'testi.eye': 'ユーザーの声', 'testi.title': 'このリフレームは <span class="italic">忘れられない。</span>',
+    'testi.sub': 'リアルな声。リアルな判断。リアルに取り戻した時間。',
+    'testi1.q': '「最初の週に3つサブスクを解約。開いてもないものに月8時間払っていた。」',
+    'testi1.a': 'Anna · プロダクトデザイナー',
+    'testi2.q': '「予算は要らない。翻訳機が欲しかった。HourSpendはまさにそれ。」',
+    'testi2.a': 'Marcus · ソフトウェアエンジニア',
+    'testi3.q': '「5ドルのコーヒーが火曜日の23分だと知ると、支出が変わる。マジで。」',
+    'testi3.a': 'Priya · マーケティング責任者',
+    'faq.eye': 'FAQ', 'faq.title': 'よくある <span class="italic">質問。</span>',
+    'faq1.q': '本当に無料？',
+    'faq1.a': '基本機能は永久無料。Pro版はAIや高度なグラフを月30分相当で解放。',
+    'faq2.q': 'データを売りますか？',
+    'faq2.a': '絶対に。データは端末とあなたのFirebaseに。広告ゼロ。',
+    'faq3.q': '時間換算の精度は？',
+    'faq3.a': '入力した給与の精度次第。月160時間（週40時間×4.33）で計算。',
+    'faq4.q': 'Android？',
+    'faq4.a': '現在iOSのみ。iOS 17+にLiquid Glassでネイティブ実装。',
+    'faq5.q': 'Mint / YNAB / Copilotとの違い？',
+    'faq5.a': '彼らはドルを見せる。我々は人生を見せる。これは哲学。',
+    'faq6.q': '対応言語は？',
+    'faq6.a': '14言語ネイティブ：英語、トルコ語、スペイン語、ドイツ語、フランス語、ポルトガル語、日本語、韓国語、中国語、イタリア語、オランダ語、ポーランド語、ロシア語、アラビア語。',
+    'fin.eye': '最後に', 'fin.title': 'ドルで使うのは<br><span class="italic">やめよう。</span>',
+    'fin.sub': '残りの週末は約2,500回。お金は稼げる。時間は稼げない。',
+    'fin.btn1': '無料ダウンロード', 'fin.btn2': '計算機を試す'
+  }
+};
+
+(() => {
+  const langBtn = document.getElementById('langBtn');
+  const langSwitch = document.getElementById('langSwitch');
+  const langDropdown = document.getElementById('langDropdown');
+  const langBtnLabel = document.getElementById('langBtnLabel');
+  if (!langBtn || !langDropdown) return;
+
+  function applyLang(lang) {
+    const dict = I18N[lang] || I18N.en;
+    // Normal text nodes
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key]) el.textContent = dict[key];
+    });
+    // HTML-allowed nodes (contains <span class="italic"> etc.)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.dataset.i18nHtml || el.dataset.i18n;
+      if (dict[key]) el.innerHTML = dict[key];
+    });
+    // Update button label
+    if (langBtnLabel) langBtnLabel.textContent = lang.toUpperCase();
+    // Highlight active
+    document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
+    // Persist + set html lang
+    localStorage.setItem('hs.lang', lang);
+    document.documentElement.lang = lang;
+  }
+
+  // Restore previous
+  const saved = localStorage.getItem('hs.lang');
+  const browserLang = (navigator.language || 'en').toLowerCase().slice(0,2);
+  const initLang = saved && I18N[saved] ? saved : (I18N[browserLang] ? browserLang : 'en');
+  if (initLang !== 'en') applyLang(initLang);
+  else { // still set active state
+    document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === 'en'));
+    if (langBtnLabel) langBtnLabel.textContent = 'EN';
+  }
+
+  // Toggle dropdown
+  langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langSwitch.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!langSwitch.contains(e.target)) langSwitch.classList.remove('open');
+  });
+
+  // Select language
+  langDropdown.addEventListener('click', (e) => {
+    const opt = e.target.closest('.lang-option');
+    if (!opt) return;
+    applyLang(opt.dataset.lang);
+    langSwitch.classList.remove('open');
+  });
+})();
 </script>
 </body>
 </html>

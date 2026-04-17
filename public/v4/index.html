@@ -1139,6 +1139,139 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
 .reveal-d2 { transition-delay: 0.22s; }
 .reveal-d3 { transition-delay: 0.3s; }
 
+/* === CURSOR REVEAL SECTION === */
+.reveal-mouse {
+  position: relative;
+  height: 100vh; min-height: 600px;
+  width: 100%;
+  overflow: hidden;
+  margin: 60px 0;
+  cursor: none;
+  user-select: none;
+}
+.reveal-mouse .reveal-base,
+.reveal-mouse .reveal-top {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.reveal-mouse .reveal-base {
+  filter: saturate(1.1) contrast(1.05);
+}
+.reveal-mouse .reveal-base::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(232,200,110,0.08), transparent 70%),
+    linear-gradient(180deg, rgba(4,3,10,0.2), rgba(4,3,10,0.4));
+  pointer-events: none;
+}
+.reveal-mouse .reveal-top {
+  --mx: 50%; --my: 50%;
+  filter: saturate(0.9) contrast(1.1);
+  /* Default: fully covered — mask only applied in .active state */
+}
+.reveal-mouse.active .reveal-top {
+  -webkit-mask-image: radial-gradient(circle 240px at var(--mx) var(--my), transparent 40%, black 72%);
+  mask-image: radial-gradient(circle 240px at var(--mx) var(--my), transparent 40%, black 72%);
+}
+.reveal-mouse .reveal-top::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(4,3,10,0.25), rgba(4,3,10,0.55));
+  pointer-events: none;
+}
+.reveal-mouse .reveal-ring {
+  position: absolute;
+  left: var(--rx, 50%); top: var(--ry, 50%);
+  transform: translate(-50%, -50%);
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(232,200,110,0.35);
+  box-shadow:
+    0 0 80px rgba(232,200,110,0.15),
+    inset 0 0 80px rgba(232,200,110,0.08),
+    inset 0 0 0 2px rgba(255,255,255,0.04);
+  pointer-events: none; z-index: 5;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+.reveal-mouse.active .reveal-ring { opacity: 1; }
+.reveal-mouse .reveal-ring::before {
+  content: '';
+  position: absolute; inset: -2px;
+  border-radius: 50%;
+  border: 1px solid rgba(232,200,110,0.1);
+  filter: blur(6px);
+}
+.reveal-mouse .reveal-dot {
+  position: absolute;
+  left: var(--rx, 50%); top: var(--ry, 50%);
+  transform: translate(-50%, -50%);
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 20px var(--gold), 0 0 6px var(--gold-soft);
+  pointer-events: none; z-index: 6;
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+.reveal-mouse.active .reveal-dot { opacity: 1; }
+
+.reveal-caption {
+  position: absolute;
+  top: 80px; left: 50%; transform: translateX(-50%);
+  text-align: center;
+  z-index: 4;
+  pointer-events: none;
+  padding: 0 28px;
+  max-width: 1100px; width: 100%;
+}
+.reveal-caption .eyebrow {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--gold); letter-spacing: 3px;
+  text-transform: uppercase; font-weight: 700;
+  margin-bottom: 18px;
+}
+.reveal-caption h3 {
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: 1.05; letter-spacing: -2px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: var(--text);
+  text-shadow: 0 4px 24px rgba(0,0,0,0.6);
+}
+.reveal-caption h3 .money {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(232,200,110,0.5);
+  text-decoration-thickness: 3px;
+}
+.reveal-caption h3 .italic {
+  font-family: var(--editorial); font-style: italic; font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.reveal-caption .hint {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 16px;
+  background: rgba(11,8,18,0.5);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-family: var(--mono); font-size: 11px;
+  color: var(--gold-soft); letter-spacing: 0.5px;
+  pointer-events: auto;
+  animation: hint-pulse 2.5s ease-in-out infinite;
+}
+@keyframes hint-pulse { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
+.reveal-caption .hint svg { width: 14px; height: 14px; }
+
+@media (hover: none), (pointer: coarse) {
+  .reveal-mouse { cursor: auto; }
+  .reveal-mouse .reveal-top {
+    -webkit-mask-image: none !important; mask-image: none !important;
+    opacity: 0.35;
+  }
+  .reveal-mouse .reveal-ring, .reveal-mouse .reveal-dot { display: none; }
+}
+
 /* === SHARE TOAST === */
 .share-toast {
   position: fixed; bottom: 24px; left: 50%;
@@ -1230,7 +1363,7 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
       <!-- Interactive $ explorer -->
       <div class="explorer reveal reveal-d2" id="explorer">
         <div class="explorer-top">
-          <span class="explorer-label" data-i18n="ex.label">Drag to explore</span>
+          <span class="explorer-label" data-i18n="ex.label" data-scramble>Drag to explore</span>
           <span class="explorer-live"><span class="dot"></span>LIVE</span>
         </div>
         <div class="explorer-number">
@@ -1315,39 +1448,55 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
   </div>
 </section>
 
+<!-- ============ CURSOR REVEAL SECTION ============ -->
+<section class="reveal-mouse" id="revealMouse">
+  <div class="reveal-base" style="background-image:url('https://images.unsplash.com/photo-1501139083538-0139583c060f?w=2200&q=85&auto=format&fit=crop')"></div>
+  <div class="reveal-top" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=2200&q=85&auto=format&fit=crop')"></div>
+  <div class="reveal-ring" id="revealRing"></div>
+  <div class="reveal-dot" id="revealDot"></div>
+  <div class="reveal-caption">
+    <div class="eyebrow" data-scramble data-i18n="rev.e">The reframe, visualized</div>
+    <h3 data-i18n-html="rev.h">You think you're spending <span class="money">money</span>.<br>You're really spending <span class="italic">your life</span>.</h3>
+    <div class="hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v5h5M3 12a9 9 0 109-9"/></svg>
+      <span data-i18n="rev.hint">Move your cursor over the image</span>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CINEMATIC 5-STAGE PINNED ============ -->
 <section class="cinema" id="cinema">
   <div class="cinema-sticky">
     <div class="cinema-stage active" data-idx="0">
       <div>
-        <div class="eyebrow" data-i18n="cin0.e">Stage one</div>
+        <div class="eyebrow" data-scramble data-i18n="cin0.e">Stage one</div>
         <div class="num">$5</div>
         <h3 style="margin-top:20px" data-i18n="cin0.h">Feels like nothing.</h3>
       </div>
     </div>
     <div class="cinema-stage" data-idx="1">
       <div>
-        <div class="eyebrow" data-i18n="cin1.e">Stage two</div>
+        <div class="eyebrow" data-scramble data-i18n="cin1.e">Stage two</div>
         <div class="num"><span class="italic">23 min</span></div>
         <h3 style="margin-top:20px" data-i18n-html="cin1.h">of your <span class="italic">life</span>.</h3>
       </div>
     </div>
     <div class="cinema-stage" data-idx="2">
       <div>
-        <div class="eyebrow" data-i18n="cin2.e">Stage three</div>
+        <div class="eyebrow" data-scramble data-i18n="cin2.e">Stage three</div>
         <h3 data-i18n-html="cin2.h">Now imagine <span class="italic">40 coffees</span> a month.</h3>
       </div>
     </div>
     <div class="cinema-stage" data-idx="3">
       <div>
-        <div class="eyebrow" data-i18n="cin3.e">Stage four</div>
+        <div class="eyebrow" data-scramble data-i18n="cin3.e">Stage four</div>
         <div class="num">15 hrs</div>
         <h3 style="margin-top:20px" data-i18n-html="cin3.h">of your life, <span class="italic">gone</span>.</h3>
       </div>
     </div>
     <div class="cinema-stage" data-idx="4">
       <div>
-        <div class="eyebrow" data-i18n="cin4.e">The reframe</div>
+        <div class="eyebrow" data-scramble data-i18n="cin4.e">The reframe</div>
         <h3 data-i18n-html="cin4.h">Your money is your <span class="italic">time</span>.<br>Exchanged.</h3>
       </div>
     </div>
@@ -1364,7 +1513,7 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
 <!-- ============ BIG NUMBERS v2 ============ -->
 <section class="numbers-v2">
   <div class="section-head reveal">
-    <div class="eyebrow" data-i18n="nums.e">The hard numbers</div>
+    <div class="eyebrow" data-scramble data-i18n="nums.e">The hard numbers</div>
     <h2 data-i18n-html="nums.t">Built <span class="italic">different.</span></h2>
     <p class="section-sub" data-i18n="nums.s">No ads. No data selling. No manipulation. Just your money, re-expressed.</p>
   </div>
@@ -1395,7 +1544,7 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
 <!-- ============ BENTO v2 ============ -->
 <section class="bento-v2">
   <div class="section-head reveal">
-    <div class="eyebrow" data-i18n="bento.e">The truth in numbers</div>
+    <div class="eyebrow" data-scramble data-i18n="bento.e">The truth in numbers</div>
     <h2 data-i18n-html="bento.t">What everyday spending <span class="italic">really</span> costs.</h2>
     <p class="section-sub" data-i18n="bento.s">At a $25/hour wage. Real photos. Real math.</p>
   </div>
@@ -1437,7 +1586,7 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
 <!-- ============ GALLERY v2 ============ -->
 <section class="gallery-v2">
   <div class="section-head reveal">
-    <div class="eyebrow" data-i18n="gal.e">Where your hours go</div>
+    <div class="eyebrow" data-scramble data-i18n="gal.e">Where your hours go</div>
     <h2 data-i18n-html="gal.t">Every habit has a <span class="italic">price tag</span> in time.</h2>
     <p class="section-sub" data-i18n="gal.s">The little things add up faster than you'd think.</p>
   </div>
@@ -1466,7 +1615,7 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
 <!-- ============ HOW IT WORKS v2 ============ -->
 <section class="howto-v2">
   <div class="section-head reveal">
-    <div class="eyebrow" data-i18n="how.e">How it works</div>
+    <div class="eyebrow" data-scramble data-i18n="how.e">How it works</div>
     <h2 data-i18n-html="how.t">Three steps. <span class="italic">Forever changed.</span></h2>
     <p class="section-sub" data-i18n="how.s">Install. Log. See your life in a way you can never unsee.</p>
   </div>
@@ -1501,7 +1650,7 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
 <!-- ============ COMPARE v2 ============ -->
 <section class="compare-v2">
   <div class="section-head reveal">
-    <div class="eyebrow" data-i18n="vs.e">Head to head</div>
+    <div class="eyebrow" data-scramble data-i18n="vs.e">Head to head</div>
     <h2 data-i18n-html="vs.t">HourSpend vs <span class="italic">the rest.</span></h2>
     <p class="section-sub" data-i18n-html="vs.s">Every other budget app shows you dollars. Only one shows you <em>your life</em>.</p>
   </div>
@@ -1532,7 +1681,7 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
 <!-- ============ TESTIMONIALS v2 ============ -->
 <section class="testi-v2">
   <div class="section-head reveal">
-    <div class="eyebrow" data-i18n="testi.e">What people say</div>
+    <div class="eyebrow" data-scramble data-i18n="testi.e">What people say</div>
     <h2 data-i18n-html="testi.t">The reframe is <span class="italic">impossible to unsee.</span></h2>
     <p class="section-sub" data-i18n="testi.s">Real quotes. Real decisions. Real hours saved.</p>
   </div>
@@ -1567,7 +1716,7 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
 <!-- ============ FAQ v2 ============ -->
 <section class="faq-v2">
   <div class="section-head reveal">
-    <div class="eyebrow" data-i18n="faq.e">Questions</div>
+    <div class="eyebrow" data-scramble data-i18n="faq.e">Questions</div>
     <h2 data-i18n-html="faq.t">Things people <span class="italic">ask us.</span></h2>
   </div>
   <div class="faq-list-v2">
@@ -1583,7 +1732,7 @@ footer { padding: 100px 28px 60px; border-top: 1px solid var(--line); text-align
 <!-- ============ FINAL CTA v2 ============ -->
 <section class="final-cta-v2">
   <div class="final-card-v2 reveal">
-    <div class="eyebrow" data-i18n="fin.e">Last thing</div>
+    <div class="eyebrow" data-scramble data-i18n="fin.e">Last thing</div>
     <h2 data-i18n-html="fin.t">Stop spending<br>in <span class="italic">dollars.</span></h2>
     <p data-i18n="fin.s">You have about 2,500 weekends left. Money can be earned again. Minutes can't.</p>
     <div class="hero-ctas-v4" style="justify-content:center">
@@ -2128,6 +2277,172 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     t.textContent=d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0');
   };
   update();setInterval(update,30000);
+})();
+
+/* ============ CURSOR REVEAL SECTION ============ */
+(()=>{
+  const sec=document.getElementById('revealMouse');
+  if(!sec||matchMedia('(hover: none)').matches)return;
+  const top=sec.querySelector('.reveal-top');
+  const ring=document.getElementById('revealRing');
+  const dot=document.getElementById('revealDot');
+  let tx=50,ty=50,cx=50,cy=50; // % coords
+  let active=false;
+
+  sec.addEventListener('pointerenter',()=>{active=true;sec.classList.add('active');});
+  sec.addEventListener('pointerleave',()=>{active=false;sec.classList.remove('active');});
+  sec.addEventListener('pointermove',e=>{
+    const r=sec.getBoundingClientRect();
+    tx=((e.clientX-r.left)/r.width)*100;
+    ty=((e.clientY-r.top)/r.height)*100;
+  });
+  (function raf(){
+    cx+=(tx-cx)*0.22;cy+=(ty-cy)*0.22;
+    top.style.setProperty('--mx',cx+'%');
+    top.style.setProperty('--my',cy+'%');
+    ring.style.setProperty('--rx',cx+'%');
+    ring.style.setProperty('--ry',cy+'%');
+    dot.style.setProperty('--rx',cx+'%');
+    dot.style.setProperty('--ry',cy+'%');
+    requestAnimationFrame(raf);
+  })();
+
+  // Greeting morph based on cursor position: when x<50% = "Your money", x>50% = "Your life"
+  // (handled via CSS .money line-through for now)
+})();
+
+/* ============ TEXT SCRAMBLE ON HOVER ============ */
+(()=>{
+  if(matchMedia('(hover: none)').matches)return;
+  const CHARS='!<>-_\\/[]{}—=+*^?#';
+  function scramble(el,target,dur=600){
+    const orig=el.textContent;
+    const from=orig;
+    const to=target||orig;
+    const start=performance.now();
+    const len=Math.max(from.length,to.length);
+    const queue=[];
+    for(let i=0;i<len;i++){
+      const fc=from[i]||'';
+      const tc=to[i]||'';
+      const s=Math.floor(Math.random()*dur*0.4);
+      const e=s+Math.floor(Math.random()*dur*0.6);
+      queue.push({from:fc,to:tc,start:s,end:e,char:''});
+    }
+    function tick(now){
+      const t=now-start;
+      let out='',done=0;
+      for(const q of queue){
+        if(t>=q.end){out+=q.to;done++;}
+        else if(t>=q.start){
+          if(!q.char||Math.random()<0.28)q.char=CHARS[Math.floor(Math.random()*CHARS.length)];
+          out+=q.char;
+        }
+        else out+=q.from;
+      }
+      el.textContent=out;
+      if(done<queue.length)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  document.querySelectorAll('[data-scramble]').forEach(el=>{
+    el.addEventListener('pointerenter',()=>{
+      if(el.dataset.scrambleLock)return;
+      el.dataset.scrambleLock='1';
+      scramble(el,el.textContent);
+      setTimeout(()=>el.dataset.scrambleLock='',700);
+    });
+  });
+})();
+
+/* ============ TIME-BASED GREETING ============ */
+(()=>{
+  // Replace "Live" word in hero badge with time-based greeting occasionally
+  const badge=document.querySelector('.hero-badge-v4 span:last-child');
+  if(!badge)return;
+  const d=new Date();
+  const h=d.getHours();
+  let greet='';
+  if(h<5)greet='Late · Free calculator · iOS';
+  else if(h<12)greet='Good morning · Free calculator · iOS';
+  else if(h<17)greet='Good afternoon · Free calculator · iOS';
+  else if(h<22)greet='Good evening · Free calculator · iOS';
+  else greet='Late · Free calculator · iOS';
+  // Only show greeting if no localStorage preference
+  if(!localStorage.getItem('hs.lang') || localStorage.getItem('hs.lang')==='en'){
+    setTimeout(()=>{badge.textContent=greet;},1400);
+  }
+})();
+
+/* ============ SCROLL SPEEDOMETER (subtle sidebar indicator) ============ */
+(()=>{
+  if(matchMedia('(pointer: coarse)').matches)return;
+  const el=document.createElement('div');
+  el.style.cssText='position:fixed;right:16px;top:50%;transform:translateY(-50%);width:3px;height:120px;background:rgba(255,255,255,0.04);border-radius:100px;z-index:70;pointer-events:none;overflow:hidden;';
+  const fill=document.createElement('div');
+  fill.style.cssText='position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#e8c86e,#d4a846);border-radius:100px;transition:height 0.12s ease-out;box-shadow:0 0 12px rgba(232,200,110,0.5);';
+  el.appendChild(fill);
+  document.body.appendChild(el);
+  let lastY=scrollY,v=0,fh=0;
+  addEventListener('scroll',()=>{
+    const y=scrollY;
+    v=Math.min(100,Math.abs(y-lastY)*2.5);
+    lastY=y;
+    fh+=(v-fh)*0.35;
+    fill.style.height=fh+'%';
+  });
+  (function decay(){
+    fh*=0.92;fill.style.height=fh+'%';
+    requestAnimationFrame(decay);
+  })();
+})();
+
+/* ============ KONAMI CODE EASTER EGG ============ */
+(()=>{
+  const seq=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let idx=0;
+  addEventListener('keydown',e=>{
+    const k=e.key.toLowerCase()==='b'||e.key.toLowerCase()==='a'?e.key.toLowerCase():e.key;
+    if(k===seq[idx]){
+      idx++;
+      if(idx===seq.length){
+        idx=0;
+        triggerEgg();
+      }
+    }else idx=0;
+  });
+  function triggerEgg(){
+    const overlay=document.createElement('div');
+    overlay.style.cssText='position:fixed;inset:0;background:rgba(4,3,10,0.92);backdrop-filter:blur(20px);z-index:999;display:grid;place-items:center;opacity:0;transition:opacity 0.5s;cursor:pointer;';
+    overlay.innerHTML=`
+      <div style="text-align:center;padding:40px;">
+        <div style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:3px;color:#e8c86e;text-transform:uppercase;font-weight:700;margin-bottom:28px;">🎮 SECRET UNLOCKED</div>
+        <div style="font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:clamp(64px,10vw,160px);line-height:0.95;letter-spacing:-4px;background:linear-gradient(135deg,#f5e6c8,#e8c86e,#d4a846);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:32px;">you<br>found us.</div>
+        <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:20px;color:#f5f0e6;font-weight:600;margin-bottom:14px;">You just spent 0.4 seconds reframing money.</div>
+        <div style="color:#a89cb8;font-size:14px;font-family:'Geist Mono',monospace;">Click anywhere to close</div>
+      </div>
+    `;
+    overlay.addEventListener('click',()=>{overlay.style.opacity='0';setTimeout(()=>overlay.remove(),500);});
+    document.body.appendChild(overlay);
+    requestAnimationFrame(()=>overlay.style.opacity='1');
+  }
+})();
+
+/* ============ COUNTER TICK — ambient "hrs reframed globally" ============ */
+(()=>{
+  // Hidden small number in footer that slowly ticks up
+  const foot=document.querySelector('.footer-credit');
+  if(!foot)return;
+  const div=document.createElement('div');
+  div.style.cssText='margin-top:10px;font-family:\"Geist Mono\",monospace;font-size:10px;color:#6e6379;letter-spacing:0.5px;font-variant-numeric:tabular-nums;';
+  div.innerHTML='<span id="globalHrs">147,384</span> hrs reframed globally · updating live';
+  foot.appendChild(div);
+  const num=document.getElementById('globalHrs');
+  let n=147384;
+  setInterval(()=>{
+    n+=Math.floor(Math.random()*3)+1;
+    num.textContent=n.toLocaleString();
+  },2200);
 })();
 
 </script>

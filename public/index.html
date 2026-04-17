@@ -138,7 +138,7 @@ body {
 .hero {
   position: relative;
   min-height: 100dvh;
-  padding: 140px 28px 80px;
+  padding: 96px 28px 48px;
   display: flex;
   align-items: center;
 }
@@ -146,15 +146,15 @@ body {
 .hero-grid {
   position: relative; z-index: 1;
   max-width: 1280px; margin: 0 auto;
-  display: grid; grid-template-columns: 1.2fr 1fr;
-  gap: 60px; align-items: center;
+  display: grid; grid-template-columns: 1.15fr 1fr;
+  gap: 40px; align-items: start;
   width: 100%;
 }
-@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 32px; } }
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 10px;
-  padding: 7px 14px 7px 9px;
+  padding: 6px 12px 6px 8px;
   border-radius: 100px;
   background: rgba(232,200,110,0.06);
   border: 1px solid rgba(232,200,110,0.22);
@@ -162,7 +162,7 @@ body {
   color: var(--gold-soft);
   font-weight: 600;
   letter-spacing: 0.4px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   width: fit-content;
   font-family: var(--mono);
   text-transform: uppercase;
@@ -183,14 +183,16 @@ body {
 @keyframes pulse { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(2.8); opacity: 0; } }
 
 h1 {
-  font-size: clamp(48px, 8vw, 108px);
-  line-height: 0.93;
-  letter-spacing: -3.5px;
+  font-size: clamp(42px, 6.4vw, 86px);
+  line-height: 0.95;
+  letter-spacing: -2.5px;
   font-weight: 800;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
+h1 .line { display: block; }
 h1 .word { display: inline-block; }
 h1 .char { display: inline-block; transform-origin: center bottom; }
+h1 br { display: none; }
 h1 .accent {
   font-family: var(--editorial);
   font-style: italic;
@@ -199,33 +201,33 @@ h1 .accent {
   background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 50%, var(--gold-deep) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -2.5px;
+  letter-spacing: -1.8px;
 }
 
 .hero-sub {
   color: var(--text-muted);
-  font-size: clamp(17px, 2vw, 21px);
-  line-height: 1.5;
-  margin-bottom: 40px;
-  max-width: 540px;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.45;
+  margin-bottom: 22px;
+  max-width: 520px;
   font-weight: 400;
 }
 
-.hero-ctas { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
 .btn-primary {
   position: relative;
-  padding: 18px 32px;
+  padding: 14px 26px;
   background: linear-gradient(135deg, var(--gold-soft), var(--gold));
   color: #1a0f1f;
   border: none;
   border-radius: 100px;
   font-family: var(--serif);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.2px;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 14px 40px rgba(232,200,110,0.25), inset 0 1px 0 rgba(255,255,255,0.3);
+  box-shadow: 0 12px 30px rgba(232,200,110,0.22), inset 0 1px 0 rgba(255,255,255,0.3);
   transition: box-shadow 0.3s, transform 0.1s;
   display: inline-flex; align-items: center; gap: 10px;
   text-decoration: none;
@@ -245,14 +247,14 @@ h1 .accent {
 .btn-primary:hover svg { transform: translateX(4px); }
 
 .btn-ghost {
-  padding: 18px 28px;
+  padding: 14px 22px;
   background: transparent;
   color: var(--text);
   border: 1px solid var(--line-hi);
   border-radius: 100px;
   font-family: var(--serif);
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   cursor: pointer;
   text-decoration: none;
   display: inline-flex; align-items: center; gap: 10px;
@@ -260,9 +262,9 @@ h1 .accent {
 }
 .btn-ghost:hover { border-color: var(--gold); background: rgba(255,255,255,0.03); }
 
-.hero-stats { display: flex; gap: 48px; margin-top: 52px; flex-wrap: wrap; }
-.stat { display: flex; flex-direction: column; gap: 6px; }
-.stat-num { font-family: var(--mono); font-size: 26px; font-weight: 500; color: var(--text); font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+.hero-stats { display: flex; gap: 32px; margin-top: 0; flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-num { font-family: var(--mono); font-size: 20px; font-weight: 500; color: var(--text); font-variant-numeric: tabular-nums; letter-spacing: -0.5px; }
 .stat-label { font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; font-family: var(--mono); }
 
 /* === CALCULATOR === */
@@ -272,12 +274,12 @@ h1 .accent {
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 28px;
-  padding: 28px;
+  border-radius: 24px;
+  padding: 22px;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.12),
     inset 0 0 0 1px rgba(232,200,110,0.04),
-    0 30px 80px rgba(0,0,0,0.5),
+    0 24px 60px rgba(0,0,0,0.5),
     0 0 60px rgba(108,63,160,0.1);
   overflow: hidden;
   --spot-x: 50%;
@@ -293,23 +295,23 @@ h1 .accent {
 }
 .calc:hover::before { opacity: 1; }
 
-.calc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; position: relative; z-index: 2; }
+.calc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; position: relative; z-index: 2; }
 .calc-title { font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; font-family: var(--mono); }
 .calc-live { display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--teal); font-family: var(--mono); font-weight: 500; letter-spacing: 1px; }
 .calc-live .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 6px var(--teal); animation: blink 1.5s ease-in-out infinite; }
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-.calc-inputs { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 2; }
-.input-group label { display: block; font-size: 10px; color: var(--text-dim); letter-spacing: 1.2px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; font-family: var(--mono); }
-.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-input[type="number"] {
-  width: 100%; padding: 16px 18px;
+.calc-inputs { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 2; }
+.input-group label { display: block; font-size: 10px; color: var(--text-dim); letter-spacing: 1.2px; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; font-family: var(--mono); }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+input[type="number"], input[type="text"] {
+  width: 100%; padding: 12px 14px;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
+  border-radius: 12px;
   color: var(--text);
   font-family: var(--mono);
-  font-size: 22px; font-weight: 500;
+  font-size: 18px; font-weight: 500;
   font-variant-numeric: tabular-nums;
   transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
   -webkit-appearance: none; appearance: none;
@@ -319,10 +321,10 @@ input[type="number"]:focus { outline: none; border-color: var(--gold); backgroun
 input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
 
 .calc-result {
-  margin-top: 28px; padding: 28px 24px;
+  margin-top: 18px; padding: 18px 20px;
   background: radial-gradient(circle at top right, rgba(232,200,110,0.15), transparent 60%), rgba(255,255,255,0.02);
   border: 1px solid rgba(232,200,110,0.18);
-  border-radius: 20px;
+  border-radius: 16px;
   position: relative; overflow: hidden;
   z-index: 2;
 }
@@ -335,8 +337,8 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
 
 .result-label { font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; font-family: var(--mono); }
 .result-value {
-  font-size: clamp(44px, 6vw, 64px);
-  font-weight: 900; letter-spacing: -2px; line-height: 1;
+  font-size: clamp(36px, 4.5vw, 52px);
+  font-weight: 900; letter-spacing: -1.5px; line-height: 1;
   background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -745,6 +747,43 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 .share-success svg { width: 16px; height: 16px; }
 
 ::-webkit-scrollbar { width: 0; }
+
+/* === FLOATING iOS CTA (always-visible on scroll) === */
+.float-cta {
+  position: fixed;
+  bottom: 20px; right: 20px;
+  z-index: 90;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 18px 12px 14px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  color: #1a0f1f;
+  border-radius: 100px;
+  font-family: var(--serif);
+  font-weight: 700; font-size: 13px;
+  text-decoration: none;
+  box-shadow: 0 20px 48px rgba(232,200,110,0.35), 0 6px 16px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.35);
+  opacity: 0; pointer-events: none;
+  transform: translateY(40px) scale(0.9);
+  transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.float-cta.show {
+  opacity: 1; pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+.float-cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 26px 60px rgba(232,200,110,0.5), 0 8px 20px rgba(0,0,0,0.5);
+}
+.float-cta:active { transform: translateY(0) scale(0.97); }
+.float-cta svg { flex-shrink: 0; }
+.float-cta .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #2e1a4a;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+}
+@media (max-width: 600px) {
+  .float-cta { bottom: 14px; right: 14px; padding: 10px 14px 10px 12px; font-size: 12px; }
+}
 
 /* === LANGUAGE SWITCHER === */
 .lang-switch { position: relative; }
@@ -1595,6 +1634,12 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 
 <div class="share-success" id="shareSuccess"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="share.ok">Copied — paste anywhere</span></div>
 
+<!-- Floating iOS CTA — appears after user scrolls past hero -->
+<a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="float-cta" id="floatCta" aria-label="Download HourSpend on iOS">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+  <span data-i18n="float.cta">Download Free · iOS</span>
+</a>
+
 <!-- Lenis smooth scroll -->
 <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
 <!-- GSAP + ScrollTrigger (free commercial use since Webflow acquisition) -->
@@ -1909,6 +1954,22 @@ shareBtn.addEventListener('click', async () => {
 calc();
 
 /* ============================================================ */
+/* ============ FLOATING iOS CTA ============ */
+(()=>{
+  const cta=document.getElementById('floatCta');
+  if(!cta)return;
+  const hero=document.querySelector('.hero');
+  let shown=false;
+  function update(){
+    if(!hero)return;
+    const bottom=hero.getBoundingClientRect().bottom;
+    const should=bottom<60; // past hero
+    if(should!==shown){shown=should;cta.classList.toggle('show',shown);}
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+
 /* ============ i18n: 7 LANGUAGES + GEO DETECTION ============= */
 /* ============================================================ */
 
@@ -2023,6 +2084,7 @@ const I18N = {
     'fin.eye': 'Last thing', 'fin.title': 'You\'re not spending money.<br>You\'re spending <span class="italic">your life.</span>',
     'fin.sub': 'You have about 2,500 weekends left. Money can be earned again. Minutes can\'t.',
     'fin.btn1': 'Download Free', 'fin.btn2': 'Try the free calculator',
+    'float.cta': 'Download Free · iOS',
     // footer + toast
     'foot.all': 'All items', 'foot.ios': 'iOS App', 'foot.privacy': 'Privacy', 'foot.terms': 'Terms',
     'foot.credit': '© HourSpend · Money is just time, exchanged.',
@@ -2122,6 +2184,7 @@ const I18N = {
     'fin.eye': 'Son bir şey', 'fin.title': 'Paranı değil,<br><span class="italic">hayatını</span> harcıyorsun.',
     'fin.sub': 'Yaklaşık 2.500 hafta sonun kaldı. Para yeniden kazanılır. Dakikalar kazanılmaz.',
     'fin.btn1': 'Ücretsiz İndir', 'fin.btn2': 'Hesaplayıcıyı dene',
+    'float.cta': 'Ücretsiz İndir · iOS',
     'foot.all': 'Tüm ürünler', 'foot.ios': 'iOS Uygulaması', 'foot.privacy': 'Gizlilik', 'foot.terms': 'Şartlar',
     'foot.credit': '© HourSpend · Para sadece takas edilen zamandır.',
     'share.ok': 'Kopyalandı — istediğin yere yapıştır'
@@ -2220,6 +2283,7 @@ const I18N = {
     'fin.eye': 'Una última cosa', 'fin.title': 'No estás gastando dinero.<br>Estás gastando <span class="italic">tu vida.</span>',
     'fin.sub': 'Te quedan unos 2.500 fines de semana. El dinero se gana otra vez. Los minutos no.',
     'fin.btn1': 'Descargar Gratis', 'fin.btn2': 'Probar la calculadora',
+    'float.cta': 'Descargar Gratis · iOS',
     'foot.all': 'Todo', 'foot.ios': 'App iOS', 'foot.privacy': 'Privacidad', 'foot.terms': 'Términos',
     'foot.credit': '© HourSpend · El dinero es solo tiempo intercambiado.',
     'share.ok': 'Copiado — pégalo donde quieras'
@@ -2318,6 +2382,7 @@ const I18N = {
     'fin.eye': 'Ein letztes', 'fin.title': 'Du gibst kein Geld aus.<br>Du gibst <span class="italic">dein Leben</span> aus.',
     'fin.sub': 'Du hast noch etwa 2.500 Wochenenden. Geld lässt sich zurückgewinnen. Minuten nicht.',
     'fin.btn1': 'Kostenlos laden', 'fin.btn2': 'Rechner ausprobieren',
+    'float.cta': 'Gratis laden · iOS',
     'foot.all': 'Alle Artikel', 'foot.ios': 'iOS App', 'foot.privacy': 'Datenschutz', 'foot.terms': 'AGB',
     'foot.credit': '© HourSpend · Geld ist nur getauschte Zeit.',
     'share.ok': 'Kopiert — füge es überall ein'
@@ -2416,6 +2481,7 @@ const I18N = {
     'fin.eye': 'Une dernière', 'fin.title': 'Tu ne dépenses pas d\'argent.<br>Tu dépenses <span class="italic">ta vie.</span>',
     'fin.sub': 'Il te reste environ 2 500 week-ends. L\'argent se regagne. Les minutes non.',
     'fin.btn1': 'Télécharger Gratuit', 'fin.btn2': 'Essayer la calculatrice',
+    'float.cta': 'Télécharger · iOS',
     'foot.all': 'Tous les articles', 'foot.ios': 'App iOS', 'foot.privacy': 'Confidentialité', 'foot.terms': 'Conditions',
     'foot.credit': '© HourSpend · L\'argent n\'est que du temps échangé.',
     'share.ok': 'Copié — colle-le où tu veux'
@@ -2514,6 +2580,7 @@ const I18N = {
     'fin.eye': 'Última coisa', 'fin.title': 'Você não gasta dinheiro.<br>Você gasta <span class="italic">sua vida.</span>',
     'fin.sub': 'Você tem cerca de 2.500 fins de semana restantes. Dinheiro volta. Minutos não.',
     'fin.btn1': 'Baixar Grátis', 'fin.btn2': 'Testar calculadora',
+    'float.cta': 'Baixar Grátis · iOS',
     'foot.all': 'Todos os itens', 'foot.ios': 'App iOS', 'foot.privacy': 'Privacidade', 'foot.terms': 'Termos',
     'foot.credit': '© HourSpend · Dinheiro é só tempo trocado.',
     'share.ok': 'Copiado — cole onde quiser'
@@ -2612,6 +2679,7 @@ const I18N = {
     'fin.eye': '最後に', 'fin.title': 'お金を使っているのではない。<br><span class="italic">人生を</span>使っている。',
     'fin.sub': '残りの週末は約2,500回。お金は稼げる。時間は稼げない。',
     'fin.btn1': '無料ダウンロード', 'fin.btn2': '計算機を試す',
+    'float.cta': '無料ダウンロード · iOS',
     'foot.all': 'すべて', 'foot.ios': 'iOSアプリ', 'foot.privacy': 'プライバシー', 'foot.terms': '利用規約',
     'foot.credit': '© HourSpend · お金はただ交換された時間。',
     'share.ok': 'コピーしました — どこにでも貼れます'

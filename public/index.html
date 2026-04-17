@@ -1113,11 +1113,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
         <span class="pulse"></span>
         <span data-i18n="hero.badge">Live · Free calculator · iOS</span>
       </div>
-      <h1 id="hero-h1">
-        <span class="line"><span class="word">Your</span> <span class="word">money,</span></span><br>
-        <span class="line"><span class="word">in</span> <span class="word accent">hours</span></span><br>
-        <span class="line"><span class="word">of</span> <span class="word">your</span> <span class="word">life.</span></span>
-      </h1>
+      <h1 id="hero-h1" data-i18n-html="hero.h1"><span class="line"><span class="word">Your</span> <span class="word">money,</span></span><br><span class="line"><span class="word">in</span> <span class="word accent">hours</span></span><br><span class="line"><span class="word">of</span> <span class="word">your</span> <span class="word">life.</span></span></h1>
       <p class="hero-sub reveal reveal-d2" data-i18n="hero.sub">
         The only app that converts every expense into the work-hours it really stole. Coffee. Rent. Subscriptions. See what you trade. Decide differently.
       </p>
@@ -1137,42 +1133,42 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 
     <div class="calc reveal reveal-d2" id="calculator" data-spotlight>
       <div class="calc-header">
-        <span class="calc-title">Calculator</span>
-        <span class="calc-live"><span class="dot"></span>REAL-TIME</span>
+        <span class="calc-title" data-i18n="calc.title">Calculator</span>
+        <span class="calc-live"><span class="dot"></span><span data-i18n="calc.live">REAL-TIME</span></span>
       </div>
       <div class="calc-inputs">
         <div class="input-group">
-          <label>Monthly salary</label>
+          <label data-i18n="calc.salary">Monthly salary</label>
           <input type="text" id="salary" value="3000" inputmode="numeric" pattern="[0-9]*" autocomplete="off" data-numeric="int">
         </div>
         <div class="input-row">
           <div class="input-group">
-            <label>Hrs / week</label>
+            <label data-i18n="calc.hpw">Hrs / week</label>
             <input type="text" id="hours" value="40" inputmode="numeric" pattern="[0-9]*" autocomplete="off" data-numeric="int">
           </div>
           <div class="input-group">
-            <label>Expense $</label>
+            <label data-i18n="calc.exp">Expense $</label>
             <input type="text" id="expense" value="5" inputmode="decimal" pattern="[0-9]*\.?[0-9]*" autocomplete="off" data-numeric="decimal">
           </div>
         </div>
       </div>
 
       <div class="calc-result">
-        <div class="result-label">That cost you</div>
+        <div class="result-label" data-i18n="calc.result">That cost you</div>
         <div class="result-value" id="amount">23 min</div>
         <div class="result-context" id="label">for $5</div>
       </div>
 
       <button class="calc-share" id="shareBtn" data-magnetic>
-        Share this math
+        <span data-i18n="calc.share">Share this math</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
 
       <div class="examples-row">
-        <div class="chip" data-amount="5">Coffee · $5</div>
-        <div class="chip" data-amount="35">Lunch · $35</div>
-        <div class="chip" data-amount="100">Groceries · $100</div>
-        <div class="chip" data-amount="1500">Rent · $1500</div>
+        <div class="chip" data-amount="5" data-i18n="calc.c1">Coffee · $5</div>
+        <div class="chip" data-amount="35" data-i18n="calc.c2">Lunch · $35</div>
+        <div class="chip" data-amount="100" data-i18n="calc.c3">Groceries · $100</div>
+        <div class="chip" data-amount="1500" data-i18n="calc.c4">Rent · $1500</div>
       </div>
     </div>
   </div>
@@ -1182,11 +1178,11 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <section class="trusted-strip reveal">
   <div class="label" data-i18n="trusted.label">Trusted by time-conscious humans everywhere</div>
   <div class="trusted-logos">
-    <span class="logo-item">Product Hunt · Featured Launch</span>
-    <span class="logo-item">★★★★★ App Store rated</span>
-    <span class="logo-item">Top 10 Finance · iOS 2026</span>
-    <span class="logo-item">Featured on TikTok · 2.4M views</span>
-    <span class="logo-item">Indie Hackers · Rising</span>
+    <span class="logo-item" data-i18n="t1">Product Hunt · Featured Launch</span>
+    <span class="logo-item" data-i18n="t2">★★★★★ App Store rated</span>
+    <span class="logo-item" data-i18n="t3">Top 10 Finance · iOS 2026</span>
+    <span class="logo-item" data-i18n="t4">Featured on TikTok · 2.4M views</span>
+    <span class="logo-item" data-i18n="t5">Indie Hackers · Rising</span>
   </div>
 </section>
 
@@ -1225,13 +1221,13 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <section class="story" id="story" style="height: 220vh;">
   <div class="story-sticky">
     <div class="story-stage">
-      <div class="story-label">The reframe</div>
+      <div class="story-label" data-i18n="story.label">The reframe</div>
       <div class="story-main">
         <span class="dollars" id="storyDollars">$5</span>
-        <span class="hours" id="storyHours" style="opacity:0">23 min</span>
+        <span class="hours" id="storyHours" style="opacity:0" data-i18n="story.hrsNum">23 min</span>
       </div>
       <div class="story-arrow" id="storyArrow">↓</div>
-      <p class="story-caption" id="storyCaption">
+      <p class="story-caption" id="storyCaption" data-i18n="story.cap1">
         Counting in dollars hides the truth.
       </p>
     </div>
@@ -1241,58 +1237,58 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <!-- BENTO -->
 <section class="bento-section">
   <div class="section-head reveal">
-    <div class="eyebrow">The truth in numbers</div>
-    <h2>What everyday spending <span class="italic">really</span> costs.</h2>
-    <p class="section-sub">At a $25/hour wage. Drag the calculator above to see your own numbers.</p>
+    <div class="eyebrow" data-i18n="bento.eye">The truth in numbers</div>
+    <h2 data-i18n-html="bento.title">What everyday spending <span class="italic">really</span> costs.</h2>
+    <p class="section-sub" data-i18n="bento.sub">At a $25/hour wage. Drag the calculator above to see your own numbers.</p>
   </div>
 
   <div class="bento">
     <div class="bento-cell large reveal" data-spotlight>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1400&q=80&auto=format&fit=crop')"></div>
       <div>
-        <div class="meta">Daily latte habit</div>
-        <h3>Your morning coffee for a year =</h3>
+        <div class="meta" data-i18n="b1.meta">Daily latte habit</div>
+        <h3 data-i18n="b1.h">Your morning coffee for a year =</h3>
       </div>
       <div>
-        <div class="equation">14 work days</div>
-        <div class="price">$5/day × 365 · 73 hours of work</div>
+        <div class="equation" data-i18n="b1.eq">14 work days</div>
+        <div class="price" data-i18n="b1.p">$5/day × 365 · 73 hours of work</div>
       </div>
     </div>
 
     <div class="bento-cell reveal reveal-d1" data-spotlight>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=900&q=80&auto=format&fit=crop')"></div>
       <div>
-        <div class="meta">iPhone 16 Pro</div>
+        <div class="meta" data-i18n="b2.meta">iPhone 16 Pro</div>
         <h3>$1,199</h3>
       </div>
-      <div class="equation" style="font-size:30px">6 weeks</div>
+      <div class="equation" style="font-size:30px" data-i18n="b2.eq">6 weeks</div>
     </div>
 
     <div class="bento-cell reveal reveal-d2" data-spotlight>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80&auto=format&fit=crop')"></div>
       <div>
-        <div class="meta">NYC 1-bed rent</div>
+        <div class="meta" data-i18n="b3.meta">NYC 1-bed rent</div>
         <h3>$4,500/mo</h3>
       </div>
-      <div class="equation" style="font-size:30px">22.5 days</div>
+      <div class="equation" style="font-size:30px" data-i18n="b3.eq">22.5 days</div>
     </div>
 
     <div class="bento-cell reveal reveal-d1" data-spotlight>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=80&auto=format&fit=crop')"></div>
       <div>
-        <div class="meta">DoorDash dinner</div>
+        <div class="meta" data-i18n="b4.meta">DoorDash dinner</div>
         <h3>$32</h3>
       </div>
-      <div class="equation" style="font-size:30px">1.3 hrs</div>
+      <div class="equation" style="font-size:30px" data-i18n="b4.eq">1.3 hrs</div>
     </div>
 
     <div class="bento-cell reveal reveal-d2" data-spotlight>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=900&q=80&auto=format&fit=crop')"></div>
       <div>
-        <div class="meta">Netflix yearly</div>
+        <div class="meta" data-i18n="b5.meta">Netflix yearly</div>
         <h3>$276</h3>
       </div>
-      <div class="equation" style="font-size:30px">11 hrs</div>
+      <div class="equation" style="font-size:30px" data-i18n="b5.eq">11 hrs</div>
     </div>
   </div>
 </section>
@@ -1300,28 +1296,28 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <!-- LIFESTYLE GALLERY -->
 <section class="gallery-section">
   <div class="section-head reveal">
-    <div class="eyebrow">Where your hours go</div>
-    <h2>Every habit has a <span class="italic">price tag</span> in time.</h2>
-    <p class="section-sub">The little things add up faster than you'd think.</p>
+    <div class="eyebrow" data-i18n="gal.eye">Where your hours go</div>
+    <h2 data-i18n-html="gal.title">Every habit has a <span class="italic">price tag</span> in time.</h2>
+    <p class="section-sub" data-i18n="gal.sub">The little things add up faster than you'd think.</p>
   </div>
   <div class="gallery-grid">
     <div class="gallery-tile t-1 reveal" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=1200&q=80&auto=format&fit=crop')">
-      <div class="caption"><span class="k">Morning ritual</span><span class="v">73 hours of work · per year</span></div>
+      <div class="caption"><span class="k" data-i18n="g1.k">Morning ritual</span><span class="v" data-i18n="g1.v">73 hours of work · per year</span></div>
     </div>
     <div class="gallery-tile t-2 reveal reveal-d1" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&q=80&auto=format&fit=crop')">
-      <div class="caption"><span class="k">Subscriptions</span><span class="v">4 days of your life</span></div>
+      <div class="caption"><span class="k" data-i18n="g2.k">Subscriptions</span><span class="v" data-i18n="g2.v">4 days of your life</span></div>
     </div>
     <div class="gallery-tile t-3 reveal reveal-d2" style="background-image:url('https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=900&q=80&auto=format&fit=crop')">
-      <div class="caption"><span class="k">Takeout dinner</span><span class="v">1.3 hrs</span></div>
+      <div class="caption"><span class="k" data-i18n="g3.k">Takeout dinner</span><span class="v" data-i18n="g3.v">1.3 hrs</span></div>
     </div>
     <div class="gallery-tile t-4 reveal" style="background-image:url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=900&q=80&auto=format&fit=crop')">
-      <div class="caption"><span class="k">Weekend shopping</span><span class="v">6 hrs</span></div>
+      <div class="caption"><span class="k" data-i18n="g4.k">Weekend shopping</span><span class="v" data-i18n="g4.v">6 hrs</span></div>
     </div>
     <div class="gallery-tile t-5 reveal reveal-d1" style="background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&q=80&auto=format&fit=crop')">
-      <div class="caption"><span class="k">9-to-5 reality</span><span class="v">$1,923 weekly · priced in <em>your</em> minutes</span></div>
+      <div class="caption"><span class="k" data-i18n="g5.k">9-to-5 reality</span><span class="v" data-i18n-html="g5.v">$1,923 weekly · priced in <em>your</em> minutes</span></div>
     </div>
     <div class="gallery-tile t-6 reveal reveal-d2" style="background-image:url('https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=1000&q=80&auto=format&fit=crop')">
-      <div class="caption"><span class="k">The weekend trip</span><span class="v">32 hrs</span></div>
+      <div class="caption"><span class="k" data-i18n="g6.k">The weekend trip</span><span class="v" data-i18n="g6.v">32 hrs</span></div>
     </div>
   </div>
 </section>
@@ -1497,8 +1493,8 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <!-- MARQUEE -->
 <section class="marquee-section">
   <div class="marquee-head reveal">
-    <div class="eyebrow">Browse the catalog</div>
-    <h2>52<span class="italic">+</span> purchases, priced in life.</h2>
+    <div class="eyebrow" data-i18n="marq.eye">Browse the catalog</div>
+    <h2 data-i18n-html="marq.title">52<span class="italic">+</span> purchases, priced in life.</h2>
   </div>
 
   <div class="marquee-wrap">
@@ -1523,7 +1519,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
   </div>
 
   <div class="browse-all reveal">
-    <a href="/buying" class="btn-ghost" data-magnetic>Browse all 52 items <span style="display:inline-block;transition:transform .25s">→</span></a>
+    <a href="/buying" class="btn-ghost" data-magnetic><span data-i18n="marq.browse">Browse all 52 items</span> <span style="display:inline-block;transition:transform .25s">→</span></a>
   </div>
 </section>
 
@@ -1531,18 +1527,18 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <section class="download">
   <div class="download-card reveal">
     <div class="download-content">
-      <div class="eyebrow">Get the iOS app</div>
-      <h2>Track every dollar<br>in <span class="italic">hours</span> of life.</h2>
-      <p>The free calculator is a taste. The iOS app does it for every expense, automatically.</p>
+      <div class="eyebrow" data-i18n="dl.eye">Get the iOS app</div>
+      <h2 data-i18n-html="dl.title">Track every dollar<br>in <span class="italic">hours</span> of life.</h2>
+      <p data-i18n="dl.sub">The free calculator is a taste. The iOS app does it for every expense, automatically.</p>
       <ul class="download-features">
-        <li>Add expenses by voice, text, or receipt scan</li>
-        <li>See your monthly burn in work-hours</li>
-        <li>Set savings goals as "hours back"</li>
-        <li>14 languages · multi-currency · private by default</li>
+        <li data-i18n="dl.f1">Add expenses by voice, text, or receipt scan</li>
+        <li data-i18n="dl.f2">See your monthly burn in work-hours</li>
+        <li data-i18n="dl.f3">Set savings goals as "hours back"</li>
+        <li data-i18n="dl.f4">14 languages · multi-currency · private by default</li>
       </ul>
       <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="appstore-badge" data-magnetic>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download on App Store
+        <span data-i18n="dl.badge">Download on App Store</span>
       </a>
     </div>
 
@@ -1550,14 +1546,14 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <div class="phone-mockup">
         <div class="phone-screen">
           <div class="phone-content">
-            <div class="phone-greet">This week</div>
+            <div class="phone-greet" data-i18n="ph.week">This week</div>
             <div class="phone-balance">14h 32m</div>
-            <div class="phone-conv">≈ $363 spent</div>
+            <div class="phone-conv" data-i18n="ph.spent">≈ $363 spent</div>
             <div class="phone-cards">
-              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 010 8h-1M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>Coffee</span><span class="time">23m</span></div>
-              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Lunch</span><span class="time">1h 12m</span></div>
-              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>Groceries</span><span class="time">3h 40m</span></div>
-              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V5a2 2 0 012-2h10a2 2 0 012 2v17"/><path d="M3 22h14"/><path d="M17 10h2a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="6" y="7" width="8" height="5"/></svg>Gas</span><span class="time">2h 25m</span></div>
+              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 010 8h-1M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg><span data-i18n="ph.coffee">Coffee</span></span><span class="time">23m</span></div>
+              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg><span data-i18n="ph.lunch">Lunch</span></span><span class="time">1h 12m</span></div>
+              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span data-i18n="ph.groceries">Groceries</span></span><span class="time">3h 40m</span></div>
+              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V5a2 2 0 012-2h10a2 2 0 012 2v17"/><path d="M3 22h14"/><path d="M17 10h2a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="6" y="7" width="8" height="5"/></svg><span data-i18n="ph.gas">Gas</span></span><span class="time">2h 25m</span></div>
             </div>
           </div>
         </div>
@@ -1586,18 +1582,18 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
   <div class="footer-inner">
     <div class="footer-logo"><span class="dot"></span>HourSpend</div>
     <div class="footer-links">
-      <a href="/buying" data-magnetic>All items</a>
-      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" data-magnetic>iOS App</a>
-      <a href="https://violencia19.github.io/app-legal/vantag/privacy-en.html" data-magnetic>Privacy</a>
-      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" data-magnetic>Terms</a>
+      <a href="/buying" data-magnetic data-i18n="foot.all">All items</a>
+      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" data-magnetic data-i18n="foot.ios">iOS App</a>
+      <a href="https://violencia19.github.io/app-legal/vantag/privacy-en.html" data-magnetic data-i18n="foot.privacy">Privacy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" data-magnetic data-i18n="foot.terms">Terms</a>
     </div>
-    <div class="footer-credit">© HourSpend · Money is just time, exchanged.</div>
+    <div class="footer-credit" data-i18n="foot.credit">© HourSpend · Money is just time, exchanged.</div>
   </div>
 </footer>
 
 </div><!-- /wrap -->
 
-<div class="share-success" id="shareSuccess"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Copied — paste anywhere</div>
+<div class="share-success" id="shareSuccess"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="share.ok">Copied — paste anywhere</span></div>
 
 <!-- Lenis smooth scroll -->
 <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
@@ -1816,32 +1812,44 @@ document.querySelectorAll('[data-spotlight]').forEach(el => {
 });
 
 /* ============ CALCULATOR ============ */
+// Hoisted lang state (set by i18n init below) — allows calc() to read before i18n block runs
+var __currentLang = 'en';
 const $ = id => document.getElementById(id);
 const salary = $('salary'), hours = $('hours'), expense = $('expense');
 const amountEl = $('amount'), labelEl = $('label');
 const shareBtn = $('shareBtn'), shareSuccess = $('shareSuccess');
 
+function u(key) {
+  // pull unit label from I18N for current lang; safe before I18N is declared (TDZ)
+  try {
+    const dict = I18N[__currentLang] || I18N.en;
+    if (dict && dict[key] != null) return dict[key];
+  } catch (e) { /* I18N not yet in scope */ }
+  // Hardcoded English fallbacks for initial render before i18n block runs
+  const fallback = { 'unit.min': 'min', 'unit.hrs': 'hrs', 'unit.days': 'days', 'unit.weeks': 'weeks', 'unit.months': 'months', 'unit.empty': '—', 'unit.enter': 'enter values', 'calc.for': 'for' };
+  return fallback[key] || key;
+}
 function formatTime(min) {
-  if (min < 60) return Math.round(min) + ' min';
-  if (min < 480) return (min/60).toFixed(1) + ' hrs';
-  if (min < 2400) return (min/480).toFixed(1) + ' days';
-  if (min < 10400) return (min/2400).toFixed(1) + ' weeks';
-  return (min/10400).toFixed(1) + ' months';
+  if (min < 60) return Math.round(min) + ' ' + u('unit.min');
+  if (min < 480) return (min/60).toFixed(1) + ' ' + u('unit.hrs');
+  if (min < 2400) return (min/480).toFixed(1) + ' ' + u('unit.days');
+  if (min < 10400) return (min/2400).toFixed(1) + ' ' + u('unit.weeks');
+  return (min/10400).toFixed(1) + ' ' + u('unit.months');
 }
 function calc() {
   const s = parseFloat(salary.value) || 0;
   const h = parseFloat(hours.value) || 0;
   const e = parseFloat(expense.value) || 0;
   if (s <= 0 || h <= 0 || e <= 0) {
-    amountEl.textContent = '—';
-    labelEl.textContent = 'enter values';
+    amountEl.textContent = u('unit.empty');
+    labelEl.textContent = u('unit.enter');
     return;
   }
   const monthlyHours = h * 4.33;
   const hourlyRate = s / monthlyHours;
   const minutes = (e / hourlyRate) * 60;
   amountEl.textContent = formatTime(minutes);
-  labelEl.textContent = 'for $' + e;
+  labelEl.textContent = u('calc.for') + ' $' + e;
 }
 /* Strict numeric-only filter — blocks letters, 'e', '+', '-', spaces, paste garbage */
 function attachNumericFilter(el) {
@@ -1900,6 +1908,814 @@ shareBtn.addEventListener('click', async () => {
 });
 calc();
 
+/* ============================================================ */
+/* ============ i18n: 7 LANGUAGES + GEO DETECTION ============= */
+/* ============================================================ */
+
+const I18N = {
+  en: {
+    // nav
+    'nav.browse': 'Browse', 'nav.cta': 'Get the App',
+    // hero h1 (with .word spans for GSAP stagger)
+    'hero.h1': '<span class="line"><span class="word">Your</span> <span class="word">money,</span></span><br><span class="line"><span class="word">in</span> <span class="word accent">hours</span></span><br><span class="line"><span class="word">of</span> <span class="word">your</span> <span class="word">life.</span></span>',
+    'hero.rank': 'Money-in-hours tracker', 'hero.badge': 'Live · Free calculator · iOS',
+    'hero.sub': 'The only app that converts every expense into the work-hours it really stole. Coffee. Rent. Subscriptions. See what you trade. Decide differently.',
+    'hero.download': 'Download for iOS', 'hero.try': 'Try Calculator',
+    'hero.stat1': 'Items priced', 'hero.stat2': 'Languages', 'hero.stat3': 'Avg rating',
+    // calculator
+    'calc.title': 'Calculator', 'calc.live': 'REAL-TIME',
+    'calc.salary': 'Monthly salary', 'calc.hpw': 'Hrs / week', 'calc.exp': 'Expense $',
+    'calc.result': 'That cost you', 'calc.share': 'Share this math', 'calc.for': 'for',
+    'calc.c1': 'Coffee · $5', 'calc.c2': 'Lunch · $35', 'calc.c3': 'Groceries · $100', 'calc.c4': 'Rent · $1500',
+    'unit.min': 'min', 'unit.hrs': 'hrs', 'unit.days': 'days', 'unit.weeks': 'weeks', 'unit.months': 'months', 'unit.years': 'years',
+    'unit.empty': '—', 'unit.enter': 'enter values',
+    // trusted
+    'trusted.label': 'Trusted by time-conscious humans everywhere',
+    't1': 'Product Hunt · Featured Launch', 't2': '★★★★★ App Store rated',
+    't3': 'Top 10 Finance · iOS 2026', 't4': 'Featured on TikTok · 2.4M views', 't5': 'Indie Hackers · Rising',
+    // numbers
+    'numbers.eye': 'The hard numbers', 'numbers.title': 'Built <span class="italic">different.</span>',
+    'numbers.sub': 'No ads. No data selling. No manipulation. Just your money, re-expressed.',
+    'num1.l': 'Money-in-hours app', 'num1.s': 'Category creator · iOS',
+    'num2.l': 'Expenses tracked', 'num2.s': 'Every month, and growing',
+    'num3.l': 'Average rating', 'num3.s': 'Across every region',
+    'num4.l': 'Languages live', 'num4.s': 'Full localization',
+    // story
+    'story.label': 'The reframe', 'story.hrsNum': '23 min',
+    'story.cap1': 'Counting in dollars hides the truth.',
+    'story.cap2': '$5 feels like nothing. 23 minutes of your life feels different.',
+    'story.cap3': 'Your money is your time, converted. The reframe is impossible to unsee.',
+    // bento
+    'bento.eye': 'The truth in numbers', 'bento.title': 'What everyday spending <span class="italic">really</span> costs.',
+    'bento.sub': 'At a $25/hour wage. Drag the calculator above to see your own numbers.',
+    'b1.meta': 'Daily latte habit', 'b1.h': 'Your morning coffee for a year =', 'b1.eq': '14 work days', 'b1.p': '$5/day × 365 · 73 hours of work',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 weeks',
+    'b3.meta': 'NYC 1-bed rent', 'b3.eq': '22.5 days',
+    'b4.meta': 'DoorDash dinner', 'b4.eq': '1.3 hrs',
+    'b5.meta': 'Netflix yearly', 'b5.eq': '11 hrs',
+    // gallery
+    'gal.eye': 'Where your hours go', 'gal.title': 'Every habit has a <span class="italic">price tag</span> in time.',
+    'gal.sub': 'The little things add up faster than you\'d think.',
+    'g1.k': 'Morning ritual', 'g1.v': '73 hours of work · per year',
+    'g2.k': 'Subscriptions', 'g2.v': '4 days of your life',
+    'g3.k': 'Takeout dinner', 'g3.v': '1.3 hrs',
+    'g4.k': 'Weekend shopping', 'g4.v': '6 hrs',
+    'g5.k': '9-to-5 reality', 'g5.v': '$1,923 weekly · priced in <em>your</em> minutes',
+    'g6.k': 'The weekend trip', 'g6.v': '32 hrs',
+    // how it works
+    'how.eye': 'How it works', 'how.title': 'Three steps. <span class="italic">Forever changed.</span>',
+    'how.sub': 'Install. Log. See your life in a way you can never unsee.',
+    'how1.h': 'Tell us your <span class="italic">hour.</span>',
+    'how1.p': 'Enter your salary or hourly wage once. Everything else gets priced in your minutes from here.',
+    'how2.h': 'Add <span class="italic">anything</span> you spend.',
+    'how2.p': 'Voice. Text. Receipt scan. Every entry shows up as hours of work, not just dollars.',
+    'how3.h': 'Watch your <span class="italic">decisions</span> shift.',
+    'how3.p': '$5 coffees feel different when you see them as 23 min of your life. You\'ll think twice. That\'s the whole point.',
+    // vs
+    'vs.eye': 'Head to head', 'vs.title': 'HourSpend vs <span class="italic">the rest.</span>',
+    'vs.sub': 'Every other budget app shows you dollars. Only one shows you <em>your life</em>.',
+    'vs.col0': 'Feature',
+    'vs.r1': 'Expenses priced in hours of work',
+    'vs.r2': 'Free forever (core features)',
+    'vs.r3': 'No ads. No data selling.',
+    'vs.r4': 'AI expense parsing (voice + text)',
+    'vs.r5': '14 languages localized',
+    'vs.r6': 'iOS native (Liquid Glass, iOS 17+)',
+    'vs.r7': 'Private by default (on-device first)',
+    // marquee
+    'marq.eye': 'Browse the catalog', 'marq.title': '52<span class="italic">+</span> purchases, priced in life.',
+    'marq.browse': 'Browse all 52 items',
+    // testi
+    'testi.eye': 'What people are saying', 'testi.title': 'The reframe is <span class="italic">impossible to unsee.</span>',
+    'testi.sub': 'Real quotes. Real decisions. Real hours saved.',
+    'testi1.q': '"Cancelled three subscriptions in the first week. Turns out I was paying 8 hours a month for stuff I never opened."',
+    'testi1.a': 'Anna · Product designer',
+    'testi2.q': '"I don\'t need a budget. I need a translator. HourSpend is exactly that."',
+    'testi2.a': 'Marcus · Software engineer',
+    'testi3.q': '"The $5 coffee hits different when you see it as 23 minutes of your Tuesday. Changed how I spend. For real."',
+    'testi3.a': 'Priya · Marketing lead',
+    // faq
+    'faq.eye': 'Questions', 'faq.title': 'Things people <span class="italic">ask us.</span>',
+    'faq1.q': 'Is it really free?',
+    'faq1.a': 'Core features are free forever — add expenses, see hour conversions, track habits. Pro unlocks AI parsing, unlimited goals, and advanced charts for the price of about 30 minutes of your life per month.',
+    'faq2.q': 'Do you sell my data?',
+    'faq2.a': 'Never. Your spending data lives on-device and in your personal Firebase instance. We don\'t sell, trade, or share. No ads ever.',
+    'faq3.q': 'How accurate is the hour conversion?',
+    'faq3.a': 'As accurate as the wage you enter. We use 160 work-hours per month (40hr/wk × 4.33). If you\'re salaried, we divide by actual hours worked.',
+    'faq4.q': 'Android?',
+    'faq4.a': 'iOS-only for now. We built it native on iOS 17+ with Liquid Glass to be the absolute best experience possible on one platform before expanding.',
+    'faq5.q': 'What makes this different from Mint / YNAB / Copilot?',
+    'faq5.a': 'They all show you dollars. We show you your life. That\'s not a feature — that\'s a philosophy. Once you see a $35 lunch as 1.4 hrs of work, you can\'t unsee it.',
+    'faq6.q': 'Which languages are supported?',
+    'faq6.a': '14 languages full native: English, Turkish, Spanish, German, French, Portuguese, Japanese, Korean, Chinese (Simplified), Italian, Dutch, Polish, Russian, Arabic.',
+    // download
+    'dl.eye': 'Get the iOS app', 'dl.title': 'Track every dollar<br>in <span class="italic">hours</span> of life.',
+    'dl.sub': 'The free calculator is a taste. The iOS app does it for every expense, automatically.',
+    'dl.f1': 'Add expenses by voice, text, or receipt scan',
+    'dl.f2': 'See your monthly burn in work-hours',
+    'dl.f3': 'Set savings goals as "hours back"',
+    'dl.f4': '14 languages · multi-currency · private by default',
+    'dl.badge': 'Download on App Store',
+    // phone
+    'ph.week': 'This week', 'ph.spent': '≈ $363 spent',
+    'ph.coffee': 'Coffee', 'ph.lunch': 'Lunch', 'ph.groceries': 'Groceries', 'ph.gas': 'Gas',
+    // final
+    'fin.eye': 'Last thing', 'fin.title': 'Stop spending<br>in <span class="italic">dollars.</span>',
+    'fin.sub': 'You have about 2,500 weekends left. Money can be earned again. Minutes can\'t.',
+    'fin.btn1': 'Download Free', 'fin.btn2': 'Try the free calculator',
+    // footer + toast
+    'foot.all': 'All items', 'foot.ios': 'iOS App', 'foot.privacy': 'Privacy', 'foot.terms': 'Terms',
+    'foot.credit': '© HourSpend · Money is just time, exchanged.',
+    'share.ok': 'Copied — paste anywhere'
+  },
+  tr: {
+    'nav.browse': 'Keşfet', 'nav.cta': 'Uygulamayı İndir',
+    'hero.h1': '<span class="line"><span class="word">Paran,</span></span><br><span class="line"><span class="word">hayatının</span></span><br><span class="line"><span class="word accent">saatlerinde.</span></span>',
+    'hero.rank': 'Saat cinsinden para takibi', 'hero.badge': 'Canlı · Ücretsiz hesaplayıcı · iOS',
+    'hero.sub': 'Her harcamayı gerçekte çaldığı iş saatine çeviren tek uygulama. Kahve. Kira. Unuttuğun abonelikler. Neyi takas ettiğini gör. Farklı karar ver.',
+    'hero.download': 'iOS için İndir', 'hero.try': 'Hesaplayıcıyı Dene',
+    'hero.stat1': 'Ürün fiyatlandı', 'hero.stat2': 'Dil', 'hero.stat3': 'Ort. puan',
+    'calc.title': 'Hesaplayıcı', 'calc.live': 'CANLI',
+    'calc.salary': 'Aylık maaş', 'calc.hpw': 'Sa / hafta', 'calc.exp': 'Harcama $',
+    'calc.result': 'Sana maliyeti', 'calc.share': 'Bu matematiği paylaş', 'calc.for': 'karşılığında',
+    'calc.c1': 'Kahve · 5$', 'calc.c2': 'Öğle · 35$', 'calc.c3': 'Market · 100$', 'calc.c4': 'Kira · 1500$',
+    'unit.min': 'dk', 'unit.hrs': 'sa', 'unit.days': 'gün', 'unit.weeks': 'hafta', 'unit.months': 'ay', 'unit.years': 'yıl',
+    'unit.empty': '—', 'unit.enter': 'değer gir',
+    'trusted.label': 'Zamanına değer verenler tarafından kullanılıyor',
+    't1': 'Product Hunt · Öne çıkan lansman', 't2': '★★★★★ App Store puanlaması',
+    't3': 'Top 10 Finans · iOS 2026', 't4': 'TikTok\'ta · 2.4M görüntülenme', 't5': 'Indie Hackers · Yükseliş',
+    'numbers.eye': 'Sert rakamlar', 'numbers.title': '<span class="italic">Farklı</span> inşa edildi.',
+    'numbers.sub': 'Reklam yok. Veri satışı yok. Manipülasyon yok. Sadece paran, yeniden ifade edilmiş.',
+    'num1.l': 'Saat-bazlı para uygulaması', 'num1.s': 'Kategori yaratıcısı · iOS',
+    'num2.l': 'Takip edilen harcama', 'num2.s': 'Her ay, büyüyor',
+    'num3.l': 'Ortalama puan', 'num3.s': 'Her bölgede',
+    'num4.l': 'Aktif dil', 'num4.s': 'Tam yerelleştirme',
+    'story.label': 'Yeniden çerçeveleme', 'story.hrsNum': '23 dk',
+    'story.cap1': 'Dolar olarak saymak gerçeği gizler.',
+    'story.cap2': '5$ hiçbir şey gibi. Ama hayatının 23 dakikası çok farklı.',
+    'story.cap3': 'Paran, dönüştürülmüş zamandır. Bu çerçeveleme bir daha silinmez.',
+    'bento.eye': 'Rakamlardaki gerçek', 'bento.title': 'Günlük harcamaların <span class="italic">gerçek</span> maliyeti.',
+    'bento.sub': 'Saat başı 25$ ücret üzerinden. Kendi rakamlarını görmek için yukarıdaki hesaplayıcıyı kullan.',
+    'b1.meta': 'Günlük latte alışkanlığı', 'b1.h': 'Bir yıllık sabah kahven =', 'b1.eq': '14 iş günü', 'b1.p': 'Günde 5$ × 365 · 73 saat iş',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 hafta',
+    'b3.meta': 'NYC 1+1 kira', 'b3.eq': '22.5 gün',
+    'b4.meta': 'DoorDash akşam', 'b4.eq': '1.3 sa',
+    'b5.meta': 'Yıllık Netflix', 'b5.eq': '11 sa',
+    'gal.eye': 'Saatlerin nereye gidiyor', 'gal.title': 'Her alışkanlığın zamanla <span class="italic">bir fiyatı</span> var.',
+    'gal.sub': 'Küçük şeyler sandığından çok daha hızlı birikir.',
+    'g1.k': 'Sabah ritüeli', 'g1.v': 'Yılda 73 saat iş',
+    'g2.k': 'Abonelikler', 'g2.v': 'Hayatından 4 gün',
+    'g3.k': 'Yemek siparişi', 'g3.v': '1.3 sa',
+    'g4.k': 'Haftasonu alışverişi', 'g4.v': '6 sa',
+    'g5.k': '9-5 gerçeği', 'g5.v': 'Haftalık 1.923$ · <em>senin</em> dakikalarınla fiyatlı',
+    'g6.k': 'Haftasonu gezisi', 'g6.v': '32 sa',
+    'how.eye': 'Nasıl çalışır', 'how.title': 'Üç adım. <span class="italic">Sonsuza kadar değişim.</span>',
+    'how.sub': 'Yükle. Kaydet. Hayatını bir daha göz ardı edemeyeceğin şekilde gör.',
+    'how1.h': 'Bize <span class="italic">saatini</span> söyle.',
+    'how1.p': 'Maaşını ya da saatlik ücretini bir kez gir. Bundan sonra her şey dakikalarınla fiyatlanır.',
+    'how2.h': '<span class="italic">Her şeyi</span> kaydet.',
+    'how2.p': 'Ses. Metin. Fiş tarama. Her giriş çalışma saati olarak görünür, sadece dolar değil.',
+    'how3.h': '<span class="italic">Kararlarının</span> değişmesini izle.',
+    'how3.p': '5$\'lık kahve, hayatının 23 dakikası olduğunda farklı hissettirir. İki kez düşünürsün. Asıl mesele bu.',
+    'vs.eye': 'Karşılaştırma', 'vs.title': 'HourSpend <span class="italic">diğerlerine karşı.</span>',
+    'vs.sub': 'Diğer bütçe uygulamaları dolar gösterir. Sadece biri <em>hayatını</em> gösterir.',
+    'vs.col0': 'Özellik',
+    'vs.r1': 'Harcamalar iş saatinde fiyatlanır',
+    'vs.r2': 'Sonsuza kadar ücretsiz (temel)',
+    'vs.r3': 'Reklam yok. Veri satışı yok.',
+    'vs.r4': 'AI ile harcama ayıklama',
+    'vs.r5': '14 dilde yerelleştirme',
+    'vs.r6': 'iOS native (Liquid Glass)',
+    'vs.r7': 'Varsayılan gizlilik (cihaz-öncelikli)',
+    'marq.eye': 'Kataloğu incele', 'marq.title': '52<span class="italic">+</span> alışveriş, hayatına göre fiyatlı.',
+    'marq.browse': '52 ürünün hepsine bak',
+    'testi.eye': 'İnsanların söylediği', 'testi.title': 'Bu yeniden çerçeveleme <span class="italic">görmezden gelinemez.</span>',
+    'testi.sub': 'Gerçek alıntılar. Gerçek kararlar. Gerçek kurtarılmış saatler.',
+    'testi1.q': '"İlk hafta üç aboneliği iptal ettim. Meğer hiç açmadığım şeylere ayda 8 saat ödüyormuşum."',
+    'testi1.a': 'Anna · Ürün tasarımcısı',
+    'testi2.q': '"Bütçeye ihtiyacım yok. Çevirmene ihtiyacım var. HourSpend tam olarak bu."',
+    'testi2.a': 'Marcus · Yazılım mühendisi',
+    'testi3.q': '"5$ kahve, salının 23 dakikası olduğunu gördüğünde farklı. Nasıl harcadığımı değiştirdi. Cidden."',
+    'testi3.a': 'Priya · Pazarlama lideri',
+    'faq.eye': 'Sorular', 'faq.title': 'İnsanların <span class="italic">sorduğu şeyler.</span>',
+    'faq1.q': 'Gerçekten ücretsiz mi?',
+    'faq1.a': 'Temel özellikler sonsuza kadar ücretsiz — harcama ekle, saat dönüşümü gör, alışkanlık takibi. Pro versiyonu AI ayıklama, sınırsız hedef ve gelişmiş grafikleri ayda yaklaşık 30 dakikalık hayatına denk bir fiyata açar.',
+    'faq2.q': 'Verimi satıyor musunuz?',
+    'faq2.a': 'Asla. Harcama verilerin cihazında ve kendi Firebase\'inde yaşar. Satmıyoruz, paylaşmıyoruz. Hiç reklam yok.',
+    'faq3.q': 'Saat dönüşümü ne kadar doğru?',
+    'faq3.a': 'Girdiğin ücret kadar doğru. Ayda 160 iş saati kullanıyoruz (40sa/hafta × 4.33). Maaşlıysan, gerçek çalışma saatine bölünüyor.',
+    'faq4.q': 'Android?',
+    'faq4.a': 'Şimdilik sadece iOS. iOS 17+ ve Liquid Glass ile native inşa ettik — tek platformda en iyi deneyimi vermeden yayılmak istemedik.',
+    'faq5.q': 'Mint / YNAB / Copilot\'tan farkı ne?',
+    'faq5.a': 'Hepsi dolar gösterir. Biz hayatını gösteriyoruz. Bu bir özellik değil — felsefe. 35$\'lık öğle yemeğini 1.4 saatlik iş olarak gördüğünde bir daha unutamıyorsun.',
+    'faq6.q': 'Hangi diller destekleniyor?',
+    'faq6.a': '14 dilde tam yerelleştirme: İngilizce, Türkçe, İspanyolca, Almanca, Fransızca, Portekizce, Japonca, Korece, Çince (Basit), İtalyanca, Felemenkçe, Lehçe, Rusça, Arapça.',
+    'dl.eye': 'iOS uygulamasını al', 'dl.title': 'Her doları<br><span class="italic">saatte</span> takip et.',
+    'dl.sub': 'Ücretsiz hesaplayıcı bir tadımdır. iOS uygulaması her harcamayı otomatik çevirir.',
+    'dl.f1': 'Ses, metin veya fiş taramasıyla ekle',
+    'dl.f2': 'Aylık yakımını iş saatleriyle gör',
+    'dl.f3': 'Tasarruf hedeflerini "geri kazanılan saat" olarak belirle',
+    'dl.f4': '14 dil · çoklu para · varsayılan gizlilik',
+    'dl.badge': 'App Store\'dan İndir',
+    'ph.week': 'Bu hafta', 'ph.spent': '≈ 363$ harcandı',
+    'ph.coffee': 'Kahve', 'ph.lunch': 'Öğle', 'ph.groceries': 'Market', 'ph.gas': 'Yakıt',
+    'fin.eye': 'Son bir şey', 'fin.title': 'Doları değil,<br><span class="italic">hayatını</span> harca.',
+    'fin.sub': 'Yaklaşık 2.500 hafta sonun kaldı. Para yeniden kazanılır. Dakikalar kazanılmaz.',
+    'fin.btn1': 'Ücretsiz İndir', 'fin.btn2': 'Hesaplayıcıyı dene',
+    'foot.all': 'Tüm ürünler', 'foot.ios': 'iOS Uygulaması', 'foot.privacy': 'Gizlilik', 'foot.terms': 'Şartlar',
+    'foot.credit': '© HourSpend · Para sadece takas edilen zamandır.',
+    'share.ok': 'Kopyalandı — istediğin yere yapıştır'
+  },
+  es: {
+    'nav.browse': 'Explorar', 'nav.cta': 'Obtener la App',
+    'hero.h1': '<span class="line"><span class="word">Tu</span> <span class="word">dinero,</span></span><br><span class="line"><span class="word">en</span> <span class="word accent">horas</span></span><br><span class="line"><span class="word">de</span> <span class="word">tu</span> <span class="word">vida.</span></span>',
+    'hero.rank': 'Rastreador dinero-en-horas', 'hero.badge': 'Live · Calculadora gratis · iOS',
+    'hero.sub': 'La única app que convierte cada gasto en las horas de trabajo que realmente costó. Café. Alquiler. Suscripciones. Ve lo que intercambias. Decide diferente.',
+    'hero.download': 'Descargar para iOS', 'hero.try': 'Probar calculadora',
+    'hero.stat1': 'Artículos', 'hero.stat2': 'Idiomas', 'hero.stat3': 'Puntuación',
+    'calc.title': 'Calculadora', 'calc.live': 'EN VIVO',
+    'calc.salary': 'Salario mensual', 'calc.hpw': 'Hs / semana', 'calc.exp': 'Gasto $',
+    'calc.result': 'Eso te costó', 'calc.share': 'Compartir esta matemática', 'calc.for': 'por',
+    'calc.c1': 'Café · $5', 'calc.c2': 'Almuerzo · $35', 'calc.c3': 'Compras · $100', 'calc.c4': 'Alquiler · $1500',
+    'unit.min': 'min', 'unit.hrs': 'hrs', 'unit.days': 'días', 'unit.weeks': 'semanas', 'unit.months': 'meses', 'unit.years': 'años',
+    'unit.empty': '—', 'unit.enter': 'introduce valores',
+    'trusted.label': 'Elegido por quienes valoran su tiempo',
+    't1': 'Product Hunt · Lanzamiento destacado', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finanzas · iOS 2026', 't4': 'En TikTok · 2.4M vistas', 't5': 'Indie Hackers · En alza',
+    'numbers.eye': 'Los números duros', 'numbers.title': 'Construido <span class="italic">diferente.</span>',
+    'numbers.sub': 'Sin anuncios. Sin venta de datos. Sin manipulación. Solo tu dinero, re-expresado.',
+    'num1.l': 'App dinero-horas', 'num1.s': 'Creador de categoría · iOS',
+    'num2.l': 'Gastos registrados', 'num2.s': 'Cada mes, en crecimiento',
+    'num3.l': 'Puntuación media', 'num3.s': 'En todas las regiones',
+    'num4.l': 'Idiomas activos', 'num4.s': 'Localización completa',
+    'story.label': 'El cambio de marco', 'story.hrsNum': '23 min',
+    'story.cap1': 'Contar en dólares oculta la verdad.',
+    'story.cap2': '$5 no parece nada. Pero 23 minutos de tu vida se sienten diferente.',
+    'story.cap3': 'Tu dinero es tu tiempo, convertido. Ya no se puede ignorar.',
+    'bento.eye': 'La verdad en números', 'bento.title': 'Cuánto <span class="italic">realmente</span> cuesta cada gasto.',
+    'bento.sub': 'A $25/hora. Usa la calculadora arriba para ver tus propios números.',
+    'b1.meta': 'Latte diario', 'b1.h': 'Tu café mañanero por un año =', 'b1.eq': '14 días de trabajo', 'b1.p': '$5/día × 365 · 73 horas de trabajo',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semanas',
+    'b3.meta': 'Alquiler NYC', 'b3.eq': '22.5 días',
+    'b4.meta': 'Cena DoorDash', 'b4.eq': '1.3 hrs',
+    'b5.meta': 'Netflix anual', 'b5.eq': '11 hrs',
+    'gal.eye': 'Dónde van tus horas', 'gal.title': 'Cada hábito tiene un <span class="italic">precio</span> en tiempo.',
+    'gal.sub': 'Las cosas pequeñas suman más rápido de lo que crees.',
+    'g1.k': 'Ritual matutino', 'g1.v': '73 horas de trabajo · al año',
+    'g2.k': 'Suscripciones', 'g2.v': '4 días de tu vida',
+    'g3.k': 'Cena delivery', 'g3.v': '1.3 hrs',
+    'g4.k': 'Compras fin de semana', 'g4.v': '6 hrs',
+    'g5.k': 'Realidad 9-a-5', 'g5.v': '$1.923/semana · en <em>tus</em> minutos',
+    'g6.k': 'Escapada', 'g6.v': '32 hrs',
+    'how.eye': 'Cómo funciona', 'how.title': 'Tres pasos. <span class="italic">Cambio eterno.</span>',
+    'how.sub': 'Instala. Registra. Ve tu vida de forma que no podrás olvidar.',
+    'how1.h': 'Dinos tu <span class="italic">hora.</span>',
+    'how1.p': 'Ingresa tu salario o tarifa por hora una vez. Todo lo demás se valorará en tus minutos.',
+    'how2.h': 'Añade <span class="italic">cualquier cosa.</span>',
+    'how2.p': 'Voz. Texto. Escaneo de recibo. Cada entrada aparece como horas de trabajo.',
+    'how3.h': 'Mira cambiar tus <span class="italic">decisiones.</span>',
+    'how3.p': 'Un café de $5 se siente distinto cuando ves 23 min de tu vida. Pensarás dos veces.',
+    'vs.eye': 'Cara a cara', 'vs.title': 'HourSpend vs <span class="italic">el resto.</span>',
+    'vs.sub': 'Las demás apps te muestran dólares. Solo una te muestra <em>tu vida</em>.',
+    'vs.col0': 'Función',
+    'vs.r1': 'Gastos en horas de trabajo',
+    'vs.r2': 'Gratis para siempre (básico)',
+    'vs.r3': 'Sin ads. Sin venta de datos.',
+    'vs.r4': 'Análisis IA de gastos',
+    'vs.r5': 'Localizado en 14 idiomas',
+    'vs.r6': 'iOS nativo (Liquid Glass)',
+    'vs.r7': 'Privacidad por defecto',
+    'marq.eye': 'Explora el catálogo', 'marq.title': '52<span class="italic">+</span> compras, valoradas en vida.',
+    'marq.browse': 'Ver los 52 artículos',
+    'testi.eye': 'Qué dice la gente', 'testi.title': 'Este cambio es <span class="italic">inolvidable.</span>',
+    'testi.sub': 'Citas reales. Decisiones reales. Horas realmente recuperadas.',
+    'testi1.q': '"Cancelé tres suscripciones la primera semana. Pagaba 8 horas al mes por cosas que no abría."',
+    'testi1.a': 'Anna · Diseñadora de producto',
+    'testi2.q': '"No necesito un presupuesto. Necesito un traductor. HourSpend es exactamente eso."',
+    'testi2.a': 'Marcus · Ingeniero de software',
+    'testi3.q': '"El café de $5 golpea diferente cuando son 23 min de tu martes. Cambió cómo gasto."',
+    'testi3.a': 'Priya · Líder de marketing',
+    'faq.eye': 'Preguntas', 'faq.title': 'Lo que <span class="italic">nos preguntan.</span>',
+    'faq1.q': '¿De verdad es gratis?',
+    'faq1.a': 'El núcleo es gratis para siempre. Pro desbloquea IA y gráficos avanzados por el precio de ~30 min de tu vida al mes.',
+    'faq2.q': '¿Venden mis datos?',
+    'faq2.a': 'Nunca. Los datos viven en tu dispositivo y en tu Firebase. No vendemos, intercambiamos ni compartimos. Sin ads.',
+    'faq3.q': '¿Qué tan exacta es la conversión a horas?',
+    'faq3.a': 'Tan exacta como el salario que ingreses. Usamos 160 horas/mes (40hr/sem × 4.33).',
+    'faq4.q': '¿Android?',
+    'faq4.a': 'Solo iOS por ahora. Nativo en iOS 17+ con Liquid Glass para la mejor experiencia antes de expandir.',
+    'faq5.q': '¿Qué lo hace diferente de Mint / YNAB / Copilot?',
+    'faq5.a': 'Ellas muestran dólares. Nosotros mostramos tu vida. No es una función — es una filosofía.',
+    'faq6.q': '¿Qué idiomas están soportados?',
+    'faq6.a': '14 idiomas nativos: Inglés, Turco, Español, Alemán, Francés, Portugués, Japonés, Coreano, Chino, Italiano, Holandés, Polaco, Ruso, Árabe.',
+    'dl.eye': 'Obtén la app iOS', 'dl.title': 'Rastrea cada dólar<br>en <span class="italic">horas</span> de vida.',
+    'dl.sub': 'La calculadora gratis es solo una muestra. La app iOS lo hace con cada gasto, automáticamente.',
+    'dl.f1': 'Añade gastos por voz, texto o escaneo',
+    'dl.f2': 'Ve tu gasto mensual en horas de trabajo',
+    'dl.f3': 'Fija metas de ahorro como "horas recuperadas"',
+    'dl.f4': '14 idiomas · multi-moneda · privado por defecto',
+    'dl.badge': 'Descargar en App Store',
+    'ph.week': 'Esta semana', 'ph.spent': '≈ $363 gastados',
+    'ph.coffee': 'Café', 'ph.lunch': 'Almuerzo', 'ph.groceries': 'Compras', 'ph.gas': 'Gasolina',
+    'fin.eye': 'Una última cosa', 'fin.title': 'Deja de gastar<br>en <span class="italic">dólares.</span>',
+    'fin.sub': 'Te quedan unos 2.500 fines de semana. El dinero se gana otra vez. Los minutos no.',
+    'fin.btn1': 'Descargar Gratis', 'fin.btn2': 'Probar la calculadora',
+    'foot.all': 'Todo', 'foot.ios': 'App iOS', 'foot.privacy': 'Privacidad', 'foot.terms': 'Términos',
+    'foot.credit': '© HourSpend · El dinero es solo tiempo intercambiado.',
+    'share.ok': 'Copiado — pégalo donde quieras'
+  },
+  de: {
+    'nav.browse': 'Entdecken', 'nav.cta': 'App holen',
+    'hero.h1': '<span class="line"><span class="word">Dein</span> <span class="word">Geld,</span></span><br><span class="line"><span class="word">in</span> <span class="word accent">Stunden</span></span><br><span class="line"><span class="word">deines</span> <span class="word">Lebens.</span></span>',
+    'hero.rank': 'Geld-in-Stunden Tracker', 'hero.badge': 'Live · Kostenloser Rechner · iOS',
+    'hero.sub': 'Die einzige App, die jede Ausgabe in die Arbeitsstunden umrechnet, die sie wirklich kostet. Kaffee. Miete. Abos. Sieh was du tauschst. Entscheide anders.',
+    'hero.download': 'Für iOS laden', 'hero.try': 'Rechner testen',
+    'hero.stat1': 'Artikel', 'hero.stat2': 'Sprachen', 'hero.stat3': 'Bewertung',
+    'calc.title': 'Rechner', 'calc.live': 'LIVE',
+    'calc.salary': 'Monatsgehalt', 'calc.hpw': 'Std / Woche', 'calc.exp': 'Ausgabe $',
+    'calc.result': 'Das kostete dich', 'calc.share': 'Diese Rechnung teilen', 'calc.for': 'für',
+    'calc.c1': 'Kaffee · 5$', 'calc.c2': 'Mittag · 35$', 'calc.c3': 'Einkauf · 100$', 'calc.c4': 'Miete · 1500$',
+    'unit.min': 'Min', 'unit.hrs': 'Std', 'unit.days': 'Tage', 'unit.weeks': 'Wochen', 'unit.months': 'Monate', 'unit.years': 'Jahre',
+    'unit.empty': '—', 'unit.enter': 'Werte eingeben',
+    'trusted.label': 'Vertraut von zeitbewussten Menschen',
+    't1': 'Product Hunt · Featured', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finanzen · iOS 2026', 't4': 'Auf TikTok · 2.4M Views', 't5': 'Indie Hackers · Aufstieg',
+    'numbers.eye': 'Harte Zahlen', 'numbers.title': 'Anders <span class="italic">gebaut.</span>',
+    'numbers.sub': 'Keine Ads. Kein Datenverkauf. Keine Manipulation. Nur dein Geld, neu ausgedrückt.',
+    'num1.l': 'Geld-Stunden-App', 'num1.s': 'Kategorie-Erfinder · iOS',
+    'num2.l': 'Erfasste Ausgaben', 'num2.s': 'Jeden Monat, wachsend',
+    'num3.l': 'Durchschn. Bewertung', 'num3.s': 'Global',
+    'num4.l': 'Aktive Sprachen', 'num4.s': 'Vollständig lokalisiert',
+    'story.label': 'Der Reframe', 'story.hrsNum': '23 Min',
+    'story.cap1': 'In Dollar zu zählen verbirgt die Wahrheit.',
+    'story.cap2': '5€ fühlt sich wie nichts an. 23 Minuten deines Lebens fühlen sich anders an.',
+    'story.cap3': 'Dein Geld ist deine Zeit, umgewandelt. Unvergesslich.',
+    'bento.eye': 'Die Wahrheit in Zahlen', 'bento.title': 'Was tägliche Ausgaben <span class="italic">wirklich</span> kosten.',
+    'bento.sub': 'Bei 25€/Stunde. Nutze den Rechner oben für deine eigenen Zahlen.',
+    'b1.meta': 'Tägliche Latte', 'b1.h': 'Dein Morgenkaffee für ein Jahr =', 'b1.eq': '14 Arbeitstage', 'b1.p': '5€/Tag × 365 · 73 Arbeitsstunden',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 Wochen',
+    'b3.meta': 'NYC 1-Zi Miete', 'b3.eq': '22.5 Tage',
+    'b4.meta': 'Lieferdienst', 'b4.eq': '1.3 Std',
+    'b5.meta': 'Netflix jährlich', 'b5.eq': '11 Std',
+    'gal.eye': 'Wo deine Stunden hin gehen', 'gal.title': 'Jede Gewohnheit hat ein <span class="italic">Preisschild</span> in Zeit.',
+    'gal.sub': 'Kleine Dinge summieren sich schneller als du denkst.',
+    'g1.k': 'Morgenritual', 'g1.v': '73 Arbeitsstunden · pro Jahr',
+    'g2.k': 'Abos', 'g2.v': '4 Tage deines Lebens',
+    'g3.k': 'Liefer-Abendessen', 'g3.v': '1.3 Std',
+    'g4.k': 'Wochenend-Shopping', 'g4.v': '6 Std',
+    'g5.k': '9-17 Realität', 'g5.v': '1.923€/Woche · in <em>deinen</em> Minuten',
+    'g6.k': 'Wochenendtrip', 'g6.v': '32 Std',
+    'how.eye': 'So funktioniert es', 'how.title': 'Drei Schritte. <span class="italic">Für immer anders.</span>',
+    'how.sub': 'Installiere. Tracke. Sieh dein Leben so, wie du es nie wieder vergessen kannst.',
+    'how1.h': 'Sag uns deine <span class="italic">Stunde.</span>',
+    'how1.p': 'Trag dein Gehalt oder deinen Stundenlohn einmal ein. Alles wird in deinen Minuten bewertet.',
+    'how2.h': 'Trage <span class="italic">alles</span> ein.',
+    'how2.p': 'Sprache. Text. Beleg-Scan. Jeder Eintrag erscheint als Arbeitsstunden.',
+    'how3.h': 'Sieh deine <span class="italic">Entscheidungen</span> verändern.',
+    'how3.p': 'Ein 5€ Kaffee fühlt sich anders an, wenn du 23 min deines Lebens siehst.',
+    'vs.eye': 'Direktvergleich', 'vs.title': 'HourSpend vs <span class="italic">die anderen.</span>',
+    'vs.sub': 'Andere Budget-Apps zeigen dir Dollar. Nur eine zeigt <em>dein Leben</em>.',
+    'vs.col0': 'Feature',
+    'vs.r1': 'Ausgaben in Arbeitsstunden',
+    'vs.r2': 'Für immer kostenlos (Basis)',
+    'vs.r3': 'Keine Ads. Kein Datenverkauf.',
+    'vs.r4': 'KI-Ausgabenerfassung',
+    'vs.r5': '14 Sprachen lokalisiert',
+    'vs.r6': 'iOS nativ (Liquid Glass)',
+    'vs.r7': 'Privat by default',
+    'marq.eye': 'Katalog durchsuchen', 'marq.title': '52<span class="italic">+</span> Käufe, in Lebenszeit bewertet.',
+    'marq.browse': 'Alle 52 Artikel sehen',
+    'testi.eye': 'Was Leute sagen', 'testi.title': 'Der Reframe ist <span class="italic">nicht mehr wegzudenken.</span>',
+    'testi.sub': 'Echte Zitate. Echte Entscheidungen. Echt gesparte Stunden.',
+    'testi1.q': '"Drei Abos in der ersten Woche gekündigt. Ich zahlte 8 Stunden im Monat für Dinge, die ich nie öffnete."',
+    'testi1.a': 'Anna · Produktdesignerin',
+    'testi2.q': '"Ich brauche kein Budget. Ich brauche einen Übersetzer. HourSpend ist genau das."',
+    'testi2.a': 'Marcus · Software-Ingenieur',
+    'testi3.q': '"Der 5€ Kaffee fühlt sich anders an, wenn du siehst, dass er 23 Min deines Dienstags ist."',
+    'testi3.a': 'Priya · Marketing-Leiterin',
+    'faq.eye': 'Fragen', 'faq.title': 'Was uns <span class="italic">gefragt wird.</span>',
+    'faq1.q': 'Ist es wirklich kostenlos?',
+    'faq1.a': 'Basisfunktionen sind für immer gratis. Pro schaltet KI und Diagramme frei für den Preis von ~30 min/Monat deines Lebens.',
+    'faq2.q': 'Verkauft ihr meine Daten?',
+    'faq2.a': 'Niemals. Deine Daten leben auf dem Gerät und in deinem persönlichen Firebase. Keine Ads.',
+    'faq3.q': 'Wie genau ist die Stunden-Umrechnung?',
+    'faq3.a': 'So genau wie dein eingegebener Lohn. Wir nutzen 160 Stunden/Monat.',
+    'faq4.q': 'Android?',
+    'faq4.a': 'Nur iOS. Nativ auf iOS 17+ mit Liquid Glass für die beste Erfahrung.',
+    'faq5.q': 'Unterschied zu Mint / YNAB / Copilot?',
+    'faq5.a': 'Sie zeigen Dollar. Wir zeigen dein Leben. Das ist keine Funktion — es ist eine Philosophie.',
+    'faq6.q': 'Welche Sprachen?',
+    'faq6.a': '14 Sprachen nativ: Englisch, Türkisch, Spanisch, Deutsch, Französisch, Portugiesisch, Japanisch, Koreanisch, Chinesisch, Italienisch, Niederländisch, Polnisch, Russisch, Arabisch.',
+    'dl.eye': 'Die iOS App', 'dl.title': 'Tracke jeden Euro<br>in <span class="italic">Stunden</span> des Lebens.',
+    'dl.sub': 'Der kostenlose Rechner ist nur ein Vorgeschmack. Die iOS App macht es für jede Ausgabe automatisch.',
+    'dl.f1': 'Ausgaben per Sprache, Text oder Beleg-Scan',
+    'dl.f2': 'Siehe deinen Monatsverbrauch in Arbeitsstunden',
+    'dl.f3': 'Setze Sparziele als "Stunden zurück"',
+    'dl.f4': '14 Sprachen · Multi-Währung · privat by default',
+    'dl.badge': 'Im App Store laden',
+    'ph.week': 'Diese Woche', 'ph.spent': '≈ 363€ ausgegeben',
+    'ph.coffee': 'Kaffee', 'ph.lunch': 'Mittag', 'ph.groceries': 'Einkauf', 'ph.gas': 'Benzin',
+    'fin.eye': 'Ein letztes', 'fin.title': 'Hör auf,<br>in <span class="italic">Euro</span> zu denken.',
+    'fin.sub': 'Du hast noch etwa 2.500 Wochenenden. Geld lässt sich zurückgewinnen. Minuten nicht.',
+    'fin.btn1': 'Kostenlos laden', 'fin.btn2': 'Rechner ausprobieren',
+    'foot.all': 'Alle Artikel', 'foot.ios': 'iOS App', 'foot.privacy': 'Datenschutz', 'foot.terms': 'AGB',
+    'foot.credit': '© HourSpend · Geld ist nur getauschte Zeit.',
+    'share.ok': 'Kopiert — füge es überall ein'
+  },
+  fr: {
+    'nav.browse': 'Explorer', 'nav.cta': 'Obtenir l\'app',
+    'hero.h1': '<span class="line"><span class="word">Ton</span> <span class="word">argent,</span></span><br><span class="line"><span class="word">en</span> <span class="word accent">heures</span></span><br><span class="line"><span class="word">de</span> <span class="word">ta</span> <span class="word">vie.</span></span>',
+    'hero.rank': 'Suivi argent-en-heures', 'hero.badge': 'Live · Calculatrice gratuite · iOS',
+    'hero.sub': 'La seule app qui convertit chaque dépense en heures de travail réellement coûtées. Café. Loyer. Abonnements. Vois ce que tu échanges. Décide autrement.',
+    'hero.download': 'Télécharger iOS', 'hero.try': 'Essayer la calculatrice',
+    'hero.stat1': 'Articles', 'hero.stat2': 'Langues', 'hero.stat3': 'Note moyenne',
+    'calc.title': 'Calculatrice', 'calc.live': 'DIRECT',
+    'calc.salary': 'Salaire mensuel', 'calc.hpw': 'H / semaine', 'calc.exp': 'Dépense $',
+    'calc.result': 'Ça t\'a coûté', 'calc.share': 'Partager ce calcul', 'calc.for': 'pour',
+    'calc.c1': 'Café · 5$', 'calc.c2': 'Déjeuner · 35$', 'calc.c3': 'Courses · 100$', 'calc.c4': 'Loyer · 1500$',
+    'unit.min': 'min', 'unit.hrs': 'h', 'unit.days': 'jours', 'unit.weeks': 'semaines', 'unit.months': 'mois', 'unit.years': 'ans',
+    'unit.empty': '—', 'unit.enter': 'entrer les valeurs',
+    'trusted.label': 'Utilisé par ceux qui valorisent leur temps',
+    't1': 'Product Hunt · Featured', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finance · iOS 2026', 't4': 'Sur TikTok · 2.4M vues', 't5': 'Indie Hackers · Montée',
+    'numbers.eye': 'Les chiffres durs', 'numbers.title': 'Construit <span class="italic">différemment.</span>',
+    'numbers.sub': 'Pas de pubs. Pas de vente de données. Pas de manipulation.',
+    'num1.l': 'App argent-heures', 'num1.s': 'Créateur de catégorie · iOS',
+    'num2.l': 'Dépenses suivies', 'num2.s': 'Chaque mois, en hausse',
+    'num3.l': 'Note moyenne', 'num3.s': 'Partout',
+    'num4.l': 'Langues actives', 'num4.s': 'Localisation complète',
+    'story.label': 'Le recadrage', 'story.hrsNum': '23 min',
+    'story.cap1': 'Compter en dollars cache la vérité.',
+    'story.cap2': '5€ ne semble rien. 23 minutes de ta vie, ça change tout.',
+    'story.cap3': 'Ton argent est ton temps, converti. Impossible à oublier.',
+    'bento.eye': 'La vérité en chiffres', 'bento.title': 'Ce que les dépenses quotidiennes <span class="italic">coûtent vraiment.</span>',
+    'bento.sub': 'À 25€/heure. Utilise la calculatrice ci-dessus pour tes propres chiffres.',
+    'b1.meta': 'Latte quotidien', 'b1.h': 'Ton café matinal pendant un an =', 'b1.eq': '14 jours de travail', 'b1.p': '5€/jour × 365 · 73 heures de travail',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semaines',
+    'b3.meta': 'Loyer NYC', 'b3.eq': '22.5 jours',
+    'b4.meta': 'Livraison', 'b4.eq': '1.3 h',
+    'b5.meta': 'Netflix annuel', 'b5.eq': '11 h',
+    'gal.eye': 'Où vont tes heures', 'gal.title': 'Chaque habitude a un <span class="italic">prix</span> en temps.',
+    'gal.sub': 'Les petites choses s\'additionnent plus vite qu\'on pense.',
+    'g1.k': 'Rituel matinal', 'g1.v': '73 heures de travail · par an',
+    'g2.k': 'Abonnements', 'g2.v': '4 jours de ta vie',
+    'g3.k': 'Livraison', 'g3.v': '1.3 h',
+    'g4.k': 'Shopping weekend', 'g4.v': '6 h',
+    'g5.k': 'Réalité 9-17h', 'g5.v': '1.923€/semaine · en <em>tes</em> minutes',
+    'g6.k': 'Escapade weekend', 'g6.v': '32 h',
+    'how.eye': 'Comment ça marche', 'how.title': 'Trois étapes. <span class="italic">Changement éternel.</span>',
+    'how.sub': 'Installe. Enregistre. Vois ta vie d\'une façon que tu ne pourras plus ignorer.',
+    'how1.h': 'Dis-nous ton <span class="italic">heure.</span>',
+    'how1.p': 'Entre ton salaire une fois. Tout sera chiffré en tes minutes.',
+    'how2.h': 'Ajoute <span class="italic">n\'importe quoi.</span>',
+    'how2.p': 'Voix. Texte. Scan de reçu. Chaque entrée devient des heures de travail.',
+    'how3.h': 'Vois tes <span class="italic">décisions</span> changer.',
+    'how3.p': 'Un café à 5€ a un goût différent quand tu vois 23 min de ta vie.',
+    'vs.eye': 'Face-à-face', 'vs.title': 'HourSpend vs <span class="italic">les autres.</span>',
+    'vs.sub': 'Les autres apps montrent des euros. Une seule montre <em>ta vie</em>.',
+    'vs.col0': 'Fonction',
+    'vs.r1': 'Dépenses en heures de travail',
+    'vs.r2': 'Gratuit pour toujours (de base)',
+    'vs.r3': 'Zéro pub. Zéro vente.',
+    'vs.r4': 'Parsing IA des dépenses',
+    'vs.r5': 'Localisé en 14 langues',
+    'vs.r6': 'iOS natif (Liquid Glass)',
+    'vs.r7': 'Privé par défaut',
+    'marq.eye': 'Parcourir le catalogue', 'marq.title': '52<span class="italic">+</span> achats, évalués en vie.',
+    'marq.browse': 'Voir les 52 articles',
+    'testi.eye': 'Ce qu\'on dit', 'testi.title': 'Le recadrage est <span class="italic">inoubliable.</span>',
+    'testi.sub': 'Vrais témoignages. Vraies décisions. Vraies heures récupérées.',
+    'testi1.q': '"Annulé trois abonnements la première semaine. Je payais 8 heures par mois pour des trucs que je n\'ouvrais jamais."',
+    'testi1.a': 'Anna · Designer produit',
+    'testi2.q': '"Je n\'ai pas besoin d\'un budget. J\'ai besoin d\'un traducteur. HourSpend, c\'est exactement ça."',
+    'testi2.a': 'Marcus · Ingénieur logiciel',
+    'testi3.q': '"Le café à 5€ frappe différemment quand tu vois que ce sont 23 min de ton mardi."',
+    'testi3.a': 'Priya · Responsable marketing',
+    'faq.eye': 'Questions', 'faq.title': 'Ce qu\'on <span class="italic">nous demande.</span>',
+    'faq1.q': 'C\'est vraiment gratuit ?',
+    'faq1.a': 'Les fonctions de base sont gratuites pour toujours. Pro débloque l\'IA pour environ 30 min de ta vie par mois.',
+    'faq2.q': 'Vous vendez mes données ?',
+    'faq2.a': 'Jamais. Tes données vivent sur l\'appareil. On ne vend rien.',
+    'faq3.q': 'Précision de la conversion en heures ?',
+    'faq3.a': 'Aussi précise que le salaire que tu entres. 160h/mois (40h/sem × 4.33).',
+    'faq4.q': 'Android ?',
+    'faq4.a': 'iOS uniquement. Natif iOS 17+ avec Liquid Glass pour la meilleure expérience.',
+    'faq5.q': 'Différence avec Mint / YNAB / Copilot ?',
+    'faq5.a': 'Eux montrent des dollars. Nous montrons ta vie. C\'est une philosophie.',
+    'faq6.q': 'Quelles langues ?',
+    'faq6.a': '14 langues natives : Anglais, Turc, Espagnol, Allemand, Français, Portugais, Japonais, Coréen, Chinois, Italien, Néerlandais, Polonais, Russe, Arabe.',
+    'dl.eye': 'Obtenir l\'app iOS', 'dl.title': 'Suis chaque euro<br>en <span class="italic">heures</span> de vie.',
+    'dl.sub': 'La calculatrice gratuite n\'est qu\'un avant-goût. L\'app iOS le fait pour chaque dépense, automatiquement.',
+    'dl.f1': 'Ajoute par voix, texte ou scan de reçu',
+    'dl.f2': 'Vois ta consommation mensuelle en heures',
+    'dl.f3': 'Fixe des objectifs d\'épargne en "heures récupérées"',
+    'dl.f4': '14 langues · multi-devise · privé par défaut',
+    'dl.badge': 'Télécharger sur App Store',
+    'ph.week': 'Cette semaine', 'ph.spent': '≈ 363€ dépensés',
+    'ph.coffee': 'Café', 'ph.lunch': 'Déjeuner', 'ph.groceries': 'Courses', 'ph.gas': 'Essence',
+    'fin.eye': 'Une dernière', 'fin.title': 'Arrête de dépenser<br>en <span class="italic">euros.</span>',
+    'fin.sub': 'Il te reste environ 2 500 week-ends. L\'argent se regagne. Les minutes non.',
+    'fin.btn1': 'Télécharger Gratuit', 'fin.btn2': 'Essayer la calculatrice',
+    'foot.all': 'Tous les articles', 'foot.ios': 'App iOS', 'foot.privacy': 'Confidentialité', 'foot.terms': 'Conditions',
+    'foot.credit': '© HourSpend · L\'argent n\'est que du temps échangé.',
+    'share.ok': 'Copié — colle-le où tu veux'
+  },
+  pt: {
+    'nav.browse': 'Explorar', 'nav.cta': 'Baixar o App',
+    'hero.h1': '<span class="line"><span class="word">Seu</span> <span class="word">dinheiro,</span></span><br><span class="line"><span class="word">em</span> <span class="word accent">horas</span></span><br><span class="line"><span class="word">da</span> <span class="word">sua</span> <span class="word">vida.</span></span>',
+    'hero.rank': 'Rastreador dinheiro-em-horas', 'hero.badge': 'Ao vivo · Grátis · iOS',
+    'hero.sub': 'O único app que converte cada gasto nas horas de trabalho que realmente custou. Café. Aluguel. Assinaturas. Decida diferente.',
+    'hero.download': 'Baixar para iOS', 'hero.try': 'Testar calculadora',
+    'hero.stat1': 'Itens', 'hero.stat2': 'Idiomas', 'hero.stat3': 'Nota média',
+    'calc.title': 'Calculadora', 'calc.live': 'AO VIVO',
+    'calc.salary': 'Salário mensal', 'calc.hpw': 'Hs / semana', 'calc.exp': 'Gasto $',
+    'calc.result': 'Isso te custou', 'calc.share': 'Compartilhar esta matemática', 'calc.for': 'por',
+    'calc.c1': 'Café · $5', 'calc.c2': 'Almoço · $35', 'calc.c3': 'Compras · $100', 'calc.c4': 'Aluguel · $1500',
+    'unit.min': 'min', 'unit.hrs': 'hrs', 'unit.days': 'dias', 'unit.weeks': 'semanas', 'unit.months': 'meses', 'unit.years': 'anos',
+    'unit.empty': '—', 'unit.enter': 'insira valores',
+    'trusted.label': 'Escolhido por quem valoriza seu tempo',
+    't1': 'Product Hunt · Featured', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finanças · iOS 2026', 't4': 'No TikTok · 2.4M views', 't5': 'Indie Hackers · Em alta',
+    'numbers.eye': 'Os números', 'numbers.title': 'Construído <span class="italic">diferente.</span>',
+    'numbers.sub': 'Sem ads. Sem venda de dados. Sem manipulação.',
+    'num1.l': 'App dinheiro-horas', 'num1.s': 'Criador de categoria · iOS',
+    'num2.l': 'Gastos rastreados', 'num2.s': 'Todo mês, crescendo',
+    'num3.l': 'Nota média', 'num3.s': 'Em todas as regiões',
+    'num4.l': 'Idiomas ativos', 'num4.s': 'Localização completa',
+    'story.label': 'O reenquadramento', 'story.hrsNum': '23 min',
+    'story.cap1': 'Contar em dólares esconde a verdade.',
+    'story.cap2': '$5 parece nada. 23 min da sua vida, muda tudo.',
+    'story.cap3': 'Seu dinheiro é seu tempo, convertido. Impossível esquecer.',
+    'bento.eye': 'A verdade em números', 'bento.title': 'O que os gastos diários <span class="italic">realmente</span> custam.',
+    'bento.sub': 'A $25/hora. Use a calculadora acima para seus próprios números.',
+    'b1.meta': 'Latte diário', 'b1.h': 'Seu café matinal por um ano =', 'b1.eq': '14 dias de trabalho', 'b1.p': '$5/dia × 365 · 73 horas de trabalho',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semanas',
+    'b3.meta': 'Aluguel NYC', 'b3.eq': '22.5 dias',
+    'b4.meta': 'Delivery', 'b4.eq': '1.3 hrs',
+    'b5.meta': 'Netflix anual', 'b5.eq': '11 hrs',
+    'gal.eye': 'Para onde vão suas horas', 'gal.title': 'Cada hábito tem um <span class="italic">preço</span> em tempo.',
+    'gal.sub': 'As pequenas coisas somam mais rápido do que você pensa.',
+    'g1.k': 'Ritual matinal', 'g1.v': '73 horas de trabalho · por ano',
+    'g2.k': 'Assinaturas', 'g2.v': '4 dias da sua vida',
+    'g3.k': 'Delivery', 'g3.v': '1.3 hrs',
+    'g4.k': 'Compras fim de semana', 'g4.v': '6 hrs',
+    'g5.k': 'Realidade 9-5', 'g5.v': '$1.923/semana · em <em>seus</em> minutos',
+    'g6.k': 'Viagem weekend', 'g6.v': '32 hrs',
+    'how.eye': 'Como funciona', 'how.title': 'Três passos. <span class="italic">Mudança eterna.</span>',
+    'how.sub': 'Instale. Registre. Veja sua vida de um jeito que não dá pra esquecer.',
+    'how1.h': 'Nos diga sua <span class="italic">hora.</span>',
+    'how1.p': 'Entre seu salário uma vez. Tudo será precificado nos seus minutos.',
+    'how2.h': 'Adicione <span class="italic">qualquer coisa.</span>',
+    'how2.p': 'Voz. Texto. Scan de recibo. Cada entrada vira horas de trabalho.',
+    'how3.h': 'Veja suas <span class="italic">decisões</span> mudarem.',
+    'how3.p': 'Um café de $5 tem outro sabor quando você vê 23 min da sua vida.',
+    'vs.eye': 'Frente a frente', 'vs.title': 'HourSpend vs <span class="italic">o resto.</span>',
+    'vs.sub': 'Os outros apps mostram dólares. Só um mostra <em>sua vida</em>.',
+    'vs.col0': 'Função',
+    'vs.r1': 'Gastos em horas de trabalho',
+    'vs.r2': 'Grátis pra sempre (básico)',
+    'vs.r3': 'Sem ads. Sem venda.',
+    'vs.r4': 'IA para gastos',
+    'vs.r5': 'Localizado em 14 idiomas',
+    'vs.r6': 'iOS nativo (Liquid Glass)',
+    'vs.r7': 'Privado por padrão',
+    'marq.eye': 'Explore o catálogo', 'marq.title': '52<span class="italic">+</span> compras, valoradas em vida.',
+    'marq.browse': 'Ver os 52 itens',
+    'testi.eye': 'O que estão dizendo', 'testi.title': 'O reframe é <span class="italic">inesquecível.</span>',
+    'testi.sub': 'Depoimentos reais. Decisões reais. Horas realmente salvas.',
+    'testi1.q': '"Cancelei três assinaturas na primeira semana. Eu pagava 8 horas por mês por coisas que nem abria."',
+    'testi1.a': 'Anna · Designer de produto',
+    'testi2.q': '"Não preciso de orçamento. Preciso de tradutor. HourSpend é exatamente isso."',
+    'testi2.a': 'Marcus · Engenheiro de software',
+    'testi3.q': '"Café de $5 bate diferente quando você vê 23 min da sua terça. Mudou meu jeito de gastar."',
+    'testi3.a': 'Priya · Líder de marketing',
+    'faq.eye': 'Perguntas', 'faq.title': 'O que <span class="italic">nos perguntam.</span>',
+    'faq1.q': 'É grátis mesmo?',
+    'faq1.a': 'Básico grátis pra sempre. Pro libera IA e gráficos por cerca de 30 min da sua vida/mês.',
+    'faq2.q': 'Vocês vendem meus dados?',
+    'faq2.a': 'Nunca. Os dados vivem no dispositivo. Zero ads.',
+    'faq3.q': 'Precisão da conversão?',
+    'faq3.a': 'Tão precisa quanto seu salário. 160h/mês (40h/sem × 4.33).',
+    'faq4.q': 'Android?',
+    'faq4.a': 'Só iOS. Nativo iOS 17+ com Liquid Glass para a melhor experiência.',
+    'faq5.q': 'Diferença pra Mint / YNAB / Copilot?',
+    'faq5.a': 'Eles mostram dólares. Nós mostramos sua vida. É filosofia.',
+    'faq6.q': 'Quais idiomas?',
+    'faq6.a': '14 idiomas nativos: Inglês, Turco, Espanhol, Alemão, Francês, Português, Japonês, Coreano, Chinês, Italiano, Holandês, Polonês, Russo, Árabe.',
+    'dl.eye': 'App iOS', 'dl.title': 'Rastreie cada dólar<br>em <span class="italic">horas</span> de vida.',
+    'dl.sub': 'A calculadora grátis é só um gostinho. O app iOS faz isso com cada gasto automaticamente.',
+    'dl.f1': 'Adicione por voz, texto ou scan',
+    'dl.f2': 'Veja seu gasto mensal em horas',
+    'dl.f3': 'Defina metas como "horas recuperadas"',
+    'dl.f4': '14 idiomas · multi-moeda · privado por padrão',
+    'dl.badge': 'Baixar na App Store',
+    'ph.week': 'Esta semana', 'ph.spent': '≈ $363 gastos',
+    'ph.coffee': 'Café', 'ph.lunch': 'Almoço', 'ph.groceries': 'Compras', 'ph.gas': 'Gasolina',
+    'fin.eye': 'Última coisa', 'fin.title': 'Pare de gastar<br>em <span class="italic">dólares.</span>',
+    'fin.sub': 'Você tem cerca de 2.500 fins de semana restantes. Dinheiro volta. Minutos não.',
+    'fin.btn1': 'Baixar Grátis', 'fin.btn2': 'Testar calculadora',
+    'foot.all': 'Todos os itens', 'foot.ios': 'App iOS', 'foot.privacy': 'Privacidade', 'foot.terms': 'Termos',
+    'foot.credit': '© HourSpend · Dinheiro é só tempo trocado.',
+    'share.ok': 'Copiado — cole onde quiser'
+  },
+  ja: {
+    'nav.browse': '見る', 'nav.cta': 'アプリを入手',
+    'hero.h1': '<span class="line"><span class="word">あなたの</span><span class="word">お金、</span></span><br><span class="line"><span class="word">人生の</span><span class="word accent">時間で。</span></span>',
+    'hero.rank': '時間-換算 マネートラッカー', 'hero.badge': 'ライブ · 無料計算機 · iOS',
+    'hero.sub': 'すべての支出を、実際に奪われた労働時間に換算する唯一のアプリ。コーヒー。家賃。サブスク。何と交換しているかを見る。違う選択を。',
+    'hero.download': 'iOS版をダウンロード', 'hero.try': '計算機を試す',
+    'hero.stat1': '項目', 'hero.stat2': '言語', 'hero.stat3': '平均評価',
+    'calc.title': '計算機', 'calc.live': 'リアルタイム',
+    'calc.salary': '月収', 'calc.hpw': '時間/週', 'calc.exp': '支出 $',
+    'calc.result': 'かかった時間', 'calc.share': 'この計算をシェア', 'calc.for': 'で',
+    'calc.c1': 'コーヒー · $5', 'calc.c2': 'ランチ · $35', 'calc.c3': '食料品 · $100', 'calc.c4': '家賃 · $1500',
+    'unit.min': '分', 'unit.hrs': '時間', 'unit.days': '日', 'unit.weeks': '週', 'unit.months': 'ヶ月', 'unit.years': '年',
+    'unit.empty': '—', 'unit.enter': '値を入力',
+    'trusted.label': '時間を大切にする人々に選ばれています',
+    't1': 'Product Hunt · 特集ローンチ', 't2': '★★★★★ App Store',
+    't3': 'Top 10 ファイナンス · iOS 2026', 't4': 'TikTokで · 240万再生', 't5': 'Indie Hackers · 急上昇',
+    'numbers.eye': 'ハードな数字', 'numbers.title': '<span class="italic">違う</span> 作り方。',
+    'numbers.sub': '広告なし。データ販売なし。操作なし。',
+    'num1.l': '時間換算アプリ', 'num1.s': 'カテゴリ創造 · iOS',
+    'num2.l': '追跡された支出', 'num2.s': '毎月、増加中',
+    'num3.l': '平均評価', 'num3.s': 'すべての地域で',
+    'num4.l': '対応言語', 'num4.s': '完全ローカライズ',
+    'story.label': 'リフレーム', 'story.hrsNum': '23分',
+    'story.cap1': 'ドルで数えると真実が隠れる。',
+    'story.cap2': '$5は何でもない。人生の23分は違う。',
+    'story.cap3': 'お金はあなたの時間、変換したもの。忘れられない。',
+    'bento.eye': '数字で見る真実', 'bento.title': '日々の支出が<span class="italic">本当に</span>かかるもの。',
+    'bento.sub': '時給$25の場合。上の計算機で自分の数字を見てみて。',
+    'b1.meta': '毎日のラテ習慣', 'b1.h': '1年間の朝のコーヒー =', 'b1.eq': '14営業日', 'b1.p': '$5/日 × 365 · 73時間の労働',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6週間',
+    'b3.meta': 'NYC 1-bed 家賃', 'b3.eq': '22.5日',
+    'b4.meta': 'DoorDash 夕食', 'b4.eq': '1.3時間',
+    'b5.meta': 'Netflix年間', 'b5.eq': '11時間',
+    'gal.eye': 'あなたの時間はどこへ', 'gal.title': 'すべての習慣には時間の<span class="italic">値札</span>がある。',
+    'gal.sub': '小さなことは思ったより早く積み重なる。',
+    'g1.k': '朝の儀式', 'g1.v': '年間73時間の労働',
+    'g2.k': 'サブスク', 'g2.v': '人生の4日',
+    'g3.k': '出前ディナー', 'g3.v': '1.3時間',
+    'g4.k': '週末の買い物', 'g4.v': '6時間',
+    'g5.k': '9-5の現実', 'g5.v': '週$1,923 · <em>あなたの</em>分に換算',
+    'g6.k': '週末旅行', 'g6.v': '32時間',
+    'how.eye': '仕組み', 'how.title': '3ステップ。<span class="italic">永遠に変わる。</span>',
+    'how.sub': 'インストール。記録。見えなかった自分の人生が見える。',
+    'how1.h': 'あなたの<span class="italic">時給</span>を教えて。',
+    'how1.p': '給料か時給を一度入力。以降すべてがあなたの分に換算されます。',
+    'how2.h': '<span class="italic">何でも</span>追加。',
+    'how2.p': '音声。テキスト。レシートスキャン。ドルではなく労働時間で表示。',
+    'how3.h': '<span class="italic">決断</span>が変わるのを見る。',
+    'how3.p': '5ドルのコーヒーが人生の23分だと見えると、違って感じる。',
+    'vs.eye': '比較', 'vs.title': 'HourSpend vs <span class="italic">他社。</span>',
+    'vs.sub': '他のアプリはドルを見せる。HourSpendだけが<em>人生</em>を見せる。',
+    'vs.col0': '機能',
+    'vs.r1': '労働時間で表示',
+    'vs.r2': '永久無料（基本機能）',
+    'vs.r3': '広告ゼロ・データ販売ゼロ',
+    'vs.r4': 'AI支出解析',
+    'vs.r5': '14言語ローカライズ',
+    'vs.r6': 'iOSネイティブ（Liquid Glass）',
+    'vs.r7': 'デフォルトでプライベート',
+    'marq.eye': 'カタログを見る', 'marq.title': '52<span class="italic">+</span> 購入品、人生で価格付け。',
+    'marq.browse': '52項目すべて見る',
+    'testi.eye': 'ユーザーの声', 'testi.title': 'このリフレームは<span class="italic">忘れられない。</span>',
+    'testi.sub': 'リアルな声。リアルな判断。リアルに取り戻した時間。',
+    'testi1.q': '「最初の週に3つサブスクを解約。開いてもないものに月8時間払っていた。」',
+    'testi1.a': 'Anna · プロダクトデザイナー',
+    'testi2.q': '「予算は要らない。翻訳機が欲しかった。HourSpendはまさにそれ。」',
+    'testi2.a': 'Marcus · ソフトウェアエンジニア',
+    'testi3.q': '「5ドルのコーヒーが火曜日の23分だと知ると、支出が変わる。マジで。」',
+    'testi3.a': 'Priya · マーケティング責任者',
+    'faq.eye': 'FAQ', 'faq.title': 'よくある<span class="italic">質問。</span>',
+    'faq1.q': '本当に無料？',
+    'faq1.a': '基本機能は永久無料。Pro版はAIや高度なグラフを月30分相当で解放。',
+    'faq2.q': 'データを売りますか？',
+    'faq2.a': '絶対に。データは端末とあなたのFirebaseに。広告ゼロ。',
+    'faq3.q': '時間換算の精度は？',
+    'faq3.a': '入力した給与の精度次第。月160時間（週40時間×4.33）で計算。',
+    'faq4.q': 'Android？',
+    'faq4.a': '現在iOSのみ。iOS 17+にLiquid Glassでネイティブ実装。',
+    'faq5.q': 'Mint / YNAB / Copilotとの違い？',
+    'faq5.a': '彼らはドルを見せる。我々は人生を見せる。これは哲学。',
+    'faq6.q': '対応言語は？',
+    'faq6.a': '14言語ネイティブ：英語、トルコ語、スペイン語、ドイツ語、フランス語、ポルトガル語、日本語、韓国語、中国語、イタリア語、オランダ語、ポーランド語、ロシア語、アラビア語。',
+    'dl.eye': 'iOSアプリを入手', 'dl.title': 'すべてのドルを<br>人生の<span class="italic">時間で</span>追跡。',
+    'dl.sub': '無料計算機は味見。iOSアプリは毎回自動で換算。',
+    'dl.f1': '音声、テキスト、レシートスキャンで追加',
+    'dl.f2': '月の消費を労働時間で確認',
+    'dl.f3': '貯蓄目標を「取り戻した時間」として設定',
+    'dl.f4': '14言語 · マルチ通貨 · デフォルトでプライベート',
+    'dl.badge': 'App Storeでダウンロード',
+    'ph.week': '今週', 'ph.spent': '≈ $363 支出',
+    'ph.coffee': 'コーヒー', 'ph.lunch': 'ランチ', 'ph.groceries': '食料品', 'ph.gas': 'ガソリン',
+    'fin.eye': '最後に', 'fin.title': 'ドルで使うのは<br><span class="italic">やめよう。</span>',
+    'fin.sub': '残りの週末は約2,500回。お金は稼げる。時間は稼げない。',
+    'fin.btn1': '無料ダウンロード', 'fin.btn2': '計算機を試す',
+    'foot.all': 'すべて', 'foot.ios': 'iOSアプリ', 'foot.privacy': 'プライバシー', 'foot.terms': '利用規約',
+    'foot.credit': '© HourSpend · お金はただ交換された時間。',
+    'share.ok': 'コピーしました — どこにでも貼れます'
+  }
+};
+
+// Country → language mapping for IP-based detection
+const COUNTRY_LANG = {
+  TR:'tr',
+  ES:'es', MX:'es', AR:'es', CO:'es', CL:'es', PE:'es', VE:'es', EC:'es', GT:'es', CU:'es', UY:'es', PY:'es', BO:'es', DO:'es', HN:'es', SV:'es', NI:'es', CR:'es', PA:'es', PR:'es',
+  DE:'de', AT:'de', CH:'de', LI:'de',
+  FR:'fr', BE:'fr', LU:'fr', MC:'fr',
+  BR:'pt', PT:'pt', AO:'pt', MZ:'pt', CV:'pt', GW:'pt',
+  JP:'ja'
+  // rest default to 'en'
+};
+
+function applyLang(lang) {
+  const dict = I18N[lang] || I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] != null) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (dict[key] != null) el.innerHTML = dict[key];
+  });
+  // button label
+  const btnLbl = document.getElementById('langBtnLabel');
+  if (btnLbl) btnLbl.textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
+  localStorage.setItem('hs.lang', lang);
+  document.documentElement.lang = lang;
+  __currentLang = lang;
+  // Recompute dynamic calc label text
+  if (typeof calc === 'function') calc();
+}
+
+// Determine initial language synchronously (localStorage > browser)
+(function initialLangSync() {
+  const saved = localStorage.getItem('hs.lang');
+  let lang = null;
+  if (saved && I18N[saved]) lang = saved;
+  else {
+    const b = (navigator.language || 'en').toLowerCase().slice(0, 2);
+    if (I18N[b]) lang = b;
+  }
+  if (lang) applyLang(lang);
+  else {
+    // mark EN as active
+    const o = document.querySelector('.lang-option[data-lang="en"]');
+    if (o) o.classList.add('active');
+    const btn = document.getElementById('langBtnLabel');
+    if (btn) btn.textContent = 'EN';
+  }
+})();
+
+// Async: IP-based geolocation (only if user didn't manually choose)
+(async function detectByIP() {
+  if (localStorage.getItem('hs.lang')) return; // user has a manual choice, don't override
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 3500);
+    const res = await fetch('https://ipapi.co/json/', { signal: ctrl.signal });
+    clearTimeout(timer);
+    const data = await res.json();
+    const cc = (data && data.country_code) ? data.country_code.toUpperCase() : null;
+    if (cc) {
+      const lang = COUNTRY_LANG[cc] || 'en';
+      if (I18N[lang] && lang !== __currentLang) {
+        applyLang(lang);
+        // re-run hero animation with new words
+        if (window.gsap) {
+          const newWords = document.querySelectorAll('#hero-h1 .word');
+          gsap.set(newWords, { yPercent: 100, opacity: 0 });
+          gsap.to(newWords, { yPercent: 0, opacity: 1, duration: 1.1, stagger: 0.06, ease: 'expo.out' });
+        }
+      }
+    }
+  } catch (e) { /* silent */ }
+})();
+
+// Language switcher UI
+(() => {
+  const langBtn = document.getElementById('langBtn');
+  const langSwitch = document.getElementById('langSwitch');
+  const langDropdown = document.getElementById('langDropdown');
+  if (!langBtn || !langDropdown) return;
+  langBtn.addEventListener('click', (e) => { e.stopPropagation(); langSwitch.classList.toggle('open'); });
+  document.addEventListener('click', (e) => { if (!langSwitch.contains(e.target)) langSwitch.classList.remove('open'); });
+  langDropdown.addEventListener('click', (e) => {
+    const opt = e.target.closest('.lang-option');
+    if (!opt) return;
+    applyLang(opt.dataset.lang);
+    langSwitch.classList.remove('open');
+    // Re-run hero animation for new words
+    if (window.gsap) {
+      const newWords = document.querySelectorAll('#hero-h1 .word');
+      gsap.set(newWords, { yPercent: 100, opacity: 0 });
+      gsap.to(newWords, { yPercent: 0, opacity: 1, duration: 1.1, stagger: 0.06, ease: 'expo.out' });
+    }
+  });
+})();
+
 /* ============ GSAP HERO ENTRANCE ============ */
 if (window.gsap) {
   // Animate hero words
@@ -1945,15 +2761,18 @@ if (window.gsap) {
       rotation: 180, opacity: 0.2
     });
 
-    // Caption text swap
+    // Caption text swap (uses I18N for current lang)
     ScrollTrigger.create({
       trigger: '#story',
       start: 'top top',
       end: '+=220%',
       onUpdate: (self) => {
-        if (self.progress < 0.3) storyCaption.textContent = 'Counting in dollars hides the truth.';
-        else if (self.progress < 0.7) storyCaption.textContent = '$5 feels like nothing. 23 minutes of your life feels different.';
-        else storyCaption.textContent = 'Your money is your time, converted. The reframe is impossible to unsee.';
+        try {
+          const d = I18N[__currentLang] || I18N.en;
+          if (self.progress < 0.3) storyCaption.textContent = d['story.cap1'];
+          else if (self.progress < 0.7) storyCaption.textContent = d['story.cap2'];
+          else storyCaption.textContent = d['story.cap3'];
+        } catch (e) { /* ignore before i18n ready */ }
       }
     });
   }
@@ -1985,458 +2804,6 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.documentElement.style.setProperty('--reduce-motion', '1');
   if (lenis) lenis.destroy();
 }
-
-/* ============ i18n: 7 LANGUAGES ============ */
-const I18N = {
-  en: {
-    'nav.browse': 'Browse', 'nav.cta': 'Get the App',
-    'hero.rank': 'Money-in-hours tracker', 'hero.badge': 'Live · Free calculator · iOS',
-    'hero.sub': 'The only app that converts every expense into the work-hours it really stole. Coffee. Rent. Subscriptions. See what you trade. Decide differently.',
-    'hero.download': 'Download for iOS', 'hero.try': 'Try Calculator',
-    'hero.stat1': 'Items priced', 'hero.stat2': 'Languages', 'hero.stat3': 'Avg rating',
-    'trusted.label': 'Trusted by time-conscious humans everywhere',
-    'numbers.eye': 'The hard numbers', 'numbers.title': 'Built <span class="italic">different.</span>',
-    'numbers.sub': 'No ads. No data selling. No manipulation. Just your money, re-expressed.',
-    'num1.l': 'Money-in-hours app', 'num1.s': 'Category creator · iOS',
-    'num2.l': 'Expenses tracked', 'num2.s': 'Every month, and growing',
-    'num3.l': 'Average rating', 'num3.s': 'Across every region',
-    'num4.l': 'Languages live', 'num4.s': 'Full localization',
-    'how.eye': 'How it works', 'how.title': 'Three steps. <span class="italic">Forever changed.</span>',
-    'how.sub': 'Install. Log. See your life in a way you can never unsee.',
-    'how1.h': 'Tell us your <span class="italic">hour.</span>',
-    'how1.p': 'Enter your salary or hourly wage once. Everything else gets priced in your minutes from here.',
-    'how2.h': 'Add <span class="italic">anything</span> you spend.',
-    'how2.p': 'Voice. Text. Receipt scan. Every entry shows up as hours of work, not just dollars.',
-    'how3.h': 'Watch your <span class="italic">decisions</span> shift.',
-    'how3.p': '$5 coffees feel different when you see them as 23 min of your life. You\'ll think twice. That\'s the whole point.',
-    'vs.eye': 'Head to head', 'vs.title': 'HourSpend vs <span class="italic">the rest.</span>',
-    'vs.sub': 'Every other budget app shows you dollars. Only one shows you <em>your life</em>.',
-    'vs.col0': 'Feature',
-    'vs.r1': 'Expenses priced in hours of work',
-    'vs.r2': 'Free forever (core features)',
-    'vs.r3': 'No ads. No data selling.',
-    'vs.r4': 'AI expense parsing (voice + text)',
-    'vs.r5': '14 languages localized',
-    'vs.r6': 'iOS native (Liquid Glass, iOS 17+)',
-    'vs.r7': 'Private by default (on-device first)',
-    'testi.eye': 'What people are saying', 'testi.title': 'The reframe is <span class="italic">impossible to unsee.</span>',
-    'testi.sub': 'Real quotes. Real decisions. Real hours saved.',
-    'testi1.q': '"Cancelled three subscriptions in the first week. Turns out I was paying 8 hours a month for stuff I never opened."',
-    'testi1.a': 'Anna · Product designer',
-    'testi2.q': '"I don\'t need a budget. I need a translator. HourSpend is exactly that."',
-    'testi2.a': 'Marcus · Software engineer',
-    'testi3.q': '"The $5 coffee hits different when you see it as 23 minutes of your Tuesday. Changed how I spend. For real."',
-    'testi3.a': 'Priya · Marketing lead',
-    'faq.eye': 'Questions', 'faq.title': 'Things people <span class="italic">ask us.</span>',
-    'faq1.q': 'Is it really free?',
-    'faq1.a': 'Core features are free forever — add expenses, see hour conversions, track habits. Pro unlocks AI parsing, unlimited goals, and advanced charts for the price of about 30 minutes of your life per month.',
-    'faq2.q': 'Do you sell my data?',
-    'faq2.a': 'Never. Your spending data lives on-device and in your personal Firebase instance. We don\'t sell, trade, or share. No ads ever.',
-    'faq3.q': 'How accurate is the hour conversion?',
-    'faq3.a': 'As accurate as the wage you enter. We use 160 work-hours per month (40hr/wk × 4.33). If you\'re salaried, we divide by actual hours worked.',
-    'faq4.q': 'Android?',
-    'faq4.a': 'iOS-only for now. We built it native on iOS 17+ with Liquid Glass to be the absolute best experience possible on one platform before expanding.',
-    'faq5.q': 'What makes this different from Mint / YNAB / Copilot?',
-    'faq5.a': 'They all show you dollars. We show you your life. That\'s not a feature — that\'s a philosophy. Once you see a $35 lunch as 1.4 hrs of work, you can\'t unsee it.',
-    'faq6.q': 'Which languages are supported?',
-    'faq6.a': '14 languages full native: English, Turkish, Spanish, German, French, Portuguese, Japanese, Korean, Chinese (Simplified), Italian, Dutch, Polish, Russian, Arabic.',
-    'fin.eye': 'Last thing', 'fin.title': 'Stop spending<br>in <span class="italic">dollars.</span>',
-    'fin.sub': 'You have about 2,500 weekends left. Money can be earned again. Minutes can\'t.',
-    'fin.btn1': 'Download Free', 'fin.btn2': 'Try the free calculator'
-  },
-  tr: {
-    'nav.browse': 'Keşfet', 'nav.cta': 'Uygulamayı İndir',
-    'hero.rank': 'Saat cinsinden para takibi', 'hero.badge': 'Canlı · Ücretsiz hesaplayıcı · iOS',
-    'hero.sub': 'Her harcamayı gerçekte çaldığı iş saatine çeviren tek uygulama. Kahve. Kira. Unuttuğun abonelikler. Neyi takas ettiğini gör. Farklı karar ver.',
-    'hero.download': 'iOS için İndir', 'hero.try': 'Hesaplayıcıyı Dene',
-    'hero.stat1': 'Ürün fiyatlandı', 'hero.stat2': 'Dil', 'hero.stat3': 'Ort. puan',
-    'trusted.label': 'Zamanına değer veren insanlar tarafından kullanılıyor',
-    'numbers.eye': 'Sert rakamlar', 'numbers.title': '<span class="italic">Farklı</span> inşa edildi.',
-    'numbers.sub': 'Reklam yok. Veri satışı yok. Manipülasyon yok. Sadece paran, yeniden ifade edilmiş.',
-    'num1.l': 'Saat-bazlı para uygulaması', 'num1.s': 'Kategori yaratıcısı · iOS',
-    'num2.l': 'Takip edilen harcama', 'num2.s': 'Her ay, büyüyor',
-    'num3.l': 'Ortalama puan', 'num3.s': 'Her bölgede',
-    'num4.l': 'Aktif dil', 'num4.s': 'Tam yerelleştirme',
-    'how.eye': 'Nasıl çalışır', 'how.title': 'Üç adım. <span class="italic">Sonsuza kadar değişim.</span>',
-    'how.sub': 'Yükle. Kaydet. Hayatını bir daha göz ardı edemeyeceğin şekilde gör.',
-    'how1.h': 'Bize <span class="italic">saatini</span> söyle.',
-    'how1.p': 'Maaşını ya da saatlik ücretini bir kez gir. Bundan sonra her şey dakikalarınla fiyatlanacak.',
-    'how2.h': '<span class="italic">Her şeyi</span> kaydet.',
-    'how2.p': 'Ses. Metin. Fiş tarama. Her giriş çalışma saati olarak görünür, sadece dolar değil.',
-    'how3.h': '<span class="italic">Kararlarının</span> değişmesini izle.',
-    'how3.p': '5$\'lık kahve, hayatının 23 dakikası olduğunda farklı hissettirir. İki kez düşünürsün. Asıl mesele bu.',
-    'vs.eye': 'Karşılaştırma', 'vs.title': 'HourSpend <span class="italic">diğerlerine karşı.</span>',
-    'vs.sub': 'Diğer bütçe uygulamaları dolar gösterir. Sadece biri <em>hayatını</em> gösterir.',
-    'vs.col0': 'Özellik',
-    'vs.r1': 'Harcamalar iş saatinde fiyatlanır',
-    'vs.r2': 'Sonsuza kadar ücretsiz (temel)',
-    'vs.r3': 'Reklam yok. Veri satışı yok.',
-    'vs.r4': 'AI ile harcama ayıklama',
-    'vs.r5': '14 dilde yerelleştirme',
-    'vs.r6': 'iOS native (Liquid Glass)',
-    'vs.r7': 'Varsayılan gizlilik (cihaz-öncelikli)',
-    'testi.eye': 'İnsanların söylediği', 'testi.title': 'Bu yeniden çerçeveleme <span class="italic">görmezden gelinemez.</span>',
-    'testi.sub': 'Gerçek alıntılar. Gerçek kararlar. Gerçek kurtarılmış saatler.',
-    'testi1.q': '"İlk hafta üç aboneliği iptal ettim. Meğer hiç açmadığım şeylere ayda 8 saat ödüyormuşum."',
-    'testi1.a': 'Anna · Ürün tasarımcısı',
-    'testi2.q': '"Bütçeye ihtiyacım yok. Çevirmene ihtiyacım var. HourSpend tam olarak bu."',
-    'testi2.a': 'Marcus · Yazılım mühendisi',
-    'testi3.q': '"5$ kahve, salınının 23 dakikası olduğunu gördüğünde çok farklı. Nasıl harcadığımı değiştirdi. Cidden."',
-    'testi3.a': 'Priya · Pazarlama lideri',
-    'faq.eye': 'Sorular', 'faq.title': 'İnsanların <span class="italic">sorduğu şeyler.</span>',
-    'faq1.q': 'Gerçekten ücretsiz mi?',
-    'faq1.a': 'Temel özellikler sonsuza kadar ücretsiz — harcama ekle, saat dönüşümü gör, alışkanlık takibi. Pro versiyonu AI ayıklama, sınırsız hedef ve gelişmiş grafikleri ayda yaklaşık 30 dakikalık hayatına denk bir fiyata açar.',
-    'faq2.q': 'Verimi satıyor musunuz?',
-    'faq2.a': 'Asla. Harcama verilerin cihazında ve kendi Firebase\'inde yaşar. Satmıyoruz, paylaşmıyoruz. Hiç reklam yok.',
-    'faq3.q': 'Saat dönüşümü ne kadar doğru?',
-    'faq3.a': 'Girdiğin ücret kadar doğru. Ayda 160 iş saati kullanıyoruz (40sa/hafta × 4.33). Maaşlıysan, gerçek çalışma saatine bölünüyor.',
-    'faq4.q': 'Android?',
-    'faq4.a': 'Şimdilik sadece iOS. iOS 17+ ve Liquid Glass ile native inşa ettik — tek platformda en iyi deneyimi vermeden yayılmak istemedik.',
-    'faq5.q': 'Mint / YNAB / Copilot\'tan farkı ne?',
-    'faq5.a': 'Hepsi dolar gösterir. Biz hayatını gösteriyoruz. Bu bir özellik değil — felsefe. 35$\'lık öğle yemeğini 1.4 saatlik iş olarak gördüğünde bir daha unutamıyorsun.',
-    'faq6.q': 'Hangi diller destekleniyor?',
-    'faq6.a': '14 dilde tam yerelleştirme: İngilizce, Türkçe, İspanyolca, Almanca, Fransızca, Portekizce, Japonca, Korece, Çince (Basit), İtalyanca, Felemenkçe, Lehçe, Rusça, Arapça.',
-    'fin.eye': 'Son bir şey', 'fin.title': 'Doları değil,<br><span class="italic">hayatını</span> harca.',
-    'fin.sub': 'Yaklaşık 2.500 hafta sonun kaldı. Para yeniden kazanılır. Dakikalar kazanılmaz.',
-    'fin.btn1': 'Ücretsiz İndir', 'fin.btn2': 'Hesaplayıcıyı dene'
-  },
-  es: {
-    'nav.browse': 'Explorar', 'nav.cta': 'Obtener la App',
-    'hero.rank': 'Rastreador dinero-en-horas', 'hero.badge': 'Live · Calculadora gratis · iOS',
-    'hero.sub': 'La única app que convierte cada gasto en las horas de trabajo que realmente costó. Café. Alquiler. Suscripciones. Ve lo que intercambias. Decide diferente.',
-    'hero.download': 'Descargar para iOS', 'hero.try': 'Probar calculadora',
-    'hero.stat1': 'Ítems valorados', 'hero.stat2': 'Idiomas', 'hero.stat3': 'Puntuación media',
-    'trusted.label': 'Elegido por quienes valoran su tiempo',
-    'numbers.eye': 'Los números duros', 'numbers.title': 'Construido <span class="italic">diferente.</span>',
-    'numbers.sub': 'Sin anuncios. Sin venta de datos. Sin manipulación. Solo tu dinero, re-expresado.',
-    'num1.l': 'App dinero-horas', 'num1.s': 'Creador de categoría · iOS',
-    'num2.l': 'Gastos registrados', 'num2.s': 'Cada mes, en crecimiento',
-    'num3.l': 'Puntuación media', 'num3.s': 'En todas las regiones',
-    'num4.l': 'Idiomas activos', 'num4.s': 'Localización completa',
-    'how.eye': 'Cómo funciona', 'how.title': 'Tres pasos. <span class="italic">Cambio eterno.</span>',
-    'how.sub': 'Instala. Registra. Ve tu vida de una forma que no podrás ignorar.',
-    'how1.h': 'Dinos tu <span class="italic">hora.</span>',
-    'how1.p': 'Ingresa tu salario o tarifa por hora una vez. Todo lo demás se valorará en tus minutos.',
-    'how2.h': 'Añade <span class="italic">cualquier cosa</span>.',
-    'how2.p': 'Voz. Texto. Escaneo de recibo. Cada entrada aparece como horas de trabajo.',
-    'how3.h': 'Mira cambiar tus <span class="italic">decisiones.</span>',
-    'how3.p': 'Un café de 5$ se siente distinto cuando ves 23 min de tu vida. Pensarás dos veces.',
-    'vs.eye': 'Cara a cara', 'vs.title': 'HourSpend vs <span class="italic">el resto.</span>',
-    'vs.sub': 'Las demás apps te muestran dólares. Solo una te muestra <em>tu vida</em>.',
-    'vs.col0': 'Función',
-    'vs.r1': 'Gastos en horas de trabajo',
-    'vs.r2': 'Gratis para siempre (básico)',
-    'vs.r3': 'Sin ads. Sin venta de datos.',
-    'vs.r4': 'Análisis IA de gastos',
-    'vs.r5': 'Localizado en 14 idiomas',
-    'vs.r6': 'iOS nativo (Liquid Glass)',
-    'vs.r7': 'Privacidad por defecto',
-    'testi.eye': 'Qué dice la gente', 'testi.title': 'El cambio de marco <span class="italic">no se puede olvidar.</span>',
-    'testi.sub': 'Citas reales. Decisiones reales. Horas realmente recuperadas.',
-    'testi1.q': '"Cancelé tres suscripciones la primera semana. Pagaba 8 horas al mes por cosas que no abría."',
-    'testi1.a': 'Anna · Diseñadora de producto',
-    'testi2.q': '"No necesito un presupuesto. Necesito un traductor. HourSpend es exactamente eso."',
-    'testi2.a': 'Marcus · Ingeniero de software',
-    'testi3.q': '"El café de 5$ golpea diferente cuando ves que son 23 minutos de tu martes. Cambió cómo gasto."',
-    'testi3.a': 'Priya · Líder de marketing',
-    'faq.eye': 'Preguntas', 'faq.title': 'Lo que <span class="italic">nos preguntan.</span>',
-    'faq1.q': '¿De verdad es gratis?',
-    'faq1.a': 'El núcleo es gratis para siempre. Pro desbloquea IA y gráficos avanzados por el precio de ~30 min de tu vida al mes.',
-    'faq2.q': '¿Venden mis datos?',
-    'faq2.a': 'Nunca. Los datos viven en tu dispositivo y en tu Firebase. No vendemos, intercambiamos ni compartimos. Sin ads.',
-    'faq3.q': '¿Qué tan exacta es la conversión a horas?',
-    'faq3.a': 'Tan exacta como el salario que ingreses. Usamos 160 horas/mes (40hr/sem × 4.33).',
-    'faq4.q': '¿Android?',
-    'faq4.a': 'Solo iOS por ahora. Nativo en iOS 17+ con Liquid Glass para la mejor experiencia antes de expandir.',
-    'faq5.q': '¿Qué lo hace diferente de Mint / YNAB / Copilot?',
-    'faq5.a': 'Ellas muestran dólares. Nosotros mostramos tu vida. No es una función — es una filosofía.',
-    'faq6.q': '¿Qué idiomas están soportados?',
-    'faq6.a': '14 idiomas nativos: Inglés, Turco, Español, Alemán, Francés, Portugués, Japonés, Coreano, Chino simplificado, Italiano, Holandés, Polaco, Ruso, Árabe.',
-    'fin.eye': 'Una última cosa', 'fin.title': 'Deja de gastar<br>en <span class="italic">dólares.</span>',
-    'fin.sub': 'Te quedan unos 2.500 fines de semana. El dinero se gana otra vez. Los minutos no.',
-    'fin.btn1': 'Descargar Gratis', 'fin.btn2': 'Probar la calculadora'
-  },
-  de: {
-    'nav.browse': 'Entdecken', 'nav.cta': 'App holen',
-    'hero.rank': 'Geld-in-Stunden Tracker', 'hero.badge': 'Live · Kostenloser Rechner · iOS',
-    'hero.sub': 'Die einzige App, die jede Ausgabe in die Arbeitsstunden umrechnet, die sie wirklich kostet. Kaffee. Miete. Abos. Sieh was du tauschst. Entscheide anders.',
-    'hero.download': 'Für iOS laden', 'hero.try': 'Rechner testen',
-    'hero.stat1': 'Artikel bewertet', 'hero.stat2': 'Sprachen', 'hero.stat3': 'Durchschn. Bewertung',
-    'trusted.label': 'Vertraut von zeitbewussten Menschen',
-    'numbers.eye': 'Die harten Zahlen', 'numbers.title': 'Anders <span class="italic">gebaut.</span>',
-    'numbers.sub': 'Keine Ads. Kein Datenverkauf. Keine Manipulation. Nur dein Geld, neu ausgedrückt.',
-    'num1.l': 'Geld-Stunden-App', 'num1.s': 'Kategorie-Erfinder · iOS',
-    'num2.l': 'Erfasste Ausgaben', 'num2.s': 'Jeden Monat, wachsend',
-    'num3.l': 'Durchschn. Bewertung', 'num3.s': 'In allen Regionen',
-    'num4.l': 'Aktive Sprachen', 'num4.s': 'Vollständig lokalisiert',
-    'how.eye': 'So funktioniert es', 'how.title': 'Drei Schritte. <span class="italic">Für immer anders.</span>',
-    'how.sub': 'Installiere. Tracke. Sieh dein Leben so, wie du es nie wieder vergessen kannst.',
-    'how1.h': 'Sag uns deine <span class="italic">Stunde.</span>',
-    'how1.p': 'Trag dein Gehalt oder deinen Stundenlohn einmal ein. Alles wird in deinen Minuten bewertet.',
-    'how2.h': 'Trage <span class="italic">alles</span> ein.',
-    'how2.p': 'Sprache. Text. Beleg-Scan. Jeder Eintrag erscheint als Arbeitsstunden.',
-    'how3.h': 'Sieh deine <span class="italic">Entscheidungen</span> verändern.',
-    'how3.p': 'Ein 5€ Kaffee fühlt sich anders an, wenn du 23 min deines Lebens siehst.',
-    'vs.eye': 'Direktvergleich', 'vs.title': 'HourSpend vs <span class="italic">die anderen.</span>',
-    'vs.sub': 'Andere Budget-Apps zeigen dir Dollar. Nur eine zeigt <em>dein Leben</em>.',
-    'vs.col0': 'Feature',
-    'vs.r1': 'Ausgaben in Arbeitsstunden',
-    'vs.r2': 'Für immer kostenlos (Basis)',
-    'vs.r3': 'Keine Ads. Kein Datenverkauf.',
-    'vs.r4': 'KI-Ausgabenerfassung',
-    'vs.r5': '14 Sprachen lokalisiert',
-    'vs.r6': 'iOS nativ (Liquid Glass)',
-    'vs.r7': 'Privat by default',
-    'testi.eye': 'Was Leute sagen', 'testi.title': 'Der Reframe ist <span class="italic">nicht mehr wegzudenken.</span>',
-    'testi.sub': 'Echte Zitate. Echte Entscheidungen. Echt gesparte Stunden.',
-    'testi1.q': '"Drei Abos in der ersten Woche gekündigt. Ich zahlte 8 Stunden im Monat für Dinge, die ich nie geöffnet hatte."',
-    'testi1.a': 'Anna · Produktdesignerin',
-    'testi2.q': '"Ich brauche kein Budget. Ich brauche einen Übersetzer. HourSpend ist genau das."',
-    'testi2.a': 'Marcus · Software-Ingenieur',
-    'testi3.q': '"Der 5€ Kaffee fühlt sich anders an, wenn du siehst, dass er 23 Minuten deines Dienstags ist."',
-    'testi3.a': 'Priya · Marketing-Leiterin',
-    'faq.eye': 'Fragen', 'faq.title': 'Was uns <span class="italic">gefragt wird.</span>',
-    'faq1.q': 'Ist es wirklich kostenlos?',
-    'faq1.a': 'Basisfunktionen sind für immer gratis. Pro schaltet KI und Diagramme frei für den Preis von ~30 min deines Lebens/Monat.',
-    'faq2.q': 'Verkauft ihr meine Daten?',
-    'faq2.a': 'Niemals. Deine Daten leben auf dem Gerät und in deinem persönlichen Firebase. Keine Ads.',
-    'faq3.q': 'Wie genau ist die Stunden-Umrechnung?',
-    'faq3.a': 'So genau wie dein eingegebener Lohn. Wir nutzen 160 Stunden/Monat.',
-    'faq4.q': 'Android?',
-    'faq4.a': 'Nur iOS. Nativ auf iOS 17+ mit Liquid Glass für die beste Erfahrung.',
-    'faq5.q': 'Unterschied zu Mint / YNAB / Copilot?',
-    'faq5.a': 'Sie zeigen Dollar. Wir zeigen dein Leben. Das ist keine Funktion — es ist eine Philosophie.',
-    'faq6.q': 'Welche Sprachen werden unterstützt?',
-    'faq6.a': '14 Sprachen nativ: Englisch, Türkisch, Spanisch, Deutsch, Französisch, Portugiesisch, Japanisch, Koreanisch, Chinesisch, Italienisch, Niederländisch, Polnisch, Russisch, Arabisch.',
-    'fin.eye': 'Ein letztes', 'fin.title': 'Hör auf,<br>in <span class="italic">Dollar</span> zu denken.',
-    'fin.sub': 'Du hast noch etwa 2.500 Wochenenden. Geld lässt sich zurückgewinnen. Minuten nicht.',
-    'fin.btn1': 'Kostenlos laden', 'fin.btn2': 'Rechner ausprobieren'
-  },
-  fr: {
-    'nav.browse': 'Explorer', 'nav.cta': 'Obtenir l\'app',
-    'hero.rank': 'Suivi argent-en-heures', 'hero.badge': 'Live · Calculatrice gratuite · iOS',
-    'hero.sub': 'La seule app qui convertit chaque dépense en heures de travail réellement coûtées. Café. Loyer. Abonnements. Vois ce que tu échanges. Décide autrement.',
-    'hero.download': 'Télécharger iOS', 'hero.try': 'Essayer la calculatrice',
-    'hero.stat1': 'Articles chiffrés', 'hero.stat2': 'Langues', 'hero.stat3': 'Note moyenne',
-    'trusted.label': 'Utilisé par des gens qui valorisent leur temps',
-    'numbers.eye': 'Les chiffres durs', 'numbers.title': 'Construit <span class="italic">différemment.</span>',
-    'numbers.sub': 'Pas de pubs. Pas de vente de données. Pas de manipulation.',
-    'num1.l': 'App argent-heures', 'num1.s': 'Créateur de catégorie · iOS',
-    'num2.l': 'Dépenses suivies', 'num2.s': 'Chaque mois, en hausse',
-    'num3.l': 'Note moyenne', 'num3.s': 'Partout',
-    'num4.l': 'Langues actives', 'num4.s': 'Localisation complète',
-    'how.eye': 'Comment ça marche', 'how.title': 'Trois étapes. <span class="italic">Changement éternel.</span>',
-    'how.sub': 'Installe. Enregistre. Vois ta vie d\'une façon que tu ne pourras plus ignorer.',
-    'how1.h': 'Dis-nous ton <span class="italic">heure.</span>',
-    'how1.p': 'Entre ton salaire une fois. Tout sera chiffré en tes minutes.',
-    'how2.h': 'Ajoute <span class="italic">n\'importe quoi.</span>',
-    'how2.p': 'Voix. Texte. Scan de reçu. Chaque entrée devient des heures de travail.',
-    'how3.h': 'Vois tes <span class="italic">décisions</span> changer.',
-    'how3.p': 'Un café à 5€ a un goût différent quand tu vois 23 min de ta vie.',
-    'vs.eye': 'Face-à-face', 'vs.title': 'HourSpend vs <span class="italic">les autres.</span>',
-    'vs.sub': 'Les autres apps montrent des euros. Une seule montre <em>ta vie</em>.',
-    'vs.col0': 'Fonction',
-    'vs.r1': 'Dépenses en heures de travail',
-    'vs.r2': 'Gratuit pour toujours (de base)',
-    'vs.r3': 'Zéro pub. Zéro vente.',
-    'vs.r4': 'Parsing IA des dépenses',
-    'vs.r5': 'Localisé en 14 langues',
-    'vs.r6': 'iOS natif (Liquid Glass)',
-    'vs.r7': 'Privé par défaut',
-    'testi.eye': 'Ce qu\'on dit', 'testi.title': 'Le recadrage est <span class="italic">inoubliable.</span>',
-    'testi.sub': 'Vrais témoignages. Vraies décisions. Vraies heures récupérées.',
-    'testi1.q': '"Annulé trois abonnements la première semaine. Je payais 8 heures par mois pour des trucs que je n\'ouvrais jamais."',
-    'testi1.a': 'Anna · Designer produit',
-    'testi2.q': '"Je n\'ai pas besoin d\'un budget. J\'ai besoin d\'un traducteur. HourSpend, c\'est exactement ça."',
-    'testi2.a': 'Marcus · Ingénieur logiciel',
-    'testi3.q': '"Le café à 5€ frappe différemment quand tu vois que ce sont 23 minutes de ton mardi."',
-    'testi3.a': 'Priya · Responsable marketing',
-    'faq.eye': 'Questions', 'faq.title': 'Ce qu\'on <span class="italic">nous demande.</span>',
-    'faq1.q': 'C\'est vraiment gratuit ?',
-    'faq1.a': 'Les fonctions de base sont gratuites pour toujours. Pro débloque l\'IA pour environ 30 min de ta vie par mois.',
-    'faq2.q': 'Vous vendez mes données ?',
-    'faq2.a': 'Jamais. Tes données vivent sur l\'appareil. On ne vend rien.',
-    'faq3.q': 'Précision de la conversion en heures ?',
-    'faq3.a': 'Aussi précise que le salaire que tu entres. 160h/mois (40h/sem × 4.33).',
-    'faq4.q': 'Android ?',
-    'faq4.a': 'iOS uniquement. Natif iOS 17+ avec Liquid Glass pour la meilleure expérience.',
-    'faq5.q': 'Différence avec Mint / YNAB / Copilot ?',
-    'faq5.a': 'Eux montrent des dollars. Nous montrons ta vie. C\'est une philosophie.',
-    'faq6.q': 'Quelles langues ?',
-    'faq6.a': '14 langues natives : Anglais, Turc, Espagnol, Allemand, Français, Portugais, Japonais, Coréen, Chinois, Italien, Néerlandais, Polonais, Russe, Arabe.',
-    'fin.eye': 'Une dernière', 'fin.title': 'Arrête de dépenser<br>en <span class="italic">euros.</span>',
-    'fin.sub': 'Il te reste environ 2 500 week-ends. L\'argent se regagne. Les minutes non.',
-    'fin.btn1': 'Télécharger Gratuit', 'fin.btn2': 'Essayer la calculatrice'
-  },
-  pt: {
-    'nav.browse': 'Explorar', 'nav.cta': 'Baixar o App',
-    'hero.rank': 'Rastreador dinheiro-em-horas', 'hero.badge': 'Ao vivo · Grátis · iOS',
-    'hero.sub': 'O único app que converte cada gasto nas horas de trabalho que realmente custou. Café. Aluguel. Assinaturas. Decida diferente.',
-    'hero.download': 'Baixar para iOS', 'hero.try': 'Testar calculadora',
-    'hero.stat1': 'Itens avaliados', 'hero.stat2': 'Idiomas', 'hero.stat3': 'Nota média',
-    'trusted.label': 'Escolhido por quem valoriza seu tempo',
-    'numbers.eye': 'Os números', 'numbers.title': 'Construído <span class="italic">diferente.</span>',
-    'numbers.sub': 'Sem ads. Sem venda de dados. Sem manipulação.',
-    'num1.l': 'App dinheiro-horas', 'num1.s': 'Criador de categoria · iOS',
-    'num2.l': 'Gastos rastreados', 'num2.s': 'Todo mês, crescendo',
-    'num3.l': 'Nota média', 'num3.s': 'Em todas as regiões',
-    'num4.l': 'Idiomas ativos', 'num4.s': 'Localização completa',
-    'how.eye': 'Como funciona', 'how.title': 'Três passos. <span class="italic">Mudança eterna.</span>',
-    'how.sub': 'Instale. Registre. Veja sua vida de um jeito que não dá pra esquecer.',
-    'how1.h': 'Nos diga sua <span class="italic">hora.</span>',
-    'how1.p': 'Entre seu salário uma vez. Tudo será precificado nos seus minutos.',
-    'how2.h': 'Adicione <span class="italic">qualquer coisa.</span>',
-    'how2.p': 'Voz. Texto. Scan de recibo. Cada entrada vira horas de trabalho.',
-    'how3.h': 'Veja suas <span class="italic">decisões</span> mudarem.',
-    'how3.p': 'Um café de 5$ tem outro sabor quando você vê 23 min da sua vida.',
-    'vs.eye': 'Frente a frente', 'vs.title': 'HourSpend vs <span class="italic">o resto.</span>',
-    'vs.sub': 'Os outros apps mostram dólares. Só um mostra <em>sua vida</em>.',
-    'vs.col0': 'Função',
-    'vs.r1': 'Gastos em horas de trabalho',
-    'vs.r2': 'Grátis pra sempre (básico)',
-    'vs.r3': 'Sem ads. Sem venda.',
-    'vs.r4': 'IA para gastos',
-    'vs.r5': 'Localizado em 14 idiomas',
-    'vs.r6': 'iOS nativo (Liquid Glass)',
-    'vs.r7': 'Privado por padrão',
-    'testi.eye': 'O que estão dizendo', 'testi.title': 'O reframe é <span class="italic">inesquecível.</span>',
-    'testi.sub': 'Depoimentos reais. Decisões reais. Horas realmente salvas.',
-    'testi1.q': '"Cancelei três assinaturas na primeira semana. Eu pagava 8 horas por mês por coisas que nem abria."',
-    'testi1.a': 'Anna · Designer de produto',
-    'testi2.q': '"Não preciso de orçamento. Preciso de tradutor. HourSpend é exatamente isso."',
-    'testi2.a': 'Marcus · Engenheiro de software',
-    'testi3.q': '"Café de 5$ bate diferente quando você vê 23 minutos da sua terça. Mudou meu jeito de gastar."',
-    'testi3.a': 'Priya · Líder de marketing',
-    'faq.eye': 'Perguntas', 'faq.title': 'O que <span class="italic">perguntam.</span>',
-    'faq1.q': 'É grátis mesmo?',
-    'faq1.a': 'Básico grátis pra sempre. Pro libera IA e gráficos por cerca de 30 min da sua vida/mês.',
-    'faq2.q': 'Vocês vendem meus dados?',
-    'faq2.a': 'Nunca. Os dados vivem no dispositivo. Zero ads.',
-    'faq3.q': 'Precisão da conversão?',
-    'faq3.a': 'Tão precisa quanto seu salário. 160h/mês (40h/sem × 4.33).',
-    'faq4.q': 'Android?',
-    'faq4.a': 'Só iOS. Nativo iOS 17+ com Liquid Glass para a melhor experiência.',
-    'faq5.q': 'Diferença pra Mint / YNAB / Copilot?',
-    'faq5.a': 'Eles mostram dólares. Nós mostramos sua vida. É filosofia.',
-    'faq6.q': 'Quais idiomas?',
-    'faq6.a': '14 idiomas nativos: Inglês, Turco, Espanhol, Alemão, Francês, Português, Japonês, Coreano, Chinês, Italiano, Holandês, Polonês, Russo, Árabe.',
-    'fin.eye': 'Última coisa', 'fin.title': 'Pare de gastar<br>em <span class="italic">dólares.</span>',
-    'fin.sub': 'Você tem cerca de 2.500 fins de semana restantes. Dinheiro volta. Minutos não.',
-    'fin.btn1': 'Baixar Grátis', 'fin.btn2': 'Testar calculadora'
-  },
-  ja: {
-    'nav.browse': '見る', 'nav.cta': 'アプリを入手',
-    'hero.rank': '時間-換算 マネートラッカー', 'hero.badge': 'ライブ · 無料計算機 · iOS',
-    'hero.sub': 'すべての支出を、実際に奪われた労働時間に換算する唯一のアプリ。コーヒー。家賃。サブスク。何と交換しているかを見る。違う選択を。',
-    'hero.download': 'iOS 向けにダウンロード', 'hero.try': '計算機を試す',
-    'hero.stat1': '項目', 'hero.stat2': '言語', 'hero.stat3': '平均評価',
-    'trusted.label': '時間を大切にする人々に選ばれています',
-    'numbers.eye': 'ハードな数字', 'numbers.title': '<span class="italic">違う</span> 作り方。',
-    'numbers.sub': '広告なし。データ販売なし。操作なし。',
-    'num1.l': '時間換算アプリ', 'num1.s': 'カテゴリ創造 · iOS',
-    'num2.l': '追跡された支出', 'num2.s': '毎月、増加中',
-    'num3.l': '平均評価', 'num3.s': 'すべての地域で',
-    'num4.l': '対応言語', 'num4.s': '完全ローカライズ',
-    'how.eye': '仕組み', 'how.title': '3ステップ。<span class="italic">永遠に変わる。</span>',
-    'how.sub': 'インストール。記録。見えなかった自分の人生が見える。',
-    'how1.h': 'あなたの<span class="italic">時給</span>を教えて。',
-    'how1.p': '給料か時給を一度入力。以降すべてがあなたの分に換算されます。',
-    'how2.h': '<span class="italic">何でも</span>追加。',
-    'how2.p': '音声。テキスト。レシートスキャン。ドルではなく労働時間で表示。',
-    'how3.h': '<span class="italic">決断</span>が変わるのを見る。',
-    'how3.p': '5ドルのコーヒーが人生の23分だと見えると、違って感じる。',
-    'vs.eye': '比較', 'vs.title': 'HourSpend vs <span class="italic">他社。</span>',
-    'vs.sub': '他のアプリはドルを見せる。HourSpendだけが<em>人生</em>を見せる。',
-    'vs.col0': '機能',
-    'vs.r1': '労働時間で表示',
-    'vs.r2': '永久無料（基本機能）',
-    'vs.r3': '広告ゼロ・データ販売ゼロ',
-    'vs.r4': 'AI支出解析',
-    'vs.r5': '14言語ローカライズ',
-    'vs.r6': 'iOSネイティブ（Liquid Glass）',
-    'vs.r7': 'デフォルトでプライベート',
-    'testi.eye': 'ユーザーの声', 'testi.title': 'このリフレームは <span class="italic">忘れられない。</span>',
-    'testi.sub': 'リアルな声。リアルな判断。リアルに取り戻した時間。',
-    'testi1.q': '「最初の週に3つサブスクを解約。開いてもないものに月8時間払っていた。」',
-    'testi1.a': 'Anna · プロダクトデザイナー',
-    'testi2.q': '「予算は要らない。翻訳機が欲しかった。HourSpendはまさにそれ。」',
-    'testi2.a': 'Marcus · ソフトウェアエンジニア',
-    'testi3.q': '「5ドルのコーヒーが火曜日の23分だと知ると、支出が変わる。マジで。」',
-    'testi3.a': 'Priya · マーケティング責任者',
-    'faq.eye': 'FAQ', 'faq.title': 'よくある <span class="italic">質問。</span>',
-    'faq1.q': '本当に無料？',
-    'faq1.a': '基本機能は永久無料。Pro版はAIや高度なグラフを月30分相当で解放。',
-    'faq2.q': 'データを売りますか？',
-    'faq2.a': '絶対に。データは端末とあなたのFirebaseに。広告ゼロ。',
-    'faq3.q': '時間換算の精度は？',
-    'faq3.a': '入力した給与の精度次第。月160時間（週40時間×4.33）で計算。',
-    'faq4.q': 'Android？',
-    'faq4.a': '現在iOSのみ。iOS 17+にLiquid Glassでネイティブ実装。',
-    'faq5.q': 'Mint / YNAB / Copilotとの違い？',
-    'faq5.a': '彼らはドルを見せる。我々は人生を見せる。これは哲学。',
-    'faq6.q': '対応言語は？',
-    'faq6.a': '14言語ネイティブ：英語、トルコ語、スペイン語、ドイツ語、フランス語、ポルトガル語、日本語、韓国語、中国語、イタリア語、オランダ語、ポーランド語、ロシア語、アラビア語。',
-    'fin.eye': '最後に', 'fin.title': 'ドルで使うのは<br><span class="italic">やめよう。</span>',
-    'fin.sub': '残りの週末は約2,500回。お金は稼げる。時間は稼げない。',
-    'fin.btn1': '無料ダウンロード', 'fin.btn2': '計算機を試す'
-  }
-};
-
-(() => {
-  const langBtn = document.getElementById('langBtn');
-  const langSwitch = document.getElementById('langSwitch');
-  const langDropdown = document.getElementById('langDropdown');
-  const langBtnLabel = document.getElementById('langBtnLabel');
-  if (!langBtn || !langDropdown) return;
-
-  function applyLang(lang) {
-    const dict = I18N[lang] || I18N.en;
-    // Normal text nodes
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.dataset.i18n;
-      if (dict[key]) el.textContent = dict[key];
-    });
-    // HTML-allowed nodes (contains <span class="italic"> etc.)
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
-      const key = el.dataset.i18nHtml || el.dataset.i18n;
-      if (dict[key]) el.innerHTML = dict[key];
-    });
-    // Update button label
-    if (langBtnLabel) langBtnLabel.textContent = lang.toUpperCase();
-    // Highlight active
-    document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
-    // Persist + set html lang
-    localStorage.setItem('hs.lang', lang);
-    document.documentElement.lang = lang;
-  }
-
-  // Restore previous
-  const saved = localStorage.getItem('hs.lang');
-  const browserLang = (navigator.language || 'en').toLowerCase().slice(0,2);
-  const initLang = saved && I18N[saved] ? saved : (I18N[browserLang] ? browserLang : 'en');
-  if (initLang !== 'en') applyLang(initLang);
-  else { // still set active state
-    document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === 'en'));
-    if (langBtnLabel) langBtnLabel.textContent = 'EN';
-  }
-
-  // Toggle dropdown
-  langBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    langSwitch.classList.toggle('open');
-  });
-  document.addEventListener('click', (e) => {
-    if (!langSwitch.contains(e.target)) langSwitch.classList.remove('open');
-  });
-
-  // Select language
-  langDropdown.addEventListener('click', (e) => {
-    const opt = e.target.closest('.lang-option');
-    if (!opt) return;
-    applyLang(opt.dataset.lang);
-    langSwitch.classList.remove('open');
-  });
-})();
 </script>
 </body>
 </html>

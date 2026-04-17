@@ -664,55 +664,63 @@ h2 .italic { font-family: var(--editorial); font-style: italic; font-weight: 700
 .appstore-badge:hover::before { transform: translateX(100%); }
 .appstore-badge:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
-/* === PHONE MOCKUP === */
-.phone-wrap { position: relative; perspective: 1000px; }
-.phone-mockup {
+/* === REAL iPhone PHOTO + FLOATING STAT BADGE === */
+.phone-photo-wrap {
   position: relative;
-  width: 100%; max-width: 280px; margin: 0 auto;
-  aspect-ratio: 280 / 580;
-  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-  border-radius: 50px; padding: 12px;
-  box-shadow:
-    0 0 0 2px #0a0a0a,
-    0 40px 100px rgba(0,0,0,0.6),
-    0 10px 30px rgba(232,200,110,0.1);
-  transform: rotateY(-8deg) rotateX(4deg);
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
-  will-change: transform;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
 }
-.phone-wrap:hover .phone-mockup { transform: rotateY(0deg) rotateX(0deg) translateY(-8px); }
-.phone-screen {
-  width: 100%; height: 100%;
-  background: linear-gradient(180deg, #1A0B2E, #0A0418);
-  border-radius: 38px;
-  padding: 40px 20px 20px;
-  position: relative; overflow: hidden;
+.phone-photo {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 1.2s cubic-bezier(0.16,1,0.3,1);
 }
-.phone-screen::before {
-  content: ''; position: absolute;
-  top: 8px; left: 50%; transform: translateX(-50%);
-  width: 110px; height: 26px;
-  background: #0a0a0a; border-radius: 100px;
+.phone-photo-wrap:hover .phone-photo { transform: scale(1.04); }
+.phone-photo-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(200deg, rgba(11,8,18,0.1) 0%, rgba(11,8,18,0.55) 100%);
+  pointer-events: none;
 }
-.phone-content { padding-top: 32px; text-align: center; }
-.phone-greet { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; letter-spacing: 1.5px; font-family: var(--mono); text-transform: uppercase; font-weight: 600; }
-.phone-balance {
-  font-family: var(--mono); font-size: 34px; font-weight: 600;
-  color: var(--gold); letter-spacing: -1.5px; margin-bottom: 4px;
+.phone-badge {
+  position: absolute;
+  left: 24px; bottom: 24px;
+  z-index: 2;
+  padding: 18px 22px;
+  background: rgba(15, 10, 24, 0.78);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+  min-width: 220px;
+}
+.phone-badge-k {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--gold-soft); letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 700;
+  margin-bottom: 8px;
+}
+.phone-badge-v {
+  font-family: var(--mono); font-weight: 500;
+  font-size: 44px; letter-spacing: -1.5px; line-height: 1;
+  color: var(--gold);
   font-variant-numeric: tabular-nums;
+  margin-bottom: 6px;
 }
-.phone-conv { font-size: 10px; color: var(--text-dim); margin-bottom: 22px; font-family: var(--mono); }
-.phone-cards { display: flex; flex-direction: column; gap: 7px; text-align: left; }
-.phone-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.05);
-  padding: 11px 13px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: space-between;
+.phone-badge-v span { font-size: 22px; color: rgba(232,200,110,0.6); margin-left: 2px; }
+.phone-badge-s {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text-muted); letter-spacing: 0.3px;
 }
-.phone-card .item { font-size: 11px; color: var(--text); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
-.phone-card .item svg { width: 14px; height: 14px; color: var(--gold-soft); flex-shrink: 0; }
-.phone-card .time { font-family: var(--mono); font-size: 11px; color: var(--gold); font-weight: 600; }
+@media (max-width: 900px) {
+  .phone-photo-wrap { aspect-ratio: 16/10; }
+  .phone-badge { left: 16px; bottom: 16px; padding: 14px 18px; min-width: 180px; }
+  .phone-badge-v { font-size: 36px; }
+}
 
 /* === FOOTER === */
 footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align: center; position: relative; }
@@ -1581,21 +1589,12 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       </a>
     </div>
 
-    <div class="phone-wrap">
-      <div class="phone-mockup">
-        <div class="phone-screen">
-          <div class="phone-content">
-            <div class="phone-greet" data-i18n="ph.week">This week</div>
-            <div class="phone-balance">14h 32m</div>
-            <div class="phone-conv" data-i18n="ph.spent">≈ $363 spent</div>
-            <div class="phone-cards">
-              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 010 8h-1M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg><span data-i18n="ph.coffee">Coffee</span></span><span class="time">23m</span></div>
-              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg><span data-i18n="ph.lunch">Lunch</span></span><span class="time">1h 12m</span></div>
-              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span data-i18n="ph.groceries">Groceries</span></span><span class="time">3h 40m</span></div>
-              <div class="phone-card"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V5a2 2 0 012-2h10a2 2 0 012 2v17"/><path d="M3 22h14"/><path d="M17 10h2a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="6" y="7" width="8" height="5"/></svg><span data-i18n="ph.gas">Gas</span></span><span class="time">2h 25m</span></div>
-            </div>
-          </div>
-        </div>
+    <div class="phone-photo-wrap">
+      <div class="phone-photo" style="background-image:url('https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=1200&q=85&auto=format&fit=crop')"></div>
+      <div class="phone-badge">
+        <div class="phone-badge-k" data-i18n="ph.week">This week</div>
+        <div class="phone-badge-v">14<span>h</span> 32<span>m</span></div>
+        <div class="phone-badge-s" data-i18n="ph.spent">≈ $363 · priced in your life</div>
       </div>
     </div>
   </div>
@@ -1874,6 +1873,24 @@ function u(key) {
   const fallback = { 'unit.min': 'min', 'unit.hrs': 'hrs', 'unit.days': 'days', 'unit.weeks': 'weeks', 'unit.months': 'months', 'unit.empty': '—', 'unit.enter': 'enter values', 'calc.for': 'for' };
   return fallback[key] || key;
 }
+
+// Locale-aware currency formatting
+// Map: symbol, symbol placement ('pre'/'post'), and default (salary/expense) values
+var LOCALE_CURR = {
+  en: { sym:'$', pos:'pre', salary:3000, exp:5 },
+  tr: { sym:'₺', pos:'post', salary:30000, exp:100 },
+  es: { sym:'$', pos:'pre', salary:3000, exp:5 },
+  de: { sym:'€', pos:'post', salary:2500, exp:4 },
+  fr: { sym:'€', pos:'post', salary:2500, exp:4 },
+  pt: { sym:'R$', pos:'pre', salary:4000, exp:20 },
+  ja: { sym:'¥', pos:'pre', salary:300000, exp:500 }
+};
+function fmtCurr(amount) {
+  const loc = LOCALE_CURR[__currentLang] || LOCALE_CURR.en;
+  const n = Number(amount);
+  const nstr = isFinite(n) ? n.toLocaleString(__currentLang==='tr'?'tr-TR':__currentLang==='de'||__currentLang==='fr'?'de-DE':'en-US') : String(amount);
+  return loc.pos === 'pre' ? loc.sym + nstr : nstr + loc.sym;
+}
 function formatTime(min) {
   if (min < 60) return Math.round(min) + ' ' + u('unit.min');
   if (min < 480) return (min/60).toFixed(1) + ' ' + u('unit.hrs');
@@ -1894,7 +1911,7 @@ function calc() {
   const hourlyRate = s / monthlyHours;
   const minutes = (e / hourlyRate) * 60;
   amountEl.textContent = formatTime(minutes);
-  labelEl.textContent = u('calc.for') + ' $' + e;
+  labelEl.textContent = u('calc.for') + ' ' + fmtCurr(e);
 }
 /* Strict numeric-only filter — blocks letters, 'e', '+', '-', spaces, paste garbage */
 function attachNumericFilter(el) {
@@ -2100,7 +2117,7 @@ const I18N = {
     'calc.title': 'Hesaplayıcı', 'calc.live': 'CANLI',
     'calc.salary': 'Aylık maaş', 'calc.hpw': 'Sa / hafta', 'calc.exp': 'Harcama $',
     'calc.result': 'Sana maliyeti', 'calc.share': 'Bu matematiği paylaş', 'calc.for': 'karşılığında',
-    'calc.c1': 'Kahve · 5$', 'calc.c2': 'Öğle · 35$', 'calc.c3': 'Market · 100$', 'calc.c4': 'Kira · 1500$',
+    'calc.c1': 'Kahve · 100₺', 'calc.c2': 'Öğle · 500₺', 'calc.c3': 'Market · 1.500₺', 'calc.c4': 'Kira · 25.000₺',
     'unit.min': 'dk', 'unit.hrs': 'sa', 'unit.days': 'gün', 'unit.weeks': 'hafta', 'unit.months': 'ay', 'unit.years': 'yıl',
     'unit.empty': '—', 'unit.enter': 'değer gir',
     'trusted.label': 'Zamanına değer verenler tarafından kullanılıyor',
@@ -2114,11 +2131,11 @@ const I18N = {
     'num4.l': 'Aktif dil', 'num4.s': 'Tam yerelleştirme',
     'story.label': 'Yeniden çerçeveleme', 'story.hrsNum': '23 dk',
     'story.cap1': 'Dolar olarak saymak gerçeği gizler.',
-    'story.cap2': '5$ hiçbir şey gibi. Ama hayatının 23 dakikası çok farklı.',
+    'story.cap2': '100₺ hiçbir şey gibi. Ama hayatının 20 dakikası çok farklı.',
     'story.cap3': 'Paran, dönüştürülmüş zamandır. Bu çerçeveleme bir daha silinmez.',
     'bento.eye': 'Rakamlardaki gerçek', 'bento.title': 'Günlük harcamaların <span class="italic">gerçek</span> maliyeti.',
-    'bento.sub': 'Saat başı 25$ ücret üzerinden. Kendi rakamlarını görmek için yukarıdaki hesaplayıcıyı kullan.',
-    'b1.meta': 'Günlük latte alışkanlığı', 'b1.h': 'Bir yıllık sabah kahven =', 'b1.eq': '14 iş günü', 'b1.p': 'Günde 5$ × 365 · 73 saat iş',
+    'bento.sub': 'Saat başı 300₺ ücret üzerinden. Kendi rakamlarını görmek için yukarıdaki hesaplayıcıyı kullan.',
+    'b1.meta': 'Günlük latte alışkanlığı', 'b1.h': 'Bir yıllık sabah kahven =', 'b1.eq': '14 iş günü', 'b1.p': 'Günde 100₺ × 365 · 73 saat iş',
     'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 hafta',
     'b3.meta': 'NYC 1+1 kira', 'b3.eq': '22.5 gün',
     'b4.meta': 'DoorDash akşam', 'b4.eq': '1.3 sa',
@@ -2129,7 +2146,7 @@ const I18N = {
     'g2.k': 'Abonelikler', 'g2.v': 'Hayatından 4 gün',
     'g3.k': 'Yemek siparişi', 'g3.v': '1.3 sa',
     'g4.k': 'Haftasonu alışverişi', 'g4.v': '6 sa',
-    'g5.k': '9-5 gerçeği', 'g5.v': 'Haftalık 1.923$ · <em>senin</em> dakikalarınla fiyatlı',
+    'g5.k': '9-5 gerçeği', 'g5.v': 'Haftalık 15.000₺ · <em>senin</em> dakikalarınla fiyatlı',
     'g6.k': 'Haftasonu gezisi', 'g6.v': '32 sa',
     'how.eye': 'Nasıl çalışır', 'how.title': 'Üç adım. <span class="italic">Sonsuza kadar değişim.</span>',
     'how.sub': 'Yükle. Kaydet. Hayatını bir daha göz ardı edemeyeceğin şekilde gör.',
@@ -2138,7 +2155,7 @@ const I18N = {
     'how2.h': '<span class="italic">Her şeyi</span> kaydet.',
     'how2.p': 'Ses. Metin. Fiş tarama. Her giriş çalışma saati olarak görünür, sadece dolar değil.',
     'how3.h': '<span class="italic">Kararlarının</span> değişmesini izle.',
-    'how3.p': '5$\'lık kahve, hayatının 23 dakikası olduğunda farklı hissettirir. İki kez düşünürsün. Asıl mesele bu.',
+    'how3.p': '100₺\'lik kahve, hayatının 20 dakikası olduğunda farklı hissettirir. İki kez düşünürsün. Asıl mesele bu.',
     'vs.eye': 'Karşılaştırma', 'vs.title': 'HourSpend <span class="italic">diğerlerine karşı.</span>',
     'vs.sub': 'Diğer bütçe uygulamaları dolar gösterir. Sadece biri <em>hayatını</em> gösterir.',
     'vs.col0': 'Özellik',
@@ -2157,7 +2174,7 @@ const I18N = {
     'testi1.a': 'Anna · Ürün tasarımcısı',
     'testi2.q': '"Bütçeye ihtiyacım yok. Çevirmene ihtiyacım var. HourSpend tam olarak bu."',
     'testi2.a': 'Marcus · Yazılım mühendisi',
-    'testi3.q': '"5$ kahve, salının 23 dakikası olduğunu gördüğünde farklı. Nasıl harcadığımı değiştirdi. Cidden."',
+    'testi3.q': '"100₺ kahve, salının 20 dakikası olduğunu gördüğünde farklı. Nasıl harcadığımı değiştirdi. Cidden."',
     'testi3.a': 'Priya · Pazarlama lideri',
     'faq.eye': 'Sorular', 'faq.title': 'İnsanların <span class="italic">sorduğu şeyler.</span>',
     'faq1.q': 'Gerçekten ücretsiz mi?',
@@ -2169,7 +2186,7 @@ const I18N = {
     'faq4.q': 'Android?',
     'faq4.a': 'Şimdilik sadece iOS. iOS 17+ ve Liquid Glass ile native inşa ettik — tek platformda en iyi deneyimi vermeden yayılmak istemedik.',
     'faq5.q': 'Mint / YNAB / Copilot\'tan farkı ne?',
-    'faq5.a': 'Hepsi dolar gösterir. Biz hayatını gösteriyoruz. Bu bir özellik değil — felsefe. 35$\'lık öğle yemeğini 1.4 saatlik iş olarak gördüğünde bir daha unutamıyorsun.',
+    'faq5.a': 'Hepsi parayı gösterir. Biz hayatını gösteriyoruz. Bu bir özellik değil — felsefe. 500₺\'lik öğle yemeğini 1.4 saatlik iş olarak gördüğünde bir daha unutamıyorsun.',
     'faq6.q': 'Hangi diller destekleniyor?',
     'faq6.a': '14 dilde tam yerelleştirme: İngilizce, Türkçe, İspanyolca, Almanca, Fransızca, Portekizce, Japonca, Korece, Çince (Basit), İtalyanca, Felemenkçe, Lehçe, Rusça, Arapça.',
     'dl.eye': 'iOS uygulamasını al', 'dl.title': 'Her doları<br><span class="italic">saatte</span> takip et.',
@@ -2179,7 +2196,7 @@ const I18N = {
     'dl.f3': 'Tasarruf hedeflerini "geri kazanılan saat" olarak belirle',
     'dl.f4': '14 dil · çoklu para · varsayılan gizlilik',
     'dl.badge': 'App Store\'dan İndir',
-    'ph.week': 'Bu hafta', 'ph.spent': '≈ 363$ harcandı',
+    'ph.week': 'Bu hafta', 'ph.spent': '≈ 5.000₺ harcandı',
     'ph.coffee': 'Kahve', 'ph.lunch': 'Öğle', 'ph.groceries': 'Market', 'ph.gas': 'Yakıt',
     'fin.eye': 'Son bir şey', 'fin.title': 'Paranı değil,<br><span class="italic">hayatını</span> harcıyorsun.',
     'fin.sub': 'Yaklaşık 2.500 hafta sonun kaldı. Para yeniden kazanılır. Dakikalar kazanılmaz.',
@@ -2298,7 +2315,7 @@ const I18N = {
     'calc.title': 'Rechner', 'calc.live': 'LIVE',
     'calc.salary': 'Monatsgehalt', 'calc.hpw': 'Std / Woche', 'calc.exp': 'Ausgabe $',
     'calc.result': 'Das kostete dich', 'calc.share': 'Diese Rechnung teilen', 'calc.for': 'für',
-    'calc.c1': 'Kaffee · 5$', 'calc.c2': 'Mittag · 35$', 'calc.c3': 'Einkauf · 100$', 'calc.c4': 'Miete · 1500$',
+    'calc.c1': 'Kaffee · 4€', 'calc.c2': 'Mittag · 12€', 'calc.c3': 'Einkauf · 80€', 'calc.c4': 'Miete · 1200€',
     'unit.min': 'Min', 'unit.hrs': 'Std', 'unit.days': 'Tage', 'unit.weeks': 'Wochen', 'unit.months': 'Monate', 'unit.years': 'Jahre',
     'unit.empty': '—', 'unit.enter': 'Werte eingeben',
     'trusted.label': 'Vertraut von zeitbewussten Menschen',
@@ -2312,11 +2329,11 @@ const I18N = {
     'num4.l': 'Aktive Sprachen', 'num4.s': 'Vollständig lokalisiert',
     'story.label': 'Der Reframe', 'story.hrsNum': '23 Min',
     'story.cap1': 'In Dollar zu zählen verbirgt die Wahrheit.',
-    'story.cap2': '5€ fühlt sich wie nichts an. 23 Minuten deines Lebens fühlen sich anders an.',
+    'story.cap2': '4€ fühlt sich wie nichts an. 20 Minuten deines Lebens fühlen sich anders an.',
     'story.cap3': 'Dein Geld ist deine Zeit, umgewandelt. Unvergesslich.',
     'bento.eye': 'Die Wahrheit in Zahlen', 'bento.title': 'Was tägliche Ausgaben <span class="italic">wirklich</span> kosten.',
-    'bento.sub': 'Bei 25€/Stunde. Nutze den Rechner oben für deine eigenen Zahlen.',
-    'b1.meta': 'Tägliche Latte', 'b1.h': 'Dein Morgenkaffee für ein Jahr =', 'b1.eq': '14 Arbeitstage', 'b1.p': '5€/Tag × 365 · 73 Arbeitsstunden',
+    'bento.sub': 'Bei 20€/Stunde. Nutze den Rechner oben für deine eigenen Zahlen.',
+    'b1.meta': 'Tägliche Latte', 'b1.h': 'Dein Morgenkaffee für ein Jahr =', 'b1.eq': '14 Arbeitstage', 'b1.p': '4€/Tag × 365 · 73 Arbeitsstunden',
     'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 Wochen',
     'b3.meta': 'NYC 1-Zi Miete', 'b3.eq': '22.5 Tage',
     'b4.meta': 'Lieferdienst', 'b4.eq': '1.3 Std',
@@ -2327,7 +2344,7 @@ const I18N = {
     'g2.k': 'Abos', 'g2.v': '4 Tage deines Lebens',
     'g3.k': 'Liefer-Abendessen', 'g3.v': '1.3 Std',
     'g4.k': 'Wochenend-Shopping', 'g4.v': '6 Std',
-    'g5.k': '9-17 Realität', 'g5.v': '1.923€/Woche · in <em>deinen</em> Minuten',
+    'g5.k': '9-17 Realität', 'g5.v': '1.600€/Woche · in <em>deinen</em> Minuten',
     'g6.k': 'Wochenendtrip', 'g6.v': '32 Std',
     'how.eye': 'So funktioniert es', 'how.title': 'Drei Schritte. <span class="italic">Für immer anders.</span>',
     'how.sub': 'Installiere. Tracke. Sieh dein Leben so, wie du es nie wieder vergessen kannst.',
@@ -2336,7 +2353,7 @@ const I18N = {
     'how2.h': 'Trage <span class="italic">alles</span> ein.',
     'how2.p': 'Sprache. Text. Beleg-Scan. Jeder Eintrag erscheint als Arbeitsstunden.',
     'how3.h': 'Sieh deine <span class="italic">Entscheidungen</span> verändern.',
-    'how3.p': 'Ein 5€ Kaffee fühlt sich anders an, wenn du 23 min deines Lebens siehst.',
+    'how3.p': 'Ein 4€ Kaffee fühlt sich anders an, wenn du 20 min deines Lebens siehst.',
     'vs.eye': 'Direktvergleich', 'vs.title': 'HourSpend vs <span class="italic">die anderen.</span>',
     'vs.sub': 'Andere Budget-Apps zeigen dir Dollar. Nur eine zeigt <em>dein Leben</em>.',
     'vs.col0': 'Feature',
@@ -2355,7 +2372,7 @@ const I18N = {
     'testi1.a': 'Anna · Produktdesignerin',
     'testi2.q': '"Ich brauche kein Budget. Ich brauche einen Übersetzer. HourSpend ist genau das."',
     'testi2.a': 'Marcus · Software-Ingenieur',
-    'testi3.q': '"Der 5€ Kaffee fühlt sich anders an, wenn du siehst, dass er 23 Min deines Dienstags ist."',
+    'testi3.q': '"Der 4€ Kaffee fühlt sich anders an, wenn du siehst, dass er 20 Min deines Dienstags ist."',
     'testi3.a': 'Priya · Marketing-Leiterin',
     'faq.eye': 'Fragen', 'faq.title': 'Was uns <span class="italic">gefragt wird.</span>',
     'faq1.q': 'Ist es wirklich kostenlos?',
@@ -2377,7 +2394,7 @@ const I18N = {
     'dl.f3': 'Setze Sparziele als "Stunden zurück"',
     'dl.f4': '14 Sprachen · Multi-Währung · privat by default',
     'dl.badge': 'Im App Store laden',
-    'ph.week': 'Diese Woche', 'ph.spent': '≈ 363€ ausgegeben',
+    'ph.week': 'Diese Woche', 'ph.spent': '≈ 290€ ausgegeben',
     'ph.coffee': 'Kaffee', 'ph.lunch': 'Mittag', 'ph.groceries': 'Einkauf', 'ph.gas': 'Benzin',
     'fin.eye': 'Ein letztes', 'fin.title': 'Du gibst kein Geld aus.<br>Du gibst <span class="italic">dein Leben</span> aus.',
     'fin.sub': 'Du hast noch etwa 2.500 Wochenenden. Geld lässt sich zurückgewinnen. Minuten nicht.',
@@ -2397,7 +2414,7 @@ const I18N = {
     'calc.title': 'Calculatrice', 'calc.live': 'DIRECT',
     'calc.salary': 'Salaire mensuel', 'calc.hpw': 'H / semaine', 'calc.exp': 'Dépense $',
     'calc.result': 'Ça t\'a coûté', 'calc.share': 'Partager ce calcul', 'calc.for': 'pour',
-    'calc.c1': 'Café · 5$', 'calc.c2': 'Déjeuner · 35$', 'calc.c3': 'Courses · 100$', 'calc.c4': 'Loyer · 1500$',
+    'calc.c1': 'Café · 4€', 'calc.c2': 'Déjeuner · 15€', 'calc.c3': 'Courses · 100€', 'calc.c4': 'Loyer · 1200€',
     'unit.min': 'min', 'unit.hrs': 'h', 'unit.days': 'jours', 'unit.weeks': 'semaines', 'unit.months': 'mois', 'unit.years': 'ans',
     'unit.empty': '—', 'unit.enter': 'entrer les valeurs',
     'trusted.label': 'Utilisé par ceux qui valorisent leur temps',
@@ -2411,11 +2428,11 @@ const I18N = {
     'num4.l': 'Langues actives', 'num4.s': 'Localisation complète',
     'story.label': 'Le recadrage', 'story.hrsNum': '23 min',
     'story.cap1': 'Compter en dollars cache la vérité.',
-    'story.cap2': '5€ ne semble rien. 23 minutes de ta vie, ça change tout.',
+    'story.cap2': '4€ ne semble rien. 20 minutes de ta vie, ça change tout.',
     'story.cap3': 'Ton argent est ton temps, converti. Impossible à oublier.',
     'bento.eye': 'La vérité en chiffres', 'bento.title': 'Ce que les dépenses quotidiennes <span class="italic">coûtent vraiment.</span>',
-    'bento.sub': 'À 25€/heure. Utilise la calculatrice ci-dessus pour tes propres chiffres.',
-    'b1.meta': 'Latte quotidien', 'b1.h': 'Ton café matinal pendant un an =', 'b1.eq': '14 jours de travail', 'b1.p': '5€/jour × 365 · 73 heures de travail',
+    'bento.sub': 'À 20€/heure. Utilise la calculatrice ci-dessus pour tes propres chiffres.',
+    'b1.meta': 'Latte quotidien', 'b1.h': 'Ton café matinal pendant un an =', 'b1.eq': '14 jours de travail', 'b1.p': '4€/jour × 365 · 73 heures de travail',
     'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semaines',
     'b3.meta': 'Loyer NYC', 'b3.eq': '22.5 jours',
     'b4.meta': 'Livraison', 'b4.eq': '1.3 h',
@@ -2426,7 +2443,7 @@ const I18N = {
     'g2.k': 'Abonnements', 'g2.v': '4 jours de ta vie',
     'g3.k': 'Livraison', 'g3.v': '1.3 h',
     'g4.k': 'Shopping weekend', 'g4.v': '6 h',
-    'g5.k': 'Réalité 9-17h', 'g5.v': '1.923€/semaine · en <em>tes</em> minutes',
+    'g5.k': 'Réalité 9-17h', 'g5.v': '1.600€/semaine · en <em>tes</em> minutes',
     'g6.k': 'Escapade weekend', 'g6.v': '32 h',
     'how.eye': 'Comment ça marche', 'how.title': 'Trois étapes. <span class="italic">Changement éternel.</span>',
     'how.sub': 'Installe. Enregistre. Vois ta vie d\'une façon que tu ne pourras plus ignorer.',
@@ -2435,7 +2452,7 @@ const I18N = {
     'how2.h': 'Ajoute <span class="italic">n\'importe quoi.</span>',
     'how2.p': 'Voix. Texte. Scan de reçu. Chaque entrée devient des heures de travail.',
     'how3.h': 'Vois tes <span class="italic">décisions</span> changer.',
-    'how3.p': 'Un café à 5€ a un goût différent quand tu vois 23 min de ta vie.',
+    'how3.p': 'Un café à 4€ a un goût différent quand tu vois 20 min de ta vie.',
     'vs.eye': 'Face-à-face', 'vs.title': 'HourSpend vs <span class="italic">les autres.</span>',
     'vs.sub': 'Les autres apps montrent des euros. Une seule montre <em>ta vie</em>.',
     'vs.col0': 'Fonction',
@@ -2454,7 +2471,7 @@ const I18N = {
     'testi1.a': 'Anna · Designer produit',
     'testi2.q': '"Je n\'ai pas besoin d\'un budget. J\'ai besoin d\'un traducteur. HourSpend, c\'est exactement ça."',
     'testi2.a': 'Marcus · Ingénieur logiciel',
-    'testi3.q': '"Le café à 5€ frappe différemment quand tu vois que ce sont 23 min de ton mardi."',
+    'testi3.q': '"Le café à 4€ frappe différemment quand tu vois que ce sont 20 min de ton mardi."',
     'testi3.a': 'Priya · Responsable marketing',
     'faq.eye': 'Questions', 'faq.title': 'Ce qu\'on <span class="italic">nous demande.</span>',
     'faq1.q': 'C\'est vraiment gratuit ?',
@@ -2476,7 +2493,7 @@ const I18N = {
     'dl.f3': 'Fixe des objectifs d\'épargne en "heures récupérées"',
     'dl.f4': '14 langues · multi-devise · privé par défaut',
     'dl.badge': 'Télécharger sur App Store',
-    'ph.week': 'Cette semaine', 'ph.spent': '≈ 363€ dépensés',
+    'ph.week': 'Cette semaine', 'ph.spent': '≈ 290€ dépensés',
     'ph.coffee': 'Café', 'ph.lunch': 'Déjeuner', 'ph.groceries': 'Courses', 'ph.gas': 'Essence',
     'fin.eye': 'Une dernière', 'fin.title': 'Tu ne dépenses pas d\'argent.<br>Tu dépenses <span class="italic">ta vie.</span>',
     'fin.sub': 'Il te reste environ 2 500 week-ends. L\'argent se regagne. Les minutes non.',
@@ -2496,7 +2513,7 @@ const I18N = {
     'calc.title': 'Calculadora', 'calc.live': 'AO VIVO',
     'calc.salary': 'Salário mensal', 'calc.hpw': 'Hs / semana', 'calc.exp': 'Gasto $',
     'calc.result': 'Isso te custou', 'calc.share': 'Compartilhar esta matemática', 'calc.for': 'por',
-    'calc.c1': 'Café · $5', 'calc.c2': 'Almoço · $35', 'calc.c3': 'Compras · $100', 'calc.c4': 'Aluguel · $1500',
+    'calc.c1': 'Café · R$20', 'calc.c2': 'Almoço · R$45', 'calc.c3': 'Compras · R$400', 'calc.c4': 'Aluguel · R$2.500',
     'unit.min': 'min', 'unit.hrs': 'hrs', 'unit.days': 'dias', 'unit.weeks': 'semanas', 'unit.months': 'meses', 'unit.years': 'anos',
     'unit.empty': '—', 'unit.enter': 'insira valores',
     'trusted.label': 'Escolhido por quem valoriza seu tempo',
@@ -2510,11 +2527,11 @@ const I18N = {
     'num4.l': 'Idiomas ativos', 'num4.s': 'Localização completa',
     'story.label': 'O reenquadramento', 'story.hrsNum': '23 min',
     'story.cap1': 'Contar em dólares esconde a verdade.',
-    'story.cap2': '$5 parece nada. 23 min da sua vida, muda tudo.',
+    'story.cap2': 'R$20 parece nada. 20 min da sua vida, muda tudo.',
     'story.cap3': 'Seu dinheiro é seu tempo, convertido. Impossível esquecer.',
     'bento.eye': 'A verdade em números', 'bento.title': 'O que os gastos diários <span class="italic">realmente</span> custam.',
-    'bento.sub': 'A $25/hora. Use a calculadora acima para seus próprios números.',
-    'b1.meta': 'Latte diário', 'b1.h': 'Seu café matinal por um ano =', 'b1.eq': '14 dias de trabalho', 'b1.p': '$5/dia × 365 · 73 horas de trabalho',
+    'bento.sub': 'A R$50/hora. Use a calculadora acima para seus próprios números.',
+    'b1.meta': 'Latte diário', 'b1.h': 'Seu café matinal por um ano =', 'b1.eq': '14 dias de trabalho', 'b1.p': 'R$20/dia × 365 · 73 horas de trabalho',
     'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semanas',
     'b3.meta': 'Aluguel NYC', 'b3.eq': '22.5 dias',
     'b4.meta': 'Delivery', 'b4.eq': '1.3 hrs',
@@ -2525,7 +2542,7 @@ const I18N = {
     'g2.k': 'Assinaturas', 'g2.v': '4 dias da sua vida',
     'g3.k': 'Delivery', 'g3.v': '1.3 hrs',
     'g4.k': 'Compras fim de semana', 'g4.v': '6 hrs',
-    'g5.k': 'Realidade 9-5', 'g5.v': '$1.923/semana · em <em>seus</em> minutos',
+    'g5.k': 'Realidade 9-5', 'g5.v': 'R$4.000/semana · em <em>seus</em> minutos',
     'g6.k': 'Viagem weekend', 'g6.v': '32 hrs',
     'how.eye': 'Como funciona', 'how.title': 'Três passos. <span class="italic">Mudança eterna.</span>',
     'how.sub': 'Instale. Registre. Veja sua vida de um jeito que não dá pra esquecer.',
@@ -2534,7 +2551,7 @@ const I18N = {
     'how2.h': 'Adicione <span class="italic">qualquer coisa.</span>',
     'how2.p': 'Voz. Texto. Scan de recibo. Cada entrada vira horas de trabalho.',
     'how3.h': 'Veja suas <span class="italic">decisões</span> mudarem.',
-    'how3.p': 'Um café de $5 tem outro sabor quando você vê 23 min da sua vida.',
+    'how3.p': 'Um café de R$20 tem outro sabor quando você vê 20 min da sua vida.',
     'vs.eye': 'Frente a frente', 'vs.title': 'HourSpend vs <span class="italic">o resto.</span>',
     'vs.sub': 'Os outros apps mostram dólares. Só um mostra <em>sua vida</em>.',
     'vs.col0': 'Função',
@@ -2553,7 +2570,7 @@ const I18N = {
     'testi1.a': 'Anna · Designer de produto',
     'testi2.q': '"Não preciso de orçamento. Preciso de tradutor. HourSpend é exatamente isso."',
     'testi2.a': 'Marcus · Engenheiro de software',
-    'testi3.q': '"Café de $5 bate diferente quando você vê 23 min da sua terça. Mudou meu jeito de gastar."',
+    'testi3.q': '"Café de R$20 bate diferente quando você vê 20 min da sua terça. Mudou meu jeito de gastar."',
     'testi3.a': 'Priya · Líder de marketing',
     'faq.eye': 'Perguntas', 'faq.title': 'O que <span class="italic">nos perguntam.</span>',
     'faq1.q': 'É grátis mesmo?',
@@ -2565,7 +2582,7 @@ const I18N = {
     'faq4.q': 'Android?',
     'faq4.a': 'Só iOS. Nativo iOS 17+ com Liquid Glass para a melhor experiência.',
     'faq5.q': 'Diferença pra Mint / YNAB / Copilot?',
-    'faq5.a': 'Eles mostram dólares. Nós mostramos sua vida. É filosofia.',
+    'faq5.a': 'Eles mostram reais. Nós mostramos sua vida. É filosofia.',
     'faq6.q': 'Quais idiomas?',
     'faq6.a': '14 idiomas nativos: Inglês, Turco, Espanhol, Alemão, Francês, Português, Japonês, Coreano, Chinês, Italiano, Holandês, Polonês, Russo, Árabe.',
     'dl.eye': 'App iOS', 'dl.title': 'Rastreie cada dólar<br>em <span class="italic">horas</span> de vida.',
@@ -2575,7 +2592,7 @@ const I18N = {
     'dl.f3': 'Defina metas como "horas recuperadas"',
     'dl.f4': '14 idiomas · multi-moeda · privado por padrão',
     'dl.badge': 'Baixar na App Store',
-    'ph.week': 'Esta semana', 'ph.spent': '≈ $363 gastos',
+    'ph.week': 'Esta semana', 'ph.spent': '≈ R$1.500 gastos',
     'ph.coffee': 'Café', 'ph.lunch': 'Almoço', 'ph.groceries': 'Compras', 'ph.gas': 'Gasolina',
     'fin.eye': 'Última coisa', 'fin.title': 'Você não gasta dinheiro.<br>Você gasta <span class="italic">sua vida.</span>',
     'fin.sub': 'Você tem cerca de 2.500 fins de semana restantes. Dinheiro volta. Minutos não.',
@@ -2595,7 +2612,7 @@ const I18N = {
     'calc.title': '計算機', 'calc.live': 'リアルタイム',
     'calc.salary': '月収', 'calc.hpw': '時間/週', 'calc.exp': '支出 $',
     'calc.result': 'かかった時間', 'calc.share': 'この計算をシェア', 'calc.for': 'で',
-    'calc.c1': 'コーヒー · $5', 'calc.c2': 'ランチ · $35', 'calc.c3': '食料品 · $100', 'calc.c4': '家賃 · $1500',
+    'calc.c1': 'コーヒー · ¥500', 'calc.c2': 'ランチ · ¥1,200', 'calc.c3': '食料品 · ¥8,000', 'calc.c4': '家賃 · ¥120,000',
     'unit.min': '分', 'unit.hrs': '時間', 'unit.days': '日', 'unit.weeks': '週', 'unit.months': 'ヶ月', 'unit.years': '年',
     'unit.empty': '—', 'unit.enter': '値を入力',
     'trusted.label': '時間を大切にする人々に選ばれています',
@@ -2609,11 +2626,11 @@ const I18N = {
     'num4.l': '対応言語', 'num4.s': '完全ローカライズ',
     'story.label': 'リフレーム', 'story.hrsNum': '23分',
     'story.cap1': 'ドルで数えると真実が隠れる。',
-    'story.cap2': '$5は何でもない。人生の23分は違う。',
+    'story.cap2': '¥500は何でもない。人生の20分は違う。',
     'story.cap3': 'お金はあなたの時間、変換したもの。忘れられない。',
     'bento.eye': '数字で見る真実', 'bento.title': '日々の支出が<span class="italic">本当に</span>かかるもの。',
-    'bento.sub': '時給$25の場合。上の計算機で自分の数字を見てみて。',
-    'b1.meta': '毎日のラテ習慣', 'b1.h': '1年間の朝のコーヒー =', 'b1.eq': '14営業日', 'b1.p': '$5/日 × 365 · 73時間の労働',
+    'bento.sub': '時給¥2,500の場合。上の計算機で自分の数字を見てみて。',
+    'b1.meta': '毎日のラテ習慣', 'b1.h': '1年間の朝のコーヒー =', 'b1.eq': '14営業日', 'b1.p': '¥500/日 × 365 · 73時間の労働',
     'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6週間',
     'b3.meta': 'NYC 1-bed 家賃', 'b3.eq': '22.5日',
     'b4.meta': 'DoorDash 夕食', 'b4.eq': '1.3時間',
@@ -2624,7 +2641,7 @@ const I18N = {
     'g2.k': 'サブスク', 'g2.v': '人生の4日',
     'g3.k': '出前ディナー', 'g3.v': '1.3時間',
     'g4.k': '週末の買い物', 'g4.v': '6時間',
-    'g5.k': '9-5の現実', 'g5.v': '週$1,923 · <em>あなたの</em>分に換算',
+    'g5.k': '9-5の現実', 'g5.v': '週¥160,000 · <em>あなたの</em>分に換算',
     'g6.k': '週末旅行', 'g6.v': '32時間',
     'how.eye': '仕組み', 'how.title': '3ステップ。<span class="italic">永遠に変わる。</span>',
     'how.sub': 'インストール。記録。見えなかった自分の人生が見える。',
@@ -2633,7 +2650,7 @@ const I18N = {
     'how2.h': '<span class="italic">何でも</span>追加。',
     'how2.p': '音声。テキスト。レシートスキャン。ドルではなく労働時間で表示。',
     'how3.h': '<span class="italic">決断</span>が変わるのを見る。',
-    'how3.p': '5ドルのコーヒーが人生の23分だと見えると、違って感じる。',
+    'how3.p': '¥500のコーヒーが人生の20分だと見えると、違って感じる。',
     'vs.eye': '比較', 'vs.title': 'HourSpend vs <span class="italic">他社。</span>',
     'vs.sub': '他のアプリはドルを見せる。HourSpendだけが<em>人生</em>を見せる。',
     'vs.col0': '機能',
@@ -2652,7 +2669,7 @@ const I18N = {
     'testi1.a': 'Anna · プロダクトデザイナー',
     'testi2.q': '「予算は要らない。翻訳機が欲しかった。HourSpendはまさにそれ。」',
     'testi2.a': 'Marcus · ソフトウェアエンジニア',
-    'testi3.q': '「5ドルのコーヒーが火曜日の23分だと知ると、支出が変わる。マジで。」',
+    'testi3.q': '「¥500のコーヒーが火曜日の20分だと知ると、支出が変わる。マジで。」',
     'testi3.a': 'Priya · マーケティング責任者',
     'faq.eye': 'FAQ', 'faq.title': 'よくある<span class="italic">質問。</span>',
     'faq1.q': '本当に無料？',
@@ -2674,7 +2691,7 @@ const I18N = {
     'dl.f3': '貯蓄目標を「取り戻した時間」として設定',
     'dl.f4': '14言語 · マルチ通貨 · デフォルトでプライベート',
     'dl.badge': 'App Storeでダウンロード',
-    'ph.week': '今週', 'ph.spent': '≈ $363 支出',
+    'ph.week': '今週', 'ph.spent': '≈ ¥45,000 支出',
     'ph.coffee': 'コーヒー', 'ph.lunch': 'ランチ', 'ph.groceries': '食料品', 'ph.gas': 'ガソリン',
     'fin.eye': '最後に', 'fin.title': 'お金を使っているのではない。<br><span class="italic">人生を</span>使っている。',
     'fin.sub': '残りの週末は約2,500回。お金は稼げる。時間は稼げない。',
@@ -2717,6 +2734,26 @@ function applyLang(lang) {
   localStorage.setItem('hs.lang', lang);
   document.documentElement.lang = lang;
   __currentLang = lang;
+
+  // Locale-aware calc defaults — only swap if user hasn't customized
+  const loc = LOCALE_CURR[lang] || LOCALE_CURR.en;
+  const CHIP_VALS = {
+    en:[5,35,100,1500], tr:[100,500,1500,25000], es:[5,35,100,1500],
+    de:[4,12,80,1200], fr:[4,15,100,1200], pt:[20,45,400,2500], ja:[500,1200,8000,120000]
+  };
+  const chipVals = CHIP_VALS[lang] || CHIP_VALS.en;
+  document.querySelectorAll('.chip').forEach((c, i) => {
+    if (chipVals[i] != null) c.dataset.amount = chipVals[i];
+  });
+  // Apply defaults to inputs if they match any previous default (meaning user didn't type)
+  const salEl = document.getElementById('salary'), expEl = document.getElementById('expense');
+  const knownSalaries = Object.values(LOCALE_CURR).map(l => String(l.salary));
+  const knownExpenses = Object.values(LOCALE_CURR).flatMap(l => [String(l.exp)]).concat(
+    Object.values(CHIP_VALS).flatMap(v => v.map(String))
+  );
+  if (salEl && knownSalaries.includes(salEl.value)) salEl.value = loc.salary;
+  if (expEl && knownExpenses.includes(expEl.value)) expEl.value = loc.exp;
+
   // Recompute dynamic calc label text
   if (typeof calc === 'function') calc();
 }

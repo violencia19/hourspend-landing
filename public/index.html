@@ -808,16 +808,16 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <div class="calc-inputs">
         <div class="input-group">
           <label>Monthly salary</label>
-          <input type="number" id="salary" value="3000" inputmode="numeric">
+          <input type="text" id="salary" value="3000" inputmode="numeric" pattern="[0-9]*" autocomplete="off" data-numeric="int">
         </div>
         <div class="input-row">
           <div class="input-group">
             <label>Hrs / week</label>
-            <input type="number" id="hours" value="40" inputmode="numeric">
+            <input type="text" id="hours" value="40" inputmode="numeric" pattern="[0-9]*" autocomplete="off" data-numeric="int">
           </div>
           <div class="input-group">
             <label>Expense $</label>
-            <input type="number" id="expense" value="5" inputmode="decimal" step="0.01">
+            <input type="text" id="expense" value="5" inputmode="decimal" pattern="[0-9]*\.?[0-9]*" autocomplete="off" data-numeric="decimal">
           </div>
         </div>
       </div>
@@ -1281,7 +1281,47 @@ function calc() {
   amountEl.textContent = formatTime(minutes);
   labelEl.textContent = 'for $' + e;
 }
-[salary, hours, expense].forEach(el => el.addEventListener('input', calc));
+/* Strict numeric-only filter — blocks letters, 'e', '+', '-', spaces, paste garbage */
+function attachNumericFilter(el) {
+  const mode = el.dataset.numeric; // 'int' or 'decimal'
+  const allowChar = (ch) => mode === 'decimal' ? /[0-9.]/.test(ch) : /[0-9]/.test(ch);
+
+  el.addEventListener('beforeinput', (e) => {
+    if (e.inputType && e.inputType.startsWith('delete')) return;
+    const data = e.data;
+    if (data == null) return;
+    for (const ch of data) {
+      if (!allowChar(ch)) { e.preventDefault(); return; }
+    }
+    // Decimal mode: block a second dot
+    if (mode === 'decimal' && data.includes('.') && el.value.includes('.')) {
+      e.preventDefault();
+    }
+  });
+
+  el.addEventListener('input', () => {
+    const before = el.value;
+    let cleaned = mode === 'decimal'
+      ? before.replace(/[^0-9.]/g, '')
+      : before.replace(/[^0-9]/g, '');
+    if (mode === 'decimal') {
+      const parts = cleaned.split('.');
+      if (parts.length > 2) cleaned = parts[0] + '.' + parts.slice(1).join('');
+    }
+    if (cleaned !== before) el.value = cleaned;
+    calc();
+  });
+
+  el.addEventListener('paste', (e) => {
+    e.preventDefault();
+    const text = (e.clipboardData || window.clipboardData).getData('text');
+    const cleaned = mode === 'decimal'
+      ? text.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+      : text.replace(/[^0-9]/g, '');
+    document.execCommand('insertText', false, cleaned);
+  });
+}
+[salary, hours, expense].forEach(attachNumericFilter);
 document.querySelectorAll('.chip').forEach(chip => {
   chip.addEventListener('click', () => { expense.value = chip.dataset.amount; calc(); });
 });

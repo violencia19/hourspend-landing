@@ -756,6 +756,76 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 
 ::-webkit-scrollbar { width: 0; }
 
+/* === SCROLL PROGRESS BAR === */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold-soft), var(--gold));
+  z-index: 100;
+  box-shadow: 0 0 10px rgba(232,200,110,0.6);
+  transition: width 0.05s linear;
+  pointer-events: none;
+}
+
+/* === NAV SHRINK ON SCROLL === */
+.nav {
+  transition: padding 0.35s cubic-bezier(0.16,1,0.3,1), background 0.35s, box-shadow 0.35s, top 0.35s;
+}
+.nav.shrunk {
+  padding: 8px 24px;
+  background: rgba(8, 6, 12, 0.85);
+  top: 8px; left: 8px; right: 8px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 10px 30px rgba(0,0,0,0.5);
+}
+.nav.shrunk .logo { font-size: 14px; }
+.nav.shrunk .logo .dot { width: 5px; height: 5px; }
+
+/* === SECTION JUMP DOTS (right side) === */
+.section-dots {
+  position: fixed;
+  right: 18px; top: 50%;
+  transform: translateY(-50%);
+  z-index: 70;
+  display: flex; flex-direction: column;
+  gap: 14px;
+  padding: 16px 8px;
+  background: rgba(11,8,18,0.35);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s;
+}
+.section-dots.show { opacity: 1; pointer-events: auto; }
+.section-dots a {
+  display: block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+.section-dots a:hover { background: rgba(232,200,110,0.45); transform: scale(1.25); }
+.section-dots a.active { background: var(--gold); box-shadow: 0 0 10px rgba(232,200,110,0.6); transform: scale(1.2); }
+.section-dots a::after {
+  content: attr(data-label);
+  position: absolute; right: calc(100% + 12px); top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 1px;
+  color: var(--gold-soft); text-transform: uppercase; font-weight: 600;
+  white-space: nowrap;
+  padding: 4px 8px;
+  background: rgba(11,8,18,0.9);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+}
+.section-dots a:hover::after { opacity: 1; }
+@media (max-width: 900px) { .section-dots { display: none; } }
+
 /* === FLOATING iOS CTA (always-visible on scroll) === */
 .float-cta {
   position: fixed;
@@ -1114,6 +1184,22 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <!-- Grain overlay -->
 <div class="grain"></div>
 
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Section jump dots -->
+<nav class="section-dots" id="sectionDots" aria-label="Jump to section">
+  <a href="#hero" data-label="Hero" class="active"></a>
+  <a href="#story" data-label="Reframe"></a>
+  <a href="#bento" data-label="Truth"></a>
+  <a href="#gallery" data-label="Where"></a>
+  <a href="#howto" data-label="How"></a>
+  <a href="#compare" data-label="vs"></a>
+  <a href="#testimonials" data-label="People"></a>
+  <a href="#faq" data-label="FAQ"></a>
+  <a href="#download" data-label="Get"></a>
+</nav>
+
 <div class="wrap">
 
 <nav class="nav">
@@ -1146,7 +1232,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-grid">
     <div class="hero-text">
       <div class="hero-rank reveal">
@@ -1247,7 +1333,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <div class="sub" data-i18n="num1.s">Category creator · iOS</div>
     </div>
     <div class="number-card reveal reveal-d1">
-      <div class="big">10K+</div>
+      <div class="big" data-count="10000" data-count-suffix="+">10,000+</div>
       <div class="label" data-i18n="num2.l">Expenses tracked</div>
       <div class="sub" data-i18n="num2.s">Every month, and growing</div>
     </div>
@@ -1257,7 +1343,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <div class="sub" data-i18n="num3.s">Across every region</div>
     </div>
     <div class="number-card reveal reveal-d3">
-      <div class="big">14</div>
+      <div class="big" data-count="14">0</div>
       <div class="label" data-i18n="num4.l">Languages live</div>
       <div class="sub" data-i18n="num4.s">Full localization</div>
     </div>
@@ -1282,7 +1368,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 </section>
 
 <!-- BENTO -->
-<section class="bento-section">
+<section class="bento-section" id="bento">
   <div class="section-head reveal">
     <div class="eyebrow" data-i18n="bento.eye">The truth in numbers</div>
     <h2 data-i18n-html="bento.title">What everyday spending <span class="italic">really</span> costs.</h2>
@@ -1290,7 +1376,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
   </div>
 
   <div class="bento">
-    <div class="bento-cell large reveal" data-spotlight>
+    <div class="bento-cell large reveal" data-spotlight data-tilt>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1400&q=80&auto=format&fit=crop')"></div>
       <div>
         <div class="meta" data-i18n="b1.meta">Daily latte habit</div>
@@ -1302,7 +1388,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       </div>
     </div>
 
-    <div class="bento-cell reveal reveal-d1" data-spotlight>
+    <div class="bento-cell reveal reveal-d1" data-spotlight data-tilt>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=900&q=80&auto=format&fit=crop')"></div>
       <div>
         <div class="meta" data-i18n="b2.meta">iPhone 16 Pro</div>
@@ -1311,7 +1397,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <div class="equation" style="font-size:30px" data-i18n="b2.eq">6 weeks</div>
     </div>
 
-    <div class="bento-cell reveal reveal-d2" data-spotlight>
+    <div class="bento-cell reveal reveal-d2" data-spotlight data-tilt>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80&auto=format&fit=crop')"></div>
       <div>
         <div class="meta" data-i18n="b3.meta">NYC 1-bed rent</div>
@@ -1320,7 +1406,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <div class="equation" style="font-size:30px" data-i18n="b3.eq">22.5 days</div>
     </div>
 
-    <div class="bento-cell reveal reveal-d1" data-spotlight>
+    <div class="bento-cell reveal reveal-d1" data-spotlight data-tilt>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=80&auto=format&fit=crop')"></div>
       <div>
         <div class="meta" data-i18n="b4.meta">DoorDash dinner</div>
@@ -1329,7 +1415,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <div class="equation" style="font-size:30px" data-i18n="b4.eq">1.3 hrs</div>
     </div>
 
-    <div class="bento-cell reveal reveal-d2" data-spotlight>
+    <div class="bento-cell reveal reveal-d2" data-spotlight data-tilt>
       <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=900&q=80&auto=format&fit=crop')"></div>
       <div>
         <div class="meta" data-i18n="b5.meta">Netflix yearly</div>
@@ -1341,7 +1427,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 </section>
 
 <!-- LIFESTYLE GALLERY -->
-<section class="gallery-section">
+<section class="gallery-section" id="gallery">
   <div class="section-head reveal">
     <div class="eyebrow" data-i18n="gal.eye">Where your hours go</div>
     <h2 data-i18n-html="gal.title">Every habit has a <span class="italic">price tag</span> in time.</h2>
@@ -1370,7 +1456,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="howto-section">
+<section class="howto-section" id="howto">
   <div class="section-head reveal">
     <div class="eyebrow" data-i18n="how.eye">How it works</div>
     <h2 data-i18n-html="how.title">Three steps. <span class="italic">Forever changed.</span></h2>
@@ -1405,7 +1491,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 </section>
 
 <!-- vs COMPETITION -->
-<section class="compare-section">
+<section class="compare-section" id="compare">
   <div class="section-head reveal">
     <div class="eyebrow" data-i18n="vs.eye">Head to head</div>
     <h2 data-i18n-html="vs.title">HourSpend vs <span class="italic">the rest.</span></h2>
@@ -1478,7 +1564,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testi-section">
+<section class="testi-section" id="testimonials">
   <div class="section-head reveal">
     <div class="eyebrow" data-i18n="testi.eye">What people are saying</div>
     <h2 data-i18n-html="testi.title">The reframe is <span class="italic">impossible to unsee.</span></h2>
@@ -1504,7 +1590,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 </section>
 
 <!-- FAQ -->
-<section class="faq-section">
+<section class="faq-section" id="faq">
   <div class="section-head reveal">
     <div class="eyebrow" data-i18n="faq.eye">Questions</div>
     <h2 data-i18n-html="faq.title">Things people <span class="italic">ask us.</span></h2>
@@ -1571,7 +1657,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 </section>
 
 <!-- DOWNLOAD -->
-<section class="download">
+<section class="download" id="download">
   <div class="download-card reveal">
     <div class="download-content">
       <div class="eyebrow" data-i18n="dl.eye">Get the iOS app</div>
@@ -1855,6 +1941,55 @@ document.querySelectorAll('[data-spotlight]').forEach(el => {
   });
 });
 
+/* ============ PARALLAX TILT (bento cells) ============ */
+(()=>{
+  if(matchMedia('(hover: none)').matches)return;
+  document.querySelectorAll('[data-tilt]').forEach(el=>{
+    let r=null;
+    el.style.transformStyle='preserve-3d';
+    el.style.willChange='transform';
+    el.addEventListener('pointerenter',()=>{r=el.getBoundingClientRect();});
+    el.addEventListener('pointermove',e=>{
+      if(!r)r=el.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-0.5;
+      const y=(e.clientY-r.top)/r.height-0.5;
+      el.style.transform=`perspective(1200px) rotateX(${-y*4.5}deg) rotateY(${x*6}deg) translateZ(0)`;
+    });
+    el.addEventListener('pointerleave',()=>{el.style.transform='';r=null;});
+  });
+})();
+
+/* ============ ODOMETER COUNT-UP ============ */
+(()=>{
+  const items=document.querySelectorAll('[data-count]');
+  if(!items.length)return;
+  function animate(el,target){
+    if(el.dataset.done)return;
+    el.dataset.done='1';
+    const dur=1400;
+    const t0=performance.now();
+    const suffix=el.dataset.countSuffix||'';
+    (function tick(now){
+      const t=Math.min(1,(now-t0)/dur);
+      const ease=1-Math.pow(1-t,3);
+      el.textContent=Math.round(target*ease).toLocaleString()+suffix;
+      if(t<1)requestAnimationFrame(tick);
+      else el.textContent=target.toLocaleString()+suffix;
+    })(t0);
+  }
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el=e.target;
+        const to=Number(el.dataset.count);
+        if(isFinite(to))animate(el,to);
+        io.unobserve(el);
+      }
+    });
+  },{threshold:0.4});
+  items.forEach(el=>io.observe(el));
+})();
+
 /* ============ CALCULATOR ============ */
 // Hoisted lang state (set by i18n init below) — allows calc() to read before i18n block runs
 var __currentLang = 'en';
@@ -1985,6 +2120,55 @@ calc();
   }
   window.addEventListener('scroll',update,{passive:true});
   update();
+})();
+
+/* ============ SCROLL PROGRESS + NAV SHRINK + SECTION DOTS ============ */
+(()=>{
+  const bar=document.getElementById('scrollProgress');
+  const nav=document.querySelector('.nav');
+  const dots=document.getElementById('sectionDots');
+  const dotLinks=dots?Array.from(dots.querySelectorAll('a')):[];
+  const hero=document.querySelector('.hero');
+  const sections=dotLinks.map(a=>document.querySelector(a.getAttribute('href')));
+
+  let tick=false;
+  function update(){
+    const max=document.documentElement.scrollHeight-innerHeight;
+    const y=scrollY;
+    const pct=Math.max(0,Math.min(1,y/max));
+    if(bar)bar.style.width=(pct*100)+'%';
+    if(nav){
+      const heroBottom=hero?hero.getBoundingClientRect().bottom:0;
+      nav.classList.toggle('shrunk',heroBottom<40);
+    }
+    if(dots){
+      const showDots=y>innerHeight*0.3;
+      dots.classList.toggle('show',showDots);
+      // Find which section currently in middle of viewport
+      let active=0;
+      for(let i=0;i<sections.length;i++){
+        const s=sections[i];
+        if(!s)continue;
+        const r=s.getBoundingClientRect();
+        if(r.top<innerHeight/2 && r.bottom>innerHeight/2){active=i;break;}
+        if(r.top<=innerHeight/2)active=i;
+      }
+      dotLinks.forEach((a,i)=>a.classList.toggle('active',i===active));
+    }
+    tick=false;
+  }
+  window.addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(update);}},{passive:true});
+  update();
+
+  // Smooth scroll on dot click
+  dotLinks.forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const id=a.getAttribute('href').slice(1);
+      const tgt=document.getElementById(id);
+      if(tgt)tgt.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
 })();
 
 /* ============ i18n: 7 LANGUAGES + GEO DETECTION ============= */
@@ -2824,17 +3008,45 @@ function applyLang(lang) {
   });
 })();
 
-/* ============ GSAP HERO ENTRANCE ============ */
+/* ============ GSAP HERO ENTRANCE (char-level kinetic) ============ */
 if (window.gsap) {
-  // Animate hero words
-  const words = document.querySelectorAll('#hero-h1 .word');
-  gsap.set(words, { yPercent: 100, opacity: 0 });
-  gsap.to(words, {
-    yPercent: 0, opacity: 1,
-    duration: 1.1, stagger: 0.06,
-    ease: 'expo.out',
-    delay: 0.2
+  // Split each .word into per-char spans for kinetic reveal
+  function splitChars(){
+    document.querySelectorAll('#hero-h1 .word').forEach(w=>{
+      if(w.dataset.split)return;
+      const txt=w.textContent;
+      w.innerHTML='';
+      for(const ch of txt){
+        const s=document.createElement('span');
+        s.className='char';
+        s.textContent=ch;
+        s.style.display='inline-block';
+        w.appendChild(s);
+      }
+      w.dataset.split='1';
+    });
+  }
+  splitChars();
+  const chars=document.querySelectorAll('#hero-h1 .char');
+  gsap.set(chars,{yPercent:120,opacity:0,filter:'blur(6px)',rotateX:-30,transformOrigin:'center bottom'});
+  gsap.to(chars,{
+    yPercent:0,opacity:1,filter:'blur(0px)',rotateX:0,
+    duration:1.1,stagger:0.028,
+    ease:'expo.out',
+    delay:0.3
   });
+
+  // Re-run when language switches (words replaced by i18n)
+  const h1=document.getElementById('hero-h1');
+  if(h1){
+    const mo=new MutationObserver(()=>{
+      splitChars();
+      const cs=document.querySelectorAll('#hero-h1 .char');
+      gsap.set(cs,{yPercent:120,opacity:0,filter:'blur(6px)',rotateX:-30});
+      gsap.to(cs,{yPercent:0,opacity:1,filter:'blur(0px)',rotateX:0,duration:1.0,stagger:0.025,ease:'expo.out'});
+    });
+    mo.observe(h1,{childList:true,subtree:true,characterData:true});
+  }
 
   /* ============ PINNED STORYTELLING ============ */
   if (window.ScrollTrigger) {

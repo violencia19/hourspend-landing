@@ -1162,36 +1162,47 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 .hero-rank .txt { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-soft); font-weight: 600; }
 .hero-rank .stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
 
-/* === TRUSTED BY STRIP === */
+/* === TRUSTED BY STRIP (editorial, tight) === */
 .trusted-strip {
-  max-width: 1280px; margin: 40px auto 0; padding: 0 28px;
+  max-width: 1100px; margin: 72px auto 0; padding: 0 28px;
   text-align: center;
 }
 .trusted-strip .label {
   font-family: var(--mono); font-size: 10px;
   color: var(--text-dim); letter-spacing: 2.5px;
   text-transform: uppercase; font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 .trusted-logos {
   display: flex; justify-content: center; align-items: center;
-  gap: 48px; flex-wrap: wrap;
-  padding: 18px 24px;
-  background: linear-gradient(180deg, rgba(21,16,32,0.5), rgba(15,10,24,0.3));
+  gap: 0; flex-wrap: wrap;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  padding: 22px 0;
 }
 .trusted-logos .logo-item {
-  font-family: var(--mono); font-size: 13px; font-weight: 500;
-  color: var(--text-muted); letter-spacing: 0.5px;
-  display: inline-flex; align-items: center; gap: 10px;
-  opacity: 0.75; transition: opacity 0.3s, color 0.3s;
+  font-family: var(--editorial); font-style: italic; font-weight: 400;
+  font-size: 15px; color: var(--text-muted);
+  letter-spacing: 0.2px;
+  padding: 0 26px;
+  opacity: 0.85;
+  position: relative;
+  transition: opacity 0.3s, color 0.3s;
 }
-.trusted-logos .logo-item:hover { opacity: 1; color: var(--text); }
-.trusted-logos .logo-item::before {
-  content: ''; width: 6px; height: 6px; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
-  border-radius: 50%; box-shadow: 0 0 10px rgba(232,200,110,0.4);
+.trusted-logos .logo-item + .logo-item::before {
+  content: '';
+  position: absolute; left: -2px; top: 50%;
+  transform: translateY(-50%);
+  width: 3px; height: 3px;
+  background: var(--text-dim);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.trusted-logos .logo-item:hover { opacity: 1; color: var(--gold-soft); }
+@media (max-width: 900px) {
+  .trusted-logos { gap: 8px 0; }
+  .trusted-logos .logo-item { font-size: 13px; padding: 6px 14px; }
+  .trusted-logos .logo-item + .logo-item::before { display: none; }
 }
 
 /* === BIG NUMBERS === */
@@ -1571,7 +1582,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <div class="sub" data-i18n="num1.s">Category creator · iOS</div>
     </div>
     <div class="number-card reveal reveal-d1">
-      <div class="big" data-count="10000" data-count-suffix="+">10,000+</div>
+      <div class="big" data-count="10" data-count-suffix="K+">10K+</div>
       <div class="label" data-i18n="num2.l">Expenses tracked</div>
       <div class="sub" data-i18n="num2.s">Every month, and growing</div>
     </div>
@@ -1590,12 +1601,11 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 
 <!-- CURSOR REVEAL SECTION (F1 pilotu efekti) -->
 <section class="reveal-mouse" id="revealMouse"
-  data-base="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=1600&q=85&auto=format&fit=crop"
-  data-top="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=85&auto=format&fit=crop">
-  <div class="reveal-base" style="background-image:url('https://images.unsplash.com/photo-1501139083538-0139583c060f?w=1600&q=85&auto=format&fit=crop')"></div>
+  data-base="https://images.unsplash.com/photo-1509205477838-a534e43a849f?w=1600&q=85&auto=format&fit=crop"
+  data-top="https://images.unsplash.com/photo-1579621970590-9d624316904b?w=1600&q=85&auto=format&fit=crop">
+  <div class="reveal-base" style="background-image:url('https://images.unsplash.com/photo-1509205477838-a534e43a849f?w=1600&q=85&auto=format&fit=crop')"></div>
   <canvas class="reveal-canvas" id="revealCanvas"></canvas>
   <div class="reveal-caption">
-    <div class="eyebrow" data-scramble data-i18n="rev.e">The reframe, visualized</div>
     <h3 data-i18n-html="rev.h">You think you're spending <span class="money">money</span>.<br>You're really spending <span class="italic">your life</span>.</h3>
     <div class="hint">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v5h5M3 12a9 9 0 109-9"/></svg>
@@ -1610,7 +1620,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
     <div class="story-stage">
       <div class="story-label" data-i18n="story.label">The reframe</div>
       <div class="story-main">
-        <span class="dollars" id="storyDollars">$5</span>
+        <span class="dollars" id="storyDollars" data-i18n="story.amt">$5</span>
         <span class="hours" id="storyHours" style="opacity:0" data-i18n="story.hrsNum">23 min</span>
       </div>
       <div class="story-arrow" id="storyArrow">↓</div>
@@ -2467,8 +2477,8 @@ const I18N = {
     'unit.empty': '—', 'unit.enter': 'enter values',
     // trusted
     'trusted.label': 'Trusted by time-conscious humans everywhere',
-    't1': 'Product Hunt · Featured Launch', 't2': '★★★★★ App Store rated',
-    't3': 'Top 10 Finance · iOS 2026', 't4': 'Featured on TikTok · 2.4M views', 't5': 'Indie Hackers · Rising',
+    't1': 'Product Hunt', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finance · iOS', 't4': 'TikTok · 2.4M views', 't5': 'Indie Hackers',
     // numbers
     'numbers.eye': 'The hard numbers', 'numbers.title': 'Built <span class="italic">different.</span>',
     'numbers.sub': 'No ads. No data selling. No manipulation. Just your money, re-expressed.',
@@ -2477,7 +2487,7 @@ const I18N = {
     'num3.l': 'Average rating', 'num3.s': 'Across every region',
     'num4.l': 'Languages live', 'num4.s': 'Full localization',
     // story
-    'story.label': 'The reframe', 'story.hrsNum': '23 min',
+    'story.label': 'The reframe', 'story.hrsNum': '23 min', 'story.amt': '$5',
     'story.cap1': 'Counting in dollars hides the truth.',
     'story.cap2': '$5 feels like nothing. 23 minutes of your life feels different.',
     'story.cap3': 'Your money is your time, converted. The reframe is impossible to unsee.',
@@ -2583,16 +2593,16 @@ const I18N = {
     'unit.min': 'dk', 'unit.hrs': 'sa', 'unit.days': 'gün', 'unit.weeks': 'hafta', 'unit.months': 'ay', 'unit.years': 'yıl',
     'unit.empty': '—', 'unit.enter': 'değer gir',
     'trusted.label': 'Zamanına değer verenler tarafından kullanılıyor',
-    't1': 'Product Hunt · Öne çıkan lansman', 't2': '★★★★★ App Store puanlaması',
-    't3': 'Top 10 Finans · iOS 2026', 't4': 'TikTok\'ta · 2.4M görüntülenme', 't5': 'Indie Hackers · Yükseliş',
-    'numbers.eye': 'Gerçek rakamlar', 'numbers.title': 'Farklı <span class="italic">inşa edildi.</span>',
-    'numbers.sub': 'Reklam yok. Veri satışı yok. Manipülasyon yok. Sadece paran, yeniden ifade edilmiş.',
+    't1': 'Product Hunt', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finans · iOS', 't4': 'TikTok · 2.4M izlenme', 't5': 'Indie Hackers',
+    'numbers.eye': 'Gerçek rakamlar', 'numbers.title': 'Başka <span class="italic">türlü yaptık.</span>',
+    'numbers.sub': 'Reklam yok. Veri satışı yok. Manipülasyon yok. Sadece paran, farklı ifade edilmiş.',
     'num1.l': 'Saat-bazlı para uygulaması', 'num1.s': 'Kategori yaratıcısı · iOS',
     'num2.l': 'Takip edilen harcama', 'num2.s': 'Her ay, büyüyor',
     'num3.l': 'Ortalama puan', 'num3.s': 'Her bölgede',
     'num4.l': 'Aktif dil', 'num4.s': 'Tam yerelleştirme',
-    'story.label': 'Yeniden çerçeveleme', 'story.hrsNum': '23 dk',
-    'story.cap1': 'Dolar olarak saymak gerçeği gizler.',
+    'story.label': 'Yeniden çerçeveleme', 'story.hrsNum': '20 dk', 'story.amt': '100₺',
+    'story.cap1': 'Para olarak saymak gerçeği gizler.',
     'story.cap2': '100₺ hiçbir şey gibi. Ama hayatının 20 dakikası çok farklı.',
     'story.cap3': 'Paran, dönüştürülmüş zamandır. Bu çerçeveleme bir daha silinmez.',
     'bento.eye': 'Rakamlardaki gerçek', 'bento.title': 'Günlük harcamaların <span class="italic">gerçek</span> maliyeti.',
@@ -2686,16 +2696,16 @@ const I18N = {
     'unit.min': 'min', 'unit.hrs': 'hrs', 'unit.days': 'días', 'unit.weeks': 'semanas', 'unit.months': 'meses', 'unit.years': 'años',
     'unit.empty': '—', 'unit.enter': 'introduce valores',
     'trusted.label': 'Elegido por quienes valoran su tiempo',
-    't1': 'Product Hunt · Lanzamiento destacado', 't2': '★★★★★ App Store',
-    't3': 'Top 10 Finanzas · iOS 2026', 't4': 'En TikTok · 2.4M vistas', 't5': 'Indie Hackers · En alza',
+    't1': 'Product Hunt', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finanzas · iOS', 't4': 'TikTok · 2.4M vistas', 't5': 'Indie Hackers',
     'numbers.eye': 'Los números duros', 'numbers.title': 'Construido <span class="italic">diferente.</span>',
     'numbers.sub': 'Sin anuncios. Sin venta de datos. Sin manipulación. Solo tu dinero, re-expresado.',
     'num1.l': 'App dinero-horas', 'num1.s': 'Creador de categoría · iOS',
     'num2.l': 'Gastos registrados', 'num2.s': 'Cada mes, en crecimiento',
     'num3.l': 'Puntuación media', 'num3.s': 'En todas las regiones',
     'num4.l': 'Idiomas activos', 'num4.s': 'Localización completa',
-    'story.label': 'El cambio de marco', 'story.hrsNum': '23 min',
-    'story.cap1': 'Contar en dólares oculta la verdad.',
+    'story.label': 'El cambio de marco', 'story.hrsNum': '23 min', 'story.amt': '$5',
+    'story.cap1': 'Contar en dinero oculta la verdad.',
     'story.cap2': '$5 no parece nada. Pero 23 minutos de tu vida se sienten diferente.',
     'story.cap3': 'Tu dinero es tu tiempo, convertido. Ya no se puede ignorar.',
     'bento.eye': 'La verdad en números', 'bento.title': 'Cuánto <span class="italic">realmente</span> cuesta cada gasto.',
@@ -2789,16 +2799,16 @@ const I18N = {
     'unit.min': 'Min', 'unit.hrs': 'Std', 'unit.days': 'Tage', 'unit.weeks': 'Wochen', 'unit.months': 'Monate', 'unit.years': 'Jahre',
     'unit.empty': '—', 'unit.enter': 'Werte eingeben',
     'trusted.label': 'Vertraut von zeitbewussten Menschen',
-    't1': 'Product Hunt · Featured', 't2': '★★★★★ App Store',
-    't3': 'Top 10 Finanzen · iOS 2026', 't4': 'Auf TikTok · 2.4M Views', 't5': 'Indie Hackers · Aufstieg',
+    't1': 'Product Hunt', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finanzen · iOS', 't4': 'TikTok · 2.4M Views', 't5': 'Indie Hackers',
     'numbers.eye': 'Harte Zahlen', 'numbers.title': 'Anders <span class="italic">gebaut.</span>',
     'numbers.sub': 'Keine Ads. Kein Datenverkauf. Keine Manipulation. Nur dein Geld, neu ausgedrückt.',
     'num1.l': 'Geld-Stunden-App', 'num1.s': 'Kategorie-Erfinder · iOS',
     'num2.l': 'Erfasste Ausgaben', 'num2.s': 'Jeden Monat, wachsend',
     'num3.l': 'Durchschn. Bewertung', 'num3.s': 'Global',
     'num4.l': 'Aktive Sprachen', 'num4.s': 'Vollständig lokalisiert',
-    'story.label': 'Der Reframe', 'story.hrsNum': '23 Min',
-    'story.cap1': 'In Dollar zu zählen verbirgt die Wahrheit.',
+    'story.label': 'Der Reframe', 'story.hrsNum': '20 Min', 'story.amt': '4€',
+    'story.cap1': 'In Geld zu zählen verbirgt die Wahrheit.',
     'story.cap2': '4€ fühlt sich wie nichts an. 20 Minuten deines Lebens fühlen sich anders an.',
     'story.cap3': 'Dein Geld ist deine Zeit, umgewandelt. Unvergesslich.',
     'bento.eye': 'Die Wahrheit in Zahlen', 'bento.title': 'Was tägliche Ausgaben <span class="italic">wirklich</span> kosten.',
@@ -2892,16 +2902,16 @@ const I18N = {
     'unit.min': 'min', 'unit.hrs': 'h', 'unit.days': 'jours', 'unit.weeks': 'semaines', 'unit.months': 'mois', 'unit.years': 'ans',
     'unit.empty': '—', 'unit.enter': 'entrer les valeurs',
     'trusted.label': 'Utilisé par ceux qui valorisent leur temps',
-    't1': 'Product Hunt · Featured', 't2': '★★★★★ App Store',
-    't3': 'Top 10 Finance · iOS 2026', 't4': 'Sur TikTok · 2.4M vues', 't5': 'Indie Hackers · Montée',
+    't1': 'Product Hunt', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finance · iOS', 't4': 'TikTok · 2.4M vues', 't5': 'Indie Hackers',
     'numbers.eye': 'Les chiffres durs', 'numbers.title': 'Construit <span class="italic">différemment.</span>',
     'numbers.sub': 'Pas de pubs. Pas de vente de données. Pas de manipulation.',
     'num1.l': 'App argent-heures', 'num1.s': 'Créateur de catégorie · iOS',
     'num2.l': 'Dépenses suivies', 'num2.s': 'Chaque mois, en hausse',
     'num3.l': 'Note moyenne', 'num3.s': 'Partout',
     'num4.l': 'Langues actives', 'num4.s': 'Localisation complète',
-    'story.label': 'Le recadrage', 'story.hrsNum': '23 min',
-    'story.cap1': 'Compter en dollars cache la vérité.',
+    'story.label': 'Le recadrage', 'story.hrsNum': '20 min', 'story.amt': '4€',
+    'story.cap1': 'Compter en argent cache la vérité.',
     'story.cap2': '4€ ne semble rien. 20 minutes de ta vie, ça change tout.',
     'story.cap3': 'Ton argent est ton temps, converti. Impossible à oublier.',
     'bento.eye': 'La vérité en chiffres', 'bento.title': 'Ce que les dépenses quotidiennes <span class="italic">coûtent vraiment.</span>',
@@ -2995,16 +3005,16 @@ const I18N = {
     'unit.min': 'min', 'unit.hrs': 'hrs', 'unit.days': 'dias', 'unit.weeks': 'semanas', 'unit.months': 'meses', 'unit.years': 'anos',
     'unit.empty': '—', 'unit.enter': 'insira valores',
     'trusted.label': 'Escolhido por quem valoriza seu tempo',
-    't1': 'Product Hunt · Featured', 't2': '★★★★★ App Store',
-    't3': 'Top 10 Finanças · iOS 2026', 't4': 'No TikTok · 2.4M views', 't5': 'Indie Hackers · Em alta',
+    't1': 'Product Hunt', 't2': '★★★★★ App Store',
+    't3': 'Top 10 Finanças · iOS', 't4': 'TikTok · 2.4M views', 't5': 'Indie Hackers',
     'numbers.eye': 'Os números', 'numbers.title': 'Construído <span class="italic">diferente.</span>',
     'numbers.sub': 'Sem ads. Sem venda de dados. Sem manipulação.',
     'num1.l': 'App dinheiro-horas', 'num1.s': 'Criador de categoria · iOS',
     'num2.l': 'Gastos rastreados', 'num2.s': 'Todo mês, crescendo',
     'num3.l': 'Nota média', 'num3.s': 'Em todas as regiões',
     'num4.l': 'Idiomas ativos', 'num4.s': 'Localização completa',
-    'story.label': 'O reenquadramento', 'story.hrsNum': '23 min',
-    'story.cap1': 'Contar em dólares esconde a verdade.',
+    'story.label': 'O reenquadramento', 'story.hrsNum': '20 min', 'story.amt': 'R$20',
+    'story.cap1': 'Contar em dinheiro esconde a verdade.',
     'story.cap2': 'R$20 parece nada. 20 min da sua vida, muda tudo.',
     'story.cap3': 'Seu dinheiro é seu tempo, convertido. Impossível esquecer.',
     'bento.eye': 'A verdade em números', 'bento.title': 'O que os gastos diários <span class="italic">realmente</span> custam.',
@@ -3098,16 +3108,16 @@ const I18N = {
     'unit.min': '分', 'unit.hrs': '時間', 'unit.days': '日', 'unit.weeks': '週', 'unit.months': 'ヶ月', 'unit.years': '年',
     'unit.empty': '—', 'unit.enter': '値を入力',
     'trusted.label': '時間を大切にする人々に選ばれています',
-    't1': 'Product Hunt · 特集ローンチ', 't2': '★★★★★ App Store',
-    't3': 'Top 10 ファイナンス · iOS 2026', 't4': 'TikTokで · 240万再生', 't5': 'Indie Hackers · 急上昇',
+    't1': 'Product Hunt', 't2': '★★★★★ App Store',
+    't3': 'Top 10 ファイナンス · iOS', 't4': 'TikTok · 240万再生', 't5': 'Indie Hackers',
     'numbers.eye': 'ハードな数字', 'numbers.title': '<span class="italic">違う</span> 作り方。',
     'numbers.sub': '広告なし。データ販売なし。操作なし。',
     'num1.l': '時間換算アプリ', 'num1.s': 'カテゴリ創造 · iOS',
     'num2.l': '追跡された支出', 'num2.s': '毎月、増加中',
     'num3.l': '平均評価', 'num3.s': 'すべての地域で',
     'num4.l': '対応言語', 'num4.s': '完全ローカライズ',
-    'story.label': 'リフレーム', 'story.hrsNum': '23分',
-    'story.cap1': 'ドルで数えると真実が隠れる。',
+    'story.label': 'リフレーム', 'story.hrsNum': '20分', 'story.amt': '¥500',
+    'story.cap1': 'お金で数えると真実が隠れる。',
     'story.cap2': '¥500は何でもない。人生の20分は違う。',
     'story.cap3': 'お金はあなたの時間、変換したもの。忘れられない。',
     'bento.eye': '数字で見る真実', 'bento.title': '日々の支出が<span class="italic">本当に</span>かかるもの。',
@@ -3242,6 +3252,8 @@ function applyLang(lang) {
 
   // Recompute dynamic calc label text
   if (typeof calc === 'function') calc();
+  // Re-run hero word animation after translation swap
+  if (typeof animateHeroWords === 'function') animateHeroWords();
 }
 
 // Determine initial language synchronously (localStorage > browser)
@@ -3310,46 +3322,17 @@ function applyLang(lang) {
   });
 })();
 
-/* ============ GSAP HERO ENTRANCE (char-level kinetic) ============ */
+/* ============ GSAP HERO ENTRANCE (word-level, simpler) ============ */
+function animateHeroWords(){
+  if(!window.gsap)return;
+  const words=document.querySelectorAll('#hero-h1 .word');
+  if(!words.length)return;
+  gsap.set(words,{yPercent:100,opacity:0});
+  gsap.to(words,{yPercent:0,opacity:1,duration:1.0,stagger:0.05,ease:'expo.out',delay:0.15,overwrite:true});
+}
+animateHeroWords();
+
 if (window.gsap) {
-  // Split each .word into per-char spans for kinetic reveal
-  function splitChars(){
-    document.querySelectorAll('#hero-h1 .word').forEach(w=>{
-      if(w.dataset.split)return;
-      const txt=w.textContent;
-      w.innerHTML='';
-      for(const ch of txt){
-        const s=document.createElement('span');
-        s.className='char';
-        s.textContent=ch;
-        s.style.display='inline-block';
-        w.appendChild(s);
-      }
-      w.dataset.split='1';
-    });
-  }
-  splitChars();
-  const chars=document.querySelectorAll('#hero-h1 .char');
-  gsap.set(chars,{yPercent:120,opacity:0,filter:'blur(6px)',rotateX:-30,transformOrigin:'center bottom'});
-  gsap.to(chars,{
-    yPercent:0,opacity:1,filter:'blur(0px)',rotateX:0,
-    duration:1.1,stagger:0.028,
-    ease:'expo.out',
-    delay:0.3
-  });
-
-  // Re-run when language switches (words replaced by i18n)
-  const h1=document.getElementById('hero-h1');
-  if(h1){
-    const mo=new MutationObserver(()=>{
-      splitChars();
-      const cs=document.querySelectorAll('#hero-h1 .char');
-      gsap.set(cs,{yPercent:120,opacity:0,filter:'blur(6px)',rotateX:-30});
-      gsap.to(cs,{yPercent:0,opacity:1,filter:'blur(0px)',rotateX:0,duration:1.0,stagger:0.025,ease:'expo.out'});
-    });
-    mo.observe(h1,{childList:true,subtree:true,characterData:true});
-  }
-
   /* ============ PINNED STORYTELLING ============ */
   if (window.ScrollTrigger) {
     const storyDollars = $('storyDollars');

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — HourSpend</title>
+<meta name="description" content="How HourSpend handles your data. What we collect, why, and your rights.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hourspend.one/privacy">
+<meta name="theme-color" content="#0a0710">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0710;
+  --surface: #12091e;
+  --line: rgba(255,255,255,0.08);
+  --gold: #d4a846;
+  --gold-soft: #e8c86e;
+  --text: #f5f0e6;
+  --text-muted: #a59fb3;
+  --text-dim: #6b6478;
+  --editorial: 'Fraunces', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid rgba(232,200,110,0.3); transition: color 0.2s, border-color 0.2s; }
+a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+.page-nav {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: saturate(140%) blur(16px);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  background: rgba(10,7,16,0.72);
+  border-bottom: 1px solid var(--line);
+}
+.page-nav-inner {
+  max-width: 760px; margin: 0 auto; padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 16px; letter-spacing: -0.4px;
+  color: var(--text); border: 0;
+}
+.logo svg { width: 18px; height: 18px; }
+.back-link { font-size: 13px; color: var(--text-muted); border-bottom: 0; }
+.back-link:hover { color: var(--text); }
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 24px 120px;
+}
+
+.eyebrow {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; font-family: 'Geist Mono', ui-monospace, monospace;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(40px, 6vw, 60px);
+  line-height: 1.02; letter-spacing: -2px;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+h1 em {
+  font-family: var(--editorial); font-style: italic; font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+.lede {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+.meta-line {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  padding: 12px 0 32px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  font-weight: 700;
+  margin: 48px 0 14px;
+  color: var(--text);
+}
+h2::before {
+  content: attr(data-num);
+  display: inline-block;
+  margin-right: 14px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 500;
+  vertical-align: middle;
+  min-width: 26px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  margin: 28px 0 8px;
+  color: var(--text);
+}
+
+p, li { color: var(--text-muted); }
+p { margin: 0 0 16px; }
+
+ul { padding-left: 22px; margin: 0 0 16px; }
+li { margin-bottom: 8px; }
+li::marker { color: var(--gold); }
+
+strong { color: var(--text); font-weight: 700; }
+
+.callout {
+  margin: 36px 0;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--gold);
+  border-radius: 6px;
+  font-size: 15px;
+}
+.callout p { margin: 0; color: var(--text); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 16px 0 24px;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+th {
+  color: var(--text-dim);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+}
+td { color: var(--text-muted); }
+td strong { color: var(--text); }
+
+footer.page-footer {
+  max-width: 720px; margin: 0 auto; padding: 48px 24px;
+  border-top: 1px solid var(--line);
+  color: var(--text-dim); font-size: 13px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+footer.page-footer a { color: var(--text-muted); border: 0; }
+footer.page-footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#e8c86e" stroke-width="1.5"/>
+        <line x1="12" y1="3.5" x2="12" y2="5" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="12" y1="19" x2="12" y2="20.5" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="3.5" y1="12" x2="5" y2="12" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="19" y1="12" x2="20.5" y2="12" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="12" y1="12" x2="12" y2="7.5" stroke="#d4a846" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="12" x2="18" y2="9" stroke="#e8c86e" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="1.2" fill="#d4a846"/>
+      </svg>
+      HourSpend
+    </a>
+    <a href="/" class="back-link">← Back to home</a>
+  </div>
+</nav>
+
+<main>
+  <div class="eyebrow">Legal</div>
+  <h1>Privacy <em>policy</em></h1>
+  <p class="lede">Short version: we store what you enter so the app works. We don't sell your data. We use a small, well-known set of third parties to run the service.</p>
+  <div class="meta-line">Effective: April 20, 2026 · Applies to HourSpend iOS app &amp; hourspend.one</div>
+
+  <h2 data-num="01">What we collect</h2>
+  <p>Only what's needed for the app to function or to support you.</p>
+
+  <h3>When you create an account</h3>
+  <ul>
+    <li><strong>Email address</strong> — to identify your account and send critical service notices (not marketing, unless you opt in).</li>
+    <li><strong>Apple or Google sign-in identifier</strong> — returned by Apple/Google when you use their sign-in. This is a hashed token, not your real account password.</li>
+    <li><strong>Display name</strong> (optional) — shown only to you, in the app.</li>
+  </ul>
+
+  <h3>When you use the app</h3>
+  <ul>
+    <li><strong>Your financial entries</strong> — the expenses, incomes, goals, and categories you enter. Stored so you can access them across devices.</li>
+    <li><strong>Your settings</strong> — hourly rate, currency, language, notification preferences.</li>
+    <li><strong>Usage telemetry</strong> — which screens you open, which features you use. Aggregated, not tied to your identity beyond a random device ID.</li>
+    <li><strong>Crash reports</strong> — when the app crashes, we receive a stack trace and device model so we can fix it.</li>
+  </ul>
+
+  <h3>When you visit hourspend.one</h3>
+  <ul>
+    <li>We use <strong>Plausible Analytics</strong>, a privacy-first tool that does not set cookies, does not track you across sites, and does not collect personal data. Only aggregate page views and referrers.</li>
+  </ul>
+
+  <div class="callout">
+    <p>We do <strong>not</strong> collect: your bank account, credit card, or any automatic transaction feed. Every expense in HourSpend is entered by you, by hand.</p>
+  </div>
+
+  <h2 data-num="02">How we use it</h2>
+  <ul>
+    <li>To operate the app — sync your data between your devices, compute your hour conversions, and provide backups.</li>
+    <li>To improve the product — decide what to build next, find bugs, measure performance.</li>
+    <li>To support you — respond when you email us about a problem.</li>
+    <li>To enforce our terms — prevent abuse, fraud, or misuse of the service.</li>
+  </ul>
+
+  <h2 data-num="03">Third parties we work with</h2>
+  <p>These companies process data on our behalf under their own privacy policies. We do not share your data with anyone outside this list.</p>
+  <table>
+    <thead>
+      <tr><th>Provider</th><th>Purpose</th><th>Data</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Google Firebase</strong></td><td>Authentication, database, storage, analytics, crash reporting</td><td>Account, entries, device ID, crash traces</td></tr>
+      <tr><td><strong>RevenueCat</strong></td><td>Subscription management for premium</td><td>Anonymized user ID, subscription status, purchase receipts</td></tr>
+      <tr><td><strong>Apple</strong></td><td>Sign in with Apple, In-App Purchases</td><td>Apple-issued user token, transaction receipts</td></tr>
+      <tr><td><strong>Google</strong></td><td>Sign in with Google (optional)</td><td>Google-issued user token, email</td></tr>
+      <tr><td><strong>Plausible</strong></td><td>Website analytics (hourspend.one only)</td><td>Aggregate page views, country, device type — no cookies, no personal data</td></tr>
+    </tbody>
+  </table>
+
+  <h2 data-num="04">Your rights</h2>
+  <p>You control your data. Always.</p>
+  <ul>
+    <li><strong>Access</strong> — everything you've entered is visible in the app. Export as CSV or PDF from <em>Settings → Export</em>.</li>
+    <li><strong>Delete</strong> — erase your account and all associated data from <em>Settings → Account → Delete account</em>. The deletion is permanent; we keep nothing beyond 30 days (backup retention window).</li>
+    <li><strong>Correct</strong> — edit any entry in the app.</li>
+    <li><strong>Object</strong> — write to us if you disagree with how we handle something. We'll respond within 14 days.</li>
+  </ul>
+  <p>If you're in the EU, UK, or California, you have additional rights under GDPR, UK GDPR, and CCPA respectively: portability, restriction of processing, non-discrimination. Same contact email applies.</p>
+
+  <h2 data-num="05">Data retention</h2>
+  <p>While your account is active, we keep your data so the app keeps working. When you delete your account, we delete everything within 30 days, except what we're legally required to retain (e.g., tax records of your subscription purchases — up to 7 years).</p>
+
+  <h2 data-num="06">Security</h2>
+  <p>Your data is encrypted in transit (TLS 1.2+) and at rest (Firebase's at-rest encryption). We use industry-standard practices to limit access to production systems. No system is perfectly secure; if we ever experience a breach that affects you, we'll notify you within 72 hours of discovery.</p>
+
+  <h2 data-num="07">Children</h2>
+  <p>HourSpend is not directed at children under 13. We do not knowingly collect data from anyone under 13. If you believe a child has given us data, write to us and we'll delete it.</p>
+
+  <h2 data-num="08">International transfers</h2>
+  <p>Firebase and most of our providers are based in the United States. By using HourSpend, you consent to your data being processed there. We rely on Standard Contractual Clauses for EU → US transfers where required.</p>
+
+  <h2 data-num="09">Changes to this policy</h2>
+  <p>When we change something material, we'll update the effective date above and, for meaningful changes, show a notice in the app the next time you open it. Continued use of HourSpend after a change means you accept the updated terms.</p>
+
+  <h2 data-num="10">Contact</h2>
+  <p>Privacy questions, requests, concerns:</p>
+  <p>📧 <a href="mailto:privacy@hourspend.one">privacy@hourspend.one</a></p>
+  <p>We aim to respond within 14 days.</p>
+
+</main>
+
+<footer class="page-footer">
+  <div>© HourSpend · Money is just time, exchanged.</div>
+  <div>
+    <a href="/">Home</a> ·
+    <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957">iOS App</a>
+  </div>
+</footer>
+
+</body>
+</html>

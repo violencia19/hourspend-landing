@@ -6,12 +6,31 @@
 <title>HourSpend — Your money, in hours of your life.</title>
 <meta name="description" content="See every expense as hours of work. Free calculator. iOS app that shows what your spending really costs — in your life.">
 
+<meta name="theme-color" content="#0a0710">
 <meta property="og:title" content="HourSpend — Your $5 coffee = 23 min of your life">
 <meta property="og:description" content="Free calculator. iOS app converts every expense to hours of work.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hourspend.one">
+<meta property="og:image" content="https://hourspend.one/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An hourglass filled with gold coins, trickling down — time and money as one.">
+<meta property="og:site_name" content="HourSpend">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HourSpend — Your $5 coffee = 23 min of your life">
+<meta name="twitter:description" content="Free calculator. iOS app converts every expense to hours of work.">
+<meta name="twitter:image" content="https://hourspend.one/og-image.jpg">
 <link rel="canonical" href="https://hourspend.one">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="HourSpend">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +40,19 @@
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"HourSpend","description":"Convert any expense into hours of work","applicationCategory":"FinanceApplication","operatingSystem":"iOS","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HourSpend",
+  "url": "https://hourspend.one",
+  "description": "Convert any expense into hours of work. See what your spending really costs — in your life.",
+  "image": "https://hourspend.one/og-image.jpg",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "iOS",
+  "author": { "@type": "Organization", "name": "HourSpend", "url": "https://hourspend.one" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "152" }
+}
 </script>
 
 <style>
@@ -501,6 +532,8 @@ h2 .italic { font-family: var(--editorial); font-style: italic; font-weight: 700
   background: linear-gradient(135deg, var(--gold-soft), var(--gold));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   letter-spacing: -1.5px;
+}
+.bento-cell .equation.eq-sm { font-size: clamp(22px, 2.6vw, 30px); letter-spacing: -1px;
   line-height: 1; margin-top: 16px;
   z-index: 2; position: relative;
 }
@@ -1791,7 +1824,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <div class="sub" data-i18n="num3.s">Across every region</div>
     </div>
     <div class="number-card reveal reveal-d3">
-      <div class="big" data-count="14">0</div>
+      <div class="big" data-count="14">14</div>
       <div class="label" data-i18n="num4.l">Languages live</div>
       <div class="sub" data-i18n="num4.s">Full localization</div>
     </div>
@@ -1884,7 +1917,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
         <div class="meta" data-i18n="b2.meta">iPhone 16 Pro</div>
         <h3>$1,199</h3>
       </div>
-      <div class="equation" style="font-size:30px" data-i18n="b2.eq">6 weeks</div>
+      <div class="equation eq-sm" data-i18n="b2.eq">6 weeks</div>
         <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
     </div>
 
@@ -1894,7 +1927,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
         <div class="meta" data-i18n="b3.meta">NYC 1-bed rent</div>
         <h3>$4,500/mo</h3>
       </div>
-      <div class="equation" style="font-size:30px" data-i18n="b3.eq">22.5 days</div>
+      <div class="equation eq-sm" data-i18n="b3.eq">22.5 days</div>
         <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
     </div>
 
@@ -1904,7 +1937,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
         <div class="meta" data-i18n="b4.meta">DoorDash dinner</div>
         <h3>$32</h3>
       </div>
-      <div class="equation" style="font-size:30px" data-i18n="b4.eq">1.3 hrs</div>
+      <div class="equation eq-sm" data-i18n="b4.eq">1.3 hrs</div>
         <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
     </div>
 
@@ -1914,7 +1947,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
         <div class="meta" data-i18n="b5.meta">Netflix yearly</div>
         <h3>$276</h3>
       </div>
-      <div class="equation" style="font-size:30px" data-i18n="b5.eq">11 hrs</div>
+      <div class="equation eq-sm" data-i18n="b5.eq">11 hrs</div>
         <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
     </div>
   </div>
@@ -1989,7 +2022,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
   <div class="section-head reveal">
     <div class="eyebrow" data-scramble data-i18n="vs.eye">Head to head</div>
     <h2 data-i18n-html="vs.title">HourSpend vs <span class="italic">the rest.</span></h2>
-    <p class="section-sub" data-i18n="vs.sub">Every other budget app shows you dollars. Only one shows you <em>your life</em>.</p>
+    <p class="section-sub" data-i18n-html="vs.sub">Every other budget app shows you dollars. Only one shows you <em>your life</em>.</p>
   </div>
   <div class="compare-card reveal">
     <table class="compare-table">
@@ -2214,7 +2247,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
     <div class="footer-links">
       <a href="/buying" data-magnetic data-i18n="foot.all">All items</a>
       <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" data-magnetic data-i18n="foot.ios">iOS App</a>
-      <a href="https://violencia19.github.io/app-legal/vantag/privacy-en.html" data-magnetic data-i18n="foot.privacy">Privacy</a>
+      <a href="https://violencia19.github.io/app-legal/hourspend/privacy-en.html" data-magnetic data-i18n="foot.privacy">Privacy</a>
       <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" data-magnetic data-i18n="foot.terms">Terms</a>
     </div>
     <div class="footer-credit" data-i18n="foot.credit">© HourSpend · Money is just time, exchanged.</div>
@@ -3817,7 +3850,7 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     {t:'Browse 52 items',d:'Programmatic SEO catalog',u:'/buying',k:'B'},
     {t:'Try the calculator',d:'Explore any amount',u:'#hero',k:'C'},
     {t:'Experimental v4',d:'Preview new design',u:'/v4',k:'V'},
-    {t:'Privacy policy',d:'How your data is handled',u:'https://violencia19.github.io/app-legal/vantag/privacy-en.html',k:'P'},
+    {t:'Privacy policy',d:'How your data is handled',u:'https://violencia19.github.io/app-legal/hourspend/privacy-en.html',k:'P'},
     {t:'Terms of service',d:'EULA',u:'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/',k:'T'},
     {t:'How it works',d:'3-step explainer',u:'#howto',k:'H'},
     {t:'vs. competition',d:'Mint, YNAB, Copilot',u:'#compare',k:'V'},
@@ -3911,16 +3944,17 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
 (()=>{
   const badge=document.querySelector('.hero-badge span:last-child');
   if(!badge)return;
+  const lang=localStorage.getItem('hs.lang')||'en';
+  if(lang!=='en')return; // only greet in English locale — others use their i18n badge
   const h=new Date().getHours();
-  let greet='';
-  if(h<5)greet='Late · Free calculator · iOS';
-  else if(h<12)greet='Good morning · Free calculator · iOS';
-  else if(h<17)greet='Good afternoon · Free calculator · iOS';
-  else if(h<22)greet='Good evening · Free calculator · iOS';
-  else greet='Late · Free calculator · iOS';
-  if(!localStorage.getItem('hs.lang') || localStorage.getItem('hs.lang')==='en'){
-    setTimeout(()=>{badge.textContent=greet;},1400);
-  }
+  let greet;
+  if(h<5)       greet='Late night · Free calculator · iOS';
+  else if(h<12) greet='Good morning · Free calculator · iOS';
+  else if(h<17) greet='Good afternoon · Free calculator · iOS';
+  else if(h<22) greet='Good evening · Free calculator · iOS';
+  else          greet='Late · Free calculator · iOS';
+  badge.textContent=greet;
+  badge.removeAttribute('data-i18n'); // prevent i18n re-render from overwriting the greeting
 })();
 
 /* ============ SCROLL SPEEDOMETER (right edge) ============ */

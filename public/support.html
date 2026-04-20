@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — HourSpend</title>
+<meta name="description" content="Get help with HourSpend. Common questions, contact, and response times.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hourspend.one/support">
+<meta name="theme-color" content="#0a0710">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0710;
+  --surface: #12091e;
+  --line: rgba(255,255,255,0.08);
+  --gold: #d4a846;
+  --gold-soft: #e8c86e;
+  --text: #f5f0e6;
+  --text-muted: #a59fb3;
+  --text-dim: #6b6478;
+  --editorial: 'Fraunces', Georgia, serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid rgba(232,200,110,0.3); transition: color 0.2s, border-color 0.2s; }
+a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+.page-nav {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: saturate(140%) blur(16px);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  background: rgba(10,7,16,0.72);
+  border-bottom: 1px solid var(--line);
+}
+.page-nav-inner {
+  max-width: 760px; margin: 0 auto; padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 16px; letter-spacing: -0.4px;
+  color: var(--text); border: 0;
+}
+.logo svg { width: 18px; height: 18px; }
+.back-link { font-size: 13px; color: var(--text-muted); border-bottom: 0; }
+.back-link:hover { color: var(--text); }
+
+main { max-width: 720px; margin: 0 auto; padding: 64px 24px 120px; }
+
+.eyebrow {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; font-family: 'Geist Mono', ui-monospace, monospace;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(40px, 6vw, 60px);
+  line-height: 1.02; letter-spacing: -2px;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+h1 em {
+  font-family: var(--editorial); font-style: italic; font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+.lede {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin: 0 0 40px;
+}
+
+.contact-block {
+  margin: 0 0 48px;
+  padding: 24px 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--gold);
+  border-radius: 8px;
+}
+.contact-block .contact-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-dim); font-family: 'Geist Mono', ui-monospace, monospace;
+  margin-bottom: 8px;
+}
+.contact-block .contact-email {
+  font-size: 22px; font-weight: 700; color: var(--text);
+  display: inline-block; border: 0;
+}
+.contact-block .contact-email:hover { color: var(--gold-soft); }
+.contact-block p { margin: 10px 0 0; color: var(--text-muted); font-size: 14px; }
+
+h2 {
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  font-weight: 700;
+  margin: 48px 0 16px;
+  color: var(--text);
+}
+
+.faq details {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 4px;
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text);
+  display: flex; align-items: center; justify-content: space-between;
+  padding-right: 8px;
+}
+.faq summary::after {
+  content: '+';
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--gold);
+  transition: transform 0.25s ease;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq details p, .faq details ul {
+  margin: 14px 0 4px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+.faq details ul { padding-left: 22px; }
+.faq details li { margin-bottom: 6px; }
+.faq details li::marker { color: var(--gold); }
+
+footer.page-footer {
+  max-width: 720px; margin: 0 auto; padding: 48px 24px;
+  border-top: 1px solid var(--line);
+  color: var(--text-dim); font-size: 13px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+footer.page-footer a { color: var(--text-muted); border: 0; }
+footer.page-footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#e8c86e" stroke-width="1.5"/>
+        <line x1="12" y1="3.5" x2="12" y2="5" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="12" y1="19" x2="12" y2="20.5" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="3.5" y1="12" x2="5" y2="12" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="19" y1="12" x2="20.5" y2="12" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="12" y1="12" x2="12" y2="7.5" stroke="#d4a846" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="12" x2="18" y2="9" stroke="#e8c86e" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="1.2" fill="#d4a846"/>
+      </svg>
+      HourSpend
+    </a>
+    <a href="/" class="back-link">← Back to home</a>
+  </div>
+</nav>
+
+<main>
+  <div class="eyebrow">Support</div>
+  <h1>Need a <em>hand</em>?</h1>
+  <p class="lede">A human reads every message. We aim to reply within two business days; most replies go out the same day.</p>
+
+  <div class="contact-block">
+    <div class="contact-label">Email us</div>
+    <a href="mailto:support@hourspend.one" class="contact-email">support@hourspend.one</a>
+    <p>Include your device, iOS version, and — if it's a bug — a screenshot. It saves a round-trip.</p>
+  </div>
+
+  <h2>Frequently asked</h2>
+
+  <div class="faq">
+    <details>
+      <summary>What is HourSpend?</summary>
+      <p>An iOS app that converts every expense you log into the number of work hours it cost you. You set your hourly rate once; after that, every dollar has a duration. A $5 coffee isn't $5 — it's 23 minutes of your Tuesday.</p>
+    </details>
+
+    <details>
+      <summary>Was this app called "Vantag"?</summary>
+      <p>Yes. Same team, same app, new name. We renamed to HourSpend because the concept — spending hours of your life — deserved a name that says so out loud. Your account, data, and subscription continue exactly as before.</p>
+    </details>
+
+    <details>
+      <summary>Is HourSpend free?</summary>
+      <p>Core expense tracking, the hour-conversion engine, and the calculator are free forever. Premium unlocks AI chat (Vanti), unlimited custom categories, subscription alerts, advanced analytics, and widgets with no logo.</p>
+    </details>
+
+    <details>
+      <summary>Does HourSpend connect to my bank?</summary>
+      <p>No. Every expense is entered by you — by hand, by voice, or by scanning a receipt. We don't read transactions, we don't pull feeds. This is a choice, not a limitation: awareness only sticks when you're the one doing the logging.</p>
+    </details>
+
+    <details>
+      <summary>Who is Vanti?</summary>
+      <p>Vanti is the in-app AI assistant — a small gold pocket watch with opinions. Ask her "can I afford this?" and she'll answer in hours, not spreadsheets. She notices patterns gently and never lectures.</p>
+    </details>
+
+    <details>
+      <summary>How do I delete my account?</summary>
+      <p>In the app: <strong>Settings → Account → Delete account</strong>. Deletion is permanent — we erase everything within 30 days, except what we're required to retain for tax records (subscription purchases, up to 7 years). See our <a href="/privacy">privacy policy</a> for detail.</p>
+    </details>
+
+    <details>
+      <summary>I was charged for something I didn't want.</summary>
+      <p>Subscription refunds on iOS go through Apple, not us — we don't see your payment details. Open the App Store, tap your profile, go to <em>Purchase History</em>, find the charge, and use "Report a Problem." If Apple declines and you believe it's wrong, email us and we'll see what we can do on our side.</p>
+    </details>
+
+    <details>
+      <summary>I'd like to change the currency or language.</summary>
+      <ul>
+        <li><strong>Currency:</strong> Settings → Preferences → Currency. Live exchange rates update daily.</li>
+        <li><strong>Language:</strong> Settings → Preferences → Language. We support 14 languages at 100% coverage.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>My data didn't sync between devices.</summary>
+      <p>Syncing uses your account, not iCloud. Make sure you're signed in with the same Apple ID or Google account on both devices. Pull-to-refresh on the dashboard forces a sync. If it still doesn't work, email us with your account email — we can see server-side.</p>
+    </details>
+
+    <details>
+      <summary>Feature requests?</summary>
+      <p>We read all of them. The short version of our roadmap: voice-driven logging, shared goals with a partner, a watch complication, and a home screen widget with Vanti. If yours isn't on that list, tell us.</p>
+    </details>
+
+  </div>
+
+  <h2>Known issues</h2>
+  <div class="faq">
+    <details>
+      <summary>iOS 26 — large text sizes cut off expense amounts</summary>
+      <p>Fix in the next update. Temporary workaround: Settings → Display & Brightness → Text Size → slide back one notch.</p>
+    </details>
+    <details>
+      <summary>Apple Watch complication doesn't update</summary>
+      <p>Complications refresh on a schedule Apple controls. If yours is stale more than an hour, tap-and-hold the watch face → Edit → re-select the complication. A proper fix is coming.</p>
+    </details>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <div>© HourSpend · Money is just time, exchanged.</div>
+  <div>
+    <a href="/">Home</a> ·
+    <a href="/privacy">Privacy</a> ·
+    <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957">iOS App</a>
+  </div>
+</footer>
+
+</body>
+</html>

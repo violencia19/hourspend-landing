@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "node generate-pseo.js",
+  "buildCommand": "node generate-pseo.js && node generate-vs-pages.js && node generate-income-pages.js && node generate-time-cost-pages.js && node generate-blog.js && node build-sitemap.js",
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,

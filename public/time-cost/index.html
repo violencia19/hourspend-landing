@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How long will it take to save for that? | HourSpend</title>
+<meta name="description" content="Savings calculators for 20 common goals — iPhone, car, wedding, down payment, cruise. Enter your wage, pick a savings rate, get a timeline.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hourspend.one/time-cost">
+<meta name="theme-color" content="#0a0710">
+
+<meta property="og:title" content="How long will it take to save for that? | HourSpend">
+<meta property="og:description" content="Savings calculators for 20 common goals — iPhone, car, wedding, down payment, cruise. Enter your wage, pick a savings rate, get a timeline.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hourspend.one/time-cost">
+<meta property="og:image" content="https://hourspend.one/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Geist+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root { --bg: #0a0710; --line: rgba(255,255,255,0.08); --gold: #d4a846; --gold-soft: #e8c86e; --text: #f5f0e6; --text-muted: #a59fb3; --text-dim: #6b6478; --editorial: 'Fraunces', Georgia, serif; --mono: 'Geist Mono', ui-monospace, monospace; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Cabinet Grotesk', sans-serif; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,200,110,0.08), transparent 65%), var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; }
+a { color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid rgba(232,200,110,0.3); }
+a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+.page-nav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px); background: rgba(10,7,16,0.72); border-bottom: 1px solid var(--line); }
+.page-nav-inner { max-width: 960px; margin: 0 auto; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; color: var(--text); border: 0; }
+.logo svg { width: 18px; height: 18px; }
+.back-link { font-size: 13px; color: var(--text-muted); border: 0; }
+main { max-width: 960px; margin: 0 auto; padding: 72px 24px 120px; }
+.eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 700; font-family: var(--mono); margin-bottom: 18px; }
+h1 { font-size: clamp(40px, 6vw, 60px); line-height: 1.03; letter-spacing: -2px; font-weight: 800; margin: 0 0 12px; }
+h1 em { font-family: var(--editorial); font-style: italic; background: linear-gradient(135deg, var(--gold-soft), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lede { font-size: 19px; color: var(--text-muted); margin: 0 0 48px; max-width: 680px; }
+h3 { font-size: 14px; font-family: var(--mono); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin: 40px 0 16px; }
+.goal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.goal-card { display: flex; flex-direction: column; padding: 14px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--line); border-radius: 12px; color: var(--text); border-bottom: 1px solid var(--line); }
+.goal-card:hover { border-color: rgba(232,200,110,0.4); color: var(--text); }
+.goal-card .goal-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.goal-card .goal-price { font-family: var(--mono); font-size: 12px; color: var(--gold-soft); letter-spacing: 1px; }
+footer.page-footer { max-width: 960px; margin: 0 auto; padding: 40px 24px; border-top: 1px solid var(--line); color: var(--text-dim); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+footer.page-footer a { color: var(--text-muted); border: 0; }
+</style>
+</head>
+<body>
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#e8c86e" stroke-width="1.5"/><line x1="12" y1="12" x2="12" y2="7.5" stroke="#d4a846" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="12" x2="18" y2="9" stroke="#e8c86e" stroke-width="1.3" stroke-linecap="round"/><circle cx="12" cy="12" r="1.2" fill="#d4a846"/></svg>
+      HourSpend
+    </a>
+    <a href="/" class="back-link">← Home</a>
+  </div>
+</nav>
+<main>
+  <div class="eyebrow">Savings calculators</div>
+  <h1>How long to save <em>for that</em>?</h1>
+  <p class="lede">20 common goals, each with a matrix of wage tiers and savings rates. Pick the thing you want; read how long it takes. No signup. No tracking.</p>
+    <h3>Electronics</h3>
+    <div class="goal-grid">
+      <a href="/time-cost/save-for-iphone-16-pro" class="goal-card"><span class="goal-name">iPhone 16 Pro</span><span class="goal-price">$1,199</span></a>
+      <a href="/time-cost/save-for-macbook-air-m3" class="goal-card"><span class="goal-name">MacBook Air M3</span><span class="goal-price">$1,099</span></a>
+      <a href="/time-cost/save-for-macbook-pro-14" class="goal-card"><span class="goal-name">MacBook Pro 14"</span><span class="goal-price">$1,999</span></a>
+      <a href="/time-cost/save-for-airpods-pro-2" class="goal-card"><span class="goal-name">AirPods Pro 2</span><span class="goal-price">$249</span></a>
+      <a href="/time-cost/save-for-apple-watch-ultra" class="goal-card"><span class="goal-name">Apple Watch Ultra</span><span class="goal-price">$799</span></a>
+      <a href="/time-cost/save-for-playstation-5" class="goal-card"><span class="goal-name">PlayStation 5</span><span class="goal-price">$499</span></a>
+      <a href="/time-cost/save-for-xbox-series-x" class="goal-card"><span class="goal-name">Xbox Series X</span><span class="goal-price">$499</span></a>
+      <a href="/time-cost/save-for-nintendo-switch" class="goal-card"><span class="goal-name">Nintendo Switch OLED</span><span class="goal-price">$349</span></a>
+      <a href="/time-cost/save-for-sony-wh-1000xm5" class="goal-card"><span class="goal-name">Sony WH-1000XM5</span><span class="goal-price">$399</span></a>
+      <a href="/time-cost/save-for-ipad-pro" class="goal-card"><span class="goal-name">iPad Pro</span><span class="goal-price">$999</span></a>
+    </div>
+    <h3>Vehicles</h3>
+    <div class="goal-grid">
+      <a href="/time-cost/save-for-tesla-model-3" class="goal-card"><span class="goal-name">Tesla Model 3</span><span class="goal-price">$38,990</span></a>
+      <a href="/time-cost/save-for-tesla-model-y" class="goal-card"><span class="goal-name">Tesla Model Y</span><span class="goal-price">$44,990</span></a>
+      <a href="/time-cost/save-for-honda-civic" class="goal-card"><span class="goal-name">Honda Civic</span><span class="goal-price">$23,950</span></a>
+      <a href="/time-cost/save-for-toyota-corolla" class="goal-card"><span class="goal-name">Toyota Corolla</span><span class="goal-price">$22,050</span></a>
+      <a href="/time-cost/save-for-bmw-3-series" class="goal-card"><span class="goal-name">BMW 3 Series</span><span class="goal-price">$45,950</span></a>
+    </div>
+    <h3>Life</h3>
+    <div class="goal-grid">
+      <a href="/time-cost/save-for-engagement-ring" class="goal-card"><span class="goal-name">Engagement Ring (avg)</span><span class="goal-price">$5,500</span></a>
+      <a href="/time-cost/save-for-home-down-payment" class="goal-card"><span class="goal-name">Home down payment (20% of $400k)</span><span class="goal-price">$80,000</span></a>
+    </div>
+    <h3>Travel</h3>
+    <div class="goal-grid">
+      <a href="/time-cost/save-for-disney-family-trip" class="goal-card"><span class="goal-name">Disney World family trip</span><span class="goal-price">$7,000</span></a>
+      <a href="/time-cost/save-for-caribbean-cruise" class="goal-card"><span class="goal-name">Caribbean cruise</span><span class="goal-price">$3,500</span></a>
+    </div>
+    <h3>Entertainment</h3>
+    <div class="goal-grid">
+      <a href="/time-cost/save-for-vip-concert-ticket" class="goal-card"><span class="goal-name">VIP concert ticket</span><span class="goal-price">$1,200</span></a>
+    </div>
+</main>
+<footer class="page-footer">
+  <div>© HourSpend · Money is just time, exchanged.</div>
+  <div>
+    <a href="/">Home</a> ·
+    <a href="/calculator">Calculator</a> ·
+    <a href="/philosophy">Philosophy</a> ·
+    <a href="/buying">All items</a>
+  </div>
+</footer>
+</body>
+</html>

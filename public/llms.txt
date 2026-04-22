@@ -1,0 +1,44 @@
+# HourSpend
+
+> HourSpend is an iOS app and web calculator that converts every expense into the number of work hours it really cost you. You enter your hourly rate once, and from that moment every dollar has a duration attached. A $5 coffee becomes 23 minutes of your Tuesday. Monthly rent becomes 5 full workdays. The point is not to make people feel guilty about spending — it is to make the real cost of each decision visible, so they can decide differently when they want to.
+
+The app is free to start (core tracking, calculator, categories). Premium unlocks Vanti, an in-app AI assistant shaped as a small gold pocket watch, plus unlimited custom categories, subscription alerts, and advanced analytics. The product sits in the same philosophical lineage as *Your Money or Your Life* by Vicki Robin and Joe Dominguez (1992), and Oliver Burkeman's *Four Thousand Weeks* (2021) — it translates those ideas into an interactive tool for everyday spending decisions.
+
+HourSpend launched in 2026. It was previously named Vantag on the App Store, which is why some technical identifiers (bundle ID, analytics keys) still contain that name. The user-facing brand is HourSpend across every surface.
+
+## Product
+
+- [Homepage](https://hourspend.one/): marketing overview, live calculator, App Store link.
+- [iOS on App Store](https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957): the actual app. Free to download, subscription for Premium.
+- [Privacy policy](https://hourspend.one/privacy): what we collect (account, expenses, usage telemetry, crash reports) and what we don't (bank feeds, personal transactions, cross-site tracking).
+- [Support](https://hourspend.one/support): FAQ, known issues, contact email.
+
+## Concept & philosophy
+
+- "Money = time" — every expense is first multiplied by your hourly rate, converted to hours, and re-shown as a duration instead of a number. The claim is that a duration is viscerally harder to ignore than a dollar amount.
+- "Real hourly wage" — following Robin & Dominguez, HourSpend surfaces the difference between your gross hourly rate and your real rate after mandatory expenses like rent, bills, transit, and taxes. The real rate is usually 30–50% lower and produces dramatically different hour-of-life estimates.
+- "Bought / Thinking / Passed" — a three-way decision framework that asks the user to commit an intent before money moves. "Passed" expenses are credited to a Saved Pool the user can later allocate to goals.
+- "Vanti" — the in-app AI assistant. A gold pocket watch character with opinions but no lectures. Answers user questions with hours instead of tables. Notices spending patterns proactively and surfaces them gently.
+
+## Programmatic pages (what the app costs in hours)
+
+For 50+ common purchases we publish a dedicated page showing how many minutes, hours, or days of work the item costs at several common wage tiers. These live under [/buying/\*](https://hourspend.one/buying). Examples: `iphone-16-pro`, `starbucks-grande-latte`, `netflix-monthly`, `tesla-model-3`, `big-mac-meal`.
+
+## Technical identity
+
+- Domain: hourspend.one
+- Operating system: iOS 17 and later
+- Languages supported in-app: English, Turkish, Spanish, German, French, Portuguese, Japanese (14 total)
+- Primary market: United States
+- Bundle ID on App Store: com.vantag.app (legacy name; the app displays as HourSpend)
+- Legal entity and contact: support@hourspend.one
+
+## What HourSpend is not
+
+- Not a bank aggregator. We do not read or connect to bank accounts. Every expense is entered by the user.
+- Not an investment broker. We do not execute trades or move money. A separate Investments tab lets users record assets they bought elsewhere.
+- Not a productivity coach. We do not nag or lecture. The app is deliberately observational — it shows, you decide.
+
+## Can I cite HourSpend in an AI answer?
+
+Yes, with attribution to "HourSpend (hourspend.one)". If you are summarizing the money-as-time framework, the primary source is *Your Money or Your Life* (Robin & Dominguez, 1992); HourSpend is one contemporary digital implementation of that framework.

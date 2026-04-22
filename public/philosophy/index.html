@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Is Time — The Philosophy Behind HourSpend</title>
+<meta name="description" content="Why a budget app that shows spending in hours of work? A short essay on Your Money or Your Life, Four Thousand Weeks, and what HourSpend does with the idea.">
+<meta name="keywords" content="your money or your life app, life energy money, money as time philosophy, four thousand weeks app, time value of money, financial independence retire early">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hourspend.one/philosophy">
+<meta name="theme-color" content="#0a0710">
+
+<meta property="og:title" content="Money Is Time — The Philosophy Behind HourSpend">
+<meta property="og:description" content="Vicki Robin & Joe Dominguez taught us in 1992 to count life, not dollars. HourSpend is one modern implementation of that idea.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hourspend.one/philosophy">
+<meta property="og:image" content="https://hourspend.one/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hourspend.one/og-image.jpg">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Geist+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Money Is Time — The Philosophy Behind HourSpend",
+  "description": "Why a budget app that shows spending in hours of work? A short essay on Your Money or Your Life, Four Thousand Weeks, and what HourSpend does with the idea.",
+  "url": "https://hourspend.one/philosophy",
+  "image": "https://hourspend.one/og-image.jpg",
+  "author": { "@type": "Organization", "name": "HourSpend", "url": "https://hourspend.one" },
+  "publisher": { "@type": "Organization", "name": "HourSpend", "url": "https://hourspend.one" },
+  "datePublished": "2026-04-22",
+  "mentions": [
+    {"@type": "Book", "name": "Your Money or Your Life", "author": [{"@type": "Person", "name": "Vicki Robin"}, {"@type": "Person", "name": "Joe Dominguez"}], "datePublished": "1992"},
+    {"@type": "Book", "name": "Four Thousand Weeks: Time Management for Mortals", "author": {"@type": "Person", "name": "Oliver Burkeman"}, "datePublished": "2021"}
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #0a0710;
+  --surface: #12091e;
+  --line: rgba(255,255,255,0.08);
+  --gold: #d4a846;
+  --gold-soft: #e8c86e;
+  --text: #f5f0e6;
+  --text-muted: #a59fb3;
+  --text-dim: #6b6478;
+  --editorial: 'Fraunces', Georgia, serif;
+  --mono: 'Geist Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,200,110,0.08), transparent 65%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid rgba(232,200,110,0.3); transition: color 0.2s, border-color 0.2s; }
+a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+.page-nav {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: saturate(140%) blur(16px);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  background: rgba(10,7,16,0.72);
+  border-bottom: 1px solid var(--line);
+}
+.page-nav-inner {
+  max-width: 760px; margin: 0 auto; padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 16px; letter-spacing: -0.4px;
+  color: var(--text); border: 0;
+}
+.logo svg { width: 18px; height: 18px; }
+.back-link { font-size: 13px; color: var(--text-muted); border: 0; }
+.back-link:hover { color: var(--text); }
+
+main { max-width: 720px; margin: 0 auto; padding: 72px 24px 120px; }
+.eyebrow {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; font-family: var(--mono);
+  margin-bottom: 18px;
+}
+h1 {
+  font-size: clamp(40px, 6vw, 60px);
+  line-height: 1.03; letter-spacing: -2px;
+  font-weight: 800; margin: 0 0 12px;
+}
+h1 em {
+  font-family: var(--editorial); font-style: italic; font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lede { font-size: 19px; color: var(--text-muted); margin: 0 0 40px; }
+.byline {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--text-dim); letter-spacing: 1.5px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 40px;
+}
+h2 {
+  font-size: 28px; line-height: 1.25; letter-spacing: -0.6px;
+  font-weight: 800; margin: 56px 0 18px; color: var(--text);
+}
+h2::before {
+  content: attr(data-num);
+  display: inline-block; margin-right: 14px;
+  font-family: var(--mono); font-size: 14px; color: var(--gold);
+  font-weight: 500; vertical-align: middle;
+  min-width: 26px;
+}
+p { color: var(--text-muted); margin: 0 0 20px; }
+p em {
+  font-family: var(--editorial); font-style: italic;
+  color: var(--text); font-weight: 500;
+}
+blockquote {
+  margin: 28px 0;
+  padding: 20px 28px;
+  background: rgba(232,200,110,0.04);
+  border-left: 2px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  font-family: var(--editorial); font-style: italic;
+  font-size: 19px; line-height: 1.55;
+  color: var(--text);
+}
+blockquote cite {
+  display: block;
+  font-family: var(--mono); font-style: normal;
+  font-size: 12px; color: var(--text-dim); letter-spacing: 1px;
+  margin-top: 12px;
+}
+ul { padding-left: 22px; margin: 0 0 24px; }
+li { margin-bottom: 10px; color: var(--text-muted); }
+li::marker { color: var(--gold); }
+strong { color: var(--text); font-weight: 700; }
+.cta-block {
+  margin: 56px 0 0;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--gold);
+  border-radius: 8px;
+}
+.cta-block p { margin: 0 0 18px; color: var(--text); font-size: 16px; }
+.cta-button {
+  display: inline-block;
+  padding: 12px 22px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  color: #1a0b10; font-weight: 700; font-size: 15px;
+  border: 0; text-decoration: none;
+}
+.cta-button:hover { color: #1a0b10; border: 0; }
+.related {
+  margin-top: 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+@media (max-width: 640px) {
+  .related { grid-template-columns: 1fr; }
+}
+.related a {
+  display: block; padding: 16px 18px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--text); border-bottom: 1px solid var(--line);
+  transition: border-color 0.2s;
+}
+.related a:hover { border-color: rgba(232,200,110,0.4); }
+.related a .rel-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: 6px;
+}
+footer.page-footer {
+  max-width: 720px; margin: 0 auto; padding: 48px 24px;
+  border-top: 1px solid var(--line);
+  color: var(--text-dim); font-size: 13px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+footer.page-footer a { color: var(--text-muted); border: 0; }
+footer.page-footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#e8c86e" stroke-width="1.5"/>
+        <line x1="12" y1="3.5" x2="12" y2="5" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="12" y1="19" x2="12" y2="20.5" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="3.5" y1="12" x2="5" y2="12" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="19" y1="12" x2="20.5" y2="12" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="12" y1="12" x2="12" y2="7.5" stroke="#d4a846" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="12" x2="18" y2="9" stroke="#e8c86e" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="1.2" fill="#d4a846"/>
+      </svg>
+      HourSpend
+    </a>
+    <a href="/" class="back-link">← Home</a>
+  </div>
+</nav>
+
+<main>
+  <div class="eyebrow">Philosophy</div>
+  <h1>Money is <em>time</em>,<br>exchanged.</h1>
+  <p class="lede">The idea behind HourSpend is not new. It is borrowed, honestly, from two books that got there first. This page is about where it came from, why it is still the right frame, and what HourSpend specifically does with it.</p>
+  <div class="byline">HourSpend · Published April 2026</div>
+
+  <h2 data-num="01">The question behind the app</h2>
+  <p>There is a question hiding inside every price tag: <em>how much of your life does this cost?</em></p>
+  <p>The question is invisible most of the time, because currency is abstract. "$5" feels like a number. It does not feel like anything concrete. It does not feel like <em>twenty-three minutes of a Tuesday afternoon you will never get back</em>. But that is what it is, if you earn roughly $13 an hour. It just doesn't feel like it.</p>
+  <p>HourSpend is built on the smallest useful change that makes the question feel answerable: show the duration, not just the price. The rest of the app — categories, goals, AI chat, investments — is scaffolding around that one trick.</p>
+
+  <h2 data-num="02">Your Money or Your Life (1992)</h2>
+  <p>The canonical source is <strong>Vicki Robin</strong> and <strong>Joe Dominguez</strong>'s <em>Your Money or Your Life</em>, published in 1992 and revised in 1998, 2008, and 2018. The book has sold more than a million copies and is widely credited as the foundational text of the FIRE (Financial Independence, Retire Early) movement.</p>
+  <p>Robin and Dominguez reframed personal finance around a single concept they called <strong>life energy</strong>: the finite amount of waking time you trade for money. Their argument was that dollars are not the unit of account — hours are. Every purchase is a conversion.</p>
+  <blockquote>
+    "Money is something we choose to trade our life energy for."
+    <cite>— Vicki Robin &amp; Joe Dominguez, <em>Your Money or Your Life</em></cite>
+  </blockquote>
+  <p>Their method has nine steps. The most quotable is Step 2: calculate your <strong>real hourly wage</strong>. Take your gross salary. Subtract taxes. Subtract the cost of commuting, work clothes, lunches out, the stress-decompression purchases you wouldn't make if you didn't have this job. What's left, divided by the actual hours you give up, is what you really earn. For most people the real rate is 30–50% lower than the gross rate — and using that real rate in any budgeting math produces dramatically different conclusions about whether a given purchase is worth it.</p>
+  <p>The book predates smartphones by fifteen years. Robin and Dominguez expected you to keep a paper ledger, do the math by hand, and review monthly. HourSpend is one very direct attempt to do the same thing at the speed of a tap.</p>
+
+  <h2 data-num="03">Four Thousand Weeks (2021)</h2>
+  <p>A second source is more recent: <strong>Oliver Burkeman</strong>'s <em>Four Thousand Weeks: Time Management for Mortals</em>, published in 2021 and a sustained bestseller. Burkeman's book is not about money. It is about time — the brute arithmetic that a human lifespan is approximately four thousand weeks, and the philosophical consequences of that number being small.</p>
+  <blockquote>
+    "The average human lifespan is absurdly, terrifyingly, insultingly short."
+    <cite>— Oliver Burkeman, <em>Four Thousand Weeks</em></cite>
+  </blockquote>
+  <p>The two books arrive at the same ground from different angles. Robin and Dominguez say: <em>money is bought with life</em>, so price every purchase in hours of life. Burkeman says: <em>life is the raw material</em>, so stop pretending anything else is the real resource. HourSpend sits at the intersection: a tool that makes you count life when you spend money.</p>
+
+  <h2 data-num="04">What HourSpend actually does</h2>
+  <p>The app is not philosophy, it is execution. Concretely:</p>
+  <ul>
+    <li><strong>Price everything in hours.</strong> You enter your wage once. From then on, every expense is shown as money <em>and</em> the work-duration it equals.</li>
+    <li><strong>Real-rate-aware.</strong> The app lets you subtract mandatory expenses (rent, bills, transit, taxes) to produce your real hourly wage. The conversion uses the real rate when you ask it to.</li>
+    <li><strong>Decision framing.</strong> When you add an expense, the app offers three choices: <em>bought</em>, <em>thinking</em>, or <em>passed</em>. "Passed" amounts are credited to a Saved Pool you can later allocate to a goal or an investment.</li>
+    <li><strong>Vanti.</strong> The in-app assistant — a gold pocket watch, not a spreadsheet — answers "can I afford this?" in hours instead of tables, and surfaces patterns in your spending when it notices one.</li>
+  </ul>
+  <p>That is the whole list. HourSpend is deliberately small. The point is to make one question — <em>how much of my life does this cost?</em> — feel answered every time you spend, without adding friction.</p>
+
+  <h2 data-num="05">What HourSpend won't do</h2>
+  <p>The books describe a philosophy. A philosophy is not a tool, but it has opinions. Here are the ones we inherited:</p>
+  <ul>
+    <li><strong>No judgement.</strong> Seeing a purchase in hours is information, not a verdict. If your 1.4-hour lunch makes your day better, the 1.4 hours may be the right trade. HourSpend shows the cost; it does not have an opinion about the answer.</li>
+    <li><strong>No bank feeds.</strong> The methodology depends on the user being the one who does the counting. An aggregator that pulls transactions in the background breaks the link between decision and awareness. Every HourSpend entry is made by hand.</li>
+    <li><strong>No fear-selling.</strong> The app is not going to tell you you'll run out, or that you're on track to a bad place. Both are usually lies, and they make the app feel like a creditor. HourSpend observes. You decide.</li>
+  </ul>
+
+  <h2 data-num="06">Further reading</h2>
+  <ul>
+    <li><em>Your Money or Your Life</em> — <a href="https://vickirobin.com/your-money-or-your-life/" rel="noopener">Vicki Robin's author page</a>. If you are only going to read one book about personal finance, read this one.</li>
+    <li><em>Four Thousand Weeks</em> — Oliver Burkeman's blog <a href="https://www.oliverburkeman.com/" rel="noopener">oliverburkeman.com</a> extends the argument.</li>
+    <li><em>Mr. Money Mustache</em>, <em>Afford Anything</em>, <em>ChooseFI</em>, <em>Mad Fientist</em> — contemporary voices in the FIRE community, most of whom cite Robin and Dominguez directly.</li>
+  </ul>
+
+  <div class="cta-block">
+    <p><strong>The short version</strong> — HourSpend turns every expense into the number of hours of work it really cost you. The idea is borrowed, honestly, from the books above. Our job is to make it take one second instead of thirty minutes with a ledger.</p>
+    <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="cta-button">Get the iOS app</a>
+  </div>
+
+  <div class="related">
+    <a href="/calculator">
+      <span class="rel-label">Try it</span>
+      The calculator → work out any purchase in hours right now.
+    </a>
+    <a href="/buying">
+      <span class="rel-label">Browse</span>
+      52 purchases already priced in hours — coffee to Teslas.
+    </a>
+  </div>
+</main>
+
+<footer class="page-footer">
+  <div>© HourSpend · Money is just time, exchanged.</div>
+  <div>
+    <a href="/">Home</a> ·
+    <a href="/calculator">Calculator</a> ·
+    <a href="/buying">All items</a> ·
+    <a href="/privacy">Privacy</a>
+  </div>
+</footer>
+
+</body>
+</html>

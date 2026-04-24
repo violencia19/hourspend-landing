@@ -1164,7 +1164,21 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 @keyframes hint-pulse { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
 .reveal-caption .hint svg { width: 14px; height: 14px; }
 @media (hover: none), (pointer: coarse) {
-  .reveal-mouse canvas.reveal-canvas { opacity: 0.25; }
+  .reveal-mouse canvas.reveal-canvas { display: none; }
+  .reveal-mouse { height: 72vh; min-height: 520px; }
+  .reveal-caption { top: 48px; }
+  .reveal-caption h3 { font-size: clamp(32px, 8.5vw, 52px); }
+}
+/* Mobile-only money-overlay that fades out as the section scrolls through view */
+.reveal-top-m {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  z-index: 2; pointer-events: none;
+  will-change: opacity;
+}
+.reveal-top-m::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(4,3,10,0.3), rgba(4,3,10,0.5));
 }
 
 /* === LIVE SOCIAL PROOF TICKER === */
@@ -3074,6 +3088,7 @@ const I18N = {
     'rev.e': 'The reframe, visualized',
     'rev.h': 'You think you\'re spending <span class="money">money</span>.<br>You\'re really spending <span class="italic">your life</span>.',
     'rev.hint': 'Move your cursor over the image',
+    'rev.hintMobile': 'Scroll — money becomes life',
     'vanti.eye': 'Meet your pocket teammate',
     'vanti.h': 'Meet <span class="vanti-name">Vanti</span>.<br>A pocket watch with <span class="italic">opinions</span>.',
     'vanti.sub': 'Your in-app assistant. Notices when food eats half the week. Translates every spend to hours. Never lectures. Warms up fast.',
@@ -3188,6 +3203,7 @@ const I18N = {
     'rev.e': 'Yeniden çerçeveleme, görsel',
     'rev.h': '<span class="money">Para</span> harcadığını sanıyorsun.<br><span class="italic">Hayatını</span> harcıyorsun.',
     'rev.hint': 'Görselin üzerinde imleci gezdir',
+    'rev.hintMobile': 'Kaydır — para hayata dönüşüyor',
     'vanti.eye': 'Cebindeki yeni yoldaş',
     'vanti.h': '<span class="vanti-name">Vanti</span>\'yle tanış.<br><span class="italic">Görüşleri olan</span> bir cep saati.',
     'vanti.sub': 'Uygulamanın içindeki arkadaşın. Haftanın yarısı yemeğe gitmişse fark eder. Her harcamayı saate çevirir. Yargılamaz, sıcak konuşur.',
@@ -3301,6 +3317,7 @@ const I18N = {
     'rev.e': 'El recadre, visualizado',
     'rev.h': 'Crees que gastas <span class="money">dinero</span>.<br>Estás gastando <span class="italic">tu vida</span>.',
     'rev.hint': 'Mueve el cursor sobre la imagen',
+    'rev.hintMobile': 'Desliza — el dinero se vuelve vida',
     'vanti.eye': 'Tu compañera de bolsillo',
     'vanti.h': 'Te presentamos a <span class="vanti-name">Vanti</span>.<br>Un reloj de bolsillo <span class="italic">con opiniones</span>.',
     'vanti.sub': 'Tu asistente dentro de la app. Nota cuando la comida se lleva media semana. Traduce cada gasto a horas. Nunca sermonea. Se acerca rápido.',
@@ -3414,6 +3431,7 @@ const I18N = {
     'rev.e': 'Der Reframe, visualisiert',
     'rev.h': 'Du glaubst, du gibst <span class="money">Geld</span> aus.<br>Du gibst <span class="italic">dein Leben</span> aus.',
     'rev.hint': 'Fahre mit dem Cursor über das Bild',
+    'rev.hintMobile': 'Scrollen — Geld wird Leben',
     'vanti.eye': 'Dein Taschen-Teammate',
     'vanti.h': 'Das ist <span class="vanti-name">Vanti</span>.<br>Eine Taschenuhr <span class="italic">mit Meinung</span>.',
     'vanti.sub': 'Dein Assistent in der App. Merkt, wenn Essen die halbe Woche frisst. Übersetzt jede Ausgabe in Stunden. Predigt nie. Ist schnell warm.',
@@ -3527,6 +3545,7 @@ const I18N = {
     'rev.e': 'Le recadrage, visualisé',
     'rev.h': 'Tu crois dépenser de l\'<span class="money">argent</span>.<br>Tu dépenses <span class="italic">ta vie</span>.',
     'rev.hint': 'Passe ton curseur sur l\'image',
+    'rev.hintMobile': 'Fais défiler — l\'argent devient la vie',
     'vanti.eye': 'Ta coéquipière de poche',
     'vanti.h': 'Voici <span class="vanti-name">Vanti</span>.<br>Une montre de poche <span class="italic">avec des avis</span>.',
     'vanti.sub': 'Ton assistante dans l\'app. Remarque quand la bouffe avale la moitié de ta semaine. Traduit chaque dépense en heures. Ne sermonne pas.',
@@ -3640,6 +3659,7 @@ const I18N = {
     'rev.e': 'O reframe, visualizado',
     'rev.h': 'Você acha que gasta <span class="money">dinheiro</span>.<br>Você gasta <span class="italic">sua vida</span>.',
     'rev.hint': 'Passe o cursor sobre a imagem',
+    'rev.hintMobile': 'Role — dinheiro vira vida',
     'vanti.eye': 'Sua companheira de bolso',
     'vanti.h': 'Conheça a <span class="vanti-name">Vanti</span>.<br>Um relógio de bolso <span class="italic">com opiniões</span>.',
     'vanti.sub': 'Sua assistente dentro do app. Percebe quando comida come metade da semana. Traduz cada gasto em horas. Não faz sermão. Esquenta rápido.',
@@ -3753,6 +3773,7 @@ const I18N = {
     'rev.e': 'リフレームを可視化',
     'rev.h': '<span class="money">お金</span>を使っていると思っている。<br>実は<span class="italic">人生</span>を使っている。',
     'rev.hint': '画像の上でカーソルを動かして',
+    'rev.hintMobile': 'スクロール — お金が人生に',
     'vanti.eye': 'ポケットの相棒',
     'vanti.h': '<span class="vanti-name">Vanti</span>を紹介。<br><span class="italic">意見を持つ</span>懐中時計。',
     'vanti.sub': 'アプリ内のアシスタント。食費が一週間の半分を占めたら気づく。すべての支出を時間に換える。説教はしない。すぐ馴染む。',
@@ -3999,12 +4020,40 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
   if (lenis) lenis.destroy();
 }
 
-/* ============ CURSOR REVEAL — CANVAS TRAIL ============ */
+/* ============ CURSOR REVEAL — CANVAS TRAIL (desktop) + SCROLL FADE (mobile) ============ */
 (()=>{
   const sec=document.getElementById('revealMouse');
   const canvas=document.getElementById('revealCanvas');
   if(!sec||!canvas)return;
-  if(matchMedia('(hover: none)').matches)return;
+  // Touch / coarse-pointer devices: swap the canvas trail for a scroll-driven money→life fade
+  if(matchMedia('(hover: none), (pointer: coarse)').matches){
+    const topUrl = sec.dataset.top;
+    const layer = document.createElement('div');
+    layer.className = 'reveal-top-m';
+    layer.style.backgroundImage = `url('${topUrl}')`;
+    sec.insertBefore(layer, sec.querySelector('.reveal-caption'));
+    const hintSpan = sec.querySelector('[data-i18n="rev.hint"]');
+    if (hintSpan) {
+      hintSpan.setAttribute('data-i18n', 'rev.hintMobile');
+      try {
+        const dict = I18N[__currentLang] || I18N.en;
+        if (dict && dict['rev.hintMobile']) hintSpan.textContent = dict['rev.hintMobile'];
+      } catch (e) {}
+    }
+    const update = () => {
+      const rect = sec.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // Start fading when the section is 80% up the viewport, finish when mostly scrolled past
+      const travelled = vh * 0.85 - rect.top;
+      const totalDistance = vh * 0.85 + rect.height * 0.55;
+      const progress = Math.max(0, Math.min(1, travelled / totalDistance));
+      layer.style.opacity = String(1 - progress);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    return;
+  }
   const ctx=canvas.getContext('2d',{alpha:true});
   const topUrl=sec.dataset.top;
   const img=new Image();img.crossOrigin='anonymous';img.src=topUrl;

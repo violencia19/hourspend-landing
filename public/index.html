@@ -711,18 +711,18 @@ h2 .italic { font-family: var(--editorial); font-style: italic; font-weight: 700
 .bento-photo {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
-  opacity: 0.35;
+  opacity: 0.72;
   transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
   z-index: 0;
 }
-.bento-cell:hover .bento-photo { opacity: 0.55; transform: scale(1.05); }
+.bento-cell:hover .bento-photo { opacity: 0.92; transform: scale(1.05); }
 .bento-cell::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,7,16,0.35) 0%, rgba(10,7,16,0.85) 70%, rgba(10,7,16,0.95) 100%);
+  background: linear-gradient(180deg, rgba(10,7,16,0.05) 0%, rgba(10,7,16,0.55) 65%, rgba(10,7,16,0.82) 100%);
   z-index: 1; pointer-events: none;
 }
 .bento-cell.large::after {
-  background: linear-gradient(135deg, rgba(10,7,16,0.55) 0%, rgba(10,7,16,0.75) 55%, rgba(10,7,16,0.92) 100%);
+  background: linear-gradient(135deg, rgba(10,7,16,0.15) 0%, rgba(10,7,16,0.5) 55%, rgba(10,7,16,0.82) 100%);
 }
 
 /* === LIFESTYLE GALLERY === */
@@ -941,6 +941,15 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.25s; }
 .footer-links a:hover { color: var(--text); }
 .footer-credit { color: var(--text-dim); font-size: 12px; font-family: var(--mono); letter-spacing: 0.5px; }
+.footer-vanti { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 28px; }
+.footer-vanti img { width: 72px; height: 72px; object-fit: contain; filter: drop-shadow(0 8px 24px rgba(232,200,110,0.15)); }
+.footer-vanti .wave { font-family: var(--editorial); font-style: italic; font-size: 15px; color: var(--text-muted); letter-spacing: 0.2px; }
+
+/* === VANTI TICKER + FAQ HEAD === */
+.ticker-vanti { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; margin-right: 6px; vertical-align: middle; }
+.faq-vanti-intro { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px; }
+.faq-vanti-intro img { width: 44px; height: 44px; object-fit: contain; filter: drop-shadow(0 4px 16px rgba(232,200,110,0.2)); }
+.faq-vanti-intro .bubble { background: rgba(232,200,110,0.08); border: 1px solid rgba(232,200,110,0.22); color: var(--gold-soft); padding: 7px 14px; border-radius: 999px; font-size: 12px; font-family: var(--mono); letter-spacing: 0.5px; }
 
 /* === REVEAL === */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
@@ -1968,33 +1977,96 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
   </svg>
 </div>
 
-<!-- BIG NUMBERS -->
-<section class="numbers-section">
-  <div class="section-head reveal">
-    <div class="eyebrow" data-scramble data-i18n="numbers.eye">The hard numbers</div>
-    <h2 data-i18n="numbers.title" data-i18n-html>Built <span class="italic">different.</span></h2>
-    <p class="section-sub" data-i18n="numbers.sub">No ads. No data selling. No manipulation. Just your money, re-expressed.</p>
+<!-- DOWNLOAD -->
+<section class="download" id="download">
+  <div class="download-card reveal">
+    <div class="download-content">
+      <div class="eyebrow" data-scramble data-i18n="dl.eye">Get the iOS app</div>
+      <h2 data-i18n-html="dl.title">Track every dollar<br>in <span class="italic">hours</span> of life.</h2>
+      <p data-i18n="dl.sub">The free calculator is a taste. The iOS app does it for every expense, automatically.</p>
+      <ul class="download-features">
+        <li data-i18n="dl.f1">Add expenses by voice, text, or receipt scan</li>
+        <li data-i18n="dl.f2">See your monthly burn in work-hours</li>
+        <li data-i18n="dl.f3">Set savings goals as "hours back"</li>
+        <li data-i18n="dl.f4">14 languages · multi-currency · private by default</li>
+      </ul>
+      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="appstore-badge" data-magnetic>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span data-i18n="dl.badge">Download on App Store</span>
+      </a>
+    </div>
+
+    <div class="phone-photo-wrap">
+      <div class="phone-photo" style="background-image:url('https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=1200&q=85&auto=format&fit=crop')"></div>
+      <div class="phone-badge">
+        <div class="phone-badge-k" data-i18n="ph.week">This week</div>
+        <div class="phone-badge-v">14<span>h</span> 32<span>m</span></div>
+        <div class="phone-badge-s" data-i18n="ph.spent">≈ $363 · priced in your life</div>
+      </div>
+    </div>
   </div>
-  <div class="numbers-grid">
-    <div class="number-card reveal">
-      <div class="big">#1</div>
-      <div class="label" data-i18n="num1.l">Money-in-hours app</div>
-      <div class="sub" data-i18n="num1.s">Category creator · iOS</div>
+</section>
+
+<!-- BENTO -->
+<section class="bento-section" id="bento">
+  <div class="section-head reveal">
+    <div class="eyebrow" data-scramble data-i18n="bento.eye">The truth in numbers</div>
+    <h2 data-i18n-html="bento.title">What everyday spending <span class="italic">really</span> costs.</h2>
+    <p class="section-sub" data-i18n="bento.sub">At a $25/hour wage. Drag the calculator above to see your own numbers.</p>
+  </div>
+
+  <div class="bento">
+    <div class="bento-cell large reveal" data-spotlight data-tilt>
+      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1400&q=80&auto=format&fit=crop')"></div>
+      <div>
+        <div class="meta" data-i18n="b1.meta">Daily latte habit</div>
+        <h3 data-i18n="b1.h">Your morning coffee for a year =</h3>
+      </div>
+      <div>
+        <div class="equation" data-i18n="b1.eq">14 work days</div>
+        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
+        <div class="price" data-i18n="b1.p">$5/day × 365 · 73 hours of work</div>
+      </div>
     </div>
-    <div class="number-card reveal reveal-d1">
-      <div class="big" data-count="10" data-count-suffix="K+">10K+</div>
-      <div class="label" data-i18n="num2.l">Expenses tracked</div>
-      <div class="sub" data-i18n="num2.s">Every month, and growing</div>
+
+    <div class="bento-cell reveal reveal-d1" data-spotlight data-tilt>
+      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=900&q=80&auto=format&fit=crop')"></div>
+      <div>
+        <div class="meta" data-i18n="b2.meta">iPhone 16 Pro</div>
+        <h3 data-i18n="b2.price">$1,199</h3>
+      </div>
+      <div class="equation eq-sm" data-i18n="b2.eq">6 weeks</div>
+        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
     </div>
-    <div class="number-card reveal reveal-d2">
-      <div class="big">4.8★</div>
-      <div class="label" data-i18n="num3.l">Average rating</div>
-      <div class="sub" data-i18n="num3.s">Across every region</div>
+
+    <div class="bento-cell reveal reveal-d2" data-spotlight data-tilt>
+      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80&auto=format&fit=crop')"></div>
+      <div>
+        <div class="meta" data-i18n="b3.meta">NYC 1-bed rent</div>
+        <h3 data-i18n="b3.price">$4,500/mo</h3>
+      </div>
+      <div class="equation eq-sm" data-i18n="b3.eq">22.5 days</div>
+        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
     </div>
-    <div class="number-card reveal reveal-d3">
-      <div class="big" data-count="14">14</div>
-      <div class="label" data-i18n="num4.l">Languages live</div>
-      <div class="sub" data-i18n="num4.s">Full localization</div>
+
+    <div class="bento-cell reveal reveal-d1" data-spotlight data-tilt>
+      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=80&auto=format&fit=crop')"></div>
+      <div>
+        <div class="meta" data-i18n="b4.meta">DoorDash dinner</div>
+        <h3 data-i18n="b4.price">$32</h3>
+      </div>
+      <div class="equation eq-sm" data-i18n="b4.eq">1.3 hrs</div>
+        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
+    </div>
+
+    <div class="bento-cell reveal reveal-d2" data-spotlight data-tilt>
+      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=900&q=80&auto=format&fit=crop')"></div>
+      <div>
+        <div class="meta" data-i18n="b5.meta">Netflix yearly</div>
+        <h3 data-i18n="b5.price">$276</h3>
+      </div>
+      <div class="equation eq-sm" data-i18n="b5.eq">11 hrs</div>
+        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
     </div>
   </div>
 </section>
@@ -2010,35 +2082,6 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
     <div class="hint">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v5h5M3 12a9 9 0 109-9"/></svg>
       <span data-i18n="rev.hint">Move your cursor over the image</span>
-    </div>
-  </div>
-</section>
-
-<!-- MEET VANTI — TEASER -->
-<section class="vanti-teaser" id="vanti">
-  <div class="vanti-inner">
-    <div class="vanti-eyebrow" data-i18n="vanti.eye">Coming in the next build</div>
-    <h2 class="vanti-title" data-i18n-html="vanti.h">Meet <span class="vanti-name">Vanti</span>.<br>A pocket watch with <span class="italic">opinions</span>.</h2>
-    <p class="vanti-sub" data-i18n="vanti.sub">Your in-app assistant. Notices when food eats half the week. Translates every spend to hours. Never lectures. Warms up fast.</p>
-
-    <div class="vanti-strip">
-      <figure class="vanti-card">
-        <img src="/assets/vanti/waving.png" alt="Vanti waving" width="180" height="180" loading="lazy">
-        <figcaption data-i18n="vanti.m1">Hi there.</figcaption>
-      </figure>
-      <figure class="vanti-card vanti-card-lg">
-        <img src="/assets/vanti/thinking.png" alt="Vanti thinking" width="220" height="220" loading="lazy">
-        <figcaption data-i18n="vanti.m2">Weighing it for you.</figcaption>
-      </figure>
-      <figure class="vanti-card">
-        <img src="/assets/vanti/celebrating.png" alt="Vanti celebrating" width="180" height="180" loading="lazy">
-        <figcaption data-i18n="vanti.m3">You just kept 20 hours.</figcaption>
-      </figure>
-    </div>
-
-    <div class="vanti-foot">
-      <span class="vanti-dot"></span>
-      <span data-i18n="vanti.foot">Ships with the next build. The app already works without her.</span>
     </div>
   </div>
 </section>
@@ -2082,70 +2125,6 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       <p class="story-caption" id="storyCaption" data-i18n="story.cap1">
         Counting in dollars hides the truth.
       </p>
-    </div>
-  </div>
-</section>
-
-<!-- BENTO -->
-<section class="bento-section" id="bento">
-  <div class="section-head reveal">
-    <div class="eyebrow" data-scramble data-i18n="bento.eye">The truth in numbers</div>
-    <h2 data-i18n-html="bento.title">What everyday spending <span class="italic">really</span> costs.</h2>
-    <p class="section-sub" data-i18n="bento.sub">At a $25/hour wage. Drag the calculator above to see your own numbers.</p>
-  </div>
-
-  <div class="bento">
-    <div class="bento-cell large reveal" data-spotlight data-tilt>
-      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1400&q=80&auto=format&fit=crop')"></div>
-      <div>
-        <div class="meta" data-i18n="b1.meta">Daily latte habit</div>
-        <h3 data-i18n="b1.h">Your morning coffee for a year =</h3>
-      </div>
-      <div>
-        <div class="equation" data-i18n="b1.eq">14 work days</div>
-        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
-        <div class="price" data-i18n="b1.p">$5/day × 365 · 73 hours of work</div>
-      </div>
-    </div>
-
-    <div class="bento-cell reveal reveal-d1" data-spotlight data-tilt>
-      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=900&q=80&auto=format&fit=crop')"></div>
-      <div>
-        <div class="meta" data-i18n="b2.meta">iPhone 16 Pro</div>
-        <h3>$1,199</h3>
-      </div>
-      <div class="equation eq-sm" data-i18n="b2.eq">6 weeks</div>
-        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
-    </div>
-
-    <div class="bento-cell reveal reveal-d2" data-spotlight data-tilt>
-      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80&auto=format&fit=crop')"></div>
-      <div>
-        <div class="meta" data-i18n="b3.meta">NYC 1-bed rent</div>
-        <h3>$4,500/mo</h3>
-      </div>
-      <div class="equation eq-sm" data-i18n="b3.eq">22.5 days</div>
-        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
-    </div>
-
-    <div class="bento-cell reveal reveal-d1" data-spotlight data-tilt>
-      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=80&auto=format&fit=crop')"></div>
-      <div>
-        <div class="meta" data-i18n="b4.meta">DoorDash dinner</div>
-        <h3>$32</h3>
-      </div>
-      <div class="equation eq-sm" data-i18n="b4.eq">1.3 hrs</div>
-        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
-    </div>
-
-    <div class="bento-cell reveal reveal-d2" data-spotlight data-tilt>
-      <div class="bento-photo" style="background-image:url('https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=900&q=80&auto=format&fit=crop')"></div>
-      <div>
-        <div class="meta" data-i18n="b5.meta">Netflix yearly</div>
-        <h3>$276</h3>
-      </div>
-      <div class="equation eq-sm" data-i18n="b5.eq">11 hrs</div>
-        <svg class="eq-underline" viewBox="0 0 140 6" preserveAspectRatio="none"><path d="M 2 3 Q 35 0 70 3 T 138 3"/></svg>
     </div>
   </div>
 </section>
@@ -2214,6 +2193,37 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
   </div>
 </section>
 
+<!-- BIG NUMBERS -->
+<section class="numbers-section">
+  <div class="section-head reveal">
+    <div class="eyebrow" data-scramble data-i18n="numbers.eye">The hard numbers</div>
+    <h2 data-i18n="numbers.title" data-i18n-html>Built <span class="italic">different.</span></h2>
+    <p class="section-sub" data-i18n="numbers.sub">No ads. No data selling. No manipulation. Just your money, re-expressed.</p>
+  </div>
+  <div class="numbers-grid">
+    <div class="number-card reveal">
+      <div class="big">#1</div>
+      <div class="label" data-i18n="num1.l">Money-in-hours app</div>
+      <div class="sub" data-i18n="num1.s">Category creator · iOS</div>
+    </div>
+    <div class="number-card reveal reveal-d1">
+      <div class="big" data-count="10" data-count-suffix="K+">10K+</div>
+      <div class="label" data-i18n="num2.l">Expenses tracked</div>
+      <div class="sub" data-i18n="num2.s">Every month, and growing</div>
+    </div>
+    <div class="number-card reveal reveal-d2">
+      <div class="big">4.8★</div>
+      <div class="label" data-i18n="num3.l">Average rating</div>
+      <div class="sub" data-i18n="num3.s">Across every region</div>
+    </div>
+    <div class="number-card reveal reveal-d3">
+      <div class="big" data-count="14">14</div>
+      <div class="label" data-i18n="num4.l">Languages live</div>
+      <div class="sub" data-i18n="num4.s">Full localization</div>
+    </div>
+  </div>
+</section>
+
 <!-- vs COMPETITION -->
 <section class="compare-section" id="compare">
   <div class="section-head reveal">
@@ -2244,8 +2254,8 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
           <td data-i18n="vs.r2">Free forever (core features)</td>
           <td class="hs-col check">✓</td>
           <td class="cross">—</td>
-          <td class="cross">$14.99/mo</td>
-          <td class="cross">$13/mo</td>
+          <td class="cross" data-usd="14.99" data-usd-suffix-key="unit.perMonth">$14.99/mo</td>
+          <td class="cross" data-usd="13" data-usd-suffix-key="unit.perMonth">$13/mo</td>
         </tr>
         <tr>
           <td data-i18n="vs.r3">No ads. No data selling.</td>
@@ -2313,9 +2323,42 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
   </div>
 </section>
 
+<!-- MEET VANTI — TEASER -->
+<section class="vanti-teaser" id="vanti">
+  <div class="vanti-inner">
+    <div class="vanti-eyebrow" data-i18n="vanti.eye">Meet your pocket teammate</div>
+    <h2 class="vanti-title" data-i18n-html="vanti.h">Meet <span class="vanti-name">Vanti</span>.<br>A pocket watch with <span class="italic">opinions</span>.</h2>
+    <p class="vanti-sub" data-i18n="vanti.sub">Your in-app assistant. Notices when food eats half the week. Translates every spend to hours. Never lectures. Warms up fast.</p>
+
+    <div class="vanti-strip">
+      <figure class="vanti-card">
+        <img src="/assets/vanti/waving.png" alt="Vanti waving" width="180" height="180" loading="lazy">
+        <figcaption data-i18n="vanti.m1">Hi there.</figcaption>
+      </figure>
+      <figure class="vanti-card vanti-card-lg">
+        <img src="/assets/vanti/thinking.png" alt="Vanti thinking" width="220" height="220" loading="lazy">
+        <figcaption data-i18n="vanti.m2">Weighing it for you.</figcaption>
+      </figure>
+      <figure class="vanti-card">
+        <img src="/assets/vanti/celebrating.png" alt="Vanti celebrating" width="180" height="180" loading="lazy">
+        <figcaption data-i18n="vanti.m3">You just kept 20 hours.</figcaption>
+      </figure>
+    </div>
+
+    <div class="vanti-foot">
+      <span class="vanti-dot"></span>
+      <span data-i18n="vanti.foot">Live inside the app. No extra setup.</span>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq-section" id="faq">
   <div class="section-head reveal">
+    <div class="faq-vanti-intro">
+      <img src="/assets/vanti/thinking.png" alt="" aria-hidden="true">
+      <span class="bubble" data-i18n="faq.vanti">Vanti is listening</span>
+    </div>
     <div class="eyebrow" data-scramble data-i18n="faq.eye">Questions</div>
     <h2 data-i18n-html="faq.title">Things people <span class="italic">ask us.</span></h2>
   </div>
@@ -2356,57 +2399,27 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 
   <div class="marquee-wrap">
     <div class="marquee">
-      <a href="/buying/iphone-16-pro" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">iPhone 16 Pro</span><div class="price-row"><span class="price">$1,199</span><span class="hours">48h</span></div></div></a>
-      <a href="/buying/macbook-air-m3" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">MacBook Air M3</span><div class="price-row"><span class="price">$1,099</span><span class="hours">44h</span></div></div></a>
-      <a href="/buying/tesla-model-3" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Tesla Model 3</span><div class="price-row"><span class="price">$38,990</span><span class="hours">8mo</span></div></div></a>
-      <a href="/buying/starbucks-venti-latte" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Venti Latte</span><div class="price-row"><span class="price">$6.15</span><span class="hours">15m</span></div></div></a>
-      <a href="/buying/playstation-5" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">PlayStation 5</span><div class="price-row"><span class="price">$499</span><span class="hours">20h</span></div></div></a>
-      <a href="/buying/airpods-pro-2" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">AirPods Pro 2</span><div class="price-row"><span class="price">$249</span><span class="hours">10h</span></div></div></a>
-      <a href="/buying/netflix-monthly" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Netflix monthly</span><div class="price-row"><span class="price">$22.99</span><span class="hours">55m</span></div></div></a>
-      <a href="/buying/chatgpt-plus-monthly" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">ChatGPT Plus</span><div class="price-row"><span class="price">$20</span><span class="hours">48m</span></div></div></a>
-      <a href="/buying/wedding-average-cost" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Wedding (avg)</span><div class="price-row"><span class="price">$35,000</span><span class="hours">7mo</span></div></div></a>
+      <a href="/buying/iphone-16-pro" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">iPhone 16 Pro</span><div class="price-row"><span class="price" data-usd="1199">$1,199</span><span class="hours">48h</span></div></div></a>
+      <a href="/buying/macbook-air-m3" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">MacBook Air M3</span><div class="price-row"><span class="price" data-usd="1099">$1,099</span><span class="hours">44h</span></div></div></a>
+      <a href="/buying/tesla-model-3" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Tesla Model 3</span><div class="price-row"><span class="price" data-usd="38990">$38,990</span><span class="hours">8mo</span></div></div></a>
+      <a href="/buying/starbucks-venti-latte" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Venti Latte</span><div class="price-row"><span class="price" data-usd="6.15">$6.15</span><span class="hours">15m</span></div></div></a>
+      <a href="/buying/playstation-5" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">PlayStation 5</span><div class="price-row"><span class="price" data-usd="499">$499</span><span class="hours">20h</span></div></div></a>
+      <a href="/buying/airpods-pro-2" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">AirPods Pro 2</span><div class="price-row"><span class="price" data-usd="249">$249</span><span class="hours">10h</span></div></div></a>
+      <a href="/buying/netflix-monthly" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Netflix monthly</span><div class="price-row"><span class="price" data-usd="22.99">$22.99</span><span class="hours">55m</span></div></div></a>
+      <a href="/buying/chatgpt-plus-monthly" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">ChatGPT Plus</span><div class="price-row"><span class="price" data-usd="20">$20</span><span class="hours">48m</span></div></div></a>
+      <a href="/buying/wedding-average-cost" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Wedding (avg)</span><div class="price-row"><span class="price" data-usd="35000">$35,000</span><span class="hours">7mo</span></div></div></a>
       <!-- loop -->
-      <a href="/buying/iphone-16-pro" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">iPhone 16 Pro</span><div class="price-row"><span class="price">$1,199</span><span class="hours">48h</span></div></div></a>
-      <a href="/buying/macbook-air-m3" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">MacBook Air M3</span><div class="price-row"><span class="price">$1,099</span><span class="hours">44h</span></div></div></a>
-      <a href="/buying/tesla-model-3" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Tesla Model 3</span><div class="price-row"><span class="price">$38,990</span><span class="hours">8mo</span></div></div></a>
-      <a href="/buying/starbucks-venti-latte" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Venti Latte</span><div class="price-row"><span class="price">$6.15</span><span class="hours">15m</span></div></div></a>
-      <a href="/buying/playstation-5" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">PlayStation 5</span><div class="price-row"><span class="price">$499</span><span class="hours">20h</span></div></div></a>
-      <a href="/buying/airpods-pro-2" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">AirPods Pro 2</span><div class="price-row"><span class="price">$249</span><span class="hours">10h</span></div></div></a>
+      <a href="/buying/iphone-16-pro" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">iPhone 16 Pro</span><div class="price-row"><span class="price" data-usd="1199">$1,199</span><span class="hours">48h</span></div></div></a>
+      <a href="/buying/macbook-air-m3" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">MacBook Air M3</span><div class="price-row"><span class="price" data-usd="1099">$1,099</span><span class="hours">44h</span></div></div></a>
+      <a href="/buying/tesla-model-3" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Tesla Model 3</span><div class="price-row"><span class="price" data-usd="38990">$38,990</span><span class="hours">8mo</span></div></div></a>
+      <a href="/buying/starbucks-venti-latte" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">Venti Latte</span><div class="price-row"><span class="price" data-usd="6.15">$6.15</span><span class="hours">15m</span></div></div></a>
+      <a href="/buying/playstation-5" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">PlayStation 5</span><div class="price-row"><span class="price" data-usd="499">$499</span><span class="hours">20h</span></div></div></a>
+      <a href="/buying/airpods-pro-2" class="marquee-card"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=600&q=80&auto=format&fit=crop')"></div><div class="body"><span class="name">AirPods Pro 2</span><div class="price-row"><span class="price" data-usd="249">$249</span><span class="hours">10h</span></div></div></a>
     </div>
   </div>
 
   <div class="browse-all reveal">
     <a href="/buying" class="btn-ghost" data-magnetic><span data-i18n="marq.browse">Browse all 52 items</span> <span style="display:inline-block;transition:transform .25s">→</span></a>
-  </div>
-</section>
-
-<!-- DOWNLOAD -->
-<section class="download" id="download">
-  <div class="download-card reveal">
-    <div class="download-content">
-      <div class="eyebrow" data-scramble data-i18n="dl.eye">Get the iOS app</div>
-      <h2 data-i18n-html="dl.title">Track every dollar<br>in <span class="italic">hours</span> of life.</h2>
-      <p data-i18n="dl.sub">The free calculator is a taste. The iOS app does it for every expense, automatically.</p>
-      <ul class="download-features">
-        <li data-i18n="dl.f1">Add expenses by voice, text, or receipt scan</li>
-        <li data-i18n="dl.f2">See your monthly burn in work-hours</li>
-        <li data-i18n="dl.f3">Set savings goals as "hours back"</li>
-        <li data-i18n="dl.f4">14 languages · multi-currency · private by default</li>
-      </ul>
-      <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957" class="appstore-badge" data-magnetic>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        <span data-i18n="dl.badge">Download on App Store</span>
-      </a>
-    </div>
-
-    <div class="phone-photo-wrap">
-      <div class="phone-photo" style="background-image:url('https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=1200&q=85&auto=format&fit=crop')"></div>
-      <div class="phone-badge">
-        <div class="phone-badge-k" data-i18n="ph.week">This week</div>
-        <div class="phone-badge-v">14<span>h</span> 32<span>m</span></div>
-        <div class="phone-badge-s" data-i18n="ph.spent">≈ $363 · priced in your life</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -2428,6 +2441,10 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 
 <footer>
   <div class="footer-inner">
+    <div class="footer-vanti reveal">
+      <img src="/assets/vanti/waving.png" alt="Vanti waving goodbye" loading="lazy">
+      <span class="wave" data-i18n="foot.vanti">— Vanti, your pocket teammate.</span>
+    </div>
     <div class="footer-logo">
       <svg class="logo-clock" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px">
         <circle class="face" cx="12" cy="12" r="10"/>
@@ -2459,7 +2476,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <div class="ticker" id="ticker">
   <div class="ticker-stack" id="tickerStack"></div>
   <div class="ticker-counter">
-    <span>Live · <span class="num" id="liveNum">147</span> reframing now</span>
+    <span><img class="ticker-vanti" src="/assets/vanti/waving.png" alt="" aria-hidden="true">Live · <span class="num" id="liveNum">147</span> reframing now</span>
   </div>
 </div>
 
@@ -2768,14 +2785,25 @@ function u(key) {
 // Locale-aware currency formatting
 // Map: symbol, symbol placement ('pre'/'post'), and default (salary/expense) values
 var LOCALE_CURR = {
-  en: { sym:'$', pos:'pre', salary:3000, exp:5 },
-  tr: { sym:'₺', pos:'post', salary:30000, exp:100 },
-  es: { sym:'$', pos:'pre', salary:3000, exp:5 },
-  de: { sym:'€', pos:'post', salary:2500, exp:4 },
-  fr: { sym:'€', pos:'post', salary:2500, exp:4 },
-  pt: { sym:'R$', pos:'pre', salary:4000, exp:20 },
-  ja: { sym:'¥', pos:'pre', salary:300000, exp:500 }
+  en: { sym:'$', pos:'pre', salary:3000, exp:5, rate:1,   loc:'en-US' },
+  tr: { sym:'₺', pos:'post', salary:30000, exp:100, rate:35, loc:'tr-TR' },
+  es: { sym:'€', pos:'post', salary:2500, exp:4, rate:0.93, loc:'es-ES' },
+  de: { sym:'€', pos:'post', salary:2500, exp:4, rate:0.93, loc:'de-DE' },
+  fr: { sym:'€', pos:'post', salary:2500, exp:4, rate:0.93, loc:'fr-FR' },
+  pt: { sym:'R$', pos:'pre', salary:4000, exp:20, rate:5.1, loc:'pt-BR' },
+  ja: { sym:'¥', pos:'pre', salary:300000, exp:500, rate:150, loc:'ja-JP' }
 };
+// Convert a USD amount into the active locale's currency for display on marquee cards
+function fmtUSDAsLocal(usd) {
+  const loc = LOCALE_CURR[__currentLang] || LOCALE_CURR.en;
+  let val = Number(usd) * loc.rate;
+  // Round: JPY/KRW/TRY whole numbers; EUR/USD/BRL to nearest 1 below 100, else keep 1 decimal for small
+  if (loc.sym === '¥' || loc.sym === '₺') val = Math.round(val);
+  else if (val < 10) val = Math.round(val * 100) / 100;
+  else val = Math.round(val);
+  const nstr = val.toLocaleString(loc.loc);
+  return loc.pos === 'post' ? nstr + loc.sym : loc.sym + nstr;
+}
 function fmtCurr(amount) {
   const loc = LOCALE_CURR[__currentLang] || LOCALE_CURR.en;
   const n = Number(amount);
@@ -2967,10 +2995,10 @@ const I18N = {
     'bento.eye': 'The truth in numbers', 'bento.title': 'What everyday spending <span class="italic">really</span> costs.',
     'bento.sub': 'At a $25/hour wage. Drag the calculator above to see your own numbers.',
     'b1.meta': 'Daily latte habit', 'b1.h': 'Your morning coffee for a year =', 'b1.eq': '14 work days', 'b1.p': '$5/day × 365 · 73 hours of work',
-    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 weeks',
-    'b3.meta': 'NYC 1-bed rent', 'b3.eq': '22.5 days',
-    'b4.meta': 'DoorDash dinner', 'b4.eq': '1.3 hrs',
-    'b5.meta': 'Netflix yearly', 'b5.eq': '11 hrs',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 weeks', 'b2.price': '$1,199',
+    'b3.meta': 'NYC 1-bed rent', 'b3.eq': '22.5 days', 'b3.price': '$4,500/mo',
+    'b4.meta': 'DoorDash dinner', 'b4.eq': '1.3 hrs', 'b4.price': '$32',
+    'b5.meta': 'Netflix yearly', 'b5.eq': '11 hrs', 'b5.price': '$276',
     // gallery
     'gal.eye': 'Where your hours go', 'gal.title': 'Every habit has a <span class="italic">price tag</span> in time.',
     'gal.sub': 'The little things add up faster than you\'d think.',
@@ -3046,16 +3074,19 @@ const I18N = {
     'rev.e': 'The reframe, visualized',
     'rev.h': 'You think you\'re spending <span class="money">money</span>.<br>You\'re really spending <span class="italic">your life</span>.',
     'rev.hint': 'Move your cursor over the image',
-    'vanti.eye': 'Coming in the next build',
+    'vanti.eye': 'Meet your pocket teammate',
     'vanti.h': 'Meet <span class="vanti-name">Vanti</span>.<br>A pocket watch with <span class="italic">opinions</span>.',
     'vanti.sub': 'Your in-app assistant. Notices when food eats half the week. Translates every spend to hours. Never lectures. Warms up fast.',
     'vanti.m1': 'Hi there.',
     'vanti.m2': 'Weighing it for you.',
     'vanti.m3': 'You just kept 20 hours.',
-    'vanti.foot': 'Ships with the next build. The app already works without her.',
+    'vanti.foot': 'Live inside the app. No extra setup.',
     // footer + toast
     'foot.all': 'All items', 'foot.ios': 'iOS App', 'foot.privacy': 'Privacy', 'foot.terms': 'Terms',
     'foot.credit': '© HourSpend · Money is just time, exchanged.',
+    'foot.vanti': '— Vanti, your pocket teammate.',
+    'faq.vanti': 'Vanti is listening',
+    'unit.perMonth': '/mo',
     'share.ok': 'Copied — paste anywhere'
   },
   tr: {
@@ -3087,10 +3118,10 @@ const I18N = {
     'bento.eye': 'Rakamlardaki gerçek', 'bento.title': 'Günlük harcamaların <span class="italic">gerçek</span> maliyeti.',
     'bento.sub': 'Saat başı 300₺ ücret üzerinden. Kendi rakamlarını görmek için yukarıdaki hesaplayıcıyı kullan.',
     'b1.meta': 'Günlük latte alışkanlığı', 'b1.h': 'Bir yıllık sabah kahven =', 'b1.eq': '14 iş günü', 'b1.p': 'Günde 100₺ × 365 · 73 saat iş',
-    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 hafta',
-    'b3.meta': 'NYC 1+1 kira', 'b3.eq': '22.5 gün',
-    'b4.meta': 'DoorDash akşam', 'b4.eq': '1.3 sa',
-    'b5.meta': 'Yıllık Netflix', 'b5.eq': '11 sa',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 hafta', 'b2.price': '70.000₺',
+    'b3.meta': 'İstanbul 1+1 kira', 'b3.eq': '22.5 gün', 'b3.price': '25.000₺/ay',
+    'b4.meta': 'Getir akşam', 'b4.eq': '1.3 sa', 'b4.price': '400₺',
+    'b5.meta': 'Yıllık Netflix', 'b5.eq': '11 sa', 'b5.price': '3.600₺',
     'gal.eye': 'Saatlerin nereye gidiyor', 'gal.title': 'Her alışkanlığın zamanla <span class="italic">bir fiyatı</span> var.',
     'gal.sub': 'Küçük şeyler sandığından çok daha hızlı birikir.',
     'g1.k': 'Sabah ritüeli', 'g1.v': 'Yılda 73 saat iş',
@@ -3157,15 +3188,18 @@ const I18N = {
     'rev.e': 'Yeniden çerçeveleme, görsel',
     'rev.h': '<span class="money">Para</span> harcadığını sanıyorsun.<br><span class="italic">Hayatını</span> harcıyorsun.',
     'rev.hint': 'Görselin üzerinde imleci gezdir',
-    'vanti.eye': 'Sonraki sürümde geliyor',
-    'vanti.h': '<span class="vanti-name">Vanti</span>\\'yle tanış.<br><span class="italic">Görüşleri olan</span> bir cep saati.',
+    'vanti.eye': 'Cebindeki yeni yoldaş',
+    'vanti.h': '<span class="vanti-name">Vanti</span>\'yle tanış.<br><span class="italic">Görüşleri olan</span> bir cep saati.',
     'vanti.sub': 'Uygulamanın içindeki arkadaşın. Haftanın yarısı yemeğe gitmişse fark eder. Her harcamayı saate çevirir. Yargılamaz, sıcak konuşur.',
     'vanti.m1': 'Selam.',
     'vanti.m2': 'Senin için tartıyor.',
     'vanti.m3': '20 saat kenara koydun.',
-    'vanti.foot': 'Sonraki sürümde geliyor. Uygulama zaten onsuz da çalışıyor.',
+    'vanti.foot': 'Uygulamada hazır. Kurulum gerektirmez.',
     'foot.all': 'Tüm ürünler', 'foot.ios': 'iOS Uygulaması', 'foot.privacy': 'Gizlilik', 'foot.terms': 'Şartlar',
     'foot.credit': '© HourSpend · Para sadece takas edilen zamandır.',
+    'foot.vanti': '— Vanti, cebindeki yoldaş.',
+    'faq.vanti': 'Vanti dinliyor',
+    'unit.perMonth': '/ay',
     'share.ok': 'Kopyalandı — istediğin yere yapıştır'
   },
   es: {
@@ -3178,7 +3212,7 @@ const I18N = {
     'calc.title': 'Calculadora', 'calc.live': 'EN VIVO',
     'calc.salary': 'Salario mensual', 'calc.hpw': 'Hs / semana', 'calc.exp': 'Gasto $',
     'calc.result': 'Eso te costó', 'calc.share': 'Compartir esta matemática', 'calc.for': 'por',
-    'calc.c1': 'Café · $5', 'calc.c2': 'Almuerzo · $35', 'calc.c3': 'Compras · $100', 'calc.c4': 'Alquiler · $1500',
+    'calc.c1': 'Café · 4€', 'calc.c2': 'Almuerzo · 12€', 'calc.c3': 'Compras · 80€', 'calc.c4': 'Alquiler · 1.200€',
     'unit.min': 'min', 'unit.hrs': 'hrs', 'unit.days': 'días', 'unit.weeks': 'semanas', 'unit.months': 'meses', 'unit.years': 'años',
     'unit.empty': '—', 'unit.enter': 'introduce valores',
     'trusted.label': 'Elegido por quienes valoran su tiempo',
@@ -3190,24 +3224,24 @@ const I18N = {
     'num2.l': 'Gastos registrados', 'num2.s': 'Cada mes, en crecimiento',
     'num3.l': 'Puntuación media', 'num3.s': 'En todas las regiones',
     'num4.l': 'Idiomas activos', 'num4.s': 'Localización completa',
-    'story.label': 'El cambio de marco', 'story.hrsNum': '23 min', 'story.amt': '$5',
+    'story.label': 'El cambio de marco', 'story.hrsNum': '20 min', 'story.amt': '4€',
     'story.cap1': 'Contar en dinero oculta la verdad.',
     'story.cap2': '$5 no parece nada. Pero 23 minutos de tu vida se sienten diferente.',
     'story.cap3': 'Tu dinero es tu tiempo, convertido. Ya no se puede ignorar.',
     'bento.eye': 'La verdad en números', 'bento.title': 'Cuánto <span class="italic">realmente</span> cuesta cada gasto.',
-    'bento.sub': 'A $25/hora. Usa la calculadora arriba para ver tus propios números.',
-    'b1.meta': 'Latte diario', 'b1.h': 'Tu café mañanero por un año =', 'b1.eq': '14 días de trabajo', 'b1.p': '$5/día × 365 · 73 horas de trabajo',
-    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semanas',
-    'b3.meta': 'Alquiler NYC', 'b3.eq': '22.5 días',
-    'b4.meta': 'Cena DoorDash', 'b4.eq': '1.3 hrs',
-    'b5.meta': 'Netflix anual', 'b5.eq': '11 hrs',
+    'bento.sub': 'A 20€/hora. Usa la calculadora arriba para ver tus propios números.',
+    'b1.meta': 'Latte diario', 'b1.h': 'Tu café mañanero por un año =', 'b1.eq': '14 días de trabajo', 'b1.p': '4€/día × 365 · 73 horas de trabajo',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semanas', 'b2.price': '1.299€',
+    'b3.meta': 'Alquiler Madrid', 'b3.eq': '22.5 días', 'b3.price': '1.500€/mes',
+    'b4.meta': 'Pedido Glovo', 'b4.eq': '1.3 hrs', 'b4.price': '28€',
+    'b5.meta': 'Netflix anual', 'b5.eq': '11 hrs', 'b5.price': '240€',
     'gal.eye': 'Dónde van tus horas', 'gal.title': 'Cada hábito tiene un <span class="italic">precio</span> en tiempo.',
     'gal.sub': 'Las cosas pequeñas suman más rápido de lo que crees.',
     'g1.k': 'Ritual matutino', 'g1.v': '73 horas de trabajo · al año',
     'g2.k': 'Suscripciones', 'g2.v': '4 días de tu vida',
     'g3.k': 'Cena delivery', 'g3.v': '1.3 hrs',
     'g4.k': 'Compras fin de semana', 'g4.v': '6 hrs',
-    'g5.k': 'Realidad 9-a-5', 'g5.v': '$1.923/semana · en <em>tus</em> minutos',
+    'g5.k': 'Realidad 9-a-5', 'g5.v': '1.600€/semana · en <em>tus</em> minutos',
     'g6.k': 'Escapada', 'g6.v': '32 hrs',
     'how.eye': 'Cómo funciona', 'how.title': 'Tres pasos. <span class="italic">Cambio eterno.</span>',
     'how.sub': 'Instala. Registra. Ve tu vida de forma que no podrás olvidar.',
@@ -3216,7 +3250,7 @@ const I18N = {
     'how2.h': 'Añade <span class="italic">cualquier cosa.</span>',
     'how2.p': 'Voz. Texto. Escaneo de recibo. Cada entrada aparece como horas de trabajo.',
     'how3.h': 'Mira cambiar tus <span class="italic">decisiones.</span>',
-    'how3.p': 'Un café de $5 se siente distinto cuando ves 23 min de tu vida. Pensarás dos veces.',
+    'how3.p': 'Un café de 4€ se siente distinto cuando ves 20 min de tu vida. Pensarás dos veces.',
     'vs.eye': 'Cara a cara', 'vs.title': 'HourSpend vs <span class="italic">el resto.</span>',
     'vs.sub': 'Las demás apps te muestran dólares. Solo una te muestra <em>tu vida</em>.',
     'vs.col0': 'Función',
@@ -3235,7 +3269,7 @@ const I18N = {
     'testi1.a': 'Anna · Diseñadora de producto',
     'testi2.q': '"No necesito un presupuesto. Necesito un traductor. HourSpend es exactamente eso."',
     'testi2.a': 'Marcus · Ingeniero de software',
-    'testi3.q': '"El café de $5 golpea diferente cuando son 23 min de tu martes. Cambió cómo gasto."',
+    'testi3.q': '"El café de 4€ golpea diferente cuando son 20 min de tu martes. Cambió cómo gasto."',
     'testi3.a': 'Priya · Líder de marketing',
     'faq.eye': 'Preguntas', 'faq.title': 'Lo que <span class="italic">nos preguntan.</span>',
     'faq1.q': '¿De verdad es gratis?',
@@ -3247,7 +3281,7 @@ const I18N = {
     'faq4.q': '¿Android?',
     'faq4.a': 'Solo iOS por ahora. Nativo en iOS 17+ con Liquid Glass para la mejor experiencia antes de expandir.',
     'faq5.q': '¿Qué lo hace diferente de Mint / YNAB / Copilot?',
-    'faq5.a': 'Ellas muestran dólares. Nosotros mostramos tu vida. No es una función — es una filosofía.',
+    'faq5.a': 'Ellas muestran euros. Nosotros mostramos tu vida. No es una función — es una filosofía. Una vez que ves un almuerzo de 12€ como 1,4 horas de trabajo, no puedes ignorarlo.',
     'faq6.q': '¿Qué idiomas están soportados?',
     'faq6.a': '14 idiomas nativos: Inglés, Turco, Español, Alemán, Francés, Portugués, Japonés, Coreano, Chino, Italiano, Holandés, Polaco, Ruso, Árabe.',
     'dl.eye': 'Obtén la app iOS', 'dl.title': 'Rastrea cada dólar<br>en <span class="italic">horas</span> de vida.',
@@ -3257,7 +3291,7 @@ const I18N = {
     'dl.f3': 'Fija metas de ahorro como "horas recuperadas"',
     'dl.f4': '14 idiomas · multi-moneda · privado por defecto',
     'dl.badge': 'Descargar en App Store',
-    'ph.week': 'Esta semana', 'ph.spent': '≈ $363 gastados',
+    'ph.week': 'Esta semana', 'ph.spent': '≈ 290€ gastados',
     'ph.coffee': 'Café', 'ph.lunch': 'Almuerzo', 'ph.groceries': 'Compras', 'ph.gas': 'Gasolina',
     'fin.eye': 'Una última cosa', 'fin.title': 'No estás gastando dinero.<br>Estás gastando <span class="italic">tu vida.</span>',
     'fin.sub': 'Te quedan unos 2.500 fines de semana. El dinero se gana otra vez. Los minutos no.',
@@ -3267,15 +3301,18 @@ const I18N = {
     'rev.e': 'El recadre, visualizado',
     'rev.h': 'Crees que gastas <span class="money">dinero</span>.<br>Estás gastando <span class="italic">tu vida</span>.',
     'rev.hint': 'Mueve el cursor sobre la imagen',
-    'vanti.eye': 'Llega en la próxima versión',
+    'vanti.eye': 'Tu compañera de bolsillo',
     'vanti.h': 'Te presentamos a <span class="vanti-name">Vanti</span>.<br>Un reloj de bolsillo <span class="italic">con opiniones</span>.',
     'vanti.sub': 'Tu asistente dentro de la app. Nota cuando la comida se lleva media semana. Traduce cada gasto a horas. Nunca sermonea. Se acerca rápido.',
     'vanti.m1': 'Hola.',
     'vanti.m2': 'Pensándolo contigo.',
     'vanti.m3': 'Acabas de guardar 20 horas.',
-    'vanti.foot': 'Llega en la próxima versión. La app ya funciona sin ella.',
+    'vanti.foot': 'Ya disponible en la app. Sin configuración.',
     'foot.all': 'Todo', 'foot.ios': 'App iOS', 'foot.privacy': 'Privacidad', 'foot.terms': 'Términos',
     'foot.credit': '© HourSpend · El dinero es solo tiempo intercambiado.',
+    'foot.vanti': '— Vanti, tu compañera de bolsillo.',
+    'faq.vanti': 'Vanti te escucha',
+    'unit.perMonth': '/mes',
     'share.ok': 'Copiado — pégalo donde quieras'
   },
   de: {
@@ -3307,10 +3344,10 @@ const I18N = {
     'bento.eye': 'Die Wahrheit in Zahlen', 'bento.title': 'Was tägliche Ausgaben <span class="italic">wirklich</span> kosten.',
     'bento.sub': 'Bei 20€/Stunde. Nutze den Rechner oben für deine eigenen Zahlen.',
     'b1.meta': 'Tägliche Latte', 'b1.h': 'Dein Morgenkaffee für ein Jahr =', 'b1.eq': '14 Arbeitstage', 'b1.p': '4€/Tag × 365 · 73 Arbeitsstunden',
-    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 Wochen',
-    'b3.meta': 'NYC 1-Zi Miete', 'b3.eq': '22.5 Tage',
-    'b4.meta': 'Lieferdienst', 'b4.eq': '1.3 Std',
-    'b5.meta': 'Netflix jährlich', 'b5.eq': '11 Std',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 Wochen', 'b2.price': '1.299€',
+    'b3.meta': 'Berlin 1-Zi Miete', 'b3.eq': '22.5 Tage', 'b3.price': '1.200€/Mo',
+    'b4.meta': 'Lieferando Abend', 'b4.eq': '1.3 Std', 'b4.price': '30€',
+    'b5.meta': 'Netflix jährlich', 'b5.eq': '11 Std', 'b5.price': '240€',
     'gal.eye': 'Wo deine Stunden hin gehen', 'gal.title': 'Jede Gewohnheit hat ein <span class="italic">Preisschild</span> in Zeit.',
     'gal.sub': 'Kleine Dinge summieren sich schneller als du denkst.',
     'g1.k': 'Morgenritual', 'g1.v': '73 Arbeitsstunden · pro Jahr',
@@ -3357,7 +3394,7 @@ const I18N = {
     'faq4.q': 'Android?',
     'faq4.a': 'Nur iOS. Nativ auf iOS 17+ mit Liquid Glass für die beste Erfahrung.',
     'faq5.q': 'Unterschied zu Mint / YNAB / Copilot?',
-    'faq5.a': 'Sie zeigen Dollar. Wir zeigen dein Leben. Das ist keine Funktion — es ist eine Philosophie.',
+    'faq5.a': 'Sie zeigen Euro. Wir zeigen dein Leben. Das ist keine Funktion — es ist eine Philosophie. Wenn du ein 12€ Mittagessen als 1,4 Arbeitsstunden siehst, vergisst du es nicht mehr.',
     'faq6.q': 'Welche Sprachen?',
     'faq6.a': '14 Sprachen nativ: Englisch, Türkisch, Spanisch, Deutsch, Französisch, Portugiesisch, Japanisch, Koreanisch, Chinesisch, Italienisch, Niederländisch, Polnisch, Russisch, Arabisch.',
     'dl.eye': 'Die iOS App', 'dl.title': 'Tracke jeden Euro<br>in <span class="italic">Stunden</span> des Lebens.',
@@ -3377,15 +3414,18 @@ const I18N = {
     'rev.e': 'Der Reframe, visualisiert',
     'rev.h': 'Du glaubst, du gibst <span class="money">Geld</span> aus.<br>Du gibst <span class="italic">dein Leben</span> aus.',
     'rev.hint': 'Fahre mit dem Cursor über das Bild',
-    'vanti.eye': 'Kommt im nächsten Build',
+    'vanti.eye': 'Dein Taschen-Teammate',
     'vanti.h': 'Das ist <span class="vanti-name">Vanti</span>.<br>Eine Taschenuhr <span class="italic">mit Meinung</span>.',
     'vanti.sub': 'Dein Assistent in der App. Merkt, wenn Essen die halbe Woche frisst. Übersetzt jede Ausgabe in Stunden. Predigt nie. Ist schnell warm.',
     'vanti.m1': 'Hallo.',
     'vanti.m2': 'Wäge es für dich ab.',
     'vanti.m3': 'Du hast gerade 20 Stunden behalten.',
-    'vanti.foot': 'Kommt mit dem nächsten Build. Die App funktioniert auch ohne sie.',
+    'vanti.foot': 'Bereits in der App. Keine Einrichtung nötig.',
     'foot.all': 'Alle Artikel', 'foot.ios': 'iOS App', 'foot.privacy': 'Datenschutz', 'foot.terms': 'AGB',
     'foot.credit': '© HourSpend · Geld ist nur getauschte Zeit.',
+    'foot.vanti': '— Vanti, dein Taschen-Teammate.',
+    'faq.vanti': 'Vanti hört zu',
+    'unit.perMonth': '/Mo',
     'share.ok': 'Kopiert — füge es überall ein'
   },
   fr: {
@@ -3417,10 +3457,10 @@ const I18N = {
     'bento.eye': 'La vérité en chiffres', 'bento.title': 'Ce que les dépenses quotidiennes <span class="italic">coûtent vraiment.</span>',
     'bento.sub': 'À 20€/heure. Utilise la calculatrice ci-dessus pour tes propres chiffres.',
     'b1.meta': 'Latte quotidien', 'b1.h': 'Ton café matinal pendant un an =', 'b1.eq': '14 jours de travail', 'b1.p': '4€/jour × 365 · 73 heures de travail',
-    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semaines',
-    'b3.meta': 'Loyer NYC', 'b3.eq': '22.5 jours',
-    'b4.meta': 'Livraison', 'b4.eq': '1.3 h',
-    'b5.meta': 'Netflix annuel', 'b5.eq': '11 h',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semaines', 'b2.price': '1.299€',
+    'b3.meta': 'Loyer Paris', 'b3.eq': '22.5 jours', 'b3.price': '1.500€/mois',
+    'b4.meta': 'Uber Eats', 'b4.eq': '1.3 h', 'b4.price': '32€',
+    'b5.meta': 'Netflix annuel', 'b5.eq': '11 h', 'b5.price': '240€',
     'gal.eye': 'Où vont tes heures', 'gal.title': 'Chaque habitude a un <span class="italic">prix</span> en temps.',
     'gal.sub': 'Les petites choses s\'additionnent plus vite qu\'on pense.',
     'g1.k': 'Rituel matinal', 'g1.v': '73 heures de travail · par an',
@@ -3467,7 +3507,7 @@ const I18N = {
     'faq4.q': 'Android ?',
     'faq4.a': 'iOS uniquement. Natif iOS 17+ avec Liquid Glass pour la meilleure expérience.',
     'faq5.q': 'Différence avec Mint / YNAB / Copilot ?',
-    'faq5.a': 'Eux montrent des dollars. Nous montrons ta vie. C\'est une philosophie.',
+    'faq5.a': 'Eux montrent des euros. Nous montrons ta vie. Ce n\'est pas une fonction — c\'est une philosophie. Quand tu vois un déjeuner à 15€ comme 1,4 h de travail, tu ne l\'oublies plus.',
     'faq6.q': 'Quelles langues ?',
     'faq6.a': '14 langues natives : Anglais, Turc, Espagnol, Allemand, Français, Portugais, Japonais, Coréen, Chinois, Italien, Néerlandais, Polonais, Russe, Arabe.',
     'dl.eye': 'Obtenir l\'app iOS', 'dl.title': 'Suis chaque euro<br>en <span class="italic">heures</span> de vie.',
@@ -3487,15 +3527,18 @@ const I18N = {
     'rev.e': 'Le recadrage, visualisé',
     'rev.h': 'Tu crois dépenser de l\'<span class="money">argent</span>.<br>Tu dépenses <span class="italic">ta vie</span>.',
     'rev.hint': 'Passe ton curseur sur l\'image',
-    'vanti.eye': 'Arrive dans la prochaine version',
+    'vanti.eye': 'Ta coéquipière de poche',
     'vanti.h': 'Voici <span class="vanti-name">Vanti</span>.<br>Une montre de poche <span class="italic">avec des avis</span>.',
-    'vanti.sub': 'Ton assistante dans l\\'app. Remarque quand la bouffe avale la moitié de ta semaine. Traduit chaque dépense en heures. Ne sermonne pas.',
+    'vanti.sub': 'Ton assistante dans l\'app. Remarque quand la bouffe avale la moitié de ta semaine. Traduit chaque dépense en heures. Ne sermonne pas.',
     'vanti.m1': 'Salut.',
     'vanti.m2': 'Je pèse ça pour toi.',
     'vanti.m3': 'Tu viens de garder 20 heures.',
-    'vanti.foot': 'Arrive dans la prochaine version. L\\'app fonctionne déjà sans elle.',
+    'vanti.foot': 'Déjà dans l\'app. Aucune configuration.',
     'foot.all': 'Tous les articles', 'foot.ios': 'App iOS', 'foot.privacy': 'Confidentialité', 'foot.terms': 'Conditions',
     'foot.credit': '© HourSpend · L\'argent n\'est que du temps échangé.',
+    'foot.vanti': '— Vanti, ta coéquipière de poche.',
+    'faq.vanti': 'Vanti écoute',
+    'unit.perMonth': '/mois',
     'share.ok': 'Copié — colle-le où tu veux'
   },
   pt: {
@@ -3527,10 +3570,10 @@ const I18N = {
     'bento.eye': 'A verdade em números', 'bento.title': 'O que os gastos diários <span class="italic">realmente</span> custam.',
     'bento.sub': 'A R$50/hora. Use a calculadora acima para seus próprios números.',
     'b1.meta': 'Latte diário', 'b1.h': 'Seu café matinal por um ano =', 'b1.eq': '14 dias de trabalho', 'b1.p': 'R$20/dia × 365 · 73 horas de trabalho',
-    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semanas',
-    'b3.meta': 'Aluguel NYC', 'b3.eq': '22.5 dias',
-    'b4.meta': 'Delivery', 'b4.eq': '1.3 hrs',
-    'b5.meta': 'Netflix anual', 'b5.eq': '11 hrs',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6 semanas', 'b2.price': 'R$6.999',
+    'b3.meta': 'Aluguel SP', 'b3.eq': '22.5 dias', 'b3.price': 'R$3.500/mês',
+    'b4.meta': 'iFood jantar', 'b4.eq': '1.3 hrs', 'b4.price': 'R$80',
+    'b5.meta': 'Netflix anual', 'b5.eq': '11 hrs', 'b5.price': 'R$1.200',
     'gal.eye': 'Para onde vão suas horas', 'gal.title': 'Cada hábito tem um <span class="italic">preço</span> em tempo.',
     'gal.sub': 'As pequenas coisas somam mais rápido do que você pensa.',
     'g1.k': 'Ritual matinal', 'g1.v': '73 horas de trabalho · por ano',
@@ -3597,15 +3640,18 @@ const I18N = {
     'rev.e': 'O reframe, visualizado',
     'rev.h': 'Você acha que gasta <span class="money">dinheiro</span>.<br>Você gasta <span class="italic">sua vida</span>.',
     'rev.hint': 'Passe o cursor sobre a imagem',
-    'vanti.eye': 'Chega na próxima versão',
+    'vanti.eye': 'Sua companheira de bolso',
     'vanti.h': 'Conheça a <span class="vanti-name">Vanti</span>.<br>Um relógio de bolso <span class="italic">com opiniões</span>.',
     'vanti.sub': 'Sua assistente dentro do app. Percebe quando comida come metade da semana. Traduz cada gasto em horas. Não faz sermão. Esquenta rápido.',
     'vanti.m1': 'Olá.',
     'vanti.m2': 'Estou pesando pra você.',
     'vanti.m3': 'Você acabou de guardar 20 horas.',
-    'vanti.foot': 'Chega na próxima versão. O app já funciona sem ela.',
+    'vanti.foot': 'Já no app. Sem configuração.',
     'foot.all': 'Todos os itens', 'foot.ios': 'App iOS', 'foot.privacy': 'Privacidade', 'foot.terms': 'Termos',
     'foot.credit': '© HourSpend · Dinheiro é só tempo trocado.',
+    'foot.vanti': '— Vanti, sua companheira de bolso.',
+    'faq.vanti': 'Vanti está ouvindo',
+    'unit.perMonth': '/mês',
     'share.ok': 'Copiado — cole onde quiser'
   },
   ja: {
@@ -3637,10 +3683,10 @@ const I18N = {
     'bento.eye': '数字で見る真実', 'bento.title': '日々の支出が<span class="italic">本当に</span>かかるもの。',
     'bento.sub': '時給¥2,500の場合。上の計算機で自分の数字を見てみて。',
     'b1.meta': '毎日のラテ習慣', 'b1.h': '1年間の朝のコーヒー =', 'b1.eq': '14営業日', 'b1.p': '¥500/日 × 365 · 73時間の労働',
-    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6週間',
-    'b3.meta': 'NYC 1-bed 家賃', 'b3.eq': '22.5日',
-    'b4.meta': 'DoorDash 夕食', 'b4.eq': '1.3時間',
-    'b5.meta': 'Netflix年間', 'b5.eq': '11時間',
+    'b2.meta': 'iPhone 16 Pro', 'b2.eq': '6週間', 'b2.price': '¥189,800',
+    'b3.meta': '東京1K 家賃', 'b3.eq': '22.5日', 'b3.price': '¥120,000/月',
+    'b4.meta': 'Uber Eats', 'b4.eq': '1.3時間', 'b4.price': '¥3,500',
+    'b5.meta': 'Netflix年間', 'b5.eq': '11時間', 'b5.price': '¥29,880',
     'gal.eye': 'あなたの時間はどこへ', 'gal.title': 'すべての習慣には時間の<span class="italic">値札</span>がある。',
     'gal.sub': '小さなことは思ったより早く積み重なる。',
     'g1.k': '朝の儀式', 'g1.v': '年間73時間の労働',
@@ -3687,7 +3733,7 @@ const I18N = {
     'faq4.q': 'Android？',
     'faq4.a': '現在iOSのみ。iOS 17+にLiquid Glassでネイティブ実装。',
     'faq5.q': 'Mint / YNAB / Copilotとの違い？',
-    'faq5.a': '彼らはドルを見せる。我々は人生を見せる。これは哲学。',
+    'faq5.a': '彼らは円を見せる。我々は人生を見せる。これは機能ではなく哲学。¥1,200のランチが1.4時間の労働だと見えると、忘れられない。',
     'faq6.q': '対応言語は？',
     'faq6.a': '14言語ネイティブ：英語、トルコ語、スペイン語、ドイツ語、フランス語、ポルトガル語、日本語、韓国語、中国語、イタリア語、オランダ語、ポーランド語、ロシア語、アラビア語。',
     'dl.eye': 'iOSアプリを入手', 'dl.title': 'すべてのドルを<br>人生の<span class="italic">時間で</span>追跡。',
@@ -3707,15 +3753,18 @@ const I18N = {
     'rev.e': 'リフレームを可視化',
     'rev.h': '<span class="money">お金</span>を使っていると思っている。<br>実は<span class="italic">人生</span>を使っている。',
     'rev.hint': '画像の上でカーソルを動かして',
-    'vanti.eye': '次のアップデートで登場',
+    'vanti.eye': 'ポケットの相棒',
     'vanti.h': '<span class="vanti-name">Vanti</span>を紹介。<br><span class="italic">意見を持つ</span>懐中時計。',
     'vanti.sub': 'アプリ内のアシスタント。食費が一週間の半分を占めたら気づく。すべての支出を時間に換える。説教はしない。すぐ馴染む。',
     'vanti.m1': 'こんにちは。',
     'vanti.m2': '一緒に考えてる。',
     'vanti.m3': '20時間、取り戻したね。',
-    'vanti.foot': '次のアップデートで登場。アプリは彼女なしでも動きます。',
+    'vanti.foot': 'アプリに既に搭載。設定不要。',
     'foot.all': 'すべて', 'foot.ios': 'iOSアプリ', 'foot.privacy': 'プライバシー', 'foot.terms': '利用規約',
     'foot.credit': '© HourSpend · お金はただ交換された時間。',
+    'foot.vanti': '— Vanti、ポケットの相棒。',
+    'faq.vanti': 'Vantiが聞いてる',
+    'unit.perMonth': '/月',
     'share.ok': 'コピーしました — どこにでも貼れます'
   }
 };
@@ -3755,7 +3804,7 @@ function applyLang(lang) {
   // Locale-aware calc defaults — only swap if user hasn't customized
   const loc = LOCALE_CURR[lang] || LOCALE_CURR.en;
   const CHIP_VALS = {
-    en:[5,35,100,1500], tr:[100,500,1500,25000], es:[5,35,100,1500],
+    en:[5,35,100,1500], tr:[100,500,1500,25000], es:[4,12,80,1200],
     de:[4,12,80,1200], fr:[4,15,100,1200], pt:[20,45,400,2500], ja:[500,1200,8000,120000]
   };
   const chipVals = CHIP_VALS[lang] || CHIP_VALS.en;
@@ -3775,6 +3824,14 @@ function applyLang(lang) {
   if (typeof calc === 'function') calc();
   // Re-run hero word animation after translation swap
   if (typeof animateHeroWords === 'function') animateHeroWords();
+  // Convert marquee / inline USD prices to the active locale (with optional localized suffix)
+  document.querySelectorAll('[data-usd]').forEach(el => {
+    const usd = el.dataset.usd;
+    if (!usd) return;
+    const suffixKey = el.dataset.usdSuffixKey;
+    const suffix = suffixKey && dict[suffixKey] ? dict[suffixKey] : '';
+    el.textContent = fmtUSDAsLocal(usd) + suffix;
+  });
 }
 
 // Determine initial language synchronously (localStorage > browser)

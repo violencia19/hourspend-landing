@@ -1980,6 +1980,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
   </div>
 </nav>
 
+<main id="main">
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-grid">
@@ -2042,17 +2043,17 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
       </div>
       <div class="calc-inputs">
         <div class="input-group">
-          <label data-i18n="calc.salary">Monthly salary</label>
-          <input type="text" id="salary" value="3000" inputmode="numeric" pattern="[0-9]*" autocomplete="off" data-numeric="int">
+          <label for="salary" data-i18n="calc.salary">Monthly salary</label>
+          <input type="text" id="salary" value="3000" inputmode="numeric" pattern="[0-9]*" autocomplete="off" data-numeric="int" aria-label="Monthly salary">
         </div>
         <div class="input-row">
           <div class="input-group">
-            <label data-i18n="calc.hpw">Hrs / week</label>
-            <input type="text" id="hours" value="40" inputmode="numeric" pattern="[0-9]*" autocomplete="off" data-numeric="int">
+            <label for="hours" data-i18n="calc.hpw">Hrs / week</label>
+            <input type="text" id="hours" value="40" inputmode="numeric" pattern="[0-9]*" autocomplete="off" data-numeric="int" aria-label="Hours per week">
           </div>
           <div class="input-group">
-            <label data-i18n="calc.exp">Expense $</label>
-            <input type="text" id="expense" value="5" inputmode="decimal" pattern="[0-9]*\.?[0-9]*" autocomplete="off" data-numeric="decimal">
+            <label for="expense" data-i18n="calc.exp">Expense $</label>
+            <input type="text" id="expense" value="5" inputmode="decimal" pattern="[0-9]*\.?[0-9]*" autocomplete="off" data-numeric="decimal" aria-label="Expense amount">
           </div>
         </div>
       </div>
@@ -2195,9 +2196,9 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 
 <!-- CURSOR REVEAL SECTION (F1 pilotu efekti) -->
 <section class="reveal-mouse" id="revealMouse"
-  data-base="/assets/reveal-life.jpg"
-  data-top="/assets/reveal-money.jpg">
-  <div class="reveal-base" style="background-image:url('/assets/reveal-life.jpg')"></div>
+  data-base="/assets/reveal-life.webp"
+  data-top="/assets/reveal-money.webp">
+  <div class="reveal-base" style="background-image:url('/assets/reveal-life.webp')"></div>
   <canvas class="reveal-canvas" id="revealCanvas"></canvas>
   <div class="reveal-caption">
     <h3 data-i18n-html="rev.h">You think you're spending <span class="money">money</span>.<br>You're really spending <span class="italic">your life</span>.</h3>
@@ -2454,15 +2455,15 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 
     <div class="vanti-strip">
       <figure class="vanti-card">
-        <img src="/assets/vanti/waving.png" alt="Vanti waving" width="180" height="180" loading="lazy">
+        <img src="/assets/vanti/waving.webp" alt="Vanti waving" width="180" height="180" loading="lazy">
         <figcaption data-i18n="vanti.m1">Hi there.</figcaption>
       </figure>
       <figure class="vanti-card vanti-card-lg">
-        <img src="/assets/vanti/thinking.png" alt="Vanti thinking" width="220" height="220" loading="lazy">
+        <img src="/assets/vanti/thinking.webp" alt="Vanti thinking" width="220" height="220" loading="lazy">
         <figcaption data-i18n="vanti.m2">Weighing it for you.</figcaption>
       </figure>
       <figure class="vanti-card">
-        <img src="/assets/vanti/celebrating.png" alt="Vanti celebrating" width="180" height="180" loading="lazy">
+        <img src="/assets/vanti/celebrating.webp" alt="Vanti celebrating" width="180" height="180" loading="lazy">
         <figcaption data-i18n="vanti.m3">You just kept 20 hours.</figcaption>
       </figure>
     </div>
@@ -2478,7 +2479,7 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <section class="faq-section" id="faq">
   <div class="section-head reveal">
     <div class="faq-vanti-intro">
-      <img src="/assets/vanti/thinking.png" alt="" aria-hidden="true">
+      <img src="/assets/vanti/thinking.webp" alt="" aria-hidden="true">
       <span class="bubble" data-i18n="faq.vanti">Vanti is listening</span>
     </div>
     <div class="eyebrow" data-scramble data-i18n="faq.eye">Questions</div>
@@ -2560,11 +2561,12 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-vanti reveal">
-      <img src="/assets/vanti/waving.png" alt="Vanti waving goodbye" loading="lazy">
+      <img src="/assets/vanti/waving.webp" alt="Vanti waving goodbye" loading="lazy">
       <span class="wave" data-i18n="foot.vanti">— Vanti, your pocket teammate.</span>
     </div>
     <div class="footer-logo">
@@ -2598,14 +2600,14 @@ footer { padding: 80px 28px 50px; border-top: 1px solid var(--line); text-align:
 <div class="ticker" id="ticker">
   <div class="ticker-stack" id="tickerStack"></div>
   <div class="ticker-counter">
-    <span><img class="ticker-vanti" src="/assets/vanti/waving.png" alt="" aria-hidden="true">Live · <span class="num" id="liveNum">147</span> reframing now</span>
+    <span><img class="ticker-vanti" src="/assets/vanti/waving.webp" alt="" aria-hidden="true">Live · <span class="num" id="liveNum">147</span> reframing now</span>
   </div>
 </div>
 
 <!-- CMD+K PALETTE -->
 <div class="palette-overlay" id="paletteOverlay">
   <div class="palette">
-    <input type="text" class="palette-input" id="paletteInput" placeholder="Search or jump to...">
+    <input type="text" class="palette-input" id="paletteInput" placeholder="Search or jump to..." aria-label="Search the site">
     <div class="palette-list" id="paletteList"></div>
     <div class="palette-foot">
       <span><kbd>↑↓</kbd> navigate · <kbd>⏎</kbd> open · <kbd>esc</kbd> close</span>

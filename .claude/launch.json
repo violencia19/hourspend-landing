@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hourspend-preview",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4311", "--directory", "/Users/gencayalla/Documents/VantagSwift/vantag-landing/public"],
+      "port": 4311
+    }
+  ]
+}

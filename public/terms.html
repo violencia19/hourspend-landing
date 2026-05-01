@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — HourSpend</title>
+<meta name="description" content="The rules for using HourSpend. What we promise, what you agree to, what happens if something goes wrong.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hourspend.one/terms">
+<meta name="theme-color" content="#0a0710">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0710;
+  --surface: #12091e;
+  --line: rgba(255,255,255,0.08);
+  --gold: #d4a846;
+  --gold-soft: #e8c86e;
+  --text: #f5f0e6;
+  --text-muted: #a59fb3;
+  --text-dim: #6b6478;
+  --editorial: 'Fraunces', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid rgba(232,200,110,0.3); transition: color 0.2s, border-color 0.2s; }
+a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+.page-nav {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: saturate(140%) blur(16px);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  background: rgba(10,7,16,0.72);
+  border-bottom: 1px solid var(--line);
+}
+.page-nav-inner {
+  max-width: 760px; margin: 0 auto; padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 16px; letter-spacing: -0.4px;
+  color: var(--text); border: 0;
+}
+.logo svg { width: 18px; height: 18px; }
+.back-link { font-size: 13px; color: var(--text-muted); border-bottom: 0; }
+.back-link:hover { color: var(--text); }
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 24px 120px;
+}
+
+.eyebrow {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; font-family: 'Geist Mono', ui-monospace, monospace;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(40px, 6vw, 60px);
+  line-height: 1.02; letter-spacing: -2px;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+h1 em {
+  font-family: var(--editorial); font-style: italic; font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+.lede {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+.meta-line {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  padding: 12px 0 32px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  font-weight: 700;
+  margin: 48px 0 14px;
+  color: var(--text);
+}
+h2::before {
+  content: attr(data-num);
+  display: inline-block;
+  margin-right: 14px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 500;
+  vertical-align: middle;
+  min-width: 26px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  margin: 28px 0 8px;
+  color: var(--text);
+}
+
+p, li { color: var(--text-muted); }
+p { margin: 0 0 16px; }
+
+ul { padding-left: 22px; margin: 0 0 16px; }
+li { margin-bottom: 8px; }
+li::marker { color: var(--gold); }
+
+strong { color: var(--text); font-weight: 700; }
+
+.callout {
+  margin: 36px 0;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--gold);
+  border-radius: 6px;
+  font-size: 15px;
+}
+.callout p { margin: 0; color: var(--text); }
+
+footer.page-footer {
+  max-width: 720px; margin: 0 auto; padding: 48px 24px;
+  border-top: 1px solid var(--line);
+  color: var(--text-dim); font-size: 13px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+footer.page-footer a { color: var(--text-muted); border: 0; }
+footer.page-footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#e8c86e" stroke-width="1.5"/>
+        <line x1="12" y1="3.5" x2="12" y2="5" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="12" y1="19" x2="12" y2="20.5" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="3.5" y1="12" x2="5" y2="12" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="19" y1="12" x2="20.5" y2="12" stroke="#e8c86e" stroke-width="1" opacity="0.5"/>
+        <line x1="12" y1="12" x2="12" y2="7.5" stroke="#d4a846" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="12" x2="18" y2="9" stroke="#e8c86e" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="1.2" fill="#d4a846"/>
+      </svg>
+      HourSpend
+    </a>
+    <a href="/" class="back-link">← Back to home</a>
+  </div>
+</nav>
+
+<main>
+  <div class="eyebrow">Legal</div>
+  <h1>Terms of <em>service</em></h1>
+  <p class="lede">Plain version: HourSpend is a tool that converts your expenses into work hours. Use it for yourself, don't abuse it, and don't expect us to be liable for your financial decisions.</p>
+  <div class="meta-line">Effective: April 20, 2026 · Applies to HourSpend iOS app &amp; hourspend.one</div>
+
+  <h2 data-num="01">Acceptance</h2>
+  <p>By creating an account, downloading the app, or using hourspend.one, you agree to these terms. If you don't agree, don't use HourSpend. We may update these terms over time; continued use after a change means you accept the update.</p>
+
+  <h2 data-num="02">What HourSpend is</h2>
+  <p>HourSpend is a personal finance reframing tool. You enter expenses and your hourly rate; the app shows you what each expense cost in work hours. It does not connect to your bank, does not pull transactions automatically, does not give financial advice.</p>
+  <div class="callout">
+    <p>HourSpend is a <strong>tool, not a financial advisor</strong>. Numbers shown in the app are reframings of data you entered, not predictions, recommendations, or advice. Decisions you make with the help of HourSpend are yours alone.</p>
+  </div>
+
+  <h2 data-num="03">Your account</h2>
+  <ul>
+    <li>You must be at least 13 years old to use HourSpend (or older where local law requires).</li>
+    <li>You're responsible for keeping your login credentials safe. We can't recover access without them.</li>
+    <li>One account per person. Don't share login details, don't sell your account.</li>
+    <li>If we detect that an account has been accessed by someone other than the owner, we may suspend it.</li>
+  </ul>
+
+  <h2 data-num="04">Your content</h2>
+  <p>The expenses, incomes, goals, and notes you enter belong to you. We store them so the app works, but we don't claim ownership. You can export everything to CSV/PDF or delete your account at any time.</p>
+  <p>By using HourSpend you grant us a limited license to store, process, and display your data only as needed to operate the service.</p>
+
+  <h2 data-num="05">Subscriptions and payments</h2>
+  <p>HourSpend offers a free tier and a Premium subscription with extended features. Subscriptions are billed through Apple's App Store or Google Play. Pricing is shown in-app at the time of purchase.</p>
+  <ul>
+    <li><strong>Renewal:</strong> Subscriptions auto-renew unless you cancel at least 24 hours before the end of the current period.</li>
+    <li><strong>Cancellation:</strong> Manage from your App Store or Google Play account. Cancellation prevents future renewals; the current period continues to its scheduled end.</li>
+    <li><strong>Refunds:</strong> Handled by Apple/Google per their store policies. We can support reasonable refund requests but the final decision is theirs.</li>
+    <li><strong>Free trials:</strong> If a free trial is offered, you'll be charged when it ends unless you cancel before then.</li>
+  </ul>
+
+  <h2 data-num="06">Acceptable use</h2>
+  <p>Don't do these. We may suspend or terminate accounts that:</p>
+  <ul>
+    <li>Attempt to reverse-engineer, scrape, or interfere with the service.</li>
+    <li>Use HourSpend to harass, deceive, or defraud anyone.</li>
+    <li>Submit obviously fake or malicious data designed to disrupt the service.</li>
+    <li>Resell, sublicense, or redistribute HourSpend or its content without our written permission.</li>
+    <li>Use HourSpend in violation of any law that applies to you.</li>
+  </ul>
+
+  <h2 data-num="07">Intellectual property</h2>
+  <p>The HourSpend brand, app design, copy, and software are our intellectual property. The data you enter is yours. We grant you a non-exclusive, non-transferable, revocable license to use HourSpend for personal, non-commercial purposes only.</p>
+
+  <h2 data-num="08">Disclaimers</h2>
+  <p>HourSpend is provided <strong>"as is"</strong>. We work hard to make it reliable, but we don't promise it will be error-free, uninterrupted, or fit for any specific purpose. We don't promise that the conversions, summaries, or projections it generates will be accurate for your specific tax, legal, or financial situation.</p>
+
+  <h2 data-num="09">Limitation of liability</h2>
+  <p>To the maximum extent permitted by law: HourSpend, its team, and its providers are not liable for indirect, incidental, special, consequential, or punitive damages, including lost profits or data loss. Our total liability for any claim relating to HourSpend will not exceed the amount you paid us in the 12 months before the claim arose, or USD 50 if you've paid nothing.</p>
+
+  <h2 data-num="10">Termination</h2>
+  <p>You can stop using HourSpend at any time and delete your account from <em>Settings → Account → Delete account</em>. We can suspend or terminate your access if you breach these terms or if continuing the service would expose us to legal or security risks. After termination, the parts of these terms that should reasonably survive (intellectual property, disclaimers, limitation of liability) continue to apply.</p>
+
+  <h2 data-num="11">Governing law</h2>
+  <p>These terms are governed by the laws of the United States, without regard to conflicts of law principles. Any dispute that can't be resolved informally will be brought in the state or federal courts of Delaware, USA, and you and we consent to the personal jurisdiction of those courts.</p>
+
+  <h2 data-num="12">Third-party platforms</h2>
+  <p>HourSpend integrates with Apple, Google, Firebase, and RevenueCat for sign-in, storage, and payments. When you use HourSpend, you also agree to those providers' terms. Their handling of data is described in our <a href="/privacy">Privacy Policy</a>.</p>
+
+  <h2 data-num="13">Changes to these terms</h2>
+  <p>When we change something material, we'll update the effective date above and notify you in the app the next time you open it. Continued use after a change means you accept the updated terms.</p>
+
+  <h2 data-num="14">Contact</h2>
+  <p>Questions, complaints, legal notices:</p>
+  <p>📧 <a href="mailto:legal@hourspend.one">legal@hourspend.one</a></p>
+  <p>We aim to respond within 14 days.</p>
+
+</main>
+
+<footer class="page-footer">
+  <div>© HourSpend · Money is just time, exchanged.</div>
+  <div>
+    <a href="/">Home</a> ·
+    <a href="/privacy">Privacy</a> ·
+    <a href="https://apps.apple.com/us/app/budget-tracker-money-time/id6758535957">iOS App</a>
+  </div>
+</footer>
+
+</body>
+</html>
